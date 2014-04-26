@@ -10,8 +10,9 @@
 		CF27C7E0190B2C48004FAEBE /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7DF190B2C48004FAEBE /* TitleScene.m */; };
 		CF27C7E3190B3A5F004FAEBE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* Player.m */; };
 		CF27C7E8190B3DA5004FAEBE /* Level_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* Level_00.m */; };
-		CF27C7EF190B5643004FAEBE /* bear_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF27C7ED190B5643004FAEBE /* bear_default.plist */; };
-		CF27C7F0190B5643004FAEBE /* bear_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF27C7EE190B5643004FAEBE /* bear_default.png */; };
+		CF27C7F3190B7AB0004FAEBE /* bear_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF27C7F1190B7AB0004FAEBE /* bear_default.plist */; };
+		CF27C7F4190B7AB0004FAEBE /* bear_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF27C7F2190B7AB0004FAEBE /* bear_default.png */; };
+		CF27C7F7190BB1F1004FAEBE /* RouteDispLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */; };
 		CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */; };
 		CFDFDECA190A2D6E0021FBF9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */; };
 		CFDFDECC190A2D6E0021FBF9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDECB190A2D6E0021FBF9 /* OpenAL.framework */; };
@@ -236,8 +237,10 @@
 		CF27C7E2190B3A5F004FAEBE /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		CF27C7E6190B3DA5004FAEBE /* Level_00.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level_00.h; sourceTree = "<group>"; };
 		CF27C7E7190B3DA5004FAEBE /* Level_00.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level_00.m; sourceTree = "<group>"; };
-		CF27C7ED190B5643004FAEBE /* bear_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bear_default.plist; sourceTree = "<group>"; };
-		CF27C7EE190B5643004FAEBE /* bear_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear_default.png; sourceTree = "<group>"; };
+		CF27C7F1190B7AB0004FAEBE /* bear_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bear_default.plist; sourceTree = "<group>"; };
+		CF27C7F2190B7AB0004FAEBE /* bear_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear_default.png; sourceTree = "<group>"; };
+		CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDispLayer.h; sourceTree = "<group>"; };
+		CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDispLayer.m; sourceTree = "<group>"; };
 		CFDFDEC4190A2D6E0021FBF9 /* VirginTechFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirginTechFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -748,8 +751,8 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CF27C7ED190B5643004FAEBE /* bear_default.plist */,
-				CF27C7EE190B5643004FAEBE /* bear_default.png */,
+				CF27C7F1190B7AB0004FAEBE /* bear_default.plist */,
+				CF27C7F2190B7AB0004FAEBE /* bear_default.png */,
 				CFDFDEE1190A2D6F0021FBF9 /* Default.png */,
 				CFDFDEE3190A2D6F0021FBF9 /* Default@2x.png */,
 				CFDFDEE5190A2D6F0021FBF9 /* Default-568h@2x.png */,
@@ -1575,6 +1578,8 @@
 				CF27C7E2190B3A5F004FAEBE /* Player.m */,
 				CF27C7E6190B3DA5004FAEBE /* Level_00.h */,
 				CF27C7E7190B3DA5004FAEBE /* Level_00.m */,
+				CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */,
+				CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1662,12 +1667,12 @@
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
 				CFDFDEEF190A2D6F0021FBF9 /* Icon-72.png in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
-				CF27C7F0190B5643004FAEBE /* bear_default.png in Resources */,
+				CF27C7F4190B7AB0004FAEBE /* bear_default.png in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
 				CFDFDF06190A2D6F0021FBF9 /* iTunesArtwork in Resources */,
 				CFDFDF01190A2D6F0021FBF9 /* Icon-Spotlight-iOS7.png in Resources */,
 				CFDFDEF5190A2D6F0021FBF9 /* Icon-76@2x.png in Resources */,
-				CF27C7EF190B5643004FAEBE /* bear_default.plist in Resources */,
+				CF27C7F3190B7AB0004FAEBE /* bear_default.plist in Resources */,
 				CFDFE169190A2D710021FBF9 /* LICENSE_Chipmunk.txt in Resources */,
 				CFDFDF03190A2D6F0021FBF9 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				CFDFDEF3190A2D6F0021FBF9 /* Icon-76.png in Resources */,
@@ -1824,6 +1829,7 @@
 				CFDFDF9E190A2D6F0021FBF9 /* CCResponderManager.m in Sources */,
 				CFDFDF36190A2D6F0021FBF9 /* CCConfiguration.m in Sources */,
 				CFDFE079190A2D700021FBF9 /* ALWrapper.m in Sources */,
+				CF27C7F7190BB1F1004FAEBE /* RouteDispLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

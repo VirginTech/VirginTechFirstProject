@@ -8,10 +8,15 @@
 
 #import "Level_00.h"
 #import "TitleScene.h"
+#import "RouteDispLayer.h"
+#import "CCDrawingPrimitives.h"
 
 @implementation Level_00
 
 CCSprite *_sprite;
+NSMutableArray* posArray;
+CGPoint oldPos;
+RouteDispLayer* routeDisp;
 
 + (Level_00 *)scene
 {
@@ -27,13 +32,17 @@ CCSprite *_sprite;
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
     
+    //経路表示レイヤー
+    routeDisp=[[RouteDispLayer alloc]init];
+    //[self addChild:routeDisp];
+    
     // Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
     [self addChild:background];
     
     //プレイヤー作成
     player=[Player createPlayer];
-    [self addChild:player];
+    [self addChild:player z:1];
     
     // Create a back button
     CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
@@ -71,12 +80,39 @@ CCSprite *_sprite;
 }
 
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint touchLoc = [touch locationInNode:self];
-    // Log touch location
-    CCLOG(@"Move sprite to @ %@",NSStringFromCGPoint(touchLoc));
     
+    posArray=[[NSMutableArray alloc]init];
+    routeDisp.posArray=[[NSMutableArray alloc]init];
     
+    CGPoint touchLocation = [touch locationInNode:self];
     
+    NSValue *value=[NSValue valueWithCGPoint:player.position];
+    [posArray addObject:value];
+    [routeDisp.posArray addObject:value];
+    
+    value = [NSValue valueWithCGPoint:touchLocation];
+    [posArray addObject:value];
+    [routeDisp.posArray addObject:value];
+    
+    //経路を表示
+    [self addChild:routeDisp z:0];
+}
+
+-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
+    
+    CGPoint touchLocation = [touch locationInNode:self];
+    NSValue *value=[NSValue valueWithCGPoint:touchLocation];
+    [posArray addObject:value];
+    [routeDisp.posArray addObject:value];
+}
+
+-(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
+    
+    if(posArray.count>0){
+        [player moveTank:posArray];
+    }
+    //経路を非表示
+    [self removeChild:routeDisp];
 }
 
 - (void)onBackClicked:(id)sender

@@ -365,7 +365,7 @@
 		<key>format</key>
 		<integer>3</integer>
 		<key>size</key>
-		<string>{4096, 4096}</string>
+		<string>{2048, 2048}</string>
 		<key>name</key>
 		<string>bear.zwd</string>
 		<key>textureFileName</key>

@@ -1,5 +1,5 @@
 //
-//  Player.h
+//  RouteDispLayer.h
 //  VirginTechFirstProject
 //
 //  Created by VirginTech LLC. on 2014/04/26.
@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface Player : CCSprite {
+@interface RouteDispLayer : CCScene {
     
+    NSMutableArray* posArray;
 }
 
-+(id)createPlayer;
--(id)initWithPlayer;
+@property(retain,readwrite) NSMutableArray* posArray;
 
--(void)moveTank:(NSMutableArray*)posArray;
-+(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;
++ (RouteDispLayer *)scene;
+- (id)init;
 
 @end
