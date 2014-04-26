@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF27C7E0190B2C48004FAEBE /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7DF190B2C48004FAEBE /* TitleScene.m */; };
+		CF27C7E3190B3A5F004FAEBE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* Player.m */; };
+		CF27C7E8190B3DA5004FAEBE /* Level_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* Level_00.m */; };
+		CF27C7EF190B5643004FAEBE /* bear_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF27C7ED190B5643004FAEBE /* bear_default.plist */; };
+		CF27C7F0190B5643004FAEBE /* bear_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF27C7EE190B5643004FAEBE /* bear_default.png */; };
 		CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */; };
 		CFDFDECA190A2D6E0021FBF9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */; };
 		CFDFDECC190A2D6E0021FBF9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDECB190A2D6E0021FBF9 /* OpenAL.framework */; };
@@ -225,6 +230,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF27C7DE190B2C48004FAEBE /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
+		CF27C7DF190B2C48004FAEBE /* TitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
+		CF27C7E1190B3A5F004FAEBE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		CF27C7E2190B3A5F004FAEBE /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		CF27C7E6190B3DA5004FAEBE /* Level_00.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level_00.h; sourceTree = "<group>"; };
+		CF27C7E7190B3DA5004FAEBE /* Level_00.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level_00.m; sourceTree = "<group>"; };
+		CF27C7ED190B5643004FAEBE /* bear_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bear_default.plist; sourceTree = "<group>"; };
+		CF27C7EE190B5643004FAEBE /* bear_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear_default.png; sourceTree = "<group>"; };
 		CFDFDEC4190A2D6E0021FBF9 /* VirginTechFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirginTechFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -676,6 +689,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF27C7DD190B2B83004FAEBE /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				CFDFE172190A2D710021FBF9 /* HelloWorldScene.h */,
+				CFDFE173190A2D710021FBF9 /* HelloWorldScene.m */,
+				CFDFE175190A2D710021FBF9 /* IntroScene.h */,
+				CFDFE176190A2D710021FBF9 /* IntroScene.m */,
+			);
+			name = Unused;
+			sourceTree = "<group>";
+		};
 		CFDFDEBB190A2D6E0021FBF9 = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +748,8 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF27C7ED190B5643004FAEBE /* bear_default.plist */,
+				CF27C7EE190B5643004FAEBE /* bear_default.png */,
 				CFDFDEE1190A2D6F0021FBF9 /* Default.png */,
 				CFDFDEE3190A2D6F0021FBF9 /* Default@2x.png */,
 				CFDFDEE5190A2D6F0021FBF9 /* Default-568h@2x.png */,
@@ -1540,12 +1566,15 @@
 		CFDFE16E190A2D710021FBF9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CF27C7DD190B2B83004FAEBE /* Unused */,
 				CFDFE16F190A2D710021FBF9 /* AppDelegate.h */,
 				CFDFE170190A2D710021FBF9 /* AppDelegate.m */,
-				CFDFE172190A2D710021FBF9 /* HelloWorldScene.h */,
-				CFDFE173190A2D710021FBF9 /* HelloWorldScene.m */,
-				CFDFE175190A2D710021FBF9 /* IntroScene.h */,
-				CFDFE176190A2D710021FBF9 /* IntroScene.m */,
+				CF27C7DE190B2C48004FAEBE /* TitleScene.h */,
+				CF27C7DF190B2C48004FAEBE /* TitleScene.m */,
+				CF27C7E1190B3A5F004FAEBE /* Player.h */,
+				CF27C7E2190B3A5F004FAEBE /* Player.m */,
+				CF27C7E6190B3DA5004FAEBE /* Level_00.h */,
+				CF27C7E7190B3DA5004FAEBE /* Level_00.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1633,10 +1662,12 @@
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
 				CFDFDEEF190A2D6F0021FBF9 /* Icon-72.png in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
+				CF27C7F0190B5643004FAEBE /* bear_default.png in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
 				CFDFDF06190A2D6F0021FBF9 /* iTunesArtwork in Resources */,
 				CFDFDF01190A2D6F0021FBF9 /* Icon-Spotlight-iOS7.png in Resources */,
 				CFDFDEF5190A2D6F0021FBF9 /* Icon-76@2x.png in Resources */,
+				CF27C7EF190B5643004FAEBE /* bear_default.plist in Resources */,
 				CFDFE169190A2D710021FBF9 /* LICENSE_Chipmunk.txt in Resources */,
 				CFDFDF03190A2D6F0021FBF9 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				CFDFDEF3190A2D6F0021FBF9 /* Icon-76.png in Resources */,
@@ -1775,13 +1806,16 @@
 				CFDFE032190A2D700021FBF9 /* TGAlib.m in Sources */,
 				CFDFDFFE190A2D6F0021FBF9 /* UITouch+CC.m in Sources */,
 				CFDFE0DC190A2D700021FBF9 /* utility.c in Sources */,
+				CF27C7E8190B3DA5004FAEBE /* Level_00.m in Sources */,
 				CFDFE03B190A2D700021FBF9 /* ZipUtils.m in Sources */,
+				CF27C7E3190B3A5F004FAEBE /* Player.m in Sources */,
 				CFDFE04C190A2D700021FBF9 /* OALUtilityActions.m in Sources */,
 				CFDFDFF7190A2D6F0021FBF9 /* CCES2Renderer.m in Sources */,
 				CFDFE0C7190A2D700021FBF9 /* aabb.c in Sources */,
 				CFDFE0F1190A2D700021FBF9 /* CCBsequence.m in Sources */,
 				CFDFDF52190A2D6F0021FBF9 /* CCLabelAtlas.m in Sources */,
 				CFDFDFED190A2D6F0021FBF9 /* cocos2d.m in Sources */,
+				CF27C7E0190B2C48004FAEBE /* TitleScene.m in Sources */,
 				CFDFE075190A2D700021FBF9 /* ALSource.m in Sources */,
 				CFDFDF7D190A2D6F0021FBF9 /* CCParticleSystem.m in Sources */,
 				CFDFDFA2190A2D6F0021FBF9 /* CCScene.m in Sources */,
@@ -1989,6 +2023,7 @@
 				CFDFE17C190A2D710021FBF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CFDFE17D190A2D710021FBF9 /* Build configuration list for PBXNativeTarget "VirginTechFirstProject" */ = {
 			isa = XCConfigurationList;
@@ -1997,6 +2032,7 @@
 				CFDFE17F190A2D710021FBF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

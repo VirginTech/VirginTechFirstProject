@@ -8,7 +8,7 @@
 // -----------------------------------------------------------------------
 
 #import "HelloWorldScene.h"
-#import "IntroScene.h"
+#import "TitleScene.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - HelloWorldScene
@@ -53,7 +53,7 @@
     [_sprite runAction:[CCActionRepeatForever actionWithAction:actionSpin]];
     
     // Create a back button
-    CCButton *backButton = [CCButton buttonWithTitle:@"[ メニュー ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
     backButton.positionType = CCPositionTypeNormalized;
     backButton.position = ccp(0.85f, 0.95f); // Top Right of screen
     [backButton setTarget:self selector:@selector(onBackClicked:)];
@@ -115,7 +115,7 @@
 - (void)onBackClicked:(id)sender
 {
     // back to intro scene with transition
-    [[CCDirector sharedDirector] replaceScene:[IntroScene scene]
+    [[CCDirector sharedDirector] replaceScene:[TitleScene scene]
                                withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:1.0f]];
 }
 
