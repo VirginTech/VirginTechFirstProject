@@ -12,19 +12,20 @@
 @implementation Player
 
 CGSize winSize;
-CCSpriteFrame *vFrame;
-CCSpriteFrame *gFrame;
+NSMutableArray* vFrameArray;
+NSMutableArray* gFrameArray;
 CCSprite *gSprite;
 
 int t;
 NSMutableArray* inpolPosArray;
+CGPoint oldPt;
 
 -(void)moveTank:(NSMutableArray*)posArray{
     
     t=0;
     inpolPosArray=[[NSMutableArray alloc]init];
     
-    //補間座標を取得
+    //補間座標を作成(取得)
     inpolPosArray=[Player lineInterpolation:posArray];
     
     [self schedule:@selector(nextFrame:) interval:0.01];
@@ -34,13 +35,80 @@ NSMutableArray* inpolPosArray;
     
     NSValue *value=[inpolPosArray objectAtIndex:t];
     CGPoint pt=[value CGPointValue];
-    
+    //位置設定
     self.position=CGPointMake(pt.x, pt.y);
-    
+    //方向設定(度)
+    self.rotation=[Player getAngle:oldPt ePos:pt];
+    //差替画像設定
+    if(self.rotationalSkewX==self.rotationalSkewY){
+        [self getSpriteFrame2:self.rotation];
+    }
+    //移動終了
     if(inpolPosArray.count-1==t){
         [self unschedule:@selector(nextFrame:)];
     }
+    oldPt=pt;
     t++;
+}
+
+//========================
+//方向(角度)における画像切換え
+//========================
+-(void)getSpriteFrame2:(float)angle{
+    
+    if(angle<=22.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:0]];
+        [gSprite setSpriteFrame:[gFrameArray objectAtIndex:0]];
+    }else if(angle<=67.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:1]];
+        [gSprite setSpriteFrame:[gFrameArray objectAtIndex:1]];
+    }else if(angle<=112.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:2]];
+        [gSprite setSpriteFrame:[gFrameArray objectAtIndex:2]];
+    }else if(angle<=157.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:3]];
+        [gSprite setSpriteFrame:[gFrameArray objectAtIndex:3]];
+    }else if(angle<=202.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:4]];
+        [gSprite setSpriteFrame:[gFrameArray objectAtIndex:4]];
+    }else if(angle<=247.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:5]];
+        [gSprite setSpriteFrame:[gFrameArray objectAtIndex:5]];
+    }else if(angle<=292.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:6]];
+        [gSprite setSpriteFrame:[gFrameArray objectAtIndex:6]];
+    }else if(angle<=337.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:7]];
+        [gSprite setSpriteFrame:[gFrameArray objectAtIndex:7]];
+    }else if(angle<=360.0){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:0]];
+        [gSprite setSpriteFrame:[gFrameArray objectAtIndex:0]];
+    }
+}
+
+//========================
+// 方向(角度)を取得→(度で)
+//========================
++(float)getAngle:(CGPoint)sPos ePos:(CGPoint)ePos{
+    
+    float angle;
+    float dx,dy;//差分距離ベクトル
+    dx = ePos.x - sPos.x;
+    dy = ePos.y - sPos.y;
+    
+    //斜辺角度(度)
+    angle=CC_RADIANS_TO_DEGREES(atanf(dy/dx));
+    
+    if(dx<0 && dy>0){//座標左上
+        angle=270-angle;
+    }else if(dx<0 && dy<=0){//座標左下
+        angle=270-angle;
+    }else if(dx>=0 && dy<=0){//座標右下
+        angle=450-angle;
+    }else{//座標右上
+        angle=90-angle;
+    }
+    return angle;
 }
 
 //========================
@@ -81,9 +149,9 @@ NSMutableArray* inpolPosArray;
         
         if(dx<0 && dy>0){//座標左上
             angle=M_PI+angle;
-        }else if(dx<0 && dy<0){//座標左下
+        }else if(dx<0 && dy<=0){//座標左下
             angle=M_PI+angle;
-        }else if(dx>0 && dy<0){//座標右下
+        }else if(dx>=0 && dy<=0){//座標右下
             angle=M_PI*2+angle;
         }else{//座標右上（修正なし）
         }
@@ -92,14 +160,8 @@ NSMutableArray* inpolPosArray;
         dr=0.0;
         
         while(er>dr){
+
             inpolPos = CGPointMake(dr*cosf(angle),dr*sinf(angle));
-            //Xが右→左で、Yに変化がない(左水平移動)場合に、Xがプラスされるバグを修正
-            if(dx<0 && inpolPos.y==0.0f){
-                if(inpolPos.x>0){
-                    inpolPos.x = -inpolPos.x;
-                    //NSLog(@"左移動中・・・ X=%f Y=%f",inpolPos.x,inpolPos.y);
-                }
-            }
             //pt1から補間分(inpolPos)を加える
             inpolPos.x=pt1.x+inpolPos.x;
             inpolPos.y=pt1.y+inpolPos.y;
@@ -115,18 +177,25 @@ NSMutableArray* inpolPosArray;
 
 -(id)initWithPlayer{
     
+    //画像を配列に格納
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
-    vFrame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"v00.png"];
-    gFrame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"g00.png"];
+
+    vFrameArray=[[NSMutableArray alloc]init];
+    gFrameArray=[[NSMutableArray alloc]init];
+    
+    for(int i=0;i<8;i++){
+        [vFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"v%02d.png",i]]];
+        [gFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"g%02d.png",i]]];
+    }
 
     //プレイヤータンク作成
-    if(self=[super initWithSpriteFrame:vFrame]){
+    if(self=[super initWithSpriteFrame:[vFrameArray objectAtIndex:0]]){
         
         winSize = [[CCDirector sharedDirector]viewSize];
         self.position = CGPointMake(winSize.width/2, self.contentSize.height);
         
         //砲塔の描画
-        gSprite=[CCSprite spriteWithSpriteFrame:gFrame];
+        gSprite=[CCSprite spriteWithSpriteFrame:[gFrameArray objectAtIndex:0]];
         gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
         [self addChild:gSprite];
         
