@@ -41,7 +41,7 @@ CGPoint oldPt;
     self.rotation=[Player getAngle:oldPt ePos:pt];
     //差替画像設定
     if(self.rotationalSkewX==self.rotationalSkewY){
-        [self getSpriteFrame2:self.rotation];
+        [self getSpriteFrame:self.rotation];
     }
     //移動終了
     if(inpolPosArray.count-1==t){
@@ -54,7 +54,7 @@ CGPoint oldPt;
 //========================
 //方向(角度)における画像切換え
 //========================
--(void)getSpriteFrame2:(float)angle{
+-(void)getSpriteFrame:(float)angle{
     
     if(angle<=22.5){
         [self setSpriteFrame:[vFrameArray objectAtIndex:0]];
@@ -108,15 +108,20 @@ CGPoint oldPt;
     }else{//座標右上
         angle=90-angle;
     }
+    //360度を超えていたら360マイナス
+    //要！原因解明・・・後で考える・・・
+    if(angle>360){
+        angle=angle-360;
+    }
     return angle;
 }
 
 //========================
-//     直線補間関数
+//     直線補間
 //========================
 +(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray{
     
-    float speed=0.5;//補間間隔(速さの調整に使用できるから"speed")
+    float speed=0.5;//補間間隔(速さの調整に使用するので"speed")
     
     NSValue *value1;
     NSValue *value2;
@@ -175,11 +180,13 @@ CGPoint oldPt;
     return tmpArray;
 }
 
+//====================
+//　プレイヤータンク作成
+//====================
 -(id)initWithPlayer{
     
     //画像を配列に格納
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
-
     vFrameArray=[[NSMutableArray alloc]init];
     gFrameArray=[[NSMutableArray alloc]init];
     
@@ -187,18 +194,15 @@ CGPoint oldPt;
         [vFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"v%02d.png",i]]];
         [gFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"g%02d.png",i]]];
     }
-
-    //プレイヤータンク作成
     if(self=[super initWithSpriteFrame:[vFrameArray objectAtIndex:0]]){
         
         winSize = [[CCDirector sharedDirector]viewSize];
         self.position = CGPointMake(winSize.width/2, self.contentSize.height);
-        
         //砲塔の描画
         gSprite=[CCSprite spriteWithSpriteFrame:[gFrameArray objectAtIndex:0]];
         gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
+    
         [self addChild:gSprite];
-        
     }
     return self;
 }

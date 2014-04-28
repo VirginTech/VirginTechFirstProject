@@ -10,9 +10,12 @@
 #import "TitleScene.h"
 #import "RouteDispLayer.h"
 #import "CCDrawingPrimitives.h"
+#import "BgHigherLayer.h"
+#import "BgLowerLayer.h"
 
 @implementation Level_00
 
+CGSize winSize;
 CCSprite *_sprite;
 NSMutableArray* posArray;
 CGPoint oldPos;
@@ -23,8 +26,10 @@ RouteDispLayer* routeDisp;
     return [[self alloc] init];
 }
 
-- (id)init
-{
+- (id)init{
+    
+    winSize=[[CCDirector sharedDirector]viewSize];
+    
     // Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
@@ -32,18 +37,21 @@ RouteDispLayer* routeDisp;
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
     
-    //経路表示レイヤー
-    routeDisp=[[RouteDispLayer alloc]init];
-    //[self addChild:routeDisp];
+    //地面レイヤー
+    BgLowerLayer* bgLayer1 = [[BgLowerLayer alloc]init];
+    [self addChild:bgLayer1 z:0];
     
-    // Create a colored background (Dark Grey)
-    CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
-    [self addChild:background];
+    //経路表示レイヤー
+    routeDisp=[[RouteDispLayer alloc]init];//z:1
     
     //プレイヤー作成
     player=[Player createPlayer];
-    [self addChild:player z:1];
+    [self addChild:player z:2];
     
+    //背景レイヤー
+    BgHigherLayer* bgLayer2 = [[BgHigherLayer alloc]init];
+    [self addChild:bgLayer2 z:3];
+
     // Create a back button
     CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
     backButton.positionType = CCPositionTypeNormalized;
@@ -54,8 +62,6 @@ RouteDispLayer* routeDisp;
     // done
 	return self;
 }
-
-// -----------------------------------------------------------------------
 
 - (void)dealloc
 {
@@ -95,7 +101,7 @@ RouteDispLayer* routeDisp;
     [routeDisp.posArray addObject:value];
     
     //経路を表示
-    [self addChild:routeDisp z:0];
+    [self addChild:routeDisp z:1];
 }
 
 -(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{

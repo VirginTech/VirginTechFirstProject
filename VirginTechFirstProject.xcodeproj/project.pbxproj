@@ -11,8 +11,14 @@
 		CF27C7E3190B3A5F004FAEBE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* Player.m */; };
 		CF27C7E8190B3DA5004FAEBE /* Level_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* Level_00.m */; };
 		CF27C7F7190BB1F1004FAEBE /* RouteDispLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */; };
-		CF922BF2190D114F000AFA5A /* bear_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF922BF0190D114F000AFA5A /* bear_default.plist */; };
-		CF922BF3190D114F000AFA5A /* bear_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF922BF1190D114F000AFA5A /* bear_default.png */; };
+		CF685547190DE72E004C4D43 /* BgHigherLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685546190DE72E004C4D43 /* BgHigherLayer.m */; };
+		CF68555A190E07BF004C4D43 /* bear_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF685558190E07BF004C4D43 /* bear_default.plist */; };
+		CF68555B190E07BF004C4D43 /* bear_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF685559190E07BF004C4D43 /* bear_default.png */; };
+		CF68555E190E0E81004C4D43 /* 花_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF68555C190E0E81004C4D43 /* 花_default.plist */; };
+		CF68555F190E0E81004C4D43 /* 花_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF68555D190E0E81004C4D43 /* 花_default.png */; };
+		CF685562190E2FA1004C4D43 /* BgLowerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685561190E2FA1004C4D43 /* BgLowerLayer.m */; };
+		CF685569190E4094004C4D43 /* 地面_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF685567190E4094004C4D43 /* 地面_default.plist */; };
+		CF68556A190E4094004C4D43 /* 地面_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF685568190E4094004C4D43 /* 地面_default.png */; };
 		CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */; };
 		CFDFDECA190A2D6E0021FBF9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */; };
 		CFDFDECC190A2D6E0021FBF9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDECB190A2D6E0021FBF9 /* OpenAL.framework */; };
@@ -239,8 +245,16 @@
 		CF27C7E7190B3DA5004FAEBE /* Level_00.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level_00.m; sourceTree = "<group>"; };
 		CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDispLayer.h; sourceTree = "<group>"; };
 		CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDispLayer.m; sourceTree = "<group>"; };
-		CF922BF0190D114F000AFA5A /* bear_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bear_default.plist; sourceTree = "<group>"; };
-		CF922BF1190D114F000AFA5A /* bear_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear_default.png; sourceTree = "<group>"; };
+		CF685545190DE72E004C4D43 /* BgHigherLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BgHigherLayer.h; sourceTree = "<group>"; };
+		CF685546190DE72E004C4D43 /* BgHigherLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BgHigherLayer.m; sourceTree = "<group>"; };
+		CF685558190E07BF004C4D43 /* bear_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bear_default.plist; sourceTree = "<group>"; };
+		CF685559190E07BF004C4D43 /* bear_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear_default.png; sourceTree = "<group>"; };
+		CF68555C190E0E81004C4D43 /* 花_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "花_default.plist"; sourceTree = "<group>"; };
+		CF68555D190E0E81004C4D43 /* 花_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "花_default.png"; sourceTree = "<group>"; };
+		CF685560190E2FA1004C4D43 /* BgLowerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BgLowerLayer.h; sourceTree = "<group>"; };
+		CF685561190E2FA1004C4D43 /* BgLowerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BgLowerLayer.m; sourceTree = "<group>"; };
+		CF685567190E4094004C4D43 /* 地面_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "地面_default.plist"; sourceTree = "<group>"; };
+		CF685568190E4094004C4D43 /* 地面_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地面_default.png"; sourceTree = "<group>"; };
 		CFDFDEC4190A2D6E0021FBF9 /* VirginTechFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirginTechFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -751,8 +765,12 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CF922BF0190D114F000AFA5A /* bear_default.plist */,
-				CF922BF1190D114F000AFA5A /* bear_default.png */,
+				CF685567190E4094004C4D43 /* 地面_default.plist */,
+				CF685568190E4094004C4D43 /* 地面_default.png */,
+				CF68555C190E0E81004C4D43 /* 花_default.plist */,
+				CF68555D190E0E81004C4D43 /* 花_default.png */,
+				CF685558190E07BF004C4D43 /* bear_default.plist */,
+				CF685559190E07BF004C4D43 /* bear_default.png */,
 				CFDFDEE1190A2D6F0021FBF9 /* Default.png */,
 				CFDFDEE3190A2D6F0021FBF9 /* Default@2x.png */,
 				CFDFDEE5190A2D6F0021FBF9 /* Default-568h@2x.png */,
@@ -1580,6 +1598,10 @@
 				CF27C7E7190B3DA5004FAEBE /* Level_00.m */,
 				CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */,
 				CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */,
+				CF685560190E2FA1004C4D43 /* BgLowerLayer.h */,
+				CF685561190E2FA1004C4D43 /* BgLowerLayer.m */,
+				CF685545190DE72E004C4D43 /* BgHigherLayer.h */,
+				CF685546190DE72E004C4D43 /* BgHigherLayer.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1656,6 +1678,7 @@
 				CFDFDEF7190A2D6F0021FBF9 /* Icon-120.png in Resources */,
 				CFDFE0FB190A2D700021FBF9 /* LICENSE_CCBReader.txt in Resources */,
 				CFDFDEED190A2D6F0021FBF9 /* Icon@2x.png in Resources */,
+				CF68555E190E0E81004C4D43 /* 花_default.plist in Resources */,
 				CFDFDEFF190A2D6F0021FBF9 /* Icon-Small@2x.png in Resources */,
 				CFDFDEF1190A2D6F0021FBF9 /* Icon-72@2x.png in Resources */,
 				CFDFDEE2190A2D6F0021FBF9 /* Default.png in Resources */,
@@ -1665,14 +1688,17 @@
 				CFDFDEFD190A2D6F0021FBF9 /* Icon-Small.png in Resources */,
 				CFDFDEFB190A2D6F0021FBF9 /* Icon-Small-50.png in Resources */,
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
+				CF68555A190E07BF004C4D43 /* bear_default.plist in Resources */,
 				CFDFDEEF190A2D6F0021FBF9 /* Icon-72.png in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
-				CF922BF3190D114F000AFA5A /* bear_default.png in Resources */,
+				CF68555B190E07BF004C4D43 /* bear_default.png in Resources */,
+				CF68555F190E0E81004C4D43 /* 花_default.png in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
+				CF685569190E4094004C4D43 /* 地面_default.plist in Resources */,
+				CF68556A190E4094004C4D43 /* 地面_default.png in Resources */,
 				CFDFDF06190A2D6F0021FBF9 /* iTunesArtwork in Resources */,
 				CFDFDF01190A2D6F0021FBF9 /* Icon-Spotlight-iOS7.png in Resources */,
 				CFDFDEF5190A2D6F0021FBF9 /* Icon-76@2x.png in Resources */,
-				CF922BF2190D114F000AFA5A /* bear_default.plist in Resources */,
 				CFDFE169190A2D710021FBF9 /* LICENSE_Chipmunk.txt in Resources */,
 				CFDFDF03190A2D6F0021FBF9 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				CFDFDEF3190A2D6F0021FBF9 /* Icon-76.png in Resources */,
@@ -1760,6 +1786,7 @@
 				CFDFE059190A2D700021FBF9 /* OALSimpleAudio.m in Sources */,
 				CFDFDF4B190A2D6F0021FBF9 /* CCGLProgram.m in Sources */,
 				CFDFE16D190A2D710021FBF9 /* main.m in Sources */,
+				CF685562190E2FA1004C4D43 /* BgLowerLayer.m in Sources */,
 				CFDFE080190A2D700021FBF9 /* OALAudioSession.m in Sources */,
 				CFDFE0F7190A2D700021FBF9 /* CCBLocalizationManager.m in Sources */,
 				CFDFDFE3190A2D6F0021FBF9 /* CCTiledMapObjectGroup.m in Sources */,
@@ -1787,6 +1814,7 @@
 				CFDFE0D4190A2D700021FBF9 /* neon_matrix_impl.c in Sources */,
 				CFDFDF59190A2D6F0021FBF9 /* CCLabelTTF.m in Sources */,
 				CFDFE00E190A2D700021FBF9 /* NSEvent+CC.m in Sources */,
+				CF685547190DE72E004C4D43 /* BgHigherLayer.m in Sources */,
 				CFDFE06B190A2D700021FBF9 /* ALDevice.m in Sources */,
 				CFDFE0DE190A2D700021FBF9 /* vec2.c in Sources */,
 				CFDFDF0E190A2D6F0021FBF9 /* CCAction.m in Sources */,

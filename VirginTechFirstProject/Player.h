@@ -19,6 +19,6 @@
 -(void)moveTank:(NSMutableArray*)posArray;
 +(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;
 +(float)getAngle:(CGPoint)sPos ePos:(CGPoint)ePos;
--(void)setSpriteFrame2:(float)angle;
+-(void)getSpriteFrame:(float)angle;
 
 @end
