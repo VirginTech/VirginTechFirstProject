@@ -16,10 +16,13 @@
 @implementation Level_00
 
 CGSize winSize;
-CCSprite *_sprite;
 NSMutableArray* posArray;
 CGPoint oldPos;
 RouteDispLayer* routeDisp;
+NSMutableArray* animalArray;
+
+bool routeDispFlg;
+Player* hitPlayer;
 
 + (Level_00 *)scene
 {
@@ -37,6 +40,9 @@ RouteDispLayer* routeDisp;
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
     
+    //各種データ初期化
+    animalArray=[[NSMutableArray alloc]init];
+    
     //地面レイヤー
     BgLowerLayer* bgLayer1 = [[BgLowerLayer alloc]init];
     [self addChild:bgLayer1 z:0];
@@ -45,8 +51,8 @@ RouteDispLayer* routeDisp;
     routeDisp=[[RouteDispLayer alloc]init];//z:1
     
     //プレイヤー作成
-    player=[Player createPlayer];
-    [self addChild:player z:2];
+    //player=[Player createPlayer];
+    //[self addChild:player z:2];
     
     //背景レイヤー
     BgHigherLayer* bgLayer2 = [[BgHigherLayer alloc]init];
@@ -85,47 +91,77 @@ RouteDispLayer* routeDisp;
     [super onExit];
 }
 
--(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
++(BOOL)isAnimal:(CGPoint)touchLocation{
     
-    posArray=[[NSMutableArray alloc]init];
-    routeDisp.posArray=[[NSMutableArray alloc]init];
+    BOOL flg=false;
+    
+    for(Player* _player in animalArray){
+        if(CGRectContainsPoint(_player.boundingBox, touchLocation)){
+            hitPlayer=_player;
+            flg=true;
+        }
+    }
+    return flg;
+}
+
+-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
     CGPoint touchLocation = [touch locationInNode:self];
     
-    NSValue *value=[NSValue valueWithCGPoint:player.position];
-    [posArray addObject:value];
-    [routeDisp.posArray addObject:value];
-    
-    value = [NSValue valueWithCGPoint:touchLocation];
-    [posArray addObject:value];
-    [routeDisp.posArray addObject:value];
-    
-    //経路を表示
-    [self addChild:routeDisp z:1];
+    if([Level_00 isAnimal:touchLocation]){
+        
+        posArray=[[NSMutableArray alloc]init];
+        routeDisp.posArray=[[NSMutableArray alloc]init];
+
+        NSValue *value=[NSValue valueWithCGPoint:hitPlayer.position];
+        [posArray addObject:value];
+        [routeDisp.posArray addObject:value];
+        
+        value = [NSValue valueWithCGPoint:touchLocation];
+        [posArray addObject:value];
+        [routeDisp.posArray addObject:value];
+        
+        //経路を表示
+        [self addChild:routeDisp z:1];
+        routeDispFlg=true;
+        
+    }else{
+        //プレイヤー作成
+        player=[Player createPlayer:touchLocation];
+        [animalArray addObject:player];
+        [self addChild:player z:2];
+        routeDispFlg=false;
+    }
 }
 
 -(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
     
-    CGPoint touchLocation = [touch locationInNode:self];
-    NSValue *value=[NSValue valueWithCGPoint:touchLocation];
-    [posArray addObject:value];
-    [routeDisp.posArray addObject:value];
+    if(routeDispFlg){
+        CGPoint touchLocation = [touch locationInNode:self];
+        NSValue *value=[NSValue valueWithCGPoint:touchLocation];
+        [posArray addObject:value];
+        [routeDisp.posArray addObject:value];
+    }
 }
 
 -(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
     
-    if(posArray.count>0){
-        [player moveTank:posArray];
+    //プレイヤー移動
+    if(routeDispFlg){
+        [self removeChild:routeDisp];//経路を非表示
+        if(posArray.count>0){
+            [hitPlayer moveTank:posArray];
+        }
     }
-    //経路を非表示
-    [self removeChild:routeDisp];
 }
 
 - (void)onBackClicked:(id)sender
 {
     // back to intro scene with transition
-    [[CCDirector sharedDirector] replaceScene:[TitleScene scene]
-                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:1.0f]];
+    
+    [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+
+    //[[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:1.0f]];
 }
 
 @end

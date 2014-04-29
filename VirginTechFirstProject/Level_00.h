@@ -18,5 +18,6 @@
 
 + (Level_00 *)scene;
 - (id)init;
++(BOOL)isAnimal:(CGPoint)animalPos;
 
 @end

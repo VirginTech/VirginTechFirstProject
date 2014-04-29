@@ -11,10 +11,17 @@
 
 @interface Player : CCSprite {
     
+    NSMutableArray* vFrameArray;
+    NSMutableArray* gFrameArray;
+    CCSprite *gSprite;
+    
+    int t;
+    NSMutableArray* inpolPosArray;
+    CGPoint oldPt;
 }
 
-+(id)createPlayer;
--(id)initWithPlayer;
++(id)createPlayer:(CGPoint)playerPos;
+-(id)initWithPlayer:(CGPoint)playerPos;
 
 -(void)moveTank:(NSMutableArray*)posArray;
 +(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;

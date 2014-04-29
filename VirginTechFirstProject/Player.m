@@ -12,13 +12,6 @@
 @implementation Player
 
 CGSize winSize;
-NSMutableArray* vFrameArray;
-NSMutableArray* gFrameArray;
-CCSprite *gSprite;
-
-int t;
-NSMutableArray* inpolPosArray;
-CGPoint oldPt;
 
 -(void)moveTank:(NSMutableArray*)posArray{
     
@@ -183,7 +176,7 @@ CGPoint oldPt;
 //====================
 //　プレイヤータンク作成
 //====================
--(id)initWithPlayer{
+-(id)initWithPlayer:(CGPoint)playerPos{
     
     //画像を配列に格納
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
@@ -197,7 +190,7 @@ CGPoint oldPt;
     if(self=[super initWithSpriteFrame:[vFrameArray objectAtIndex:0]]){
         
         winSize = [[CCDirector sharedDirector]viewSize];
-        self.position = CGPointMake(winSize.width/2, self.contentSize.height);
+        self.position = playerPos;
         //砲塔の描画
         gSprite=[CCSprite spriteWithSpriteFrame:[gFrameArray objectAtIndex:0]];
         gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
@@ -207,9 +200,9 @@ CGPoint oldPt;
     return self;
 }
 
-+(id)createPlayer{
++(id)createPlayer:(CGPoint)playerPos{
 
-    return [[self alloc] initWithPlayer];
+    return [[self alloc] initWithPlayer:(CGPoint)playerPos];
 }
 
 @end
