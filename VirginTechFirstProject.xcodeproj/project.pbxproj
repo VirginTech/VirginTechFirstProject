@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CF27C7E0190B2C48004FAEBE /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7DF190B2C48004FAEBE /* TitleScene.m */; };
-		CF27C7E3190B3A5F004FAEBE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* Player.m */; };
-		CF27C7E8190B3DA5004FAEBE /* Level_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* Level_00.m */; };
+		CF27C7E3190B3A5F004FAEBE /* AnimalPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */; };
+		CF27C7E8190B3DA5004FAEBE /* StageLevel_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */; };
 		CF27C7F7190BB1F1004FAEBE /* RouteDispLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */; };
 		CF685547190DE72E004C4D43 /* BgHigherLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685546190DE72E004C4D43 /* BgHigherLayer.m */; };
 		CF68555A190E07BF004C4D43 /* bear_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF685558190E07BF004C4D43 /* bear_default.plist */; };
@@ -19,6 +19,7 @@
 		CF685562190E2FA1004C4D43 /* BgLowerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685561190E2FA1004C4D43 /* BgLowerLayer.m */; };
 		CF685569190E4094004C4D43 /* 地面_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF685567190E4094004C4D43 /* 地面_default.plist */; };
 		CF68556A190E4094004C4D43 /* 地面_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF685568190E4094004C4D43 /* 地面_default.png */; };
+		CF6C57DB190F67F700FCF978 /* BasicMath.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6C57DA190F67F700FCF978 /* BasicMath.m */; };
 		CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */; };
 		CFDFDECA190A2D6E0021FBF9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */; };
 		CFDFDECC190A2D6E0021FBF9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDECB190A2D6E0021FBF9 /* OpenAL.framework */; };
@@ -239,10 +240,10 @@
 /* Begin PBXFileReference section */
 		CF27C7DE190B2C48004FAEBE /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		CF27C7DF190B2C48004FAEBE /* TitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
-		CF27C7E1190B3A5F004FAEBE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		CF27C7E2190B3A5F004FAEBE /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		CF27C7E6190B3DA5004FAEBE /* Level_00.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level_00.h; sourceTree = "<group>"; };
-		CF27C7E7190B3DA5004FAEBE /* Level_00.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level_00.m; sourceTree = "<group>"; };
+		CF27C7E1190B3A5F004FAEBE /* AnimalPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalPlayer.h; sourceTree = "<group>"; };
+		CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalPlayer.m; sourceTree = "<group>"; };
+		CF27C7E6190B3DA5004FAEBE /* StageLevel_00.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageLevel_00.h; sourceTree = "<group>"; };
+		CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageLevel_00.m; sourceTree = "<group>"; };
 		CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDispLayer.h; sourceTree = "<group>"; };
 		CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDispLayer.m; sourceTree = "<group>"; };
 		CF685545190DE72E004C4D43 /* BgHigherLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BgHigherLayer.h; sourceTree = "<group>"; };
@@ -255,6 +256,8 @@
 		CF685561190E2FA1004C4D43 /* BgLowerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BgLowerLayer.m; sourceTree = "<group>"; };
 		CF685567190E4094004C4D43 /* 地面_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "地面_default.plist"; sourceTree = "<group>"; };
 		CF685568190E4094004C4D43 /* 地面_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地面_default.png"; sourceTree = "<group>"; };
+		CF6C57D9190F67F700FCF978 /* BasicMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMath.h; sourceTree = "<group>"; };
+		CF6C57DA190F67F700FCF978 /* BasicMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMath.m; sourceTree = "<group>"; };
 		CFDFDEC4190A2D6E0021FBF9 /* VirginTechFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirginTechFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -715,6 +718,46 @@
 				CFDFE176190A2D710021FBF9 /* IntroScene.m */,
 			);
 			name = Unused;
+			sourceTree = "<group>";
+		};
+		CF6C57DC190F68BA00FCF978 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				CF6C57D9190F67F700FCF978 /* BasicMath.h */,
+				CF6C57DA190F67F700FCF978 /* BasicMath.m */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		CF6C57DD190F68D200FCF978 /* object */ = {
+			isa = PBXGroup;
+			children = (
+				CF27C7E1190B3A5F004FAEBE /* AnimalPlayer.h */,
+				CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */,
+			);
+			name = object;
+			sourceTree = "<group>";
+		};
+		CF6C57DE190F68F900FCF978 /* stage */ = {
+			isa = PBXGroup;
+			children = (
+				CF27C7E6190B3DA5004FAEBE /* StageLevel_00.h */,
+				CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */,
+			);
+			name = stage;
+			sourceTree = "<group>";
+		};
+		CF6C57DF190F692C00FCF978 /* layer */ = {
+			isa = PBXGroup;
+			children = (
+				CF685560190E2FA1004C4D43 /* BgLowerLayer.h */,
+				CF685561190E2FA1004C4D43 /* BgLowerLayer.m */,
+				CF685545190DE72E004C4D43 /* BgHigherLayer.h */,
+				CF685546190DE72E004C4D43 /* BgHigherLayer.m */,
+				CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */,
+				CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */,
+			);
+			name = layer;
 			sourceTree = "<group>";
 		};
 		CFDFDEBB190A2D6E0021FBF9 = {
@@ -1587,21 +1630,15 @@
 		CFDFE16E190A2D710021FBF9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CF27C7DD190B2B83004FAEBE /* Unused */,
 				CFDFE16F190A2D710021FBF9 /* AppDelegate.h */,
 				CFDFE170190A2D710021FBF9 /* AppDelegate.m */,
 				CF27C7DE190B2C48004FAEBE /* TitleScene.h */,
 				CF27C7DF190B2C48004FAEBE /* TitleScene.m */,
-				CF27C7E1190B3A5F004FAEBE /* Player.h */,
-				CF27C7E2190B3A5F004FAEBE /* Player.m */,
-				CF27C7E6190B3DA5004FAEBE /* Level_00.h */,
-				CF27C7E7190B3DA5004FAEBE /* Level_00.m */,
-				CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */,
-				CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */,
-				CF685560190E2FA1004C4D43 /* BgLowerLayer.h */,
-				CF685561190E2FA1004C4D43 /* BgLowerLayer.m */,
-				CF685545190DE72E004C4D43 /* BgHigherLayer.h */,
-				CF685546190DE72E004C4D43 /* BgHigherLayer.m */,
+				CF27C7DD190B2B83004FAEBE /* Unused */,
+				CF6C57DC190F68BA00FCF978 /* lib */,
+				CF6C57DD190F68D200FCF978 /* object */,
+				CF6C57DE190F68F900FCF978 /* stage */,
+				CF6C57DF190F692C00FCF978 /* layer */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1785,6 +1822,7 @@
 				CFDFE0D6190A2D700021FBF9 /* plane.c in Sources */,
 				CFDFE059190A2D700021FBF9 /* OALSimpleAudio.m in Sources */,
 				CFDFDF4B190A2D6F0021FBF9 /* CCGLProgram.m in Sources */,
+				CF6C57DB190F67F700FCF978 /* BasicMath.m in Sources */,
 				CFDFE16D190A2D710021FBF9 /* main.m in Sources */,
 				CF685562190E2FA1004C4D43 /* BgLowerLayer.m in Sources */,
 				CFDFE080190A2D700021FBF9 /* OALAudioSession.m in Sources */,
@@ -1839,9 +1877,9 @@
 				CFDFE032190A2D700021FBF9 /* TGAlib.m in Sources */,
 				CFDFDFFE190A2D6F0021FBF9 /* UITouch+CC.m in Sources */,
 				CFDFE0DC190A2D700021FBF9 /* utility.c in Sources */,
-				CF27C7E8190B3DA5004FAEBE /* Level_00.m in Sources */,
+				CF27C7E8190B3DA5004FAEBE /* StageLevel_00.m in Sources */,
 				CFDFE03B190A2D700021FBF9 /* ZipUtils.m in Sources */,
-				CF27C7E3190B3A5F004FAEBE /* Player.m in Sources */,
+				CF27C7E3190B3A5F004FAEBE /* AnimalPlayer.m in Sources */,
 				CFDFE04C190A2D700021FBF9 /* OALUtilityActions.m in Sources */,
 				CFDFDFF7190A2D6F0021FBF9 /* CCES2Renderer.m in Sources */,
 				CFDFE0C7190A2D700021FBF9 /* aabb.c in Sources */,
