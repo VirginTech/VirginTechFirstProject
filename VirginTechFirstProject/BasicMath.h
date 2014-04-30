@@ -10,7 +10,8 @@
 
 @interface BasicMath : NSObject
 
-+(BOOL)RadiusContainsPoint:(CGPoint)pointA pointB:(CGPoint)pointB;
-+(BOOL)RadiusIntersectsRadius:(CGPoint)pointA pointB:(CGPoint)pointB;
++(BOOL)RadiusContainsPoint:(CGPoint)pointA pointB:(CGPoint)pointB radius:(float)radius;
++(BOOL)RadiusIntersectsRadius:(CGPoint)pointA pointB:(CGPoint)pointB
+                                            radius1:(float)radius1 radius2:(float)radius2;
 
 @end

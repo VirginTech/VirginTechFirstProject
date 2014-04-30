@@ -18,6 +18,6 @@
 
 + (StageLevel_00 *)scene;
 - (id)init;
-+(BOOL)isAnimal:(CGPoint)animalPos;
++(BOOL)isAnimal:(CGPoint)animalPos type:(int)type;
 
 @end

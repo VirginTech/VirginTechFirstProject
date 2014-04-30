@@ -9,10 +9,10 @@
 #import "StageLevel_00.h"
 #import "TitleScene.h"
 #import "RouteDispLayer.h"
-#import "CCDrawingPrimitives.h"
 #import "BgHigherLayer.h"
 #import "BgLowerLayer.h"
 #import "BasicMath.h"
+#import "InformationLayer.h"
 
 @implementation StageLevel_00
 
@@ -47,17 +47,17 @@ AnimalPlayer* hitPlayer;
     //地面レイヤー
     BgLowerLayer* bgLayer1 = [[BgLowerLayer alloc]init];
     [self addChild:bgLayer1 z:0];
+
+    //インフォメーションレイヤー
+    InformationLayer* infoLayer=[[InformationLayer alloc]init];
+    [self addChild:infoLayer z:1];
     
-    //経路表示レイヤー
-    routeDisp=[[RouteDispLayer alloc]init];//z:1
-    
-    //プレイヤー作成
-    //player=[Player createPlayer];
-    //[self addChild:player z:2];
-    
+    //経路表示レイヤー z:2、プレイヤー z:3
+    routeDisp=[[RouteDispLayer alloc]init];
+
     //背景レイヤー
     BgHigherLayer* bgLayer2 = [[BgHigherLayer alloc]init];
-    [self addChild:bgLayer2 z:3];
+    [self addChild:bgLayer2 z:4];
 
     // Create a back button
     CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
@@ -85,7 +85,7 @@ AnimalPlayer* hitPlayer;
     // Per frame update is automatically enabled, if update is overridden
     
     //各種判定スケジュール開始
-    [self schedule:@selector(judgement:)interval:0.01];
+    [self schedule:@selector(judgement:)interval:0.1];
 }
 
 - (void)onExit
@@ -98,7 +98,8 @@ AnimalPlayer* hitPlayer;
     
     for(AnimalPlayer* player1 in animalArray){
         for(AnimalPlayer* player2 in animalArray){
-            if([BasicMath RadiusIntersectsRadius:player1.position pointB:player2.position]){
+            if([BasicMath RadiusIntersectsRadius:player1.position pointB:player2.position
+                                                                            radius1:20 radius2:20]){
                 if(player1!=player2){
                     player1.stopFlg=true;
                     player2.stopFlg=true;
@@ -108,19 +109,21 @@ AnimalPlayer* hitPlayer;
     }
 }
 
-+(BOOL)isAnimal:(CGPoint)touchLocation{
++(BOOL)isAnimal:(CGPoint)touchLocation type:(int)type{
     
     BOOL flg=false;
     
     for(AnimalPlayer* _player in animalArray){
-        /*
-        if(CGRectContainsPoint(_player.boundingBox, touchLocation)){
-            hitPlayer=_player;
-            flg=true;
-        }*/
-        if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation]){
-            hitPlayer=_player;
-            flg=true;
+        if(type==0){//経路作成
+            if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:30]){
+                hitPlayer=_player;
+                flg=true;
+            }
+        }else if(type==1){//プレイヤー追加
+            if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:70]){
+                hitPlayer=_player;
+                flg=true;
+            }
         }
     }
     return flg;
@@ -130,7 +133,7 @@ AnimalPlayer* hitPlayer;
     
     CGPoint touchLocation = [touch locationInNode:self];
     
-    if([StageLevel_00 isAnimal:touchLocation]){
+    if([StageLevel_00 isAnimal:touchLocation type:0]){//経路作成
         
         posArray=[[NSMutableArray alloc]init];
         routeDisp.posArray=[[NSMutableArray alloc]init];
@@ -139,30 +142,31 @@ AnimalPlayer* hitPlayer;
         [posArray addObject:value];
         [routeDisp.posArray addObject:value];
         
-        value = [NSValue valueWithCGPoint:touchLocation];
-        [posArray addObject:value];
-        [routeDisp.posArray addObject:value];
-        
         //経路を表示
-        [self addChild:routeDisp z:1];
+        [self addChild:routeDisp z:2];
         routeDispFlg=true;
         
-    }else{
-        //プレイヤー作成
-        player=[AnimalPlayer createPlayer:touchLocation];
-        [animalArray addObject:player];
-        [self addChild:player z:2];
-        routeDispFlg=false;
+        hitPlayer.stopFlg=false;
+        
+    }else if(![StageLevel_00 isAnimal:touchLocation type:1]){//プレイヤー追加
+        //陣地内だったら
+        if(winSize.height/4 > touchLocation.y){
+            player=[AnimalPlayer createPlayer:touchLocation];
+            [animalArray addObject:player];
+            [self addChild:player z:3];
+        }
     }
 }
 
 -(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
     
+    CGPoint touchLocation = [touch locationInNode:self];
     if(routeDispFlg){
-        CGPoint touchLocation = [touch locationInNode:self];
-        NSValue *value=[NSValue valueWithCGPoint:touchLocation];
-        [posArray addObject:value];
-        [routeDisp.posArray addObject:value];
+        if(![BasicMath RadiusContainsPoint:hitPlayer.position pointB:touchLocation radius:30]){
+            NSValue *value=[NSValue valueWithCGPoint:touchLocation];
+            [posArray addObject:value];
+            [routeDisp.posArray addObject:value];
+        }
     }
 }
 
@@ -174,6 +178,7 @@ AnimalPlayer* hitPlayer;
         if(posArray.count>0){
             [hitPlayer moveTank:posArray];
         }
+        routeDispFlg=false;
     }
 }
 

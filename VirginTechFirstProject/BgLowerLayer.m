@@ -8,8 +8,9 @@
 
 #import "BgLowerLayer.h"
 
-
 @implementation BgLowerLayer
+
+CGSize winSize;
 
 + (BgLowerLayer *)scene{
     
@@ -40,7 +41,7 @@
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"地面_default.plist"];
     CCSprite* frame = [CCSprite spriteWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"ground_00.png"]];
 
-    CGSize winSize = [[CCDirector sharedDirector]viewSize];
+    winSize = [[CCDirector sharedDirector]viewSize];
     CGSize frameCount = CGSizeMake(winSize.width/frame.contentSize.width+1, winSize.height/frame.contentSize.height+1);
     
     for(int i=0;i<frameCount.width*frameCount.height;i++){
@@ -67,6 +68,5 @@
     
     return frame;
 }
-
 
 @end

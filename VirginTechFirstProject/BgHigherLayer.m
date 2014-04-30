@@ -8,7 +8,6 @@
 
 #import "BgHigherLayer.h"
 
-
 @implementation BgHigherLayer
 
 CGSize winSize;

@@ -225,6 +225,7 @@
 		CFDFE171190A2D710021FBF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE170190A2D710021FBF9 /* AppDelegate.m */; };
 		CFDFE174190A2D710021FBF9 /* HelloWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE173190A2D710021FBF9 /* HelloWorldScene.m */; };
 		CFDFE177190A2D710021FBF9 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE176190A2D710021FBF9 /* IntroScene.m */; };
+		CFF39635191092F90052608E /* InformationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39634191092F90052608E /* InformationLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -686,6 +687,8 @@
 		CFDFE173190A2D710021FBF9 /* HelloWorldScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HelloWorldScene.m; path = Classes/HelloWorldScene.m; sourceTree = "<group>"; };
 		CFDFE175190A2D710021FBF9 /* IntroScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Classes/IntroScene.h; sourceTree = "<group>"; };
 		CFDFE176190A2D710021FBF9 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
+		CFF39633191092F90052608E /* InformationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationLayer.h; sourceTree = "<group>"; };
+		CFF39634191092F90052608E /* InformationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -756,6 +759,8 @@
 				CF685546190DE72E004C4D43 /* BgHigherLayer.m */,
 				CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */,
 				CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */,
+				CFF39633191092F90052608E /* InformationLayer.h */,
+				CFF39634191092F90052608E /* InformationLayer.m */,
 			);
 			name = layer;
 			sourceTree = "<group>";
@@ -1781,6 +1786,7 @@
 				CFDFDF4E190A2D6F0021FBF9 /* ccGLStateCache.m in Sources */,
 				CFDFE046190A2D700021FBF9 /* OALActionManager.m in Sources */,
 				CFDFDFA5190A2D6F0021FBF9 /* CCScheduler.m in Sources */,
+				CFF39635191092F90052608E /* InformationLayer.m in Sources */,
 				CFDFDF79190A2D6F0021FBF9 /* CCParticleExamples.m in Sources */,
 				CFDFE0AB190A2D700021FBF9 /* CCSlider.m in Sources */,
 				CFDFDFE6190A2D6F0021FBF9 /* CCTMXXMLParser.m in Sources */,

@@ -19,12 +19,13 @@ bool enemySearchFlg=false;
 -(void)moveTank:(NSMutableArray*)posArray{
     
     t=0;
+    //stopFlg=false;
     inpolPosArray=[[NSMutableArray alloc]init];
     
     //補間座標を作成(取得)
     inpolPosArray=[AnimalPlayer lineInterpolation:posArray];
     
-    [self schedule:@selector(moveVehicle_Schedule:) interval:0.01];
+    [self schedule:@selector(moveVehicle_Schedule:) interval:0.1];
 }
 
 -(void)moveGun_Schedule:(CCTime)dt{
@@ -105,7 +106,14 @@ bool enemySearchFlg=false;
     
     }else{
         [self unschedule:@selector(moveVehicle_Schedule:)];
-        //stopFlg=false;
+        
+        //位置を戻す
+        if(t>=10){
+            NSValue *value=[inpolPosArray objectAtIndex:t-10];
+            CGPoint pt=[value CGPointValue];
+            self.position=CGPointMake(pt.x, pt.y);
+        }
+        stopFlg=false;
     }
 }
 
@@ -254,7 +262,7 @@ bool enemySearchFlg=false;
         //停止フラグ
         stopFlg=false;
         //砲塔制御スケジュール開始
-        [self schedule:@selector(moveGun_Schedule:)interval:0.01];
+        [self schedule:@selector(moveGun_Schedule:)interval:0.1];
     }
     return self;
 }
