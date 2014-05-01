@@ -9,6 +9,7 @@
 #import "TitleScene.h"
 //#import "HelloWorldScene.h"
 #import "StageLevel_00.h"
+#import "GameManager.h"
 
 @implementation TitleScene
 
@@ -23,6 +24,18 @@
     self = [super init];
     if (!self) return(nil);
     
+    //デバイス登録
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    if(screenBounds.size.height==568){ //iPhone5 (4インチスクリーン)用のレイアウト
+        [GameManager setDevice:1];
+    }else if(screenBounds.size.height==480){ //iPhone4 (3.5インチスクリーン)用のレイアウト
+        [GameManager setDevice:2];
+    }else if(screenBounds.size.height==1024){ //iPad2 (1024px)
+        [GameManager setDevice:3];
+    }else{
+        [GameManager setDevice:0];
+    }
+    //NSLog(@"デバイスは %d です。",[GameManager getDevice]);
     // Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
     [self addChild:background];

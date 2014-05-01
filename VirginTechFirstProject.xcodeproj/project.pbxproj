@@ -20,6 +20,18 @@
 		CF685569190E4094004C4D43 /* 地面_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF685567190E4094004C4D43 /* 地面_default.plist */; };
 		CF68556A190E4094004C4D43 /* 地面_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF685568190E4094004C4D43 /* 地面_default.png */; };
 		CF6C57DB190F67F700FCF978 /* BasicMath.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6C57DA190F67F700FCF978 /* BasicMath.m */; };
+		CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD5A32C1911F29D004E2B58 /* GameManager.m */; };
+		CFD5A32F191229BB004E2B58 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A32E191229BB004E2B58 /* arrow.png */; };
+		CFD5A3321912338E004E2B58 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A3301912338E004E2B58 /* interface_default.plist */; };
+		CFD5A3331912338E004E2B58 /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A3311912338E004E2B58 /* interface_default.png */; };
+		CFD5A33C19123B8D004E2B58 /* bear2_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A33419123B8D004E2B58 /* bear2_default.plist */; };
+		CFD5A33D19123B8D004E2B58 /* bear2_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A33519123B8D004E2B58 /* bear2_default.png */; };
+		CFD5A33E19123B8D004E2B58 /* bear3_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A33619123B8D004E2B58 /* bear3_default.plist */; };
+		CFD5A33F19123B8D004E2B58 /* bear3_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A33719123B8D004E2B58 /* bear3_default.png */; };
+		CFD5A34019123B8D004E2B58 /* bear4_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A33819123B8D004E2B58 /* bear4_default.plist */; };
+		CFD5A34119123B8D004E2B58 /* bear4_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A33919123B8D004E2B58 /* bear4_default.png */; };
+		CFD5A34219123B8D004E2B58 /* bear5_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A33A19123B8D004E2B58 /* bear5_default.plist */; };
+		CFD5A34319123B8D004E2B58 /* bear5_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A33B19123B8D004E2B58 /* bear5_default.png */; };
 		CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */; };
 		CFDFDECA190A2D6E0021FBF9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */; };
 		CFDFDECC190A2D6E0021FBF9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDECB190A2D6E0021FBF9 /* OpenAL.framework */; };
@@ -226,6 +238,7 @@
 		CFDFE174190A2D710021FBF9 /* HelloWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE173190A2D710021FBF9 /* HelloWorldScene.m */; };
 		CFDFE177190A2D710021FBF9 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE176190A2D710021FBF9 /* IntroScene.m */; };
 		CFF39635191092F90052608E /* InformationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39634191092F90052608E /* InformationLayer.m */; };
+		CFF39638191104510052608E /* PlayerSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39637191104510052608E /* PlayerSelection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,6 +272,19 @@
 		CF685568190E4094004C4D43 /* 地面_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地面_default.png"; sourceTree = "<group>"; };
 		CF6C57D9190F67F700FCF978 /* BasicMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMath.h; sourceTree = "<group>"; };
 		CF6C57DA190F67F700FCF978 /* BasicMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMath.m; sourceTree = "<group>"; };
+		CFD5A32B1911F29D004E2B58 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		CFD5A32C1911F29D004E2B58 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		CFD5A32E191229BB004E2B58 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		CFD5A3301912338E004E2B58 /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
+		CFD5A3311912338E004E2B58 /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
+		CFD5A33419123B8D004E2B58 /* bear2_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bear2_default.plist; sourceTree = "<group>"; };
+		CFD5A33519123B8D004E2B58 /* bear2_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear2_default.png; sourceTree = "<group>"; };
+		CFD5A33619123B8D004E2B58 /* bear3_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bear3_default.plist; sourceTree = "<group>"; };
+		CFD5A33719123B8D004E2B58 /* bear3_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear3_default.png; sourceTree = "<group>"; };
+		CFD5A33819123B8D004E2B58 /* bear4_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bear4_default.plist; sourceTree = "<group>"; };
+		CFD5A33919123B8D004E2B58 /* bear4_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear4_default.png; sourceTree = "<group>"; };
+		CFD5A33A19123B8D004E2B58 /* bear5_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bear5_default.plist; sourceTree = "<group>"; };
+		CFD5A33B19123B8D004E2B58 /* bear5_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear5_default.png; sourceTree = "<group>"; };
 		CFDFDEC4190A2D6E0021FBF9 /* VirginTechFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirginTechFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -689,6 +715,8 @@
 		CFDFE176190A2D710021FBF9 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
 		CFF39633191092F90052608E /* InformationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationLayer.h; sourceTree = "<group>"; };
 		CFF39634191092F90052608E /* InformationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationLayer.m; sourceTree = "<group>"; };
+		CFF39636191104510052608E /* PlayerSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSelection.h; sourceTree = "<group>"; };
+		CFF39637191104510052608E /* PlayerSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSelection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -753,16 +781,27 @@
 		CF6C57DF190F692C00FCF978 /* layer */ = {
 			isa = PBXGroup;
 			children = (
+				CFF39636191104510052608E /* PlayerSelection.h */,
+				CFF39637191104510052608E /* PlayerSelection.m */,
+				CFF39633191092F90052608E /* InformationLayer.h */,
+				CFF39634191092F90052608E /* InformationLayer.m */,
 				CF685560190E2FA1004C4D43 /* BgLowerLayer.h */,
 				CF685561190E2FA1004C4D43 /* BgLowerLayer.m */,
 				CF685545190DE72E004C4D43 /* BgHigherLayer.h */,
 				CF685546190DE72E004C4D43 /* BgHigherLayer.m */,
 				CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */,
 				CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */,
-				CFF39633191092F90052608E /* InformationLayer.h */,
-				CFF39634191092F90052608E /* InformationLayer.m */,
 			);
 			name = layer;
+			sourceTree = "<group>";
+		};
+		CFD5A32A1911F258004E2B58 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				CFD5A32B1911F29D004E2B58 /* GameManager.h */,
+				CFD5A32C1911F29D004E2B58 /* GameManager.m */,
+			);
+			name = manager;
 			sourceTree = "<group>";
 		};
 		CFDFDEBB190A2D6E0021FBF9 = {
@@ -813,12 +852,23 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF685558190E07BF004C4D43 /* bear_default.plist */,
+				CF685559190E07BF004C4D43 /* bear_default.png */,
+				CFD5A33419123B8D004E2B58 /* bear2_default.plist */,
+				CFD5A33519123B8D004E2B58 /* bear2_default.png */,
+				CFD5A33619123B8D004E2B58 /* bear3_default.plist */,
+				CFD5A33719123B8D004E2B58 /* bear3_default.png */,
+				CFD5A33819123B8D004E2B58 /* bear4_default.plist */,
+				CFD5A33919123B8D004E2B58 /* bear4_default.png */,
+				CFD5A33A19123B8D004E2B58 /* bear5_default.plist */,
+				CFD5A33B19123B8D004E2B58 /* bear5_default.png */,
+				CFD5A3301912338E004E2B58 /* interface_default.plist */,
+				CFD5A3311912338E004E2B58 /* interface_default.png */,
+				CFD5A32E191229BB004E2B58 /* arrow.png */,
 				CF685567190E4094004C4D43 /* 地面_default.plist */,
 				CF685568190E4094004C4D43 /* 地面_default.png */,
 				CF68555C190E0E81004C4D43 /* 花_default.plist */,
 				CF68555D190E0E81004C4D43 /* 花_default.png */,
-				CF685558190E07BF004C4D43 /* bear_default.plist */,
-				CF685559190E07BF004C4D43 /* bear_default.png */,
 				CFDFDEE1190A2D6F0021FBF9 /* Default.png */,
 				CFDFDEE3190A2D6F0021FBF9 /* Default@2x.png */,
 				CFDFDEE5190A2D6F0021FBF9 /* Default-568h@2x.png */,
@@ -1640,6 +1690,7 @@
 				CF27C7DE190B2C48004FAEBE /* TitleScene.h */,
 				CF27C7DF190B2C48004FAEBE /* TitleScene.m */,
 				CF27C7DD190B2B83004FAEBE /* Unused */,
+				CFD5A32A1911F258004E2B58 /* manager */,
 				CF6C57DC190F68BA00FCF978 /* lib */,
 				CF6C57DD190F68D200FCF978 /* object */,
 				CF6C57DE190F68F900FCF978 /* stage */,
@@ -1717,18 +1768,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFDFDEE4190A2D6F0021FBF9 /* Default@2x.png in Resources */,
+				CFD5A34019123B8D004E2B58 /* bear4_default.plist in Resources */,
+				CFD5A34119123B8D004E2B58 /* bear4_default.png in Resources */,
 				CFDFDEF7190A2D6F0021FBF9 /* Icon-120.png in Resources */,
+				CFD5A33E19123B8D004E2B58 /* bear3_default.plist in Resources */,
 				CFDFE0FB190A2D700021FBF9 /* LICENSE_CCBReader.txt in Resources */,
 				CFDFDEED190A2D6F0021FBF9 /* Icon@2x.png in Resources */,
 				CF68555E190E0E81004C4D43 /* 花_default.plist in Resources */,
+				CFD5A34219123B8D004E2B58 /* bear5_default.plist in Resources */,
+				CFD5A3331912338E004E2B58 /* interface_default.png in Resources */,
 				CFDFDEFF190A2D6F0021FBF9 /* Icon-Small@2x.png in Resources */,
+				CFD5A3321912338E004E2B58 /* interface_default.plist in Resources */,
 				CFDFDEF1190A2D6F0021FBF9 /* Icon-72@2x.png in Resources */,
+				CFD5A33C19123B8D004E2B58 /* bear2_default.plist in Resources */,
 				CFDFDEE2190A2D6F0021FBF9 /* Default.png in Resources */,
 				CFDFDEEB190A2D6F0021FBF9 /* Icon.png in Resources */,
 				CFDFDEF9190A2D6F0021FBF9 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
 				CFDFDEE8190A2D6F0021FBF9 /* Default-Landscape~ipad.png in Resources */,
 				CFDFDEFD190A2D6F0021FBF9 /* Icon-Small.png in Resources */,
 				CFDFDEFB190A2D6F0021FBF9 /* Icon-Small-50.png in Resources */,
+				CFD5A33F19123B8D004E2B58 /* bear3_default.png in Resources */,
+				CFD5A32F191229BB004E2B58 /* arrow.png in Resources */,
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
 				CF68555A190E07BF004C4D43 /* bear_default.plist in Resources */,
 				CFDFDEEF190A2D6F0021FBF9 /* Icon-72.png in Resources */,
@@ -1736,6 +1796,7 @@
 				CF68555B190E07BF004C4D43 /* bear_default.png in Resources */,
 				CF68555F190E0E81004C4D43 /* 花_default.png in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
+				CFD5A34319123B8D004E2B58 /* bear5_default.png in Resources */,
 				CF685569190E4094004C4D43 /* 地面_default.plist in Resources */,
 				CF68556A190E4094004C4D43 /* 地面_default.png in Resources */,
 				CFDFDF06190A2D6F0021FBF9 /* iTunesArtwork in Resources */,
@@ -1745,6 +1806,7 @@
 				CFDFDF03190A2D6F0021FBF9 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				CFDFDEF3190A2D6F0021FBF9 /* Icon-76.png in Resources */,
 				CFDFE0C9190A2D700021FBF9 /* ChangeLog in Resources */,
+				CFD5A33D19123B8D004E2B58 /* bear2_default.png in Resources */,
 				CFDFDF08190A2D6F0021FBF9 /* iTunesArtwork@2x in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1857,6 +1919,7 @@
 				CFDFE174190A2D710021FBF9 /* HelloWorldScene.m in Sources */,
 				CFDFE0D4190A2D700021FBF9 /* neon_matrix_impl.c in Sources */,
 				CFDFDF59190A2D6F0021FBF9 /* CCLabelTTF.m in Sources */,
+				CFF39638191104510052608E /* PlayerSelection.m in Sources */,
 				CFDFE00E190A2D700021FBF9 /* NSEvent+CC.m in Sources */,
 				CF685547190DE72E004C4D43 /* BgHigherLayer.m in Sources */,
 				CFDFE06B190A2D700021FBF9 /* ALDevice.m in Sources */,
@@ -1868,6 +1931,7 @@
 				CFDFE053190A2D700021FBF9 /* OALAudioTrackNotifications.m in Sources */,
 				CFDFE0D8190A2D700021FBF9 /* quaternion.c in Sources */,
 				CFDFDF8C190A2D6F0021FBF9 /* CCPhysicsNode.m in Sources */,
+				CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */,
 				CFDFE072190A2D700021FBF9 /* ALSoundSourcePool.m in Sources */,
 				CFDFDF81190A2D6F0021FBF9 /* CCParticleSystemBase.m in Sources */,
 				CFDFE018190A2D700021FBF9 /* CCColor.m in Sources */,

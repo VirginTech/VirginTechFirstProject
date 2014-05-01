@@ -9,7 +9,7 @@
 
 #import "AppDelegate.h"
 //#import "IntroScene.h"
-#import "HelloWorldScene.h"
+//#import "HelloWorldScene.h"
 #import "TitleScene.h"
 
 @implementation AppDelegate

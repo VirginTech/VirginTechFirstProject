@@ -20,4 +20,9 @@
 - (id)init;
 +(BOOL)isAnimal:(CGPoint)animalPos type:(int)type;
 
++(void)setCreatePlayerFlg:(bool)flg;
++(bool)getCreatePlayerFlg;
++(void)setSelectPlayerNum:(int)num;
++(int)getSelectPlayerNum;
+
 @end

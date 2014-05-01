@@ -47,9 +47,9 @@ bool enemySearchFlg=false;
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:1]];
         }else if(gSprite.rotation<=normalize+112.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:2]];
-        }else if(gSprite.rotation<=normalize+157.5){
+        }else if(gSprite.rotation<=normalize+145.0){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:3]];
-        }else if(gSprite.rotation<=normalize+202.5){
+        }else if(gSprite.rotation<=normalize+220.0){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:4]];
         }else if(gSprite.rotation<=normalize+247.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:5]];
@@ -67,9 +67,9 @@ bool enemySearchFlg=false;
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:1]];
         }else if(realAngle<=112.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:2]];
-        }else if(realAngle<=157.5){
+        }else if(realAngle<=145.0){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:3]];
-        }else if(realAngle<=202.5){
+        }else if(realAngle<=220.0){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:4]];
         }else if(realAngle<=247.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:5]];
@@ -128,9 +128,9 @@ bool enemySearchFlg=false;
         [self setSpriteFrame:[vFrameArray objectAtIndex:1]];
     }else if(angle<=112.5){
         [self setSpriteFrame:[vFrameArray objectAtIndex:2]];
-    }else if(angle<=157.5){
+    }else if(angle<=145.0){
         [self setSpriteFrame:[vFrameArray objectAtIndex:3]];
-    }else if(angle<=202.5){
+    }else if(angle<=220.0){
         [self setSpriteFrame:[vFrameArray objectAtIndex:4]];
     }else if(angle<=247.5){
         [self setSpriteFrame:[vFrameArray objectAtIndex:5]];
@@ -240,12 +240,27 @@ bool enemySearchFlg=false;
 //====================
 //　プレイヤータンク作成
 //====================
--(id)initWithPlayer:(CGPoint)playerPos{
+-(id)initWithPlayer:(CGPoint)playerPos player:(int)num{
     
-    //画像を配列に格納
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
+    //初期化
     vFrameArray=[[NSMutableArray alloc]init];
     gFrameArray=[[NSMutableArray alloc]init];
+    [[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFrames];
+    
+    //画像を配列に格納
+    if(num==1){
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
+    }else if(num==2){
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear2_default.plist"];
+    }else if(num==3){
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear3_default.plist"];
+    }else if(num==4){
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear4_default.plist"];
+    }else if(num==5){
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear5_default.plist"];
+    }else{
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
+    }
     
     for(int i=0;i<8;i++){
         [vFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"v%02d.png",i]]];
@@ -267,9 +282,9 @@ bool enemySearchFlg=false;
     return self;
 }
 
-+(id)createPlayer:(CGPoint)playerPos{
++(id)createPlayer:(CGPoint)playerPos player:(int)num{
 
-    return [[self alloc] initWithPlayer:(CGPoint)playerPos];
+    return [[self alloc] initWithPlayer:(CGPoint)playerPos player:(int)num];
 }
 
 @end

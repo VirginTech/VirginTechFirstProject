@@ -13,6 +13,7 @@
 #import "BgLowerLayer.h"
 #import "BasicMath.h"
 #import "InformationLayer.h"
+#import "PlayerSelection.h"
 
 @implementation StageLevel_00
 
@@ -24,6 +25,12 @@ NSMutableArray* animalArray;
 
 bool routeDispFlg;
 AnimalPlayer* hitPlayer;
+
+PlayerSelection* playSelect;
+CGPoint createPlayerPos;
+bool createPlayerFlg;
+int selectPlayerNum;//種類番号
+CCSprite* arrow;
 
 + (StageLevel_00 *)scene
 {
@@ -42,7 +49,13 @@ AnimalPlayer* hitPlayer;
     self.userInteractionEnabled = YES;
     
     //各種データ初期化
+    createPlayerFlg=false;
     animalArray=[[NSMutableArray alloc]init];
+    
+    //各種画像初期化
+    arrow=[CCSprite spriteWithImageNamed:@"arrow.png"];
+    [self addChild:arrow z:5];
+    arrow.visible=false;
     
     //地面レイヤー
     BgLowerLayer* bgLayer1 = [[BgLowerLayer alloc]init];
@@ -54,11 +67,18 @@ AnimalPlayer* hitPlayer;
     
     //経路表示レイヤー z:2、プレイヤー z:3
     routeDisp=[[RouteDispLayer alloc]init];
+    [self addChild:routeDisp z:2];
+    routeDisp.visible=false;
 
     //背景レイヤー
     BgHigherLayer* bgLayer2 = [[BgHigherLayer alloc]init];
     [self addChild:bgLayer2 z:4];
 
+    //プレイヤー選択レイヤー z:5
+    playSelect=[[PlayerSelection alloc]init];
+    [self addChild:playSelect z:5];
+    playSelect.visible=false;
+    
     // Create a back button
     CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
     backButton.positionType = CCPositionTypeNormalized;
@@ -94,8 +114,28 @@ AnimalPlayer* hitPlayer;
     [super onExit];
 }
 
++(void)setCreatePlayerFlg:(bool)flg{
+    createPlayerFlg=flg;
+}
++(bool)getCreatePlayerFlg{
+    return createPlayerFlg;
+}
+
++(void)setSelectPlayerNum:(int)num{
+    selectPlayerNum=num;
+}
++(int)getSelectPlayerNum{
+    return selectPlayerNum;
+}
+
 -(void)judgement:(CCTime)dt{
     
+    //表示
+    if(!playSelect.visible){
+        arrow.visible=false;
+    }
+    
+    //プレイヤー対プレイヤー衝突判定
     for(AnimalPlayer* player1 in animalArray){
         for(AnimalPlayer* player2 in animalArray){
             if([BasicMath RadiusIntersectsRadius:player1.position pointB:player2.position
@@ -106,6 +146,14 @@ AnimalPlayer* hitPlayer;
                 }
             }
         }
+    }
+    
+    //プレイヤー生成
+    if(createPlayerFlg){
+        player=[AnimalPlayer createPlayer:createPlayerPos player:selectPlayerNum];
+        [animalArray addObject:player];
+        [self addChild:player z:3];
+        createPlayerFlg=false;
     }
 }
 
@@ -142,8 +190,8 @@ AnimalPlayer* hitPlayer;
         [posArray addObject:value];
         [routeDisp.posArray addObject:value];
         
-        //経路を表示
-        [self addChild:routeDisp z:2];
+        //[self addChild:routeDisp z:2];//経路を表示
+        routeDisp.visible=true;
         routeDispFlg=true;
         
         hitPlayer.stopFlg=false;
@@ -151,9 +199,11 @@ AnimalPlayer* hitPlayer;
     }else if(![StageLevel_00 isAnimal:touchLocation type:1]){//プレイヤー追加
         //陣地内だったら
         if(winSize.height/4 > touchLocation.y){
-            player=[AnimalPlayer createPlayer:touchLocation];
-            [animalArray addObject:player];
-            [self addChild:player z:3];
+            //プレイヤー選択レイヤー表示
+            playSelect.visible=true;
+            createPlayerPos=touchLocation;
+            arrow.position=CGPointMake(createPlayerPos.x, createPlayerPos.y+30);
+            arrow.visible=true;
         }
     }
 }
@@ -174,8 +224,9 @@ AnimalPlayer* hitPlayer;
     
     //プレイヤー移動
     if(routeDispFlg){
-        [self removeChild:routeDisp];//経路を非表示
-        if(posArray.count>0){
+        //[self removeChild:routeDisp];//経路を非表示
+        routeDisp.visible=false;
+        if(posArray.count>1){//座標が2点以上なら
             [hitPlayer moveTank:posArray];
         }
         routeDispFlg=false;

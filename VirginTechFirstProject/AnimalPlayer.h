@@ -24,8 +24,8 @@
 
 @property bool stopFlg;
 
-+(id)createPlayer:(CGPoint)playerPos;
--(id)initWithPlayer:(CGPoint)playerPos;
++(id)createPlayer:(CGPoint)playerPos player:(int)num;
+-(id)initWithPlayer:(CGPoint)playerPos player:(int)num;
 
 -(void)moveTank:(NSMutableArray*)posArray;
 +(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;
