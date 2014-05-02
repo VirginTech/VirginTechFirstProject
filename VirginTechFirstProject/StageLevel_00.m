@@ -7,13 +7,13 @@
 //
 
 #import "StageLevel_00.h"
-#import "TitleScene.h"
 #import "RouteDispLayer.h"
 #import "BgHigherLayer.h"
 #import "BgLowerLayer.h"
 #import "BasicMath.h"
 #import "InformationLayer.h"
 #import "PlayerSelection.h"
+#import "NaviLayer.h"
 
 @implementation StageLevel_00
 
@@ -74,17 +74,14 @@ CCSprite* arrow;
     BgHigherLayer* bgLayer2 = [[BgHigherLayer alloc]init];
     [self addChild:bgLayer2 z:4];
 
-    //プレイヤー選択レイヤー z:5
-    playSelect=[[PlayerSelection alloc]init];
-    [self addChild:playSelect z:5];
-    playSelect.visible=false;
+    //ボタン配置レイヤー
+    NaviLayer* navi=[[NaviLayer alloc]init];
+    [self addChild:navi z:5];
     
-    // Create a back button
-    CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
-    backButton.positionType = CCPositionTypeNormalized;
-    backButton.position = ccp(0.85f, 0.95f); // Top Right of screen
-    [backButton setTarget:self selector:@selector(onBackClicked:)];
-    [self addChild:backButton];
+    //プレイヤー選択レイヤー z:6
+    playSelect=[[PlayerSelection alloc]init];
+    [self addChild:playSelect z:6];
+    playSelect.visible=false;
     
     // done
 	return self;
@@ -231,15 +228,6 @@ CCSprite* arrow;
         }
         routeDispFlg=false;
     }
-}
-
-- (void)onBackClicked:(id)sender
-{
-    // back to intro scene with transition
-    
-    [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
-
-    //[[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:1.0f]];
 }
 
 @end

@@ -46,7 +46,7 @@ CGSize winSize;
         CGPoint pt2=[value2 CGPointValue];
         
         glLineWidth(100.0f);
-        ccDrawColor4F(1.00f, 1.00f, 1.00f, 0.50f);
+        ccDrawColor4F(0.24f, 0.70f, 0.44f, 1.00f);
         ccDrawLine(pt1,pt2);
         //ccDrawColor4F(1.0f, 1.0f, 1.0f, 1.0f);
         //ccDrawCircle(pt1,1.5,1,10,true);

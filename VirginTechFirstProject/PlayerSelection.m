@@ -14,7 +14,7 @@
 
 CGSize winSize;
 CCSprite* bg;
-CCScrollView* scrollview;
+//CCScrollView* scrollview;
 NSMutableArray* animalArray2;
 
 + (PlayerSelection *)scene{
@@ -95,19 +95,29 @@ NSMutableArray* animalArray2;
     
     CGRect frmRect;
     for(CCSprite* frame in animalArray2){
+        
         i++;
+        
         if([GameManager getDevice]==1){
-            frmRect=CGRectMake(frame.position.x-50, frame.position.y+120,
-                               frame.contentSize.width, frame.contentSize.height);
+            frmRect=CGRectMake(frame.position.x - frame.contentSize.width/2,
+                               frame.position.y + frame.contentSize.height/2,
+                               frame.contentSize.width,
+                               frame.contentSize.height);
         }else if([GameManager getDevice]==2){
-            frmRect=CGRectMake(frame.position.x-50, frame.position.y+120,
-                               frame.contentSize.width, frame.contentSize.height);
+            frmRect=CGRectMake(frame.position.x - frame.contentSize.width/2,
+                               frame.position.y + frame.contentSize.height/2,
+                               frame.contentSize.width,
+                               frame.contentSize.height);
         }else if([GameManager getDevice]==3){
-            frmRect=CGRectMake(frame.position.x-50, frame.position.y+120,
-                               frame.contentSize.width, frame.contentSize.height);
+            frmRect=CGRectMake(frame.position.x - frame.contentSize.width/2,
+                               frame.position.y + frame.contentSize.height/2,
+                               frame.contentSize.width,
+                               frame.contentSize.height);
         }else{
-            frmRect=CGRectMake(frame.position.x-50, frame.position.y+120,
-                               frame.contentSize.width, frame.contentSize.height);
+            frmRect=CGRectMake(frame.position.x - frame.contentSize.width/2,
+                               frame.position.y + frame.contentSize.height/2,
+                               frame.contentSize.width,
+                               frame.contentSize.height);
         }
         
         if(CGRectContainsPoint(frmRect, touchLocation)){
@@ -120,9 +130,7 @@ NSMutableArray* animalArray2;
             [StageLevel_00 setSelectPlayerNum:0];//なし
         }
     }
-
     self.visible=false;
-    
 }
 
 @end

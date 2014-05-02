@@ -8,7 +8,7 @@
 
 #import "TitleScene.h"
 //#import "HelloWorldScene.h"
-#import "StageLevel_00.h"
+#import "SelectStage.h"
 #import "GameManager.h"
 
 @implementation TitleScene
@@ -36,12 +36,13 @@
         [GameManager setDevice:0];
     }
     //NSLog(@"デバイスは %d です。",[GameManager getDevice]);
+    
     // Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
     [self addChild:background];
     
     // タイトル
-    CCLabelTTF *label = [CCLabelTTF labelWithString:@"　　戦略！！\nアニマル大戦争！" fontName:@"Chalkduster" fontSize:36.0f];
+    CCLabelTTF *label = [CCLabelTTF labelWithString:@"大戦略！！\nアニマル\nウォーズ！" fontName:@"Chalkduster" fontSize:36.0f];
     label.positionType = CCPositionTypeNormalized;
     label.color = [CCColor redColor];
     label.position = ccp(0.5f, 0.5f); // Middle of screen
@@ -61,7 +62,7 @@
 - (void)onSpinningClicked:(id)sender
 {
     // start spinning scene with transition
-    [[CCDirector sharedDirector] replaceScene:[StageLevel_00 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+    [[CCDirector sharedDirector] replaceScene:[SelectStage scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
     //[[CCDirector sharedDirector] replaceScene:[Level_00 scene]withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
 }
 

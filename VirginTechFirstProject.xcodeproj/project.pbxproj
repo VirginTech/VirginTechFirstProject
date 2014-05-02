@@ -20,6 +20,13 @@
 		CF685569190E4094004C4D43 /* 地面_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF685567190E4094004C4D43 /* 地面_default.plist */; };
 		CF68556A190E4094004C4D43 /* 地面_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF685568190E4094004C4D43 /* 地面_default.png */; };
 		CF6C57DB190F67F700FCF978 /* BasicMath.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6C57DA190F67F700FCF978 /* BasicMath.m */; };
+		CF8C16BF191345B2002BBC13 /* enemy_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8C16BD191345B2002BBC13 /* enemy_default.plist */; };
+		CF8C16C0191345B2002BBC13 /* enemy_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C16BE191345B2002BBC13 /* enemy_default.png */; };
+		CF8C16C319134618002BBC13 /* AnimalEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C219134618002BBC13 /* AnimalEnemy.m */; };
+		CF8C16C519137369002BBC13 /* bgLayer.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C16C419137369002BBC13 /* bgLayer.png */; };
+		CF8C16C81913B26D002BBC13 /* StageLevel_01.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C71913B26D002BBC13 /* StageLevel_01.m */; };
+		CF8C16CB1913B2EC002BBC13 /* SelectStage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16CA1913B2EC002BBC13 /* SelectStage.m */; };
+		CF8C16CE1913B71A002BBC13 /* NaviLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16CD1913B71A002BBC13 /* NaviLayer.m */; };
 		CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD5A32C1911F29D004E2B58 /* GameManager.m */; };
 		CFD5A32F191229BB004E2B58 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A32E191229BB004E2B58 /* arrow.png */; };
 		CFD5A3321912338E004E2B58 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A3301912338E004E2B58 /* interface_default.plist */; };
@@ -272,6 +279,17 @@
 		CF685568190E4094004C4D43 /* 地面_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地面_default.png"; sourceTree = "<group>"; };
 		CF6C57D9190F67F700FCF978 /* BasicMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMath.h; sourceTree = "<group>"; };
 		CF6C57DA190F67F700FCF978 /* BasicMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMath.m; sourceTree = "<group>"; };
+		CF8C16BD191345B2002BBC13 /* enemy_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy_default.plist; sourceTree = "<group>"; };
+		CF8C16BE191345B2002BBC13 /* enemy_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_default.png; sourceTree = "<group>"; };
+		CF8C16C119134618002BBC13 /* AnimalEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalEnemy.h; sourceTree = "<group>"; };
+		CF8C16C219134618002BBC13 /* AnimalEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalEnemy.m; sourceTree = "<group>"; };
+		CF8C16C419137369002BBC13 /* bgLayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgLayer.png; sourceTree = "<group>"; };
+		CF8C16C61913B26D002BBC13 /* StageLevel_01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageLevel_01.h; sourceTree = "<group>"; };
+		CF8C16C71913B26D002BBC13 /* StageLevel_01.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageLevel_01.m; sourceTree = "<group>"; };
+		CF8C16C91913B2EC002BBC13 /* SelectStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectStage.h; sourceTree = "<group>"; };
+		CF8C16CA1913B2EC002BBC13 /* SelectStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectStage.m; sourceTree = "<group>"; };
+		CF8C16CC1913B71A002BBC13 /* NaviLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviLayer.h; sourceTree = "<group>"; };
+		CF8C16CD1913B71A002BBC13 /* NaviLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviLayer.m; sourceTree = "<group>"; };
 		CFD5A32B1911F29D004E2B58 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		CFD5A32C1911F29D004E2B58 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		CFD5A32E191229BB004E2B58 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
@@ -765,6 +783,8 @@
 			children = (
 				CF27C7E1190B3A5F004FAEBE /* AnimalPlayer.h */,
 				CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */,
+				CF8C16C119134618002BBC13 /* AnimalEnemy.h */,
+				CF8C16C219134618002BBC13 /* AnimalEnemy.m */,
 			);
 			name = object;
 			sourceTree = "<group>";
@@ -774,6 +794,8 @@
 			children = (
 				CF27C7E6190B3DA5004FAEBE /* StageLevel_00.h */,
 				CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */,
+				CF8C16C61913B26D002BBC13 /* StageLevel_01.h */,
+				CF8C16C71913B26D002BBC13 /* StageLevel_01.m */,
 			);
 			name = stage;
 			sourceTree = "<group>";
@@ -781,6 +803,8 @@
 		CF6C57DF190F692C00FCF978 /* layer */ = {
 			isa = PBXGroup;
 			children = (
+				CF8C16CC1913B71A002BBC13 /* NaviLayer.h */,
+				CF8C16CD1913B71A002BBC13 /* NaviLayer.m */,
 				CFF39636191104510052608E /* PlayerSelection.h */,
 				CFF39637191104510052608E /* PlayerSelection.m */,
 				CFF39633191092F90052608E /* InformationLayer.h */,
@@ -852,6 +876,9 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF8C16C419137369002BBC13 /* bgLayer.png */,
+				CF8C16BD191345B2002BBC13 /* enemy_default.plist */,
+				CF8C16BE191345B2002BBC13 /* enemy_default.png */,
 				CF685558190E07BF004C4D43 /* bear_default.plist */,
 				CF685559190E07BF004C4D43 /* bear_default.png */,
 				CFD5A33419123B8D004E2B58 /* bear2_default.plist */,
@@ -1689,6 +1716,8 @@
 				CFDFE170190A2D710021FBF9 /* AppDelegate.m */,
 				CF27C7DE190B2C48004FAEBE /* TitleScene.h */,
 				CF27C7DF190B2C48004FAEBE /* TitleScene.m */,
+				CF8C16C91913B2EC002BBC13 /* SelectStage.h */,
+				CF8C16CA1913B2EC002BBC13 /* SelectStage.m */,
 				CF27C7DD190B2B83004FAEBE /* Unused */,
 				CFD5A32A1911F258004E2B58 /* manager */,
 				CF6C57DC190F68BA00FCF978 /* lib */,
@@ -1781,11 +1810,13 @@
 				CFD5A3321912338E004E2B58 /* interface_default.plist in Resources */,
 				CFDFDEF1190A2D6F0021FBF9 /* Icon-72@2x.png in Resources */,
 				CFD5A33C19123B8D004E2B58 /* bear2_default.plist in Resources */,
+				CF8C16C0191345B2002BBC13 /* enemy_default.png in Resources */,
 				CFDFDEE2190A2D6F0021FBF9 /* Default.png in Resources */,
 				CFDFDEEB190A2D6F0021FBF9 /* Icon.png in Resources */,
 				CFDFDEF9190A2D6F0021FBF9 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
 				CFDFDEE8190A2D6F0021FBF9 /* Default-Landscape~ipad.png in Resources */,
 				CFDFDEFD190A2D6F0021FBF9 /* Icon-Small.png in Resources */,
+				CF8C16BF191345B2002BBC13 /* enemy_default.plist in Resources */,
 				CFDFDEFB190A2D6F0021FBF9 /* Icon-Small-50.png in Resources */,
 				CFD5A33F19123B8D004E2B58 /* bear3_default.png in Resources */,
 				CFD5A32F191229BB004E2B58 /* arrow.png in Resources */,
@@ -1797,6 +1828,7 @@
 				CF68555F190E0E81004C4D43 /* 花_default.png in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
 				CFD5A34319123B8D004E2B58 /* bear5_default.png in Resources */,
+				CF8C16C519137369002BBC13 /* bgLayer.png in Resources */,
 				CF685569190E4094004C4D43 /* 地面_default.plist in Resources */,
 				CF68556A190E4094004C4D43 /* 地面_default.png in Resources */,
 				CFDFDF06190A2D6F0021FBF9 /* iTunesArtwork in Resources */,
@@ -1828,8 +1860,10 @@
 				CFDFDF2E190A2D6F0021FBF9 /* CCAtlasNode.m in Sources */,
 				CFDFE07C190A2D700021FBF9 /* OpenALManager.m in Sources */,
 				CFDFE088190A2D700021FBF9 /* IOSVersion.m in Sources */,
+				CF8C16C81913B26D002BBC13 /* StageLevel_01.m in Sources */,
 				CFDFDF3D190A2D6F0021FBF9 /* CCDirector.m in Sources */,
 				CFDFE0A8190A2D700021FBF9 /* CCScrollView.m in Sources */,
+				CF8C16CB1913B2EC002BBC13 /* SelectStage.m in Sources */,
 				CFDFDF9B190A2D6F0021FBF9 /* CCResponder.m in Sources */,
 				CFDFDF32190A2D6F0021FBF9 /* CCClippingNode.m in Sources */,
 				CFDFDFC5190A2D6F0021FBF9 /* CCSpriteBatchNode.m in Sources */,
@@ -1847,6 +1881,7 @@
 				CFDFE098190A2D700021FBF9 /* OALTools.m in Sources */,
 				CFDFDF4E190A2D6F0021FBF9 /* ccGLStateCache.m in Sources */,
 				CFDFE046190A2D700021FBF9 /* OALActionManager.m in Sources */,
+				CF8C16C319134618002BBC13 /* AnimalEnemy.m in Sources */,
 				CFDFDFA5190A2D6F0021FBF9 /* CCScheduler.m in Sources */,
 				CFF39635191092F90052608E /* InformationLayer.m in Sources */,
 				CFDFDF79190A2D6F0021FBF9 /* CCParticleExamples.m in Sources */,
@@ -1864,6 +1899,7 @@
 				CFDFDF14190A2D6F0021FBF9 /* CCActionEase.m in Sources */,
 				CFDFDF23190A2D6F0021FBF9 /* CCActionTween.m in Sources */,
 				CFDFE091190A2D700021FBF9 /* NSMutableDictionary+WeakReferences.m in Sources */,
+				CF8C16CE1913B71A002BBC13 /* NaviLayer.m in Sources */,
 				CFDFDF6E190A2D6F0021FBF9 /* CCNode+Debug.m in Sources */,
 				CFDFDF27190A2D6F0021FBF9 /* CCAnimation.m in Sources */,
 				CFDFE0D0190A2D700021FBF9 /* mat3.c in Sources */,
