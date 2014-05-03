@@ -27,6 +27,7 @@
 		CF8C16C81913B26D002BBC13 /* StageLevel_01.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C71913B26D002BBC13 /* StageLevel_01.m */; };
 		CF8C16CB1913B2EC002BBC13 /* SelectStage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16CA1913B2EC002BBC13 /* SelectStage.m */; };
 		CF8C16CE1913B71A002BBC13 /* NaviLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16CD1913B71A002BBC13 /* NaviLayer.m */; };
+		CFAB7C2D191505AF0084D0F8 /* RouteGenerationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */; };
 		CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD5A32C1911F29D004E2B58 /* GameManager.m */; };
 		CFD5A32F191229BB004E2B58 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A32E191229BB004E2B58 /* arrow.png */; };
 		CFD5A3321912338E004E2B58 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A3301912338E004E2B58 /* interface_default.plist */; };
@@ -290,6 +291,8 @@
 		CF8C16CA1913B2EC002BBC13 /* SelectStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectStage.m; sourceTree = "<group>"; };
 		CF8C16CC1913B71A002BBC13 /* NaviLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviLayer.h; sourceTree = "<group>"; };
 		CF8C16CD1913B71A002BBC13 /* NaviLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviLayer.m; sourceTree = "<group>"; };
+		CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteGenerationLayer.h; sourceTree = "<group>"; };
+		CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteGenerationLayer.m; sourceTree = "<group>"; };
 		CFD5A32B1911F29D004E2B58 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		CFD5A32C1911F29D004E2B58 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		CFD5A32E191229BB004E2B58 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
@@ -805,6 +808,8 @@
 			children = (
 				CF8C16CC1913B71A002BBC13 /* NaviLayer.h */,
 				CF8C16CD1913B71A002BBC13 /* NaviLayer.m */,
+				CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */,
+				CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */,
 				CFF39636191104510052608E /* PlayerSelection.h */,
 				CFF39637191104510052608E /* PlayerSelection.m */,
 				CFF39633191092F90052608E /* InformationLayer.h */,
@@ -1900,6 +1905,7 @@
 				CFDFDF23190A2D6F0021FBF9 /* CCActionTween.m in Sources */,
 				CFDFE091190A2D700021FBF9 /* NSMutableDictionary+WeakReferences.m in Sources */,
 				CF8C16CE1913B71A002BBC13 /* NaviLayer.m in Sources */,
+				CFAB7C2D191505AF0084D0F8 /* RouteGenerationLayer.m in Sources */,
 				CFDFDF6E190A2D6F0021FBF9 /* CCNode+Debug.m in Sources */,
 				CFDFDF27190A2D6F0021FBF9 /* CCAnimation.m in Sources */,
 				CFDFE0D0190A2D700021FBF9 /* mat3.c in Sources */,

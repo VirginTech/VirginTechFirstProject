@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
+#import "AnimalPlayer.h"
 
 @interface StageLevel_01 : CCScene {
     
+    AnimalPlayer* player;
 }
 
 + (StageLevel_01 *)scene;
