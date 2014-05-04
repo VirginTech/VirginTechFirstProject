@@ -20,16 +20,19 @@
     CGPoint oldPt;
     
     bool stopFlg;
+    bool state_PathMake_flg;
+    
+    CCSprite* arrow;
 }
 
 @property bool stopFlg;
+@property bool state_PathMake_flg;
 
 +(id)createPlayer:(CGPoint)playerPos player:(int)num;
 -(id)initWithPlayer:(CGPoint)playerPos player:(int)num;
 
 -(void)moveTank:(NSMutableArray*)posArray;
 +(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;
-+(float)getAngle:(CGPoint)sPos ePos:(CGPoint)ePos;
 -(void)getVehicleFrame:(float)angle;
 
 @end

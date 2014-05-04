@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "AnimalPlayer.h"
 
 @interface RouteGenerationLayer : CCScene {
     
+    AnimalPlayer* player;
+    float offsetY;
 }
+
+@property AnimalPlayer* player;
+@property float offsetY;
 
 + (RouteGenerationLayer *)scene;
 - (id)init;

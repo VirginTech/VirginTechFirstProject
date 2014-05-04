@@ -17,11 +17,10 @@
 CGSize winSize;
 CCScrollView* scrollView;
 CCSprite* bgSpLayer;
-RouteGenerationLayer* routeGeneLyer;
 
 NSMutableArray* animalArray;
+RouteGenerationLayer* routeGeneLyer;
 AnimalPlayer* hitPlayer;
-bool routeGeneFlg;
 
 + (StageLevel_01 *)scene
 {
@@ -39,7 +38,6 @@ bool routeGeneFlg;
     self.userInteractionEnabled = YES;
     
     //各種データ初期化
-    routeGeneFlg=false;
     animalArray=[[NSMutableArray alloc]init];
     
     //スクロールビュー配置
@@ -47,15 +45,15 @@ bool routeGeneFlg;
     scrollView=[[CCScrollView alloc]initWithContentNode:bgSpLayer];
     scrollView.horizontalScrollEnabled=NO;
     bgSpLayer.position=CGPointMake(0, -bgSpLayer.contentSize.height);
-    [self addChild:scrollView];
+    [self addChild:scrollView z:0];
     
-    //経路作成レイヤー
+    //経路作成レイヤー z:1
     routeGeneLyer=[[RouteGenerationLayer alloc]init];
     //[self addChild:routeGeneLyer];
     
     //ボタン配置レイヤー
     NaviLayer* navi=[[NaviLayer alloc]init];
-    [self addChild:navi z:5];
+    [self addChild:navi z:3];
     
     // done
 	return self;
@@ -91,11 +89,13 @@ bool routeGeneFlg;
         if(type==0){//経路作成
             if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:30]){
                 hitPlayer=_player;
+                routeGeneLyer.player=_player;
                 flg=true;
             }
         }else if(type==1){//プレイヤー追加
             if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:70]){
                 hitPlayer=_player;
+                routeGeneLyer.player=_player;
                 flg=true;
             }
         }
@@ -105,6 +105,14 @@ bool routeGeneFlg;
 
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
+}
+
+-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
+    
+}
+
+-(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
+
     CGPoint worldLocation;
     CGPoint touchLocation = [touch locationInNode:self];
     
@@ -112,29 +120,18 @@ bool routeGeneFlg;
     worldLocation.x = touchLocation.x + scrollView.scrollPosition.x;
     worldLocation.y = touchLocation.y + offsetY;
     
-    if([StageLevel_01 isAnimal:worldLocation type:0]){//経路作成
-        if(!routeGeneFlg){
-            scrollView.verticalScrollEnabled=NO;
-            [self addChild:routeGeneLyer];
-            routeGeneFlg=true;
-        }
+    if([StageLevel_01 isAnimal:worldLocation type:0]){//経路作成レイヤー表示
+        routeGeneLyer.offsetY=offsetY;
+        [self addChild:routeGeneLyer z:1];
+        hitPlayer.state_PathMake_flg=true;
+        
     }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
         if(worldLocation.y < 200){
             player=[AnimalPlayer createPlayer:worldLocation player:1];
             [animalArray addObject:player];
-            [bgSpLayer addChild:player z:3];
+            [bgSpLayer addChild:player];
         }
     }
-}
-
--(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
-    
-    CGPoint touchLocation = [touch locationInNode:self];
-    NSLog(@"X=%f : Y=%f",touchLocation.x,touchLocation.y);
-}
-
--(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
-    
 }
 
 @end

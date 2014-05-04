@@ -7,11 +7,12 @@
 //
 
 #import "AnimalPlayer.h"
-
+#import "BasicMath.h"
 
 @implementation AnimalPlayer
 
 @synthesize stopFlg;
+@synthesize state_PathMake_flg;
 
 CGSize winSize;
 bool enemySearchFlg=false;
@@ -92,7 +93,7 @@ bool enemySearchFlg=false;
         //位置設定
         self.position=CGPointMake(pt.x, pt.y);
         //方向設定(度)
-        self.rotation=[AnimalPlayer getAngle:oldPt ePos:pt];
+        self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:pt];
         //差替画像設定
         if(self.rotationalSkewX==self.rotationalSkewY){
             [self getVehicleFrame:self.rotation];
@@ -144,47 +145,15 @@ bool enemySearchFlg=false;
 }
 
 //========================
-// 方向(角度)を取得→(度で)
-//========================
-+(float)getAngle:(CGPoint)sPos ePos:(CGPoint)ePos{
-    
-    float angle;
-    float dx,dy;//差分距離ベクトル
-    dx = ePos.x - sPos.x;
-    dy = ePos.y - sPos.y;
-    
-    //斜辺角度(度)
-    angle=CC_RADIANS_TO_DEGREES(atanf(dy/dx));
-    
-    if(dx<0 && dy>0){//座標左上
-        angle=270-angle;
-    }else if(dx<0 && dy<=0){//座標左下
-        angle=270-angle;
-    }else if(dx>=0 && dy<=0){//座標右下
-        angle=450-angle;
-    }else{//座標右上
-        angle=90-angle;
-    }
-    //360度を超えていたら360マイナス
-    //要！原因解明・・・後で考える・・・
-    if(angle>360){
-        angle=angle-360;
-    }
-    return angle;
-}
-
-//========================
 //     直線補間
 //========================
 +(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray{
     
-    float speed=0.5;//補間間隔(速さの調整に使用するので"speed")
-    
+    float velocity=0.5;//補間間隔(速さの調整に使用する)
     NSValue *value1;
     NSValue *value2;
     CGPoint pt1;
     CGPoint pt2;
-    float dx,dy;//差分距離ベクトル
     float er,dr;//最終距離、補間距離(途中経過の)
     
     float angle;
@@ -199,30 +168,17 @@ bool enemySearchFlg=false;
         
         value1=[posArray objectAtIndex:i-1];
         value2=[posArray objectAtIndex:i];
-        
         pt1 = [value1 CGPointValue];
         pt2 = [value2 CGPointValue];
         
-        dx = pt2.x-pt1.x;
-        dy = pt2.y-pt1.y;
-        
         //斜辺角度
-        angle=atanf(dy/dx);
-        
-        if(dx<0 && dy>0){//座標左上
-            angle=M_PI+angle;
-        }else if(dx<0 && dy<=0){//座標左下
-            angle=M_PI+angle;
-        }else if(dx>=0 && dy<=0){//座標右下
-            angle=M_PI*2+angle;
-        }else{//座標右上（修正なし）
-        }
+        angle=[BasicMath getAngle_To_Radian:pt1 ePos:pt2];
         //斜辺距離(er)
-        er=sqrtf(powf(dx,2)+powf(dy,2));
+        er=sqrtf(powf(pt2.x-pt1.x,2)+powf(pt2.y-pt1.y,2));
         dr=0.0;
         
         while(er>dr){
-
+            
             inpolPos = CGPointMake(dr*cosf(angle),dr*sinf(angle));
             //pt1から補間分(inpolPos)を加える
             inpolPos.x=pt1.x+inpolPos.x;
@@ -231,10 +187,25 @@ bool enemySearchFlg=false;
             inpolVal = [NSValue valueWithCGPoint:inpolPos];
             [tmpArray addObject:inpolVal];
             
-            dr=dr+speed;
+            dr=dr+velocity;
         }
     }
     return tmpArray;
+}
+
+-(void)status_Schedule:(CCTime)dt{
+    
+    if(state_PathMake_flg){
+        
+        if(!arrow.visible){
+            arrow.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2 - arrow.contentSize.height/2);
+            arrow.visible=true;
+        }else{
+            arrow.visible=false;
+        }
+
+        state_PathMake_flg=false;
+    }
 }
 
 //====================
@@ -276,8 +247,17 @@ bool enemySearchFlg=false;
         [self addChild:gSprite];
         //停止フラグ
         stopFlg=false;
+        //経路作成フラグ
+        state_PathMake_flg=false;
+        //経路作成マーク
+        arrow = [CCSprite spriteWithImageNamed:@"arrow.png"];
+        arrow.rotation=180;
+        [self addChild:arrow];
+        arrow.visible=false;
         //砲塔制御スケジュール開始
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];
+        //状態スケジュール
+        [self schedule:@selector(status_Schedule:)interval:0.1];
     }
     return self;
 }

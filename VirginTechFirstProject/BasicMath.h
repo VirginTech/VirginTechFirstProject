@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "cocos2d.h"
 
 @interface BasicMath : NSObject
 
 +(BOOL)RadiusContainsPoint:(CGPoint)pointA pointB:(CGPoint)pointB radius:(float)radius;
 +(BOOL)RadiusIntersectsRadius:(CGPoint)pointA pointB:(CGPoint)pointB
                                             radius1:(float)radius1 radius2:(float)radius2;
++(float)getAngle_To_Radian:(CGPoint)sPos ePos:(CGPoint)ePos;
++(float)getAngle_To_Degree:(CGPoint)sPos ePos:(CGPoint)ePos;
 
 @end
