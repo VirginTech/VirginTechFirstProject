@@ -28,8 +28,8 @@
 @property bool stopFlg;
 @property bool state_PathMake_flg;
 
-+(id)createPlayer:(CGPoint)playerPos player:(int)num;
--(id)initWithPlayer:(CGPoint)playerPos player:(int)num;
++(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
+-(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 
 -(void)moveTank:(NSMutableArray*)posArray;
 +(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;

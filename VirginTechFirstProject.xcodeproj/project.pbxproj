@@ -764,6 +764,10 @@
 		CF27C7DD190B2B83004FAEBE /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				CF27C7E6190B3DA5004FAEBE /* StageLevel_00.h */,
+				CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */,
+				CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */,
+				CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */,
 				CFDFE172190A2D710021FBF9 /* HelloWorldScene.h */,
 				CFDFE173190A2D710021FBF9 /* HelloWorldScene.m */,
 				CFDFE175190A2D710021FBF9 /* IntroScene.h */,
@@ -795,8 +799,6 @@
 		CF6C57DE190F68F900FCF978 /* stage */ = {
 			isa = PBXGroup;
 			children = (
-				CF27C7E6190B3DA5004FAEBE /* StageLevel_00.h */,
-				CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */,
 				CF8C16C61913B26D002BBC13 /* StageLevel_01.h */,
 				CF8C16C71913B26D002BBC13 /* StageLevel_01.m */,
 			);
@@ -818,8 +820,6 @@
 				CF685561190E2FA1004C4D43 /* BgLowerLayer.m */,
 				CF685545190DE72E004C4D43 /* BgHigherLayer.h */,
 				CF685546190DE72E004C4D43 /* BgHigherLayer.m */,
-				CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */,
-				CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */,
 			);
 			name = layer;
 			sourceTree = "<group>";

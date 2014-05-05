@@ -147,7 +147,7 @@ CCSprite* arrow;
     
     //プレイヤー生成
     if(createPlayerFlg){
-        player=[AnimalPlayer createPlayer:createPlayerPos player:selectPlayerNum];
+        player=[AnimalPlayer createPlayer:createPlayerPos playerNum:selectPlayerNum];
         [animalArray addObject:player];
         [self addChild:player z:3];
         createPlayerFlg=false;

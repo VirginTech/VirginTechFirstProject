@@ -12,11 +12,11 @@
 #import "AnimalPlayer.h"
 
 @interface StageLevel_01 : CCScene {
-    
-    AnimalPlayer* player;
+        
 }
 
 + (StageLevel_01 *)scene;
 - (id)init;
++(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 
 @end

@@ -9,8 +9,11 @@
 #import "PlayerSelection.h"
 #import "GameManager.h"
 #import "StageLevel_00.h"
+#import "StageLevel_01.h"
 
 @implementation PlayerSelection
+
+@synthesize createPlayerPos;
 
 CGSize winSize;
 CCSprite* bg;
@@ -100,7 +103,7 @@ NSMutableArray* animalArray2;
         
         if([GameManager getDevice]==1){
             frmRect=CGRectMake(frame.position.x - frame.contentSize.width/2,
-                               frame.position.y + frame.contentSize.height/2,
+                               frame.position.y + frame.contentSize.height/2 +80,
                                frame.contentSize.width,
                                frame.contentSize.height);
         }else if([GameManager getDevice]==2){
@@ -121,13 +124,13 @@ NSMutableArray* animalArray2;
         }
         
         if(CGRectContainsPoint(frmRect, touchLocation)){
-            //NSLog(@"ヒット！=%@",frame.name);
-            [StageLevel_00 setCreatePlayerFlg:true];
-            [StageLevel_00 setSelectPlayerNum:i];
+
+            [StageLevel_01 createPlayer:createPlayerPos playerNum:i];
+            
+            //[StageLevel_00 setCreatePlayerFlg:true];
+            //[StageLevel_00 setSelectPlayerNum:i];
+            
             break;
-        }else{
-            [StageLevel_00 setCreatePlayerFlg:false];
-            [StageLevel_00 setSelectPlayerNum:0];//なし
         }
     }
     self.visible=false;

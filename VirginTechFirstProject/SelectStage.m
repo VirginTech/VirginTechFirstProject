@@ -38,7 +38,7 @@
     button2.positionType = CCPositionTypeNormalized;
     button2.position = ccp(0.5f, 0.6f);
     [button2 setTarget:self selector:@selector(onSpinningClicked2:)];
-    [self addChild:button2];
+    //[self addChild:button2];
     
     // done
 	return self;
@@ -46,12 +46,12 @@
 
 - (void)onSpinningClicked1:(id)sender{
     // start spinning scene with transition
-    [[CCDirector sharedDirector] replaceScene:[StageLevel_00 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+    [[CCDirector sharedDirector] replaceScene:[StageLevel_01 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
 
 - (void)onSpinningClicked2:(id)sender{
     // start spinning scene with transition
-    [[CCDirector sharedDirector] replaceScene:[StageLevel_01 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+    //[[CCDirector sharedDirector] replaceScene:[StageLevel_02 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
 
 @end

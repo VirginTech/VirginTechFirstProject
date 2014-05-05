@@ -211,7 +211,7 @@ bool enemySearchFlg=false;
 //====================
 //　プレイヤータンク作成
 //====================
--(id)initWithPlayer:(CGPoint)playerPos player:(int)num{
+-(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum{
     
     //初期化
     vFrameArray=[[NSMutableArray alloc]init];
@@ -219,15 +219,15 @@ bool enemySearchFlg=false;
     [[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFrames];
     
     //画像を配列に格納
-    if(num==1){
+    if(playerNum==1){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
-    }else if(num==2){
+    }else if(playerNum==2){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear2_default.plist"];
-    }else if(num==3){
+    }else if(playerNum==3){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear3_default.plist"];
-    }else if(num==4){
+    }else if(playerNum==4){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear4_default.plist"];
-    }else if(num==5){
+    }else if(playerNum==5){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear5_default.plist"];
     }else{
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
@@ -262,9 +262,9 @@ bool enemySearchFlg=false;
     return self;
 }
 
-+(id)createPlayer:(CGPoint)playerPos player:(int)num{
++(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum{
 
-    return [[self alloc] initWithPlayer:(CGPoint)playerPos player:(int)num];
+    return [[self alloc] initWithPlayer:playerPos playerNum:playerNum];
 }
 
 @end

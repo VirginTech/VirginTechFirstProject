@@ -11,6 +11,7 @@
 #import "CCScrollView.h"
 #import "RouteGenerationLayer.h"
 #import "BasicMath.h"
+#import "PlayerSelection.h"
 
 @implementation StageLevel_01
 
@@ -21,6 +22,9 @@ CCSprite* bgSpLayer;
 NSMutableArray* animalArray;
 RouteGenerationLayer* routeGeneLyer;
 AnimalPlayer* hitPlayer;
+
+PlayerSelection* playSelect;
+AnimalPlayer* player;
 
 + (StageLevel_01 *)scene
 {
@@ -40,7 +44,7 @@ AnimalPlayer* hitPlayer;
     //各種データ初期化
     animalArray=[[NSMutableArray alloc]init];
     
-    //スクロールビュー配置
+    //スクロールビュー配置 z:0
     bgSpLayer=[CCSprite spriteWithImageNamed:@"bgLayer.png"];
     scrollView=[[CCScrollView alloc]initWithContentNode:bgSpLayer];
     scrollView.horizontalScrollEnabled=NO;
@@ -51,9 +55,14 @@ AnimalPlayer* hitPlayer;
     routeGeneLyer=[[RouteGenerationLayer alloc]init];
     //[self addChild:routeGeneLyer];
     
-    //ボタン配置レイヤー
+    //ボタン配置レイヤー z2
     NaviLayer* navi=[[NaviLayer alloc]init];
-    [self addChild:navi z:3];
+    [self addChild:navi z:2];
+    
+    //プレイヤー選択レイヤー z:3
+    playSelect=[[PlayerSelection alloc]init];
+    [self addChild:playSelect z:3];
+    playSelect.visible=false;
     
     // done
 	return self;
@@ -103,6 +112,13 @@ AnimalPlayer* hitPlayer;
     return flg;
 }
 
++(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum{
+    
+    player=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
+    [animalArray addObject:player];
+    [bgSpLayer addChild:player];
+}
+
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
 }
@@ -127,9 +143,8 @@ AnimalPlayer* hitPlayer;
         
     }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
         if(worldLocation.y < 200){
-            player=[AnimalPlayer createPlayer:worldLocation player:1];
-            [animalArray addObject:player];
-            [bgSpLayer addChild:player];
+            playSelect.visible=true;
+            playSelect.createPlayerPos=worldLocation;
         }
     }
 }

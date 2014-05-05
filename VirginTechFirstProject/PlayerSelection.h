@@ -12,7 +12,10 @@
 
 @interface PlayerSelection : CCScrollView {
     
+    CGPoint createPlayerPos;
 }
+
+@property CGPoint createPlayerPos;
 
 + (PlayerSelection *)scene;
 - (id)init;
