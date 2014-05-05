@@ -9,6 +9,7 @@
 #import "SelectStage.h"
 #import "StageLevel_00.h"
 #import "StageLevel_01.h"
+#import "GameManager.h"
 
 @implementation SelectStage
 
@@ -46,6 +47,7 @@
 
 - (void)onSpinningClicked1:(id)sender{
     // start spinning scene with transition
+    [GameManager setStageLevel:1];
     [[CCDirector sharedDirector] replaceScene:[StageLevel_01 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
 

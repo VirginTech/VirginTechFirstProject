@@ -16,10 +16,12 @@
     CCSprite *gSprite;
     
     int t;
+    float velocity;
     NSMutableArray* inpolPosArray;
     CGPoint oldPt;
     
     bool stopFlg;
+    bool enemySearchFlg;
     bool state_PathMake_flg;
     
     CCSprite* arrow;
@@ -32,7 +34,7 @@
 -(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 
 -(void)moveTank:(NSMutableArray*)posArray;
-+(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;
+-(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;
 -(void)getVehicleFrame:(float)angle;
 
 @end

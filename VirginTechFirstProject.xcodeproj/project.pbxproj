@@ -19,6 +19,9 @@
 		CF685562190E2FA1004C4D43 /* BgLowerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685561190E2FA1004C4D43 /* BgLowerLayer.m */; };
 		CF685569190E4094004C4D43 /* 地面_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF685567190E4094004C4D43 /* 地面_default.plist */; };
 		CF68556A190E4094004C4D43 /* 地面_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF685568190E4094004C4D43 /* 地面_default.png */; };
+		CF6A727319175B240027F654 /* position_line.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727219175B240027F654 /* position_line.png */; };
+		CF6A727619176C160027F654 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727819176C160027F654 /* Localizable.strings */; };
+		CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727F19176CC50027F654 /* InfoPlist.strings */; };
 		CF6C57DB190F67F700FCF978 /* BasicMath.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6C57DA190F67F700FCF978 /* BasicMath.m */; };
 		CF8C16BF191345B2002BBC13 /* enemy_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8C16BD191345B2002BBC13 /* enemy_default.plist */; };
 		CF8C16C0191345B2002BBC13 /* enemy_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C16BE191345B2002BBC13 /* enemy_default.png */; };
@@ -278,6 +281,11 @@
 		CF685561190E2FA1004C4D43 /* BgLowerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BgLowerLayer.m; sourceTree = "<group>"; };
 		CF685567190E4094004C4D43 /* 地面_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "地面_default.plist"; sourceTree = "<group>"; };
 		CF685568190E4094004C4D43 /* 地面_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地面_default.png"; sourceTree = "<group>"; };
+		CF6A727219175B240027F654 /* position_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = position_line.png; sourceTree = "<group>"; };
+		CF6A727719176C160027F654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CF6A727A19176C670027F654 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CF6A727E19176CC50027F654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CF6A728019176CC70027F654 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CF6C57D9190F67F700FCF978 /* BasicMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMath.h; sourceTree = "<group>"; };
 		CF6C57DA190F67F700FCF978 /* BasicMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMath.m; sourceTree = "<group>"; };
 		CF8C16BD191345B2002BBC13 /* enemy_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy_default.plist; sourceTree = "<group>"; };
@@ -881,6 +889,8 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF6A727219175B240027F654 /* position_line.png */,
+				CFD5A32E191229BB004E2B58 /* arrow.png */,
 				CF8C16C419137369002BBC13 /* bgLayer.png */,
 				CF8C16BD191345B2002BBC13 /* enemy_default.plist */,
 				CF8C16BE191345B2002BBC13 /* enemy_default.png */,
@@ -896,7 +906,6 @@
 				CFD5A33B19123B8D004E2B58 /* bear5_default.png */,
 				CFD5A3301912338E004E2B58 /* interface_default.plist */,
 				CFD5A3311912338E004E2B58 /* interface_default.png */,
-				CFD5A32E191229BB004E2B58 /* arrow.png */,
 				CF685567190E4094004C4D43 /* 地面_default.plist */,
 				CF685568190E4094004C4D43 /* 地面_default.png */,
 				CF68555C190E0E81004C4D43 /* 花_default.plist */,
@@ -909,6 +918,8 @@
 				CFDFDF05190A2D6F0021FBF9 /* iTunesArtwork */,
 				CFDFDF07190A2D6F0021FBF9 /* iTunesArtwork@2x */,
 				CFDFDEE9190A2D6F0021FBF9 /* Icons */,
+				CF6A727819176C160027F654 /* Localizable.strings */,
+				CF6A727F19176CC50027F654 /* InfoPlist.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1784,6 +1795,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
+				ja,
 			);
 			mainGroup = CFDFDEBB190A2D6E0021FBF9;
 			productRefGroup = CFDFDEC5190A2D6E0021FBF9 /* Products */;
@@ -1813,18 +1826,21 @@
 				CFD5A3331912338E004E2B58 /* interface_default.png in Resources */,
 				CFDFDEFF190A2D6F0021FBF9 /* Icon-Small@2x.png in Resources */,
 				CFD5A3321912338E004E2B58 /* interface_default.plist in Resources */,
+				CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */,
 				CFDFDEF1190A2D6F0021FBF9 /* Icon-72@2x.png in Resources */,
 				CFD5A33C19123B8D004E2B58 /* bear2_default.plist in Resources */,
 				CF8C16C0191345B2002BBC13 /* enemy_default.png in Resources */,
 				CFDFDEE2190A2D6F0021FBF9 /* Default.png in Resources */,
 				CFDFDEEB190A2D6F0021FBF9 /* Icon.png in Resources */,
 				CFDFDEF9190A2D6F0021FBF9 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
+				CF6A727319175B240027F654 /* position_line.png in Resources */,
 				CFDFDEE8190A2D6F0021FBF9 /* Default-Landscape~ipad.png in Resources */,
 				CFDFDEFD190A2D6F0021FBF9 /* Icon-Small.png in Resources */,
 				CF8C16BF191345B2002BBC13 /* enemy_default.plist in Resources */,
 				CFDFDEFB190A2D6F0021FBF9 /* Icon-Small-50.png in Resources */,
 				CFD5A33F19123B8D004E2B58 /* bear3_default.png in Resources */,
 				CFD5A32F191229BB004E2B58 /* arrow.png in Resources */,
+				CF6A727619176C160027F654 /* Localizable.strings in Resources */,
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
 				CF68555A190E07BF004C4D43 /* bear_default.plist in Resources */,
 				CFDFDEEF190A2D6F0021FBF9 /* Icon-72.png in Resources */,
@@ -2060,6 +2076,27 @@
 			targetProxy = CFDFDEDC190A2D6F0021FBF9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CF6A727819176C160027F654 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF6A727719176C160027F654 /* en */,
+				CF6A727A19176C670027F654 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		CF6A727F19176CC50027F654 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF6A727E19176CC50027F654 /* en */,
+				CF6A728019176CC70027F654 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CFDFE178190A2D710021FBF9 /* Debug */ = {

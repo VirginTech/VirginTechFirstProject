@@ -42,7 +42,8 @@
     [self addChild:background];
     
     // タイトル
-    CCLabelTTF *label = [CCLabelTTF labelWithString:@"大戦略！！\nアニマル\nウォーズ！" fontName:@"Chalkduster" fontSize:36.0f];
+    CCLabelTTF *label = [CCLabelTTF labelWithString:
+                                NSLocalizedString(@"Title",NULL) fontName:@"Chalkduster" fontSize:36.0f];
     label.positionType = CCPositionTypeNormalized;
     label.color = [CCColor redColor];
     label.position = ccp(0.5f, 0.5f); // Middle of screen

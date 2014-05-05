@@ -19,5 +19,6 @@
 
 + (PlayerSelection *)scene;
 - (id)init;
+-(void)setArrowVisible:(float)offsetY;
 
 @end

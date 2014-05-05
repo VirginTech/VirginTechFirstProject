@@ -17,8 +17,8 @@
 
 CGSize winSize;
 CCSprite* bg;
-//CCScrollView* scrollview;
 NSMutableArray* animalArray2;
+CCSprite* arrow;
 
 + (PlayerSelection *)scene{
     
@@ -74,11 +74,22 @@ NSMutableArray* animalArray2;
     winSize=[[CCDirector sharedDirector]viewSize];
     self.verticalScrollEnabled=NO;
     
+    //矢印初期化
+    arrow=[CCSprite spriteWithImageNamed:@"arrow.png"];
+    [self addChild:arrow];
+    
     // Create a colored background (Dark Grey)
     //CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:0.5f]];
     //[self addChild:background];
 
     return self;
+}
+
+-(void)setArrowVisible:(float)offsetY{
+    
+    arrow.rotation=180;
+    arrow.position=CGPointMake(createPlayerPos.x, createPlayerPos.y - offsetY - arrow.contentSize.height/2);
+    arrow.visible=true;
 }
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

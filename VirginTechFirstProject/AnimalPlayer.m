@@ -15,18 +15,17 @@
 @synthesize state_PathMake_flg;
 
 CGSize winSize;
-bool enemySearchFlg=false;
 
 -(void)moveTank:(NSMutableArray*)posArray{
     
     t=0;
-    //stopFlg=false;
+    stopFlg=false;
     inpolPosArray=[[NSMutableArray alloc]init];
     
     //補間座標を作成(取得)
-    inpolPosArray=[AnimalPlayer lineInterpolation:posArray];
+    inpolPosArray=[self lineInterpolation:posArray];
     
-    [self schedule:@selector(moveVehicle_Schedule:) interval:0.1];
+    [self schedule:@selector(moveVehicle_Schedule:) interval:0.01];
 }
 
 -(void)moveGun_Schedule:(CCTime)dt{
@@ -48,9 +47,9 @@ bool enemySearchFlg=false;
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:1]];
         }else if(gSprite.rotation<=normalize+112.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:2]];
-        }else if(gSprite.rotation<=normalize+145.0){
+        }else if(gSprite.rotation<=normalize+150.0){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:3]];
-        }else if(gSprite.rotation<=normalize+220.0){
+        }else if(gSprite.rotation<=normalize+215.0){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:4]];
         }else if(gSprite.rotation<=normalize+247.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:5]];
@@ -68,9 +67,9 @@ bool enemySearchFlg=false;
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:1]];
         }else if(realAngle<=112.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:2]];
-        }else if(realAngle<=145.0){
+        }else if(realAngle<=150.0){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:3]];
-        }else if(realAngle<=220.0){
+        }else if(realAngle<=215.0){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:4]];
         }else if(realAngle<=247.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:5]];
@@ -129,9 +128,9 @@ bool enemySearchFlg=false;
         [self setSpriteFrame:[vFrameArray objectAtIndex:1]];
     }else if(angle<=112.5){
         [self setSpriteFrame:[vFrameArray objectAtIndex:2]];
-    }else if(angle<=145.0){
+    }else if(angle<=150.0){
         [self setSpriteFrame:[vFrameArray objectAtIndex:3]];
-    }else if(angle<=220.0){
+    }else if(angle<=215.0){
         [self setSpriteFrame:[vFrameArray objectAtIndex:4]];
     }else if(angle<=247.5){
         [self setSpriteFrame:[vFrameArray objectAtIndex:5]];
@@ -147,9 +146,9 @@ bool enemySearchFlg=false;
 //========================
 //     直線補間
 //========================
-+(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray{
+-(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray{
     
-    float velocity=0.5;//補間間隔(速さの調整に使用する)
+    velocity=0.25;//補間間隔(速さの調整に使用する)
     NSValue *value1;
     NSValue *value2;
     CGPoint pt1;
@@ -247,6 +246,8 @@ bool enemySearchFlg=false;
         [self addChild:gSprite];
         //停止フラグ
         stopFlg=false;
+        //敵捕捉フラグ
+        enemySearchFlg=false;
         //経路作成フラグ
         state_PathMake_flg=false;
         //経路作成マーク

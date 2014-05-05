@@ -11,6 +11,20 @@
 
 @interface AnimalEnemy : CCSprite {
     
+    NSMutableArray* vFrameArray;
+    NSMutableArray* gFrameArray;
+    CCSprite *gSprite;
+        
+    bool stopFlg;
+    bool enemySearchFlg;
+    
+    float targetAngle;
+    float targetDistance;
 }
+
+@property bool stopFlg;
+
++(id)createEnemy;
+-(id)initWithEnemy;
 
 @end

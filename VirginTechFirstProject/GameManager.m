@@ -11,15 +11,22 @@
 @implementation GameManager
 
 int deviceType;// 1:iPhone5 2:iPhone4 3:iPad2
+int stageLevel;//ステージレベル
 
-//デバイス登録
+//デバイス取得／登録
 +(void)setDevice:(int)type{
-    
     deviceType=type;
 }
 +(int)getDevice{
-    
     return deviceType;
+}
+
+//ステージレベル取得／登録
++(void)setStageLevel:(int)level{
+    stageLevel=level;
+}
++(int)getStageLevel{
+    return stageLevel;
 }
 
 @end
