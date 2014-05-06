@@ -18,8 +18,8 @@
     bool stopFlg;
     bool enemySearchFlg;
     
-    float targetAngle;
-    float targetDistance;
+    CGPoint targetPoint;
+    float velocity;
 }
 
 @property bool stopFlg;

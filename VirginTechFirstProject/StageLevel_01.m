@@ -135,6 +135,16 @@ AnimalEnemy* enemy;
             }
         }
     }
+    //プレイヤー　対　敵
+    for(AnimalEnemy* enemy in enemyArray){
+        for(AnimalPlayer* player in animalArray){
+            if([BasicMath RadiusIntersectsRadius:enemy.position pointB:player.position
+                                         radius1:20 radius2:20]){
+                enemy.stopFlg=true;
+                player.stopFlg=true;
+            }
+        }
+    }
 }
 
 //============================

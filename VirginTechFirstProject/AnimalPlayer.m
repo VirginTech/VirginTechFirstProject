@@ -148,7 +148,6 @@ CGSize winSize;
 //========================
 -(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray{
     
-    velocity=0.25;//補間間隔(速さの調整に使用する)
     NSValue *value1;
     NSValue *value2;
     CGPoint pt1;
@@ -244,6 +243,8 @@ CGSize winSize;
         gSprite=[CCSprite spriteWithSpriteFrame:[gFrameArray objectAtIndex:0]];
         gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
         [self addChild:gSprite];
+        //速度セット
+        velocity=0.1;//補間間隔(速さの調整に使用する)
         //停止フラグ
         stopFlg=false;
         //敵捕捉フラグ
