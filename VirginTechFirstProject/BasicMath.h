@@ -16,5 +16,6 @@
                                             radius1:(float)radius1 radius2:(float)radius2;
 +(float)getAngle_To_Radian:(CGPoint)sPos ePos:(CGPoint)ePos;
 +(float)getAngle_To_Degree:(CGPoint)sPos ePos:(CGPoint)ePos;
++(float)getPosDistance:(CGPoint)pos1 pos2:(CGPoint)pos2;
 
 @end

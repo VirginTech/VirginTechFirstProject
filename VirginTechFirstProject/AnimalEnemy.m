@@ -8,6 +8,7 @@
 
 #import "AnimalEnemy.h"
 #import "BasicMath.h"
+#import "AnimalPlayer.h"
 
 @implementation AnimalEnemy
 
@@ -15,6 +16,50 @@
 
 CGSize winSize;
 CGPoint oldPt;
+AnimalPlayer* targetPlayer;
+
+bool chaseFlg;
+
+//========================
+//　　追跡モード
+//========================
+-(void)chase_Schedule:(CCTime)dt{
+
+    CGPoint nextPos;
+    float targetAngle;
+    float targetDistance;
+    
+    if(!stopFlg){
+        
+        if(!chaseFlg){
+            [self unschedule:@selector(chase_Schedule:)];
+            [self schedule:@selector(straight_Schedule:)interval:0.01];
+            //chaseFlg=true;
+        }
+
+        //方角セット
+        targetAngle = [BasicMath getAngle_To_Radian:self.position ePos:targetPlayer.position];
+        //総距離セット
+        targetDistance = sqrtf(powf(self.position.x - targetPlayer.position.x,2) +
+                                                            powf(self.position.y - targetPlayer.position.y,2));
+        //次位置セット
+        nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+        self.position=CGPointMake(self.position.x+nextPos.x, self.position.y+nextPos.y);
+        //画像角度セット
+        self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:self.position];
+        //差替画像セット
+        if(self.rotationalSkewX==self.rotationalSkewY){
+            [self getVehicleFrame:self.rotation];
+        }
+        oldPt=self.position;
+        
+    }else{
+        
+        [self unschedule:@selector(chase_Schedule:)];
+        stopFlg=false;
+    }
+
+}
 
 //========================
 //　　直進モード
@@ -26,6 +71,12 @@ CGPoint oldPt;
     float targetDistance;
 
     if(!stopFlg){
+        
+        if(chaseFlg){
+            [self unschedule:@selector(straight_Schedule:)];
+            [self schedule:@selector(chase_Schedule:)interval:0.01];
+            //chaseFlg=false;
+        }
         
         //方角セット
         targetAngle = [BasicMath getAngle_To_Radian:self.position ePos:targetPoint];
@@ -134,6 +185,34 @@ CGPoint oldPt;
     }
 }
 
+-(void)setTarget:(NSMutableArray*)targetArray{
+    
+    float dis;
+    float nearDis=500;
+    
+    if(targetArray.count>0){
+        for(AnimalPlayer* target in targetArray){
+            //一番近いターゲットを取得
+            dis = [BasicMath getPosDistance:self.position pos2:target.position];
+            if(dis < nearDis){
+                nearDis = dis;
+                targetPlayer = target;
+                chaseFlg=true;
+            }
+        }
+    }else{
+        chaseFlg=false;
+    }
+}
+
++(BOOL)isLevel:(AnimalPlayer*)player{
+    
+    bool flg=false;
+    
+    
+    return  flg;
+}
+
 //====================
 //　敵アニマルタンク作成
 //====================
@@ -168,12 +247,14 @@ CGPoint oldPt;
         targetPoint = CGPointMake(winSize.width/2, 50);
         //速度セット
         velocity=0.1;
-        //直進スケジュール始動
-        [self schedule:@selector(straight_Schedule:)interval:0.01];
         //停止フラグ
         stopFlg=false;
         //敵捕捉フラグ
         enemySearchFlg=false;
+        //追跡フラグ
+        chaseFlg=false;
+        //直進スケジュール始動
+        [self schedule:@selector(straight_Schedule:)interval:0.01];
         //砲塔制御スケジュール開始
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];
     }

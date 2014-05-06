@@ -33,6 +33,8 @@ PlayerSelection* playSelect;
 AnimalPlayer* player;
 AnimalEnemy* enemy;
 
+NSMutableArray* searchTarget;
+
 + (StageLevel_01 *)scene
 {
     return [[self alloc] init];
@@ -136,14 +138,25 @@ AnimalEnemy* enemy;
         }
     }
     //プレイヤー　対　敵
-    for(AnimalEnemy* enemy in enemyArray){
-        for(AnimalPlayer* player in animalArray){
+    for(AnimalPlayer* player in animalArray){
+        for(AnimalEnemy* enemy in enemyArray){
             if([BasicMath RadiusIntersectsRadius:enemy.position pointB:player.position
                                          radius1:20 radius2:20]){
                 enemy.stopFlg=true;
                 player.stopFlg=true;
             }
         }
+    }
+    //敵アニマル捕捉用レーダー
+    for(AnimalEnemy* enemy in enemyArray){
+        searchTarget=[[NSMutableArray alloc]init];
+        for(AnimalPlayer* player in animalArray){
+            if([BasicMath RadiusIntersectsRadius:enemy.position pointB:player.position
+                                         radius1:120 radius2:20]){
+                [searchTarget addObject:player];
+            }
+        }
+        [enemy setTarget:searchTarget];
     }
 }
 
@@ -184,6 +197,11 @@ AnimalEnemy* enemy;
             if(hitPlayer!=_player){
                 flg=true;
             }
+        }
+    }
+    for(AnimalEnemy* _enemy in enemyArray){
+        if([BasicMath RadiusIntersectsRadius:hitPlayer.position pointB:_enemy.position radius1:20 radius2:20]){
+            flg=true;
         }
     }
     return flg;

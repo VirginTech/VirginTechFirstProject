@@ -244,7 +244,7 @@ CGSize winSize;
         gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
         [self addChild:gSprite];
         //速度セット
-        velocity=0.1;//補間間隔(速さの調整に使用する)
+        velocity=0.2;//補間間隔(速さの調整に使用する)
         //停止フラグ
         stopFlg=false;
         //敵捕捉フラグ

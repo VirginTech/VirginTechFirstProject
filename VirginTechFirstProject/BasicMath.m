@@ -90,4 +90,14 @@
     return angle;
 }
 
+//========================
+//　　距離を取得
+//========================
++(float)getPosDistance:(CGPoint)pos1 pos2:(CGPoint)pos2{
+    
+    float distance;
+    distance=sqrtf(powf(pos1.x - pos2.x,2) + powf(pos1.y - pos2.y,2));
+    return distance;
+}
+
 @end

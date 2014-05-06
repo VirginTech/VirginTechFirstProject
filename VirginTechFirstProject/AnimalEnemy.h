@@ -26,5 +26,6 @@
 
 +(id)createEnemy;
 -(id)initWithEnemy;
+-(void)setTarget:(NSMutableArray*)targetArray;
 
 @end
