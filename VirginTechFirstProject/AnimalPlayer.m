@@ -11,6 +11,8 @@
 
 @implementation AnimalPlayer
 
+@synthesize t;
+@synthesize inpolPosArray;
 @synthesize stopFlg;
 @synthesize state_PathMake_flg;
 

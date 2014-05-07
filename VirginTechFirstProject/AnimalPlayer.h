@@ -27,6 +27,8 @@
     CCSprite* arrow;
 }
 
+@property int t;
+@property NSMutableArray* inpolPosArray;
 @property bool stopFlg;
 @property bool state_PathMake_flg;
 

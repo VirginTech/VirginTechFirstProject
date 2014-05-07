@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "AnimalPlayer.h"
 
 @interface AnimalEnemy : CCSprite {
     
@@ -26,6 +27,11 @@
 
 +(id)createEnemy;
 -(id)initWithEnemy;
+
 -(void)setTarget:(NSMutableArray*)targetArray;
+-(BOOL)isLevel:(AnimalPlayer*)player;
+-(BOOL)doEscape:(AnimalPlayer*)player;
+-(BOOL)isForward:(AnimalPlayer*)player;
+-(BOOL)isNear:(AnimalPlayer*)player;
 
 @end
