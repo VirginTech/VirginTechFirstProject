@@ -11,6 +11,7 @@
 
 @implementation AnimalEnemy
 
+@synthesize totalAbility;
 @synthesize stopFlg;
 
 CGSize winSize;
@@ -20,15 +21,17 @@ float oldRange;
 AnimalPlayer* targetPlayer;
 
 int modeFlg;//0=直進 1=追跡 2=回避
+float escapeAngle;
+
 
 //========================
 //　　逃避モード
 //========================
 -(void)escape_Schedule:(CCTime)dt{
     
-    //TODO
-    
-    
+    CGPoint nextPos;
+    float targetAngle;
+    float targetDistance;
     
     if(!stopFlg){
         
@@ -41,12 +44,21 @@ int modeFlg;//0=直進 1=追跡 2=回避
         }else if(modeFlg==2){//回避
 
         }
-        
-        //TODO
-        
-        
-        
-        
+        //方角セット
+        targetAngle = escapeAngle;
+        //総距離セット
+        targetDistance = sqrtf(powf(self.position.x - targetPlayer.position.x,2) +
+                                                        powf(self.position.y - targetPlayer.position.y,2));
+        //次位置セット
+        nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+        self.position=CGPointMake(self.position.x+nextPos.x, self.position.y+nextPos.y);
+        //画像角度セット
+        self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:self.position];
+        //差替画像セット
+        if(self.rotationalSkewX==self.rotationalSkewY){
+            [self getVehicleFrame:self.rotation];
+        }
+        oldPt=self.position;
         
     }else{
         
@@ -117,6 +129,16 @@ int modeFlg;//0=直進 1=追跡 2=回避
             [self unschedule:@selector(straight_Schedule:)];
             [self schedule:@selector(chase_Schedule:)interval:0.01];
         }else if(modeFlg==2){//回避
+            int r = arc4random() % 2;
+            if(r==0){
+                targetDistance=-(500 - sqrtf(powf(self.position.x - targetPlayer.position.x,2)
+                                       + powf(self.position.y - targetPlayer.position.y,2)));
+            }else{
+                targetDistance= (500 - sqrtf(powf(self.position.x - targetPlayer.position.x,2)
+                                       + powf(self.position.y - targetPlayer.position.y,2)));
+            }
+            escapeAngle = [BasicMath getAngle_To_Radian:self.position ePos:
+                           CGPointMake(targetPlayer.position.x + targetDistance, targetPlayer.position.y)];
             [self unschedule:@selector(straight_Schedule:)];
             [self schedule:@selector(escape_Schedule:)interval:0.01];
         }
@@ -244,8 +266,6 @@ int modeFlg;//0=直進 1=追跡 2=回避
                 }else{                          //相手が強ければ逃避モード
                     if([self doEscape:targetPlayer]){ //回避の必要性
                         modeFlg=2;//あり
-                    }else{
-                        modeFlg=0;//なし
                     }
                 }
             }
@@ -300,7 +320,6 @@ int modeFlg;//0=直進 1=追跡 2=回避
     if(leftAngleLimit<playerAngle && playerAngle<rightAngleLimit){
         flg=true;//前方
     }
-    
     return flg;
 }
 
@@ -308,8 +327,9 @@ int modeFlg;//0=直進 1=追跡 2=回避
     
     bool flg=false;//自分は弱い
     
-    //flg=true;//自分が強い
-    
+    if(targetPlayer.totalAbility < self.totalAbility){
+        flg=true;//自分が強い
+    }
     return  flg;
 }
 
@@ -353,6 +373,8 @@ int modeFlg;//0=直進 1=追跡 2=回避
         enemySearchFlg=false;
         //モードフラグ 0=直進 1=追跡 2=回避
         modeFlg=0;
+        //総合能力
+        totalAbility=3;
         //直進スケジュール始動
         [self schedule:@selector(straight_Schedule:)interval:0.01];
         //砲塔制御スケジュール開始

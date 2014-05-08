@@ -25,12 +25,15 @@
     bool state_PathMake_flg;
     
     CCSprite* arrow;
+    
+    int totalAbility;
 }
 
 @property int t;
 @property NSMutableArray* inpolPosArray;
 @property bool stopFlg;
 @property bool state_PathMake_flg;
+@property int totalAbility;
 
 +(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 -(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum;

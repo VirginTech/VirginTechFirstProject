@@ -21,8 +21,11 @@
     
     CGPoint targetPoint;
     float velocity;
+    
+    int totalAbility;
 }
 
+@property int totalAbility;
 @property bool stopFlg;
 
 +(id)createEnemy;

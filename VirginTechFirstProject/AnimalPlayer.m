@@ -15,6 +15,7 @@
 @synthesize inpolPosArray;
 @synthesize stopFlg;
 @synthesize state_PathMake_flg;
+@synthesize totalAbility;
 
 CGSize winSize;
 
@@ -220,16 +221,22 @@ CGSize winSize;
     
     //画像を配列に格納
     if(playerNum==1){
+        totalAbility=1;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
     }else if(playerNum==2){
+        totalAbility=2;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear2_default.plist"];
     }else if(playerNum==3){
+        totalAbility=3;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear3_default.plist"];
     }else if(playerNum==4){
+        totalAbility=4;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear4_default.plist"];
     }else if(playerNum==5){
+        totalAbility=5;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear5_default.plist"];
     }else{
+        totalAbility=1;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
     }
     
