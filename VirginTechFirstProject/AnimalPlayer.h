@@ -24,6 +24,8 @@
     bool enemySearchFlg;
     bool state_PathMake_flg;
     
+    float enemyAngle;
+    
     CCSprite* arrow;
     
     int totalAbility;
@@ -41,5 +43,6 @@
 -(void)moveTank:(NSMutableArray*)posArray;
 -(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;
 -(void)getVehicleFrame:(float)angle;
+-(void)setTarget:(NSMutableArray*)targetArray;
 
 @end

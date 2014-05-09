@@ -17,11 +17,19 @@
     CCSprite *gSprite;
         
     bool stopFlg;
-    bool enemySearchFlg;
+    bool playerSearchFlg;
+    float gunAngle;
     
     CGPoint targetPoint;
     float velocity;
+    CGPoint oldPt;
+    float oldRange;
     
+    AnimalPlayer* targetPlayer;
+    
+    int modeFlg;//0=直進 1=追跡 2=回避
+    float escapeAngle;
+
     int totalAbility;
 }
 
@@ -32,9 +40,9 @@
 -(id)initWithEnemy;
 
 -(void)setTarget:(NSMutableArray*)targetArray;
--(BOOL)isLevel:(AnimalPlayer*)player;
--(BOOL)doEscape:(AnimalPlayer*)player;
--(BOOL)isForward:(AnimalPlayer*)player;
--(BOOL)isNear:(AnimalPlayer*)player;
+//-(BOOL)isLevel:(AnimalPlayer*)player;
+//-(BOOL)doEscape:(AnimalPlayer*)player;
+//-(BOOL)isForward:(AnimalPlayer*)player;
+//-(BOOL)isNear:(AnimalPlayer*)player;
 
 @end

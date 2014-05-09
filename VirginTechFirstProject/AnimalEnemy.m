@@ -15,14 +15,6 @@
 @synthesize stopFlg;
 
 CGSize winSize;
-CGPoint oldPt;
-float oldRange;
-
-AnimalPlayer* targetPlayer;
-
-int modeFlg;//0=直進 1=追跡 2=回避
-float escapeAngle;
-
 
 //========================
 //　　逃避モード
@@ -179,9 +171,9 @@ float escapeAngle;
         [self setSpriteFrame:[vFrameArray objectAtIndex:1]];
     }else if(angle<=112.5){
         [self setSpriteFrame:[vFrameArray objectAtIndex:2]];
-    }else if(angle<=150.0){
+    }else if(angle<=157.5){
         [self setSpriteFrame:[vFrameArray objectAtIndex:3]];
-    }else if(angle<=215.0){
+    }else if(angle<=202.5){
         [self setSpriteFrame:[vFrameArray objectAtIndex:4]];
     }else if(angle<=247.5){
         [self setSpriteFrame:[vFrameArray objectAtIndex:5]];
@@ -204,8 +196,8 @@ float escapeAngle;
         realAngle = self.rotation;
     }
     
-    if(enemySearchFlg){//敵捕捉状態
-        gSprite.rotation = normalize;// normalize + 敵の角度
+    if(playerSearchFlg){//敵捕捉状態
+        gSprite.rotation = normalize + gunAngle;// normalize + 敵の角度
         
         if(gSprite.rotation<=normalize+22.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:0]];
@@ -213,9 +205,9 @@ float escapeAngle;
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:1]];
         }else if(gSprite.rotation<=normalize+112.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:2]];
-        }else if(gSprite.rotation<=normalize+150.0){
+        }else if(gSprite.rotation<=normalize+157.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:3]];
-        }else if(gSprite.rotation<=normalize+215.0){
+        }else if(gSprite.rotation<=normalize+202.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:4]];
         }else if(gSprite.rotation<=normalize+247.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:5]];
@@ -227,15 +219,17 @@ float escapeAngle;
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:0]];
         }
     }else{//通常走行
+        gSprite.rotation=0;
+        
         if(realAngle<=22.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:0]];
         }else if(realAngle<=67.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:1]];
         }else if(realAngle<=112.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:2]];
-        }else if(realAngle<=150.0){
+        }else if(realAngle<=157.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:3]];
-        }else if(realAngle<=215.0){
+        }else if(realAngle<=202.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:4]];
         }else if(realAngle<=247.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:5]];
@@ -251,27 +245,30 @@ float escapeAngle;
 
 -(void)setTarget:(NSMutableArray*)targetArray{
     
-    float dis;
-    float nearDis=500;
+    float range;
+    float nearRange=500;
     
     if(targetArray.count>0){
         for(AnimalPlayer* target in targetArray){
             //一番近いターゲットを取得
-            dis = [BasicMath getPosDistance:self.position pos2:target.position];
-            if(dis < nearDis){
-                nearDis = dis;
+            range = [BasicMath getPosDistance:self.position pos2:target.position];
+            if(range < nearRange){
+                nearRange = range;
                 targetPlayer = target;
-                if([self isLevel:targetPlayer]){//自分が強ければ追跡モード
+                if([self isLevel:target]){//自分が強ければ追跡モード
                     modeFlg=1;
                 }else{                          //相手が強ければ逃避モード
-                    if([self doEscape:targetPlayer]){ //回避の必要性
+                    if([self doEscape:target]){ //回避の必要性
                         modeFlg=2;//あり
                     }
                 }
+                playerSearchFlg=true;
+                gunAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
             }
         }
     }else{                                      //相手がいなければ直進モード
         modeFlg=0;
+        playerSearchFlg=false;
     }
 }
 
@@ -370,7 +367,7 @@ float escapeAngle;
         //停止フラグ
         stopFlg=false;
         //敵捕捉フラグ
-        enemySearchFlg=false;
+        playerSearchFlg=false;
         //モードフラグ 0=直進 1=追跡 2=回避
         modeFlg=0;
         //総合能力

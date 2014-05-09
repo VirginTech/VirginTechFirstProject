@@ -110,7 +110,9 @@ NSMutableArray* searchTarget;
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
-   [StageLevel_01 createEnemy];
+    [StageLevel_01 createEnemy];
+    //[StageLevel_01 createEnemy];
+    //[StageLevel_01 createEnemy];
     
     // In pre-v3, touch enable and scheduleUpdate was called here
     // In v3, touch is enabled by setting userInterActionEnabled for the individual nodes
@@ -147,7 +149,7 @@ NSMutableArray* searchTarget;
             }
         }
     }
-    //敵アニマル捕捉用レーダー
+    //敵アニマル戦車の捕捉用レーダー
     for(AnimalEnemy* enemy in enemyArray){
         searchTarget=[[NSMutableArray alloc]init];
         for(AnimalPlayer* player in animalArray){
@@ -157,6 +159,17 @@ NSMutableArray* searchTarget;
             }
         }
         [enemy setTarget:searchTarget];
+    }
+    //我アニマル戦車の捕捉用レーダー
+    for(AnimalPlayer* player in animalArray){
+        searchTarget=[[NSMutableArray alloc]init];
+        for(AnimalEnemy* enemy in enemyArray){
+            if([BasicMath RadiusIntersectsRadius:player.position pointB:enemy.position
+                                         radius1:120 radius2:20]){
+                [searchTarget addObject:enemy];
+            }
+        }
+        [player setTarget:searchTarget];
     }
 }
 

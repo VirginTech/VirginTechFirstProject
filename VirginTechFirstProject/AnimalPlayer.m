@@ -8,6 +8,7 @@
 
 #import "AnimalPlayer.h"
 #import "BasicMath.h"
+#import "AnimalEnemy.h"
 
 @implementation AnimalPlayer
 
@@ -31,18 +32,44 @@ CGSize winSize;
     [self schedule:@selector(moveVehicle_Schedule:) interval:0.01];
 }
 
+//========================
+//方向(角度)における車体画像差替え
+//========================
+-(void)getVehicleFrame:(float)angle{
+    
+    if(angle<=22.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:0]];
+    }else if(angle<=67.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:1]];
+    }else if(angle<=112.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:2]];
+    }else if(angle<=157.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:3]];
+    }else if(angle<=202.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:4]];
+    }else if(angle<=247.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:5]];
+    }else if(angle<=292.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:6]];
+    }else if(angle<=337.5){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:7]];
+    }else if(angle<=360.0){
+        [self setSpriteFrame:[vFrameArray objectAtIndex:0]];
+    }
+}
+
 -(void)moveGun_Schedule:(CCTime)dt{
     
     float normalize;
     float realAngle;
     
     if(self.rotationalSkewX==self.rotationalSkewY){
-        normalize = -self.rotation;
+        normalize = -self.rotation;//正面０度
         realAngle = self.rotation;
     }
     
     if(enemySearchFlg){//敵捕捉状態
-        gSprite.rotation = normalize;// normalize + 敵の角度
+        gSprite.rotation = normalize + enemyAngle; // normalize + 敵の角度
         
         if(gSprite.rotation<=normalize+22.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:0]];
@@ -50,9 +77,9 @@ CGSize winSize;
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:1]];
         }else if(gSprite.rotation<=normalize+112.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:2]];
-        }else if(gSprite.rotation<=normalize+150.0){
+        }else if(gSprite.rotation<=normalize+157.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:3]];
-        }else if(gSprite.rotation<=normalize+215.0){
+        }else if(gSprite.rotation<=normalize+202.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:4]];
         }else if(gSprite.rotation<=normalize+247.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:5]];
@@ -64,15 +91,17 @@ CGSize winSize;
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:0]];
         }
     }else{//通常走行
+        gSprite.rotation=0;
+
         if(realAngle<=22.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:0]];
         }else if(realAngle<=67.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:1]];
         }else if(realAngle<=112.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:2]];
-        }else if(realAngle<=150.0){
+        }else if(realAngle<=157.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:3]];
-        }else if(realAngle<=215.0){
+        }else if(realAngle<=202.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:4]];
         }else if(realAngle<=247.5){
             [gSprite setSpriteFrame:[gFrameArray objectAtIndex:5]];
@@ -117,32 +146,6 @@ CGSize winSize;
             self.position=CGPointMake(pt.x, pt.y);
         }
         stopFlg=false;
-    }
-}
-
-//========================
-//方向(角度)における車体画像差替え
-//========================
--(void)getVehicleFrame:(float)angle{
-    
-    if(angle<=22.5){
-        [self setSpriteFrame:[vFrameArray objectAtIndex:0]];
-    }else if(angle<=67.5){
-        [self setSpriteFrame:[vFrameArray objectAtIndex:1]];
-    }else if(angle<=112.5){
-        [self setSpriteFrame:[vFrameArray objectAtIndex:2]];
-    }else if(angle<=150.0){
-        [self setSpriteFrame:[vFrameArray objectAtIndex:3]];
-    }else if(angle<=215.0){
-        [self setSpriteFrame:[vFrameArray objectAtIndex:4]];
-    }else if(angle<=247.5){
-        [self setSpriteFrame:[vFrameArray objectAtIndex:5]];
-    }else if(angle<=292.5){
-        [self setSpriteFrame:[vFrameArray objectAtIndex:6]];
-    }else if(angle<=337.5){
-        [self setSpriteFrame:[vFrameArray objectAtIndex:7]];
-    }else if(angle<=360.0){
-        [self setSpriteFrame:[vFrameArray objectAtIndex:0]];
     }
 }
 
@@ -206,6 +209,26 @@ CGSize winSize;
         }
 
         state_PathMake_flg=false;
+    }
+}
+
+-(void)setTarget:(NSMutableArray*)targetArray{
+    float range;
+    float nearRange=500;
+
+    if(targetArray.count>0){
+        for(AnimalEnemy* target in targetArray){
+            //一番近いターゲットを取得
+            range = [BasicMath getPosDistance:self.position pos2:target.position];
+            if(range < nearRange){
+                nearRange = range;
+                //targetEnemy = target;
+                enemySearchFlg=true;
+                enemyAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
+            }
+        }
+    }else{
+        enemySearchFlg=false;
     }
 }
 
