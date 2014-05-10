@@ -11,6 +11,8 @@
 		CF27C7E3190B3A5F004FAEBE /* AnimalPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */; };
 		CF27C7E8190B3DA5004FAEBE /* StageLevel_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */; };
 		CF27C7F7190BB1F1004FAEBE /* RouteDispLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */; };
+		CF5FE31F191DB84400821441 /* PlayerMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FE31E191DB84400821441 /* PlayerMissile.m */; };
+		CF5FE321191DE6AA00821441 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5FE320191DE6AA00821441 /* rock.png */; };
 		CF685547190DE72E004C4D43 /* BgHigherLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685546190DE72E004C4D43 /* BgHigherLayer.m */; };
 		CF68555E190E0E81004C4D43 /* 花_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF68555C190E0E81004C4D43 /* 花_default.plist */; };
 		CF68555F190E0E81004C4D43 /* 花_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF68555D190E0E81004C4D43 /* 花_default.png */; };
@@ -271,6 +273,9 @@
 		CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageLevel_00.m; sourceTree = "<group>"; };
 		CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDispLayer.h; sourceTree = "<group>"; };
 		CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDispLayer.m; sourceTree = "<group>"; };
+		CF5FE31D191DB84400821441 /* PlayerMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMissile.h; sourceTree = "<group>"; };
+		CF5FE31E191DB84400821441 /* PlayerMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerMissile.m; sourceTree = "<group>"; };
+		CF5FE320191DE6AA00821441 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		CF685545190DE72E004C4D43 /* BgHigherLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BgHigherLayer.h; sourceTree = "<group>"; };
 		CF685546190DE72E004C4D43 /* BgHigherLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BgHigherLayer.m; sourceTree = "<group>"; };
 		CF68555C190E0E81004C4D43 /* 花_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "花_default.plist"; sourceTree = "<group>"; };
@@ -798,6 +803,8 @@
 			children = (
 				CF27C7E1190B3A5F004FAEBE /* AnimalPlayer.h */,
 				CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */,
+				CF5FE31D191DB84400821441 /* PlayerMissile.h */,
+				CF5FE31E191DB84400821441 /* PlayerMissile.m */,
 				CF8C16C119134618002BBC13 /* AnimalEnemy.h */,
 				CF8C16C219134618002BBC13 /* AnimalEnemy.m */,
 			);
@@ -889,6 +896,7 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF5FE320191DE6AA00821441 /* rock.png */,
 				CF6A727219175B240027F654 /* position_line.png */,
 				CFD5A32E191229BB004E2B58 /* arrow.png */,
 				CF8C16C419137369002BBC13 /* bgLayer.png */,
@@ -1840,6 +1848,7 @@
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
 				CFA2AE92191CF20200D46940 /* bear4_default.plist in Resources */,
 				CFDFDEEF190A2D6F0021FBF9 /* Icon-72.png in Resources */,
+				CF5FE321191DE6AA00821441 /* rock.png in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
 				CF68555F190E0E81004C4D43 /* 花_default.png in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
@@ -1940,6 +1949,7 @@
 				CFDFDF67190A2D6F0021FBF9 /* CCMotionStreak.m in Sources */,
 				CFDFDF17190A2D6F0021FBF9 /* CCActionInstant.m in Sources */,
 				CFDFE011190A2D700021FBF9 /* base64.c in Sources */,
+				CF5FE31F191DB84400821441 /* PlayerMissile.m in Sources */,
 				CFDFE050190A2D700021FBF9 /* OALAudioTrack.m in Sources */,
 				CFDFDF93190A2D6F0021FBF9 /* CCProgressNode.m in Sources */,
 				CFDFDF86190A2D6F0021FBF9 /* CCPhysicsBody.m in Sources */,

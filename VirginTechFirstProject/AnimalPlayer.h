@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "PlayerMissile.h"
 
 @interface AnimalPlayer : CCSprite {
     
@@ -25,10 +26,12 @@
     bool state_PathMake_flg;
     
     float enemyAngle;
-    
     CCSprite* arrow;
-    
     int totalAbility;
+
+    PlayerMissile* pMissile;
+    CGPoint targetEnemyPos;
+    //bool fireFlg;
 }
 
 @property int t;
@@ -36,6 +39,7 @@
 @property bool stopFlg;
 @property bool state_PathMake_flg;
 @property int totalAbility;
+//@property bool fireFlg;
 
 +(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 -(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum;

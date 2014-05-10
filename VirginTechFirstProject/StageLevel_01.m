@@ -162,7 +162,9 @@ NSMutableArray* searchTarget;
     }
     //我アニマル戦車の捕捉用レーダー
     for(AnimalPlayer* player in animalArray){
+
         searchTarget=[[NSMutableArray alloc]init];
+        
         for(AnimalEnemy* enemy in enemyArray){
             if([BasicMath RadiusIntersectsRadius:player.position pointB:enemy.position
                                          radius1:120 radius2:20]){
@@ -171,6 +173,14 @@ NSMutableArray* searchTarget;
         }
         [player setTarget:searchTarget];
     }
+}
+
+//============================
+// プレイヤーミサイルセット
+//============================
++(void)setPlayerMissile:(PlayerMissile*)missile{
+
+    [bgSpLayer addChild:missile];
 }
 
 //============================

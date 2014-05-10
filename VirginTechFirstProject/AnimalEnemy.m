@@ -262,8 +262,11 @@ CGSize winSize;
                         modeFlg=2;//あり
                     }
                 }
+                //砲塔旋回
                 playerSearchFlg=true;
                 gunAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
+                //ミサイル発射
+                
             }
         }
     }else{                                      //相手がいなければ直進モード

@@ -8,6 +8,7 @@
 
 #import "AnimalPlayer.h"
 #import "BasicMath.h"
+#import "StageLevel_01.h"
 #import "AnimalEnemy.h"
 
 @implementation AnimalPlayer
@@ -17,6 +18,7 @@
 @synthesize stopFlg;
 @synthesize state_PathMake_flg;
 @synthesize totalAbility;
+//@synthesize fireFlg;
 
 CGSize winSize;
 
@@ -215,20 +217,32 @@ CGSize winSize;
 -(void)setTarget:(NSMutableArray*)targetArray{
     float range;
     float nearRange=500;
-
+    
     if(targetArray.count>0){
         for(AnimalEnemy* target in targetArray){
             //一番近いターゲットを取得
             range = [BasicMath getPosDistance:self.position pos2:target.position];
             if(range < nearRange){
                 nearRange = range;
-                //targetEnemy = target;
+                targetEnemyPos = target.position;//ターゲットポジション取得
+                //砲塔旋回
                 enemySearchFlg=true;
                 enemyAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
             }
         }
     }else{
         enemySearchFlg=false;
+    }
+}
+
+//====================
+//　ミサイル発射！
+//====================
+-(void)fireMissile_Schedule:(CCTime)dt{
+    
+    if(enemySearchFlg){
+        pMissile = [PlayerMissile createMissile:self.position enemyPos:targetEnemyPos];
+        [StageLevel_01 setPlayerMissile:pMissile];
     }
 }
 
@@ -288,10 +302,14 @@ CGSize winSize;
         arrow.rotation=180;
         [self addChild:arrow];
         arrow.visible=false;
+        //射撃フラグ
+        //fireFlg=false;
         //砲塔制御スケジュール開始
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];
         //状態スケジュール
         [self schedule:@selector(status_Schedule:)interval:0.1];
+        //ミサイル発射制御スケジュール
+        [self schedule:@selector(fireMissile_Schedule:)interval:1.5];
     }
     return self;
 }
