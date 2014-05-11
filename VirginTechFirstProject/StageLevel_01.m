@@ -34,6 +34,8 @@ AnimalPlayer* player;
 AnimalEnemy* enemy;
 
 NSMutableArray* searchTarget;
+NSMutableArray* playerMissileArray;
+NSMutableArray* removeMissileArray;
 
 + (StageLevel_01 *)scene
 {
@@ -53,6 +55,7 @@ NSMutableArray* searchTarget;
     //各種データ初期化
     animalArray=[[NSMutableArray alloc]init];
     enemyArray =[[NSMutableArray alloc]init];
+    playerMissileArray=[[NSMutableArray alloc]init];
     
     //ステージレベル取得
     int stageLevel=[GameManager getStageLevel];
@@ -127,6 +130,8 @@ NSMutableArray* searchTarget;
 
 -(void)judgement_Schedule:(CCTime)dt{
     
+    removeMissileArray=[[NSMutableArray alloc]init];
+    
     //プレイヤー対プレイヤー衝突判定
     for(AnimalPlayer* player1 in animalArray){
         for(AnimalPlayer* player2 in animalArray){
@@ -162,9 +167,7 @@ NSMutableArray* searchTarget;
     }
     //我アニマル戦車の捕捉用レーダー
     for(AnimalPlayer* player in animalArray){
-
         searchTarget=[[NSMutableArray alloc]init];
-        
         for(AnimalEnemy* enemy in enemyArray){
             if([BasicMath RadiusIntersectsRadius:player.position pointB:enemy.position
                                          radius1:120 radius2:20]){
@@ -173,14 +176,23 @@ NSMutableArray* searchTarget;
         }
         [player setTarget:searchTarget];
     }
-}
-
-//============================
-// プレイヤーミサイルセット
-//============================
-+(void)setPlayerMissile:(PlayerMissile*)missile{
-
-    [bgSpLayer addChild:missile];
+    //プレイヤーミサイル当たり判定
+    for(PlayerMissile* missile in playerMissileArray){
+        for(AnimalEnemy* enemy in enemyArray){
+            if([BasicMath RadiusIntersectsRadius:missile.position pointB:enemy.position radius1:10 radius2:20]){
+                [removeMissileArray addObject:missile];
+            }
+        }
+        //時限切れミサイル削除
+        if(missile.timeFlg){
+            [removeMissileArray addObject:missile];
+        }
+    }
+    //当たり判定ミサイル削除
+    for(PlayerMissile* missile in removeMissileArray){
+        [playerMissileArray removeObject:missile];
+        [bgSpLayer removeChild:missile cleanup:YES];
+    }
 }
 
 //============================
@@ -229,19 +241,32 @@ NSMutableArray* searchTarget;
     }
     return flg;
 }
-
+//============================
+// プレイヤーアニマルセット
+//============================
 +(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum{
     
     player=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:player];
-    [bgSpLayer addChild:player];
+    [bgSpLayer addChild:player z:2];
 }
-
+//============================
+// 敵アニマルセット
+//============================
 +(void)createEnemy{
     
     enemy=[AnimalEnemy createEnemy];
     [enemyArray addObject:enemy];
-    [bgSpLayer addChild:enemy];
+    [bgSpLayer addChild:enemy z:0];
+}
+
+//============================
+// プレイヤーミサイルセット
+//============================
++(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder{
+    
+    [bgSpLayer addChild:missile z:zOrder];
+    [playerMissileArray addObject:missile];
 }
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

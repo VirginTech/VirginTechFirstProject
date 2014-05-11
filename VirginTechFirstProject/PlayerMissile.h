@@ -13,8 +13,10 @@
     
     float velocity;
     float targetAngle;
-    bool dirFlg;//true=右 false=左
+    float targetRange;
+    float timeFlg;
     
+    bool dirFlg;//true=右 false=左
     
     float interval;//時間間隔
     
@@ -30,9 +32,10 @@
     float dfx;//水平方向の現在位置
     float dfy;//垂直方向の現在位置
     
-    
     float t;//時間
 }
+
+@property float timeFlg;
 
 +(id)createMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos;
 -(id)initWithMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos;

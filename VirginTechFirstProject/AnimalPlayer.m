@@ -241,8 +241,44 @@ CGSize winSize;
 -(void)fireMissile_Schedule:(CCTime)dt{
     
     if(enemySearchFlg){
+        g=9.8;
+        vi = 5;
+        vt=0;
+        y=0;
+        vf=vi;
+        
+        int zOrder;
         pMissile = [PlayerMissile createMissile:self.position enemyPos:targetEnemyPos];
-        [StageLevel_01 setPlayerMissile:pMissile];
+        if(self.position.y<targetEnemyPos.y){
+            zOrder=1;
+        }else{
+            zOrder=3;
+        }
+        [StageLevel_01 setPlayerMissile:pMissile zOrder:zOrder];
+        
+        //タンクアニメーション
+        [self schedule:@selector(animalDance_Schedule:)interval:0.01];
+    }
+}
+
+-(void)animalDance_Schedule:(CCTime)dt {
+    
+    vt += 0.1;
+    vf=-g*vt+vi;
+    y=((vi+vf)*vt)/2;
+    
+    //gSprite.position = ccp(gSprite.position.x, gSprite.position.y + y);
+    
+    if(self.rotationalSkewX==self.rotationalSkewY){
+        offAngle = 360-self.rotation;
+    }
+    nextPos = CGPointMake(y*cosf(offAngle),y*sinf(offAngle));
+    gSprite.position = CGPointMake(gSprite.position.x + nextPos.x, gSprite.position.y + nextPos.y);
+
+    //if(gSprite.position.y < self.contentSize.height/2){
+    if(vt>2.0){
+        [self unschedule:@selector(animalDance_Schedule:)];
+        gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
     }
 }
 

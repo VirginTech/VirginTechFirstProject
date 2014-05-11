@@ -12,6 +12,15 @@
 
 @interface AnimalPlayer : CCSprite {
     
+    //アニマルダンス用
+    float g;//重力加速度
+    float vi;//初速度
+    float vf;//現在速度
+    float vt;//落下時間
+    float y;//落下距離
+    CGPoint nextPos;
+    float offAngle;
+    
     NSMutableArray* vFrameArray;
     NSMutableArray* gFrameArray;
     CCSprite *gSprite;
