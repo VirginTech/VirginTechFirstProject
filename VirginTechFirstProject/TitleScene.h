@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
+#import "LeaderboardView.h"
 
 @interface TitleScene : CCScene {
     
+    LeaderboardView* lbv;
 }
 
 + (TitleScene *)scene;

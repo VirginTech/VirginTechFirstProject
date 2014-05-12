@@ -44,6 +44,9 @@
 		CCSetupTabletScale2X: @(YES),
 	}];
 	
+    //GameCenterへ認証
+    [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error){}];
+    
 	return YES;
 }
 

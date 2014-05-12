@@ -53,18 +53,32 @@
     CCButton *helloWorldButton = [CCButton buttonWithTitle:@"[ スタート ]" fontName:@"Verdana-Bold" fontSize:18.0f];
     helloWorldButton.positionType = CCPositionTypeNormalized;
     helloWorldButton.position = ccp(0.5f, 0.35f);
-    [helloWorldButton setTarget:self selector:@selector(onSpinningClicked:)];
+    [helloWorldButton setTarget:self selector:@selector(onSelectStageClicked:)];
     [self addChild:helloWorldButton];
-    
+
+    // GameCenter
+    CCButton *gameCenterButton = [CCButton buttonWithTitle:@"[Game Center]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    gameCenterButton.positionType = CCPositionTypeNormalized;
+    gameCenterButton.position = ccp(0.5f, 0.30f);
+    [gameCenterButton setTarget:self selector:@selector(onGameCenterClicked:)];
+    [self addChild:gameCenterButton];
+
     // done
 	return self;
 }
 
-- (void)onSpinningClicked:(id)sender
+- (void)onSelectStageClicked:(id)sender
 {
     // start spinning scene with transition
     [[CCDirector sharedDirector] replaceScene:[SelectStage scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
     //[[CCDirector sharedDirector] replaceScene:[Level_00 scene]withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
 }
+
+-(void)onGameCenterClicked:(id)sender
+{    
+    lbv=[[LeaderboardView alloc]init];
+    [lbv showLeaderboard];
+}
+
 
 @end

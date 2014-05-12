@@ -11,6 +11,8 @@
 		CF27C7E3190B3A5F004FAEBE /* AnimalPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */; };
 		CF27C7E8190B3DA5004FAEBE /* StageLevel_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */; };
 		CF27C7F7190BB1F1004FAEBE /* RouteDispLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */; };
+		CF418ACA1920947700196E64 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF418AC91920947600196E64 /* GameKit.framework */; };
+		CF418ACD192098FF00196E64 /* LeaderboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF418ACC192098FF00196E64 /* LeaderboardView.m */; };
 		CF5FE31F191DB84400821441 /* PlayerMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FE31E191DB84400821441 /* PlayerMissile.m */; };
 		CF5FE321191DE6AA00821441 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5FE320191DE6AA00821441 /* rock.png */; };
 		CF685547190DE72E004C4D43 /* BgHigherLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685546190DE72E004C4D43 /* BgHigherLayer.m */; };
@@ -273,6 +275,9 @@
 		CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageLevel_00.m; sourceTree = "<group>"; };
 		CF27C7F5190BB1F1004FAEBE /* RouteDispLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDispLayer.h; sourceTree = "<group>"; };
 		CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDispLayer.m; sourceTree = "<group>"; };
+		CF418AC91920947600196E64 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		CF418ACB192098FF00196E64 /* LeaderboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardView.h; sourceTree = "<group>"; };
+		CF418ACC192098FF00196E64 /* LeaderboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardView.m; sourceTree = "<group>"; };
 		CF5FE31D191DB84400821441 /* PlayerMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMissile.h; sourceTree = "<group>"; };
 		CF5FE31E191DB84400821441 /* PlayerMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerMissile.m; sourceTree = "<group>"; };
 		CF5FE320191DE6AA00821441 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
@@ -758,6 +763,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF418ACA1920947700196E64 /* GameKit.framework in Frameworks */,
 				CFDFDEDE190A2D6F0021FBF9 /* libObjectiveChipmunk.a in Frameworks */,
 				CFDFDECC190A2D6E0021FBF9 /* OpenAL.framework in Frameworks */,
 				CFDFDED2190A2D6E0021FBF9 /* UIKit.framework in Frameworks */,
@@ -869,6 +875,7 @@
 		CFDFDEC6190A2D6E0021FBF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF418AC91920947600196E64 /* GameKit.framework */,
 				CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */,
 				CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */,
 				CFDFDECB190A2D6E0021FBF9 /* OpenAL.framework */,
@@ -1742,6 +1749,8 @@
 				CF27C7DF190B2C48004FAEBE /* TitleScene.m */,
 				CF8C16C91913B2EC002BBC13 /* SelectStage.h */,
 				CF8C16CA1913B2EC002BBC13 /* SelectStage.m */,
+				CF418ACB192098FF00196E64 /* LeaderboardView.h */,
+				CF418ACC192098FF00196E64 /* LeaderboardView.m */,
 				CF27C7DD190B2B83004FAEBE /* Unused */,
 				CFD5A32A1911F258004E2B58 /* manager */,
 				CF6C57DC190F68BA00FCF978 /* lib */,
@@ -1998,6 +2007,7 @@
 				CFDFE056190A2D700021FBF9 /* OALAudioTracks.m in Sources */,
 				CFDFE053190A2D700021FBF9 /* OALAudioTrackNotifications.m in Sources */,
 				CFDFE0D8190A2D700021FBF9 /* quaternion.c in Sources */,
+				CF418ACD192098FF00196E64 /* LeaderboardView.m in Sources */,
 				CFDFDF8C190A2D6F0021FBF9 /* CCPhysicsNode.m in Sources */,
 				CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */,
 				CFDFE072190A2D700021FBF9 /* ALSoundSourcePool.m in Sources */,
