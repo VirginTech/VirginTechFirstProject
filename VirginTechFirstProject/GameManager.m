@@ -7,6 +7,7 @@
 //
 
 #import "GameManager.h"
+#import <GameKit/GameKit.h>
 
 @implementation GameManager
 
@@ -27,6 +28,19 @@ int stageLevel;//ステージレベル
 }
 +(int)getStageLevel{
     return stageLevel;
+}
+
+//GameCenterへスコアを送信
++(void)submitScore_GameCenter:(NSInteger)score{
+    
+    GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"VirginTechFirstProject_Leaderboard"];
+    NSInteger scoreR = score;
+    scoreReporter.value = scoreR;
+    [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
+        if (error != nil){
+            NSLog(@"error %@",error);
+        }
+    }];
 }
 
 @end

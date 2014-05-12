@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0687451920D5C200AB3CD7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0687441920D5C200AB3CD7 /* StoreKit.framework */; };
+		CF0687481920D97E00AB3CD7 /* ShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0687471920D97E00AB3CD7 /* ShopView.m */; };
+		CF06874D1920DDAE00AB3CD7 /* PaymentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF06874A1920DDAE00AB3CD7 /* PaymentManager.m */; };
+		CF06874E1920DDAE00AB3CD7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CF06874C1920DDAE00AB3CD7 /* Reachability.m */; };
+		CF0687501920E3F600AB3CD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF06874F1920E3F600AB3CD7 /* SystemConfiguration.framework */; };
 		CF27C7E0190B2C48004FAEBE /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7DF190B2C48004FAEBE /* TitleScene.m */; };
 		CF27C7E3190B3A5F004FAEBE /* AnimalPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */; };
 		CF27C7E8190B3DA5004FAEBE /* StageLevel_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */; };
@@ -267,6 +272,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF0687441920D5C200AB3CD7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CF0687461920D97E00AB3CD7 /* ShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopView.h; sourceTree = "<group>"; };
+		CF0687471920D97E00AB3CD7 /* ShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopView.m; sourceTree = "<group>"; };
+		CF0687491920DDAE00AB3CD7 /* PaymentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentManager.h; sourceTree = "<group>"; };
+		CF06874A1920DDAE00AB3CD7 /* PaymentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentManager.m; sourceTree = "<group>"; };
+		CF06874B1920DDAE00AB3CD7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CF06874C1920DDAE00AB3CD7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CF06874F1920E3F600AB3CD7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CF27C7DE190B2C48004FAEBE /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		CF27C7DF190B2C48004FAEBE /* TitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
 		CF27C7E1190B3A5F004FAEBE /* AnimalPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalPlayer.h; sourceTree = "<group>"; };
@@ -763,6 +776,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0687501920E3F600AB3CD7 /* SystemConfiguration.framework in Frameworks */,
+				CF0687451920D5C200AB3CD7 /* StoreKit.framework in Frameworks */,
 				CF418ACA1920947700196E64 /* GameKit.framework in Frameworks */,
 				CFDFDEDE190A2D6F0021FBF9 /* libObjectiveChipmunk.a in Frameworks */,
 				CFDFDECC190A2D6E0021FBF9 /* OpenAL.framework in Frameworks */,
@@ -800,6 +815,8 @@
 			children = (
 				CF6C57D9190F67F700FCF978 /* BasicMath.h */,
 				CF6C57DA190F67F700FCF978 /* BasicMath.m */,
+				CF06874B1920DDAE00AB3CD7 /* Reachability.h */,
+				CF06874C1920DDAE00AB3CD7 /* Reachability.m */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -848,6 +865,8 @@
 		CFD5A32A1911F258004E2B58 /* manager */ = {
 			isa = PBXGroup;
 			children = (
+				CF0687491920DDAE00AB3CD7 /* PaymentManager.h */,
+				CF06874A1920DDAE00AB3CD7 /* PaymentManager.m */,
 				CFD5A32B1911F29D004E2B58 /* GameManager.h */,
 				CFD5A32C1911F29D004E2B58 /* GameManager.m */,
 			);
@@ -875,6 +894,8 @@
 		CFDFDEC6190A2D6E0021FBF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF06874F1920E3F600AB3CD7 /* SystemConfiguration.framework */,
+				CF0687441920D5C200AB3CD7 /* StoreKit.framework */,
 				CF418AC91920947600196E64 /* GameKit.framework */,
 				CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */,
 				CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */,
@@ -1751,6 +1772,8 @@
 				CF8C16CA1913B2EC002BBC13 /* SelectStage.m */,
 				CF418ACB192098FF00196E64 /* LeaderboardView.h */,
 				CF418ACC192098FF00196E64 /* LeaderboardView.m */,
+				CF0687461920D97E00AB3CD7 /* ShopView.h */,
+				CF0687471920D97E00AB3CD7 /* ShopView.m */,
 				CF27C7DD190B2B83004FAEBE /* Unused */,
 				CFD5A32A1911F258004E2B58 /* manager */,
 				CF6C57DC190F68BA00FCF978 /* lib */,
@@ -1891,6 +1914,7 @@
 			files = (
 				CFDFDF76190A2D6F0021FBF9 /* CCParticleBatchNode.m in Sources */,
 				CFDFE0EE190A2D700021FBF9 /* CCBReader.m in Sources */,
+				CF06874E1920DDAE00AB3CD7 /* Reachability.m in Sources */,
 				CFDFE09E190A2D700021FBF9 /* CCButton.m in Sources */,
 				CFDFE049190A2D700021FBF9 /* OALAudioActions.m in Sources */,
 				CFDFE08E190A2D700021FBF9 /* NSMutableArray+WeakReferences.m in Sources */,
@@ -1899,6 +1923,7 @@
 				CFDFDF2E190A2D6F0021FBF9 /* CCAtlasNode.m in Sources */,
 				CFDFE07C190A2D700021FBF9 /* OpenALManager.m in Sources */,
 				CFDFE088190A2D700021FBF9 /* IOSVersion.m in Sources */,
+				CF06874D1920DDAE00AB3CD7 /* PaymentManager.m in Sources */,
 				CF8C16C81913B26D002BBC13 /* StageLevel_01.m in Sources */,
 				CFDFDF3D190A2D6F0021FBF9 /* CCDirector.m in Sources */,
 				CFDFE0A8190A2D700021FBF9 /* CCScrollView.m in Sources */,
@@ -1963,6 +1988,7 @@
 				CFDFDF93190A2D6F0021FBF9 /* CCProgressNode.m in Sources */,
 				CFDFDF86190A2D6F0021FBF9 /* CCPhysicsBody.m in Sources */,
 				CFDFE00B190A2D700021FBF9 /* CCWindow.m in Sources */,
+				CF0687481920D97E00AB3CD7 /* ShopView.m in Sources */,
 				CFDFDF20190A2D6F0021FBF9 /* CCActionProgressTimer.m in Sources */,
 				CFDFE0D6190A2D700021FBF9 /* plane.c in Sources */,
 				CFDFE059190A2D700021FBF9 /* OALSimpleAudio.m in Sources */,

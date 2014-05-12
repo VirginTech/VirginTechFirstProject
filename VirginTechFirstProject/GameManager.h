@@ -15,4 +15,6 @@
 +(int)getDevice;
 +(void)setStageLevel:(int)level;
 +(int)getStageLevel;
++(void)submitScore_GameCenter:(NSInteger)score;
+
 @end

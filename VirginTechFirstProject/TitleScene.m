@@ -10,6 +10,7 @@
 //#import "HelloWorldScene.h"
 #import "SelectStage.h"
 #import "GameManager.h"
+#import "ShopView.h"
 
 @implementation TitleScene
 
@@ -49,20 +50,27 @@
     label.position = ccp(0.5f, 0.5f); // Middle of screen
     [self addChild:label];
     
-    // Helloworld scene button
+    // スタートボタン
     CCButton *helloWorldButton = [CCButton buttonWithTitle:@"[ スタート ]" fontName:@"Verdana-Bold" fontSize:18.0f];
     helloWorldButton.positionType = CCPositionTypeNormalized;
     helloWorldButton.position = ccp(0.5f, 0.35f);
     [helloWorldButton setTarget:self selector:@selector(onSelectStageClicked:)];
     [self addChild:helloWorldButton];
 
-    // GameCenter
+    // GameCenterボタン
     CCButton *gameCenterButton = [CCButton buttonWithTitle:@"[Game Center]" fontName:@"Verdana-Bold" fontSize:18.0f];
     gameCenterButton.positionType = CCPositionTypeNormalized;
     gameCenterButton.position = ccp(0.5f, 0.30f);
     [gameCenterButton setTarget:self selector:@selector(onGameCenterClicked:)];
     [self addChild:gameCenterButton];
 
+    //In-AppPurchaseボタン
+    CCButton *inAppButton = [CCButton buttonWithTitle:@"[ ショップ ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    inAppButton.positionType = CCPositionTypeNormalized;
+    inAppButton.position = ccp(0.5f, 0.25f);
+    [inAppButton setTarget:self selector:@selector(onInAppPurchaseClicked:)];
+    [self addChild:inAppButton];
+    
     // done
 	return self;
 }
@@ -80,5 +88,23 @@
     [lbv showLeaderboard];
 }
 
+-(void)onInAppPurchaseClicked:(id)sender
+{
+    //アプリ内購入の設定チェック
+    if (![SKPaymentQueue canMakePayments]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー！"
+                                                        message:@"アプリ内課金が使用制限されています。"
+                                                        delegate:nil
+                                                        cancelButtonTitle:nil
+                                                        otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+        
+    }else{
+        //ショップ画面へ
+        [[CCDirector sharedDirector] replaceScene:[ShopView scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+
+    }
+}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <StoreKit/StoreKit.h>
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
 #import "LeaderboardView.h"
