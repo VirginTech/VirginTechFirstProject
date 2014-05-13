@@ -11,6 +11,7 @@
 #import "SelectStage.h"
 #import "GameManager.h"
 #import "ShopView.h"
+#import "IAdLayer.h"
 
 @implementation TitleScene
 
@@ -41,6 +42,10 @@
     // Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
     [self addChild:background];
+    
+    //iAdバナー表示
+    IAdLayer* iAd=[[IAdLayer alloc]init:0];
+    [self addChild:iAd];
     
     // タイトル
     CCLabelTTF *label = [CCLabelTTF labelWithString:

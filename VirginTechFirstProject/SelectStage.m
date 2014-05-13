@@ -11,6 +11,7 @@
 #import "StageLevel_01.h"
 #import "GameManager.h"
 #import "TitleScene.h"
+#import "IAdLayer.h"
 
 @implementation SelectStage
 
@@ -29,6 +30,10 @@
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
     [self addChild:background];
 
+    //iAdバナー表示
+    IAdLayer* iAd=[[IAdLayer alloc]init:1];
+    [self addChild:iAd];
+    
     // Create a back button
     CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
     backButton.positionType = CCPositionTypeNormalized;

@@ -127,10 +127,13 @@ SKProduct* product_;
 {
     
     if([productIds isEqualToString:@"VirginTechFirstProject_Jewel10Pack"]){
-
-    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel10Pack"]){
+        //購入処理
         
-    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel10Pack"]){
+    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel20Pack"]){
+        //購入処理
+        
+    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel30Pack"]){
+        //購入処理
         
     }
     NSLog(@"%@",productIds);

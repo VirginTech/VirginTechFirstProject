@@ -12,6 +12,8 @@
 		CF06874D1920DDAE00AB3CD7 /* PaymentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF06874A1920DDAE00AB3CD7 /* PaymentManager.m */; };
 		CF06874E1920DDAE00AB3CD7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CF06874C1920DDAE00AB3CD7 /* Reachability.m */; };
 		CF0687501920E3F600AB3CD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF06874F1920E3F600AB3CD7 /* SystemConfiguration.framework */; };
+		CF0687521921AF9400AB3CD7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0687511921AF9400AB3CD7 /* iAd.framework */; };
+		CF0687551921AFFE00AB3CD7 /* IAdLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0687541921AFFE00AB3CD7 /* IAdLayer.m */; };
 		CF27C7E0190B2C48004FAEBE /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7DF190B2C48004FAEBE /* TitleScene.m */; };
 		CF27C7E3190B3A5F004FAEBE /* AnimalPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */; };
 		CF27C7E8190B3DA5004FAEBE /* StageLevel_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */; };
@@ -280,6 +282,9 @@
 		CF06874B1920DDAE00AB3CD7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		CF06874C1920DDAE00AB3CD7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		CF06874F1920E3F600AB3CD7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CF0687511921AF9400AB3CD7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		CF0687531921AFFE00AB3CD7 /* IAdLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAdLayer.h; sourceTree = "<group>"; };
+		CF0687541921AFFE00AB3CD7 /* IAdLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAdLayer.m; sourceTree = "<group>"; };
 		CF27C7DE190B2C48004FAEBE /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		CF27C7DF190B2C48004FAEBE /* TitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
 		CF27C7E1190B3A5F004FAEBE /* AnimalPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalPlayer.h; sourceTree = "<group>"; };
@@ -776,6 +781,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0687521921AF9400AB3CD7 /* iAd.framework in Frameworks */,
 				CF0687501920E3F600AB3CD7 /* SystemConfiguration.framework in Frameworks */,
 				CF0687451920D5C200AB3CD7 /* StoreKit.framework in Frameworks */,
 				CF418ACA1920947700196E64 /* GameKit.framework in Frameworks */,
@@ -846,6 +852,8 @@
 		CF6C57DF190F692C00FCF978 /* layer */ = {
 			isa = PBXGroup;
 			children = (
+				CF0687531921AFFE00AB3CD7 /* IAdLayer.h */,
+				CF0687541921AFFE00AB3CD7 /* IAdLayer.m */,
 				CF8C16CC1913B71A002BBC13 /* NaviLayer.h */,
 				CF8C16CD1913B71A002BBC13 /* NaviLayer.m */,
 				CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */,
@@ -894,6 +902,7 @@
 		CFDFDEC6190A2D6E0021FBF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF0687511921AF9400AB3CD7 /* iAd.framework */,
 				CF06874F1920E3F600AB3CD7 /* SystemConfiguration.framework */,
 				CF0687441920D5C200AB3CD7 /* StoreKit.framework */,
 				CF418AC91920947600196E64 /* GameKit.framework */,
@@ -1946,6 +1955,7 @@
 				CFDFDF4E190A2D6F0021FBF9 /* ccGLStateCache.m in Sources */,
 				CFDFE046190A2D700021FBF9 /* OALActionManager.m in Sources */,
 				CF8C16C319134618002BBC13 /* AnimalEnemy.m in Sources */,
+				CF0687551921AFFE00AB3CD7 /* IAdLayer.m in Sources */,
 				CFDFDFA5190A2D6F0021FBF9 /* CCScheduler.m in Sources */,
 				CFF39635191092F90052608E /* InformationLayer.m in Sources */,
 				CFDFDF79190A2D6F0021FBF9 /* CCParticleExamples.m in Sources */,

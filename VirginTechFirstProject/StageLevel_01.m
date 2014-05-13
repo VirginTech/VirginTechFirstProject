@@ -15,6 +15,7 @@
 #import "RouteGenerationLayer.h"
 #import "BasicMath.h"
 #import "PlayerSelection.h"
+#import "IAdLayer.h"
 
 @implementation StageLevel_01
 
@@ -96,6 +97,10 @@ NSMutableArray* removeMissileArray;
     playSelect=[[PlayerSelection alloc]init];
     [self addChild:playSelect z:3];
     playSelect.visible=false;
+    
+    //iAdバナー表示
+    IAdLayer* iAd=[[IAdLayer alloc]init:1];
+    [self addChild:iAd];
     
     // done
 	return self;
