@@ -11,8 +11,6 @@
 @implementation IAdLayer
 
 CGSize winSize;
-bool _bannerIsVisible;
-int bannerType;
 
 + (IAdLayer*)scene
 {

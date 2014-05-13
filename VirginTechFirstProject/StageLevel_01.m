@@ -58,6 +58,10 @@ NSMutableArray* removeMissileArray;
     enemyArray =[[NSMutableArray alloc]init];
     playerMissileArray=[[NSMutableArray alloc]init];
     
+    //プレイ状態セット
+    [GameManager setPlaying:true];
+    [GameManager setPauseing:false];
+    
     //ステージレベル取得
     int stageLevel=[GameManager getStageLevel];
     
@@ -284,6 +288,10 @@ NSMutableArray* removeMissileArray;
 
 -(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
 
+    if([GameManager getPauseing]){
+        return;
+    }
+    
     CGPoint worldLocation;
     CGPoint touchLocation = [touch locationInNode:self];
     

@@ -26,6 +26,10 @@
     self = [super init];
     if (!self) return(nil);
     
+    //プレイ状態セット
+    [GameManager setPlaying:false];
+    [GameManager setPauseing:false];
+    
     //デバイス登録
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     if(screenBounds.size.height==568){ //iPhone5 (4インチスクリーン)用のレイアウト
@@ -56,11 +60,11 @@
     [self addChild:label];
     
     // スタートボタン
-    CCButton *helloWorldButton = [CCButton buttonWithTitle:@"[ スタート ]" fontName:@"Verdana-Bold" fontSize:18.0f];
-    helloWorldButton.positionType = CCPositionTypeNormalized;
-    helloWorldButton.position = ccp(0.5f, 0.35f);
-    [helloWorldButton setTarget:self selector:@selector(onSelectStageClicked:)];
-    [self addChild:helloWorldButton];
+    CCButton *stageButton = [CCButton buttonWithTitle:@"[ スタート ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    stageButton.positionType = CCPositionTypeNormalized;
+    stageButton.position = ccp(0.5f, 0.35f);
+    [stageButton setTarget:self selector:@selector(onSelectStageClicked:)];
+    [self addChild:stageButton];
 
     // GameCenterボタン
     CCButton *gameCenterButton = [CCButton buttonWithTitle:@"[Game Center]" fontName:@"Verdana-Bold" fontSize:18.0f];

@@ -30,24 +30,29 @@
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
     [self addChild:background];
 
+    //プレイ状態セット
+    [GameManager setPlaying:false];
+    [GameManager setPauseing:false];
+    
     //iAdバナー表示
     IAdLayer* iAd=[[IAdLayer alloc]init:1];
     [self addChild:iAd];
     
-    // Create a back button
+    //タイトル
     CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
     backButton.positionType = CCPositionTypeNormalized;
     backButton.position = ccp(0.85f, 0.95f); // Top Right of screen
     [backButton setTarget:self selector:@selector(onBackClicked:)];
     [self addChild:backButton];
     
-    // Helloworld scene button
+    //ステージ１
     CCButton *button1 = [CCButton buttonWithTitle:@"[ステージレベル１]" fontName:@"Verdana-Bold" fontSize:18.0f];
     button1.positionType = CCPositionTypeNormalized;
     button1.position = ccp(0.5f, 0.7f);
     [button1 setTarget:self selector:@selector(onSpinningClicked1:)];
     [self addChild:button1];
     
+    //ステージ２
     CCButton *button2 = [CCButton buttonWithTitle:@"[ステージレベル２]" fontName:@"Verdana-Bold" fontSize:18.0f];
     button2.positionType = CCPositionTypeNormalized;
     button2.position = ccp(0.5f, 0.6f);

@@ -31,6 +31,7 @@
 #import "CCDirectorIOS.h"
 
 #import "LeaderboardView.h"
+#import "GameManager.h"
 
 extern NSString* const CCSetupPixelFormat;
 extern NSString* const CCSetupScreenMode;
@@ -75,7 +76,6 @@ extern NSString* const CCScreenModeFixed;
 {
     UIWindow *window_;
 	CCNavigationController *navController_;
-    //LeaderboardView *navController_;
 }
 
 // -----------------------------------------------------------------------

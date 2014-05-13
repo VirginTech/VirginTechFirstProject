@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
-@interface LeaderboardView : UINavigationController<GKLeaderboardViewControllerDelegate>
+@interface LeaderboardView : UINavigationController <GKLeaderboardViewControllerDelegate>
 
 - (void) showLeaderboard;
 

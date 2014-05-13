@@ -282,6 +282,11 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 	if( [navController_ visibleViewController] == [CCDirector sharedDirector] )
 		[[CCDirector sharedDirector] resume];
+
+    //ポーズ中だったらポーズにする
+    if([GameManager getPauseing]){
+		[[CCDirector sharedDirector] pause];
+    }
 }
 
 -(void) applicationDidEnterBackground:(UIApplication*)application

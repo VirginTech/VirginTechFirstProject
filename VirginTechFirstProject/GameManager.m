@@ -11,8 +11,13 @@
 
 @implementation GameManager
 
+//===========
+// メモリ内
+//===========
 int deviceType;// 1:iPhone5 2:iPhone4 3:iPad2
 int stageLevel;//ステージレベル
+bool isPlaying;//プレイ中かどうか(true:プレイ中)
+bool isPauseing;//ポーズ中か(true:ポーズ中)
 
 //デバイス取得／登録
 +(void)setDevice:(int)type{
@@ -21,13 +26,26 @@ int stageLevel;//ステージレベル
 +(int)getDevice{
     return deviceType;
 }
-
 //ステージレベル取得／登録
 +(void)setStageLevel:(int)level{
     stageLevel=level;
 }
 +(int)getStageLevel{
     return stageLevel;
+}
+//プレイ中かどうか
++(void)setPlaying:(bool)flg{
+    isPlaying=flg;
+}
++(bool)getPlaying{
+    return isPlaying;
+}
+//ポーズ中かどうか
++(void)setPauseing:(bool)flg{
+    isPauseing=flg;
+}
++(bool)getPauseing{
+    return isPauseing;
 }
 
 //GameCenterへスコアを送信

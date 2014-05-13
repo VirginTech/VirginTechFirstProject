@@ -15,6 +15,11 @@
 +(int)getDevice;
 +(void)setStageLevel:(int)level;
 +(int)getStageLevel;
++(void)setPlaying:(bool)flg;
++(bool)getPlaying;
++(void)setPauseing:(bool)flg;
++(bool)getPauseing;
+
 +(void)submitScore_GameCenter:(NSInteger)score;
 
 @end

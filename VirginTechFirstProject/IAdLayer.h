@@ -13,6 +13,8 @@
 @interface IAdLayer : CCScene <ADBannerViewDelegate>{
     
     ADBannerView* iAdView;
+    bool _bannerIsVisible;
+    int bannerType;
 }
 
 + (IAdLayer *)scene;
