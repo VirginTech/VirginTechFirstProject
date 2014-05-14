@@ -58,9 +58,10 @@ NSMutableArray* removeMissileArray;
     enemyArray =[[NSMutableArray alloc]init];
     playerMissileArray=[[NSMutableArray alloc]init];
     
-    //プレイ状態セット
-    [GameManager setPlaying:true];
+    //ゲーム状態セット
+    [GameManager setPlaying:true];//プレイ中
     [GameManager setPauseing:false];
+    [GameManager setPauseStateChange:false];
     
     //ステージレベル取得
     int stageLevel=[GameManager getStageLevel];
@@ -201,6 +202,33 @@ NSMutableArray* removeMissileArray;
     for(PlayerMissile* missile in removeMissileArray){
         [playerMissileArray removeObject:missile];
         [bgSpLayer removeChild:missile cleanup:YES];
+    }
+    
+    //ポーズ監視
+    if([GameManager getPauseStateChange]){
+        if([GameManager getPauseing]){
+            
+            for(AnimalPlayer* player in animalArray){
+                [player onPause_To_Resume:true];
+            }
+            for(PlayerMissile* missile in playerMissileArray){
+                [missile onPause_To_Resume:true];
+            }
+            for(AnimalEnemy* enemy in enemyArray){
+                [enemy onPause_To_Resume:true];
+            }
+        }else{
+            for(AnimalPlayer* player in animalArray){
+                [player onPause_To_Resume:false];
+            }
+            for(PlayerMissile* missile in playerMissileArray){
+                [missile onPause_To_Resume:false];
+            }
+            for(AnimalEnemy* enemy in enemyArray){
+                [enemy onPause_To_Resume:false];
+            }
+        }
+        [GameManager setPauseStateChange:false];
     }
 }
 

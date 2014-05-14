@@ -9,6 +9,8 @@
 #import "NaviLayer.h"
 #import "TitleScene.h"
 #import "SelectStage.h"
+#import "PreferencesLayer.h"
+#import "GameManager.h"
 
 @implementation NaviLayer
 
@@ -18,6 +20,7 @@ CCNodeColor *background;
 CCButton *pauseButton;
 CCButton *titleButton;
 CCButton *stageButton;
+CCButton *preferencesButton;
 
 + (NaviLayer *)scene{
     
@@ -59,39 +62,59 @@ CCButton *stageButton;
     [self addChild:stageButton];
     stageButton.visible=false;
     
+    //環境設定
+    preferencesButton = [CCButton buttonWithTitle:@"[ 環境設定 ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    preferencesButton.positionType = CCPositionTypeNormalized;
+    preferencesButton.position = ccp(0.5f, 0.40f);
+    [preferencesButton setTarget:self selector:@selector(onPreferencesButtonClicked:)];
+    [self addChild:preferencesButton];
+    preferencesButton.visible=false;
+    
     return self;
+}
+
++(void)setPauseScreen{
+    
+    if([GameManager getPauseing]){//ポーズ中
+        pauseButton.title=@"[再　開]";
+        background.visible=true;
+        titleButton.visible=true;
+        stageButton.visible=true;
+        preferencesButton.visible=true;
+    }else{//再開中
+        pauseButton.title=@"[ポーズ]";
+        background.visible=false;
+        titleButton.visible=false;
+        stageButton.visible=false;
+        preferencesButton.visible=false;
+    }
 }
 
 - (void)onPauseClicked:(id)sender
 {
-    if([[CCDirector sharedDirector]isPaused]){//ポーズ中〜開始
-        [[CCDirector sharedDirector]resume];
+    if([GameManager getPauseing]){//再開する
+        [GameManager setPauseStateChange:true];
         [GameManager setPauseing:false];
-        pauseButton.title=@"[ポーズ]";
-        background.visible=false;
-        //ナビボタン
-        titleButton.visible=false;
-        stageButton.visible=false;
-        
-    }else{//開始中〜ポーズ
-        [[CCDirector sharedDirector]pause];
+    }else{//ポーズする
+        [GameManager setPauseStateChange:true];
         [GameManager setPauseing:true];
-        pauseButton.title=@"[再　開]";
-        background.visible=true;
-        //ナビボタン
-        titleButton.visible=true;
-        stageButton.visible=true;
     }
+    [NaviLayer setPauseScreen];
 }
 
 - (void)onTitleClicked:(id)sender
 {
-    [[CCDirector sharedDirector]resume];
+    //[[CCDirector sharedDirector]resume];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
 - (void)onSelectStageClicked:(id)sender
 {
-    [[CCDirector sharedDirector]resume];
+    //[[CCDirector sharedDirector]resume];
     [[CCDirector sharedDirector] replaceScene:[SelectStage scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+}
+- (void)onPreferencesButtonClicked:(id)sender
+{
+    PreferencesLayer* prefence=[[PreferencesLayer alloc]init];
+    [self addChild:prefence];
 }
 @end

@@ -37,6 +37,9 @@
 
 #import "OALSimpleAudio.h"
 
+#import "GameManager.h"
+#import "NaviLayer.h"
+
 NSString* const CCSetupPixelFormat = @"CCSetupPixelFormat";
 NSString* const CCSetupScreenMode = @"CCSetupScreenMode";
 NSString* const CCSetupScreenOrientation = @"CCSetupScreenOrientation";
@@ -283,9 +286,11 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 	if( [navController_ visibleViewController] == [CCDirector sharedDirector] )
 		[[CCDirector sharedDirector] resume];
 
-    //ポーズ中だったらポーズにする
-    if([GameManager getPauseing]){
-		[[CCDirector sharedDirector] pause];
+    //プレイ中だったらポーズにする
+    if([GameManager getPlaying]){
+        [GameManager setPauseStateChange:true];
+        [GameManager setPauseing:true];
+        [NaviLayer setPauseScreen];
     }
 }
 

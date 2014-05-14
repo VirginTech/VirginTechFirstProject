@@ -12,6 +12,7 @@
 #import "GameManager.h"
 #import "ShopView.h"
 #import "IAdLayer.h"
+#import "PreferencesLayer.h"
 
 @implementation TitleScene
 
@@ -26,9 +27,10 @@
     self = [super init];
     if (!self) return(nil);
     
-    //プレイ状態セット
+    //ゲーム状態セット
     [GameManager setPlaying:false];
     [GameManager setPauseing:false];
+    [GameManager setPauseStateChange:false];
     
     //デバイス登録
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
@@ -48,7 +50,7 @@
     [self addChild:background];
     
     //iAdバナー表示
-    IAdLayer* iAd=[[IAdLayer alloc]init:0];
+    IAdLayer* iAd=[[IAdLayer alloc]init:1];
     [self addChild:iAd];
     
     // タイトル
@@ -79,6 +81,16 @@
     inAppButton.position = ccp(0.5f, 0.25f);
     [inAppButton setTarget:self selector:@selector(onInAppPurchaseClicked:)];
     [self addChild:inAppButton];
+    
+    //環境設定
+    CCButton *preferencesButton = [CCButton buttonWithTitle:@"[ 環境設定 ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    preferencesButton.positionType = CCPositionTypeNormalized;
+    preferencesButton.position = ccp(0.15f, 0.95f);
+    [preferencesButton setTarget:self selector:@selector(onPreferencesButtonClicked:)];
+    [self addChild:preferencesButton];
+    
+    //マシンメンテナンス
+    
     
     // done
 	return self;
@@ -114,6 +126,12 @@
         [[CCDirector sharedDirector] replaceScene:[ShopView scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 
     }
+}
+
+-(void)onPreferencesButtonClicked:(id)sender
+{
+    PreferencesLayer* prefence=[[PreferencesLayer alloc]init];
+    [self addChild:prefence];
 }
 
 @end

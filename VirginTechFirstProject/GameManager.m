@@ -18,6 +18,7 @@ int deviceType;// 1:iPhone5 2:iPhone4 3:iPad2
 int stageLevel;//ステージレベル
 bool isPlaying;//プレイ中かどうか(true:プレイ中)
 bool isPauseing;//ポーズ中か(true:ポーズ中)
+bool isPauseStateChange;//変化があった
 
 //デバイス取得／登録
 +(void)setDevice:(int)type{
@@ -46,6 +47,12 @@ bool isPauseing;//ポーズ中か(true:ポーズ中)
 }
 +(bool)getPauseing{
     return isPauseing;
+}
++(void)setPauseStateChange:(bool)flg{
+    isPauseStateChange=flg;
+}
++(bool)getPauseStateChange{
+    return isPauseStateChange;
 }
 
 //GameCenterへスコアを送信

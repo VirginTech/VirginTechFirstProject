@@ -333,6 +333,34 @@ CGSize winSize;
     return  flg;
 }
 
+-(void)onPause_To_Resume:(bool)flg{
+    
+    if(flg){
+
+        if(modeFlg==0){
+            [self unschedule:@selector(straight_Schedule:)];
+        }else if(modeFlg==1){
+            [self unschedule:@selector(chase_Schedule:)];
+        }else if(modeFlg==2){
+            [self unschedule:@selector(escape_Schedule:)];
+        }
+        
+        [self unschedule:@selector(moveGun_Schedule:)];
+        
+    }else{
+        
+        if(modeFlg==0){
+            [self schedule:@selector(straight_Schedule:)interval:0.01];//直進スケジュール
+        }else if(modeFlg==1){
+            [self schedule:@selector(chase_Schedule:)interval:0.01];//追跡スケジュール
+        }else if(modeFlg==2){
+            [self schedule:@selector(escape_Schedule:)interval:0.01];//回避スケジュール
+        }
+        
+        [self schedule:@selector(moveGun_Schedule:)interval:0.1];//砲塔制御スケジュール
+    }
+}
+
 //====================
 //　敵アニマルタンク作成
 //====================

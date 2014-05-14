@@ -30,9 +30,10 @@
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
     [self addChild:background];
 
-    //プレイ状態セット
+    //ゲーム状態セット
     [GameManager setPlaying:false];
     [GameManager setPauseing:false];
+    [GameManager setPauseStateChange:false];
     
     //iAdバナー表示
     IAdLayer* iAd=[[IAdLayer alloc]init:1];

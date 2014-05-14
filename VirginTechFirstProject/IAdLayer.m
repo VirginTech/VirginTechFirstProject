@@ -7,6 +7,8 @@
 //
 
 #import "IAdLayer.h"
+#import "GameManager.h"
+#import "NaviLayer.h"
 
 @implementation IAdLayer
 
@@ -48,6 +50,18 @@ CGSize winSize;
 - (void)dealloc
 {
     [iAdView removeFromSuperview];
+}
+
+-(BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave{
+    
+    //プレイ中だったらポーズにする
+    if([GameManager getPlaying]){
+        [GameManager setPauseStateChange:true];
+        [GameManager setPauseing:true];
+        [NaviLayer setPauseScreen];
+    }
+    
+    return YES;
 }
 
 //iAd広告取得成功時の処理

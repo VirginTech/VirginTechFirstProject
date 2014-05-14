@@ -17,4 +17,6 @@
 + (NaviLayer *)scene;
 - (id)init;
 
++(void)setPauseScreen;
+
 @end

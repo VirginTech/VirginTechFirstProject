@@ -19,6 +19,8 @@
 +(bool)getPlaying;
 +(void)setPauseing:(bool)flg;
 +(bool)getPauseing;
++(void)setPauseStateChange:(bool)flg;
++(bool)getPauseStateChange;
 
 +(void)submitScore_GameCenter:(NSInteger)score;
 

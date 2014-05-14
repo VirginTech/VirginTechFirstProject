@@ -120,24 +120,27 @@ CGSize winSize;
 - (void)moveVehicle_Schedule:(CCTime)dt{
     
     if(!stopFlg){
-    
-        NSValue *value=[inpolPosArray objectAtIndex:t];
-        CGPoint pt=[value CGPointValue];
-        //位置設定
-        self.position=CGPointMake(pt.x, pt.y);
-        //方向設定(度)
-        self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:pt];
-        //差替画像設定
-        if(self.rotationalSkewX==self.rotationalSkewY){
-            [self getVehicleFrame:self.rotation];
+        if(inpolPosArray.count>0){
+           if(inpolPosArray.count>t){
+            
+                NSValue *value=[inpolPosArray objectAtIndex:t];
+                CGPoint pt=[value CGPointValue];
+                //位置設定
+                self.position=CGPointMake(pt.x, pt.y);
+                //方向設定(度)
+                self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:pt];
+                //差替画像設定
+                if(self.rotationalSkewX==self.rotationalSkewY){
+                    [self getVehicleFrame:self.rotation];
+                }
+                //移動終了
+                if(inpolPosArray.count-1==t){
+                    [self unschedule:@selector(moveVehicle_Schedule:)];
+                }
+                oldPt=pt;
+                t++;
+           }
         }
-        //移動終了
-        if(inpolPosArray.count-1==t){
-            [self unschedule:@selector(moveVehicle_Schedule:)];
-        }
-        oldPt=pt;
-        t++;
-    
     }else{
         [self unschedule:@selector(moveVehicle_Schedule:)];
         
@@ -279,6 +282,22 @@ CGSize winSize;
     if(vt>2.0){
         [self unschedule:@selector(animalDance_Schedule:)];
         gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
+    }
+}
+
+-(void)onPause_To_Resume:(bool)flg{
+    
+    if(flg){
+        [self unschedule:@selector(moveVehicle_Schedule:)];//移動スケジュール
+        [self unschedule:@selector(moveGun_Schedule:)];//砲塔制御スケジュール開始
+        [self unschedule:@selector(status_Schedule:)];//状態スケジュール
+        [self unschedule:@selector(fireMissile_Schedule:)];//ミサイル発射制御スケジュール
+        [self unschedule:@selector(animalDance_Schedule:)];//タンクアニメーション
+    }else{
+        [self schedule:@selector(moveVehicle_Schedule:) interval:0.01];//移動スケジュール
+        [self schedule:@selector(moveGun_Schedule:)interval:0.1];//砲塔制御スケジュール開始
+        [self schedule:@selector(status_Schedule:)interval:0.1];//状態スケジュール
+        [self schedule:@selector(fireMissile_Schedule:)interval:1.5];//ミサイル発射制御スケジュール
     }
 }
 

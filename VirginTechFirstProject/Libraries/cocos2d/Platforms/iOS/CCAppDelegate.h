@@ -31,7 +31,6 @@
 #import "CCDirectorIOS.h"
 
 #import "LeaderboardView.h"
-#import "GameManager.h"
 
 extern NSString* const CCSetupPixelFormat;
 extern NSString* const CCSetupScreenMode;

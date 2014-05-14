@@ -20,6 +20,7 @@
 		CF27C7F7190BB1F1004FAEBE /* RouteDispLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7F6190BB1F1004FAEBE /* RouteDispLayer.m */; };
 		CF418ACA1920947700196E64 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF418AC91920947600196E64 /* GameKit.framework */; };
 		CF418ACD192098FF00196E64 /* LeaderboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF418ACC192098FF00196E64 /* LeaderboardView.m */; };
+		CF5CB2481922F47B001D9E65 /* PreferencesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2471922F47B001D9E65 /* PreferencesLayer.m */; };
 		CF5FE31F191DB84400821441 /* PlayerMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FE31E191DB84400821441 /* PlayerMissile.m */; };
 		CF5FE321191DE6AA00821441 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5FE320191DE6AA00821441 /* rock.png */; };
 		CF685547190DE72E004C4D43 /* BgHigherLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685546190DE72E004C4D43 /* BgHigherLayer.m */; };
@@ -296,6 +297,8 @@
 		CF418AC91920947600196E64 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CF418ACB192098FF00196E64 /* LeaderboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardView.h; sourceTree = "<group>"; };
 		CF418ACC192098FF00196E64 /* LeaderboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardView.m; sourceTree = "<group>"; };
+		CF5CB2461922F47B001D9E65 /* PreferencesLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesLayer.h; sourceTree = "<group>"; };
+		CF5CB2471922F47B001D9E65 /* PreferencesLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesLayer.m; sourceTree = "<group>"; };
 		CF5FE31D191DB84400821441 /* PlayerMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMissile.h; sourceTree = "<group>"; };
 		CF5FE31E191DB84400821441 /* PlayerMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerMissile.m; sourceTree = "<group>"; };
 		CF5FE320191DE6AA00821441 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
@@ -856,6 +859,8 @@
 				CF0687541921AFFE00AB3CD7 /* IAdLayer.m */,
 				CF8C16CC1913B71A002BBC13 /* NaviLayer.h */,
 				CF8C16CD1913B71A002BBC13 /* NaviLayer.m */,
+				CF5CB2461922F47B001D9E65 /* PreferencesLayer.h */,
+				CF5CB2471922F47B001D9E65 /* PreferencesLayer.m */,
 				CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */,
 				CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */,
 				CFF39636191104510052608E /* PlayerSelection.h */,
@@ -1981,6 +1986,7 @@
 				CFDFDFDC190A2D6F0021FBF9 /* CCTiledMap.m in Sources */,
 				CFDFE0A1190A2D700021FBF9 /* CCControl.m in Sources */,
 				CFDFE023190A2D700021FBF9 /* CCVertex.m in Sources */,
+				CF5CB2481922F47B001D9E65 /* PreferencesLayer.m in Sources */,
 				CFDFE05F190A2D700021FBF9 /* ALBuffer.m in Sources */,
 				CFDFE02C190A2D700021FBF9 /* NSThread+performBlock.m in Sources */,
 				CFDFDFB7190A2D6F0021FBF9 /* CCShaderCache.m in Sources */,

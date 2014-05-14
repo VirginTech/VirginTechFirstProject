@@ -58,4 +58,6 @@
 -(void)getVehicleFrame:(float)angle;
 -(void)setTarget:(NSMutableArray*)targetArray;
 
+-(void)onPause_To_Resume:(bool)flg;
+
 @end

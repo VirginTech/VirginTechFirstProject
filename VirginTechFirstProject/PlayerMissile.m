@@ -38,6 +38,15 @@
     
 }
 
+-(void)onPause_To_Resume:(bool)flg{
+    
+    if(flg){
+        [self unschedule:@selector(missile_Move:)];
+    }else{
+        [self schedule:@selector(missile_Move:) interval:interval];
+    }
+}
+
 -(id)initWithMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos{
     
     if(self=[super initWithImageNamed:@"rock.png"]){

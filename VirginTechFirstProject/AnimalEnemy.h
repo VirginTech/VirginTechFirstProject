@@ -40,6 +40,8 @@
 -(id)initWithEnemy;
 
 -(void)setTarget:(NSMutableArray*)targetArray;
+-(void)onPause_To_Resume:(bool)flg;
+
 //-(BOOL)isLevel:(AnimalPlayer*)player;
 //-(BOOL)doEscape:(AnimalPlayer*)player;
 //-(BOOL)isForward:(AnimalPlayer*)player;

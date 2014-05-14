@@ -40,4 +40,6 @@
 +(id)createMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos;
 -(id)initWithMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos;
 
+-(void)onPause_To_Resume:(bool)flg;
+
 @end
