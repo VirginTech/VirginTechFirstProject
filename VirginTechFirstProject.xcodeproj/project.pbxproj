@@ -23,6 +23,7 @@
 		CF5CB2481922F47B001D9E65 /* PreferencesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2471922F47B001D9E65 /* PreferencesLayer.m */; };
 		CF5FE31F191DB84400821441 /* PlayerMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FE31E191DB84400821441 /* PlayerMissile.m */; };
 		CF5FE321191DE6AA00821441 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5FE320191DE6AA00821441 /* rock.png */; };
+		CF5FFACA1924B6F000A1647C /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FFAC91924B6F000A1647C /* ObjectManager.m */; };
 		CF685547190DE72E004C4D43 /* BgHigherLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685546190DE72E004C4D43 /* BgHigherLayer.m */; };
 		CF68555E190E0E81004C4D43 /* 花_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF68555C190E0E81004C4D43 /* 花_default.plist */; };
 		CF68555F190E0E81004C4D43 /* 花_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF68555D190E0E81004C4D43 /* 花_default.png */; };
@@ -302,6 +303,8 @@
 		CF5FE31D191DB84400821441 /* PlayerMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMissile.h; sourceTree = "<group>"; };
 		CF5FE31E191DB84400821441 /* PlayerMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerMissile.m; sourceTree = "<group>"; };
 		CF5FE320191DE6AA00821441 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
+		CF5FFAC81924B6F000A1647C /* ObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectManager.h; sourceTree = "<group>"; };
+		CF5FFAC91924B6F000A1647C /* ObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectManager.m; sourceTree = "<group>"; };
 		CF685545190DE72E004C4D43 /* BgHigherLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BgHigherLayer.h; sourceTree = "<group>"; };
 		CF685546190DE72E004C4D43 /* BgHigherLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BgHigherLayer.m; sourceTree = "<group>"; };
 		CF68555C190E0E81004C4D43 /* 花_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "花_default.plist"; sourceTree = "<group>"; };
@@ -882,6 +885,8 @@
 				CF06874A1920DDAE00AB3CD7 /* PaymentManager.m */,
 				CFD5A32B1911F29D004E2B58 /* GameManager.h */,
 				CFD5A32C1911F29D004E2B58 /* GameManager.m */,
+				CF5FFAC81924B6F000A1647C /* ObjectManager.h */,
+				CF5FFAC91924B6F000A1647C /* ObjectManager.m */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -2021,6 +2026,7 @@
 				CFDFE083190A2D700021FBF9 /* OALSuspendHandler.m in Sources */,
 				CFDFE0E2190A2D700021FBF9 /* vec4.c in Sources */,
 				CFDFDFF4190A2D6F0021FBF9 /* CCDirectorIOS.m in Sources */,
+				CF5FFACA1924B6F000A1647C /* ObjectManager.m in Sources */,
 				CFDFDFCB190A2D6F0021FBF9 /* CCSpriteFrameCache.m in Sources */,
 				CFDFE08A190A2D700021FBF9 /* mach_timing.c in Sources */,
 				CFDFE06E190A2D700021FBF9 /* ALListener.m in Sources */,

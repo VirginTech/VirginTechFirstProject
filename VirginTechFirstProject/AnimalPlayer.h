@@ -21,6 +21,12 @@
     CGPoint nextPos;
     float offAngle;
     
+    //各種能力変数
+    NSString* objName;
+    float ability_Defense ;
+    float ability_Attack;
+    float ability_Traveling;
+    
     NSMutableArray* vFrameArray;
     NSMutableArray* gFrameArray;
     CCSprite *gSprite;

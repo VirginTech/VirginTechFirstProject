@@ -10,6 +10,7 @@
 #import "BasicMath.h"
 #import "StageLevel_01.h"
 #import "AnimalEnemy.h"
+#import "ObjectManager.h"
 
 @implementation AnimalPlayer
 
@@ -313,23 +314,35 @@ CGSize winSize;
     
     //画像を配列に格納
     if(playerNum==1){
-        totalAbility=1;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
+        objName=@"beartank1";
+        ability_Attack=1.0;
+        ability_Defense=20.0;
+        ability_Traveling=0.2;
     }else if(playerNum==2){
-        totalAbility=2;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear2_default.plist"];
+        objName=@"beartank2";
+        ability_Attack=1.0;
+        ability_Defense=15.0;
+        ability_Traveling=0.2;
     }else if(playerNum==3){
-        totalAbility=3;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear3_default.plist"];
+        objName=@"beartank3";
+        ability_Attack=2.0;
+        ability_Defense=10.0;
+        ability_Traveling=0.15;
     }else if(playerNum==4){
-        totalAbility=4;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear4_default.plist"];
+        objName=@"beartank4";
+        ability_Attack=2.0;
+        ability_Defense=10.0;
+        ability_Traveling=0.15;
     }else if(playerNum==5){
-        totalAbility=5;
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear5_default.plist"];
-    }else{
-        totalAbility=1;
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
+        objName=@"beartank5";
+        ability_Attack=5.0;
+        ability_Defense=5.0;
+        ability_Traveling=0.1;
     }
     
     for(int i=0;i<8;i++){
@@ -340,12 +353,27 @@ CGSize winSize;
         
         winSize = [[CCDirector sharedDirector]viewSize];
         self.position = playerPos;
+        
+        //各種能力の取得
+        NSMutableArray* abilityArray=[ObjectManager load_Object_Ability:objName];
+        if(abilityArray==nil){//初回であれば
+            //とりあえずセーブ
+            [ObjectManager save_Object_Ability:objName
+                                                attack:ability_Attack
+                                                defense:ability_Defense
+                                                traveling:ability_Traveling];
+        }else{//2回目以降
+            ability_Attack=[[abilityArray objectAtIndex:0]floatValue];
+            ability_Defense=[[abilityArray objectAtIndex:1]floatValue];
+            ability_Traveling=[[abilityArray objectAtIndex:2]floatValue];
+        }
+
         //砲塔の描画
         gSprite=[CCSprite spriteWithSpriteFrame:[gFrameArray objectAtIndex:0]];
         gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
         [self addChild:gSprite];
         //速度セット
-        velocity=0.2;//補間間隔(速さの調整に使用する)
+        velocity = ability_Traveling;//補間間隔(速さの調整に使用する)
         //停止フラグ
         stopFlg=false;
         //敵捕捉フラグ
