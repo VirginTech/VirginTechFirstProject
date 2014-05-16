@@ -355,17 +355,17 @@ CGSize winSize;
         self.position = playerPos;
         
         //各種能力の取得
-        NSMutableArray* abilityArray=[ObjectManager load_Object_Ability:objName];
-        if(abilityArray==nil){//初回であれば
-            //とりあえずセーブ
-            [ObjectManager save_Object_Ability:objName
-                                                attack:ability_Attack
-                                                defense:ability_Defense
-                                                traveling:ability_Traveling];
-        }else{//2回目以降
-            ability_Attack=[[abilityArray objectAtIndex:0]floatValue];
-            ability_Defense=[[abilityArray objectAtIndex:1]floatValue];
-            ability_Traveling=[[abilityArray objectAtIndex:2]floatValue];
+        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+        NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
+        //なければ(初回)とりあえず初期値をセーブ
+        if([dict valueForKey:objName]==nil){
+            [ObjectManager save_Object_Ability:objName attack:ability_Attack
+                                                            defense:ability_Defense
+                                                            traveling:ability_Traveling];
+        }else{//あればロードする
+            ability_Attack=[ObjectManager load_Object_Ability_Attack:objName];
+            ability_Defense=[ObjectManager load_Object_Ability_Defense:objName];
+            ability_Traveling=[ObjectManager load_Object_Ability_Traveling:objName];
         }
 
         //砲塔の描画
