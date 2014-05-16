@@ -17,7 +17,6 @@
 
 CGSize winSize;
 CCSprite* bg;
-NSMutableArray* animalArray2;
 CCSprite* arrow;
 
 + (PlayerSelection *)scene{
@@ -27,41 +26,27 @@ CCSprite* arrow;
 
 - (id)init{
     
-    animalArray2=[[NSMutableArray alloc]init];
-
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
     bg=[CCSprite spriteWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"playerselect.png"]];
     
+    CCButton* animal01=[CCButton buttonWithTitle:@"Animal01" spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal01.png"]];
+    CCButton* animal02=[CCButton buttonWithTitle:@"Animal02" spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal02.png"]];
+    CCButton* animal03=[CCButton buttonWithTitle:@"Animal03" spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal03.png"]];
+    CCButton* animal04=[CCButton buttonWithTitle:@"Animal04" spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal04.png"]];
+    CCButton* animal05=[CCButton buttonWithTitle:@"Animal05" spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal05.png"]];
 
-    CCSprite* animal01=[CCSprite spriteWithSpriteFrame:
-                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal01.png"]];
-    CCSprite* animal02=[CCSprite spriteWithSpriteFrame:
-                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal02.png"]];
-    CCSprite* animal03=[CCSprite spriteWithSpriteFrame:
-                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal03.png"]];
-    CCSprite* animal04=[CCSprite spriteWithSpriteFrame:
-                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal04.png"]];
-    CCSprite* animal05=[CCSprite spriteWithSpriteFrame:
-                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal05.png"]];
-
+    [animal01 setTarget:self selector:@selector(onAnimal01_Clicked:)];
+    [animal02 setTarget:self selector:@selector(onAnimal02_Clicked:)];
+    [animal03 setTarget:self selector:@selector(onAnimal03_Clicked:)];
+    [animal04 setTarget:self selector:@selector(onAnimal04_Clicked:)];
+    [animal05 setTarget:self selector:@selector(onAnimal05_Clicked:)];
+    
     animal01.position=CGPointMake(animal01.contentSize.width/2, animal01.contentSize.height/2+10);
     animal02.position=CGPointMake(animal02.contentSize.width+60, animal02.contentSize.height/2+10);
     animal03.position=CGPointMake(animal03.contentSize.width*2+60, animal03.contentSize.height/2+10);
     animal04.position=CGPointMake(animal04.contentSize.width*3+60, animal04.contentSize.height/2+10);
     animal05.position=CGPointMake(animal05.contentSize.width*4+60, animal05.contentSize.height/2+10);
 
-    animal01.name=@"animal01";
-    animal02.name=@"animal02";
-    animal03.name=@"animal03";
-    animal04.name=@"animal04";
-    animal05.name=@"animal05";
-    
-    [animalArray2 addObject:animal01];
-    [animalArray2 addObject:animal02];
-    [animalArray2 addObject:animal03];
-    [animalArray2 addObject:animal04];
-    [animalArray2 addObject:animal05];
-    
     [bg addChild:animal01];
     [bg addChild:animal02];
     [bg addChild:animal03];
@@ -72,16 +57,13 @@ CCSprite* arrow;
     if (!self) return(nil);
     
     winSize=[[CCDirector sharedDirector]viewSize];
+    self.userInteractionEnabled = YES;
     self.verticalScrollEnabled=NO;
     
     //矢印初期化
     arrow=[CCSprite spriteWithImageNamed:@"arrow.png"];
     [self addChild:arrow];
     
-    // Create a colored background (Dark Grey)
-    //CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:0.5f]];
-    //[self addChild:background];
-
     return self;
 }
 
@@ -96,55 +78,39 @@ CCSprite* arrow;
     
 }
 
--(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
-    
-}
+//-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
+//
+//}
 
 -(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
     
-    int i=0;
-    CGPoint touchLocation = [touch locationInNode:self];
-    touchLocation.x+=self.scrollPosition.x;
-    touchLocation.y+=self.scrollPosition.y;
-    
-    CGRect frmRect;
-    for(CCSprite* frame in animalArray2){
-        
-        i++;
-        
-        if([GameManager getDevice]==1){
-            frmRect=CGRectMake(frame.position.x - frame.contentSize.width/2,
-                               frame.position.y + frame.contentSize.height/2 +80,
-                               frame.contentSize.width,
-                               frame.contentSize.height);
-        }else if([GameManager getDevice]==2){
-            frmRect=CGRectMake(frame.position.x - frame.contentSize.width/2,
-                               frame.position.y + frame.contentSize.height/2,
-                               frame.contentSize.width,
-                               frame.contentSize.height);
-        }else if([GameManager getDevice]==3){
-            frmRect=CGRectMake(frame.position.x - frame.contentSize.width/2,
-                               frame.position.y + frame.contentSize.height/2,
-                               frame.contentSize.width,
-                               frame.contentSize.height);
-        }else{
-            frmRect=CGRectMake(frame.position.x - frame.contentSize.width/2,
-                               frame.position.y + frame.contentSize.height/2,
-                               frame.contentSize.width,
-                               frame.contentSize.height);
-        }
-        
-        if(CGRectContainsPoint(frmRect, touchLocation)){
+    [self removeFromParentAndCleanup:YES];
+}
 
-            [StageLevel_01 createPlayer:createPlayerPos playerNum:i];
-            
-            //[StageLevel_00 setCreatePlayerFlg:true];
-            //[StageLevel_00 setSelectPlayerNum:i];
-            
-            break;
-        }
-    }
-    self.visible=false;
+-(void)onAnimal01_Clicked:(id)sender
+{
+    [StageLevel_01 createPlayer:createPlayerPos playerNum:1];
+    [self removeFromParentAndCleanup:YES];
+}
+-(void)onAnimal02_Clicked:(id)sender
+{
+    [StageLevel_01 createPlayer:createPlayerPos playerNum:2];
+    [self removeFromParentAndCleanup:YES];
+}
+-(void)onAnimal03_Clicked:(id)sender
+{
+    [StageLevel_01 createPlayer:createPlayerPos playerNum:3];
+    [self removeFromParentAndCleanup:YES];
+}
+-(void)onAnimal04_Clicked:(id)sender
+{
+    [StageLevel_01 createPlayer:createPlayerPos playerNum:4];
+    [self removeFromParentAndCleanup:YES];
+}
+-(void)onAnimal05_Clicked:(id)sender
+{
+    [StageLevel_01 createPlayer:createPlayerPos playerNum:5];
+    [self removeFromParentAndCleanup:YES];
 }
 
 @end

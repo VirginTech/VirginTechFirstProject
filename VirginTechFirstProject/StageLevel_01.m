@@ -94,14 +94,14 @@ NSMutableArray* removeMissileArray;
     routeGeneLyer=[[RouteGenerationLayer alloc]init];
     //[self addChild:routeGeneLyer];
     
-    //ボタン配置レイヤー z2
+    //ポーズレイヤー z2
     NaviLayer* navi=[[NaviLayer alloc]init];
     [self addChild:navi z:2];
     
     //プレイヤー選択レイヤー z:3
     playSelect=[[PlayerSelection alloc]init];
-    [self addChild:playSelect z:3];
-    playSelect.visible=false;
+    //[self addChild:playSelect z:3];
+    //playSelect.visible=false;
     
     //iAdバナー表示
     IAdLayer* iAd=[[IAdLayer alloc]init:1];
@@ -307,12 +307,12 @@ NSMutableArray* removeMissileArray;
 }
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    
+
 }
 
--(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
-    
-}
+//-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
+//
+//}
 
 -(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
 
@@ -336,7 +336,8 @@ NSMutableArray* removeMissileArray;
         
     }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
         if(worldLocation.y < 200){
-            playSelect.visible=true;
+            //playSelect.visible=true;
+            [self addChild:playSelect z:3];
             playSelect.createPlayerPos=worldLocation;
             [playSelect setArrowVisible:offsetY];
         }
