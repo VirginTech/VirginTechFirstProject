@@ -30,6 +30,11 @@
     NSMutableArray* vFrameArray;
     NSMutableArray* gFrameArray;
     CCSprite *gSprite;
+    CCSprite* lifeGauge1;
+    CCSprite* lifeGauge2;
+    UIImage *imgLifeGauge;
+    float maxLife;
+    float nowRatio;
     
     int t;
     float velocity;

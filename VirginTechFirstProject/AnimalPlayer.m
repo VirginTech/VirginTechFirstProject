@@ -11,6 +11,7 @@
 #import "StageLevel_01.h"
 #import "AnimalEnemy.h"
 #import "ObjectManager.h"
+#import "CCDrawingPrimitives.h"
 
 @implementation AnimalPlayer
 
@@ -203,19 +204,25 @@ CGSize winSize;
     return tmpArray;
 }
 
--(void)status_Schedule:(CCTime)dt{
-    
+-(void)status_Schedule:(CCTime)dt
+{
+    //経路作成マーク
     if(state_PathMake_flg){
-        
         if(!arrow.visible){
             arrow.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2 - arrow.contentSize.height/2);
             arrow.visible=true;
         }else{
             arrow.visible=false;
         }
-
         state_PathMake_flg=false;
     }
+    //ライフゲージ
+    if(self.rotationalSkewX==self.rotationalSkewY){
+        lifeGauge1.rotation=-self.rotation;//常に０度を維持
+    }
+    nowRatio=(100/maxLife)*ability_Defense;
+    lifeGauge2.scaleX=nowRatio*0.01;
+    lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
 }
 
 -(void)setTarget:(NSMutableArray*)targetArray{
@@ -367,11 +374,26 @@ CGSize winSize;
             ability_Defense=[ObjectManager load_Object_Ability_Defense:objName];
             ability_Traveling=[ObjectManager load_Object_Ability_Traveling:objName];
         }
+        maxLife=ability_Defense;
 
         //砲塔の描画
         gSprite=[CCSprite spriteWithSpriteFrame:[gFrameArray objectAtIndex:0]];
         gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
         [self addChild:gSprite];
+        
+        //体力ゲージ描画
+        lifeGauge1=[CCSprite spriteWithImageNamed:@"lifegauge1.png"];
+        lifeGauge1.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2 - 25);
+        //CCColor* color=[CCColor colorWithCcColor3b:ccc3(1.0, 1.0, 1.0)];
+        //[lifeGauge1 setColor:color];
+        [self addChild:lifeGauge1];
+        
+        lifeGauge2=[CCSprite spriteWithImageNamed:@"lifegauge2.png"];
+        nowRatio=(100/maxLife)*ability_Defense;
+        lifeGauge2.scaleX=nowRatio*0.01;
+        lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
+        [lifeGauge1 addChild:lifeGauge2];
+        
         //速度セット
         velocity = ability_Traveling;//補間間隔(速さの調整に使用する)
         //停止フラグ
