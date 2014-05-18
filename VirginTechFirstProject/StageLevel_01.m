@@ -35,8 +35,15 @@ AnimalPlayer* player;
 AnimalEnemy* enemy;
 
 NSMutableArray* searchTarget;
+
+//審判用配列
+NSMutableArray* removePlayerArray;
 NSMutableArray* playerMissileArray;
-NSMutableArray* removeMissileArray;
+NSMutableArray* removePlayerMissileArray;
+
+NSMutableArray* removeEnemyArray;
+NSMutableArray* enemyMissileArray;
+NSMutableArray* removeEnemyMissileArray;
 
 + (StageLevel_01 *)scene
 {
@@ -57,6 +64,7 @@ NSMutableArray* removeMissileArray;
     animalArray=[[NSMutableArray alloc]init];
     enemyArray =[[NSMutableArray alloc]init];
     playerMissileArray=[[NSMutableArray alloc]init];
+    enemyMissileArray=[[NSMutableArray alloc]init];
     
     //ゲーム状態セット
     [GameManager setPlaying:true];//プレイ中
@@ -123,9 +131,7 @@ NSMutableArray* removeMissileArray;
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
-    [StageLevel_01 createEnemy];
-    //[StageLevel_01 createEnemy];
-    //[StageLevel_01 createEnemy];
+    [self schedule:@selector(createEnemy_Schedule:)interval:20.0];
     
     // In pre-v3, touch enable and scheduleUpdate was called here
     // In v3, touch is enabled by setting userInterActionEnabled for the individual nodes
@@ -138,9 +144,17 @@ NSMutableArray* removeMissileArray;
     [super onExit];
 }
 
--(void)judgement_Schedule:(CCTime)dt{
-    
-    removeMissileArray=[[NSMutableArray alloc]init];
+-(void)createEnemy_Schedule:(CCTime)dt
+{
+    [StageLevel_01 createEnemy];
+}
+
+-(void)judgement_Schedule:(CCTime)dt
+{
+    removePlayerArray=[[NSMutableArray alloc]init];
+    removeEnemyArray=[[NSMutableArray alloc]init];
+    removePlayerMissileArray=[[NSMutableArray alloc]init];
+    removeEnemyMissileArray=[[NSMutableArray alloc]init];
     
     //プレイヤー対プレイヤー衝突判定
     for(AnimalPlayer* player1 in animalArray){
@@ -156,7 +170,9 @@ NSMutableArray* removeMissileArray;
     }
     //プレイヤー　対　敵
     for(AnimalPlayer* player in animalArray){
+        player.destCollectFlg=false;//便宜上ここで初期化
         for(AnimalEnemy* enemy in enemyArray){
+            enemy.destCollectFlg=false;//便宜上ここで初期化
             if([BasicMath RadiusIntersectsRadius:enemy.position pointB:player.position
                                          radius1:20 radius2:20]){
                 enemy.stopFlg=true;
@@ -188,25 +204,74 @@ NSMutableArray* removeMissileArray;
     }
     //プレイヤーミサイル当たり判定
     for(PlayerMissile* missile in playerMissileArray){
-        for(AnimalEnemy* enemy in enemyArray){
-            if([BasicMath RadiusIntersectsRadius:missile.position pointB:enemy.position radius1:10 radius2:20]){
-                [removeMissileArray addObject:missile];
-            }
-        }
         //時限切れミサイル削除
         if(missile.timeFlg){
-            [removeMissileArray addObject:missile];
+            [removePlayerMissileArray addObject:missile];
+        }else{
+            for(AnimalEnemy* enemy in enemyArray){
+                if([BasicMath RadiusIntersectsRadius:missile.position pointB:enemy.position radius1:10 radius2:20]){
+                    if(!enemy.destCollectFlg){
+                        enemy.destCollectFlg=true;
+                        [removePlayerMissileArray addObject:missile];
+                        //敵ダメージ
+                        enemy.ability_Defense -= missile.ability_Attack;
+                        if(enemy.ability_Defense<=0){
+                            [removeEnemyArray addObject:enemy];
+                        }
+                        break;//二重判定防止
+                    }
+                }
+            }
         }
     }
+    //敵ミサイル当たり判定
+    for(EnemyMissile* missile in enemyMissileArray){
+        //時限切れミサイル削除
+        if(missile.timeFlg){
+            [removeEnemyMissileArray addObject:missile];
+        }else{
+            for(AnimalPlayer* player in animalArray){
+                if([BasicMath RadiusIntersectsRadius:missile.position pointB:player.position radius1:10 radius2:20]){
+                    if(!player.destCollectFlg){
+                        player.destCollectFlg=true;
+                        [removeEnemyMissileArray addObject:missile];
+                        //プレイヤーダメージ
+                        player.ability_Defense -= missile.ability_Attack;
+                        if(player.ability_Defense<=0){
+                            [removePlayerArray addObject:player];
+                        }
+                        break;//二重判定防止
+                    }
+                }
+            }
+        }
+    }
+
     //当たり判定ミサイル削除
-    for(PlayerMissile* missile in removeMissileArray){
+    for(PlayerMissile* missile in removePlayerMissileArray){
         [playerMissileArray removeObject:missile];
         [bgSpLayer removeChild:missile cleanup:YES];
+    }
+    for(EnemyMissile* missile in removeEnemyMissileArray){
+        [enemyMissileArray removeObject:missile];
+        [bgSpLayer removeChild:missile cleanup:YES];
+    }
+    //消滅プレイヤー削除
+    for(AnimalPlayer* player in removePlayerArray){
+        [animalArray removeObject:player];
+        [bgSpLayer removeChild:player cleanup:YES];
+    }
+    //消滅「敵」削除
+    for(AnimalEnemy* enemy in removeEnemyArray){
+        [enemyArray removeObject:enemy];
+        [bgSpLayer removeChild:enemy cleanup:YES];
     }
     
     //ポーズ監視
     if([GameManager getPauseStateChange]){
         if([GameManager getPauseing]){
+            
+            [self unschedule:@selector(createEnemy_Schedule:)];
             
             for(AnimalPlayer* player in animalArray){
                 [player onPause_To_Resume:true];
@@ -217,7 +282,13 @@ NSMutableArray* removeMissileArray;
             for(AnimalEnemy* enemy in enemyArray){
                 [enemy onPause_To_Resume:true];
             }
+            for(EnemyMissile* missile in enemyMissileArray){
+                [missile onPause_To_Resume:true];
+            }
         }else{
+            
+            [self schedule:@selector(createEnemy_Schedule:)interval:20.0];
+            
             for(AnimalPlayer* player in animalArray){
                 [player onPause_To_Resume:false];
             }
@@ -226,6 +297,9 @@ NSMutableArray* removeMissileArray;
             }
             for(AnimalEnemy* enemy in enemyArray){
                 [enemy onPause_To_Resume:false];
+            }
+            for(EnemyMissile* missile in enemyMissileArray){
+                [missile onPause_To_Resume:false];
             }
         }
         [GameManager setPauseStateChange:false];
@@ -290,8 +364,8 @@ NSMutableArray* removeMissileArray;
 //============================
 // 敵アニマルセット
 //============================
-+(void)createEnemy{
-    
++(void)createEnemy
+{
     enemy=[AnimalEnemy createEnemy];
     [enemyArray addObject:enemy];
     [bgSpLayer addChild:enemy z:0];
@@ -300,10 +374,19 @@ NSMutableArray* removeMissileArray;
 //============================
 // プレイヤーミサイルセット
 //============================
-+(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder{
-    
++(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder
+{
     [bgSpLayer addChild:missile z:zOrder];
     [playerMissileArray addObject:missile];
+}
+
+//============================
+// 敵ミサイルセット
+//============================
++(void)setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder
+{
+    [bgSpLayer addChild:missile z:zOrder];
+    [enemyMissileArray addObject:missile];
 }
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

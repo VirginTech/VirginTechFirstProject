@@ -11,16 +11,18 @@
 #import "StageLevel_01.h"
 #import "AnimalEnemy.h"
 #import "ObjectManager.h"
-#import "CCDrawingPrimitives.h"
 
 @implementation AnimalPlayer
+
+@synthesize ability_Attack;
+@synthesize ability_Defense;
+@synthesize ability_Traveling;
 
 @synthesize t;
 @synthesize inpolPosArray;
 @synthesize stopFlg;
 @synthesize state_PathMake_flg;
-@synthesize totalAbility;
-//@synthesize fireFlg;
+@synthesize destCollectFlg;
 
 CGSize winSize;
 
@@ -249,7 +251,7 @@ CGSize winSize;
 //====================
 //　ミサイル発射！
 //====================
--(void)fireMissile_Schedule:(CCTime)dt{
+-(void)pFireMissile_Schedule:(CCTime)dt{
     
     if(enemySearchFlg){
         g=9.8;
@@ -260,6 +262,7 @@ CGSize winSize;
         
         int zOrder;
         pMissile = [PlayerMissile createMissile:self.position enemyPos:targetEnemyPos];
+        pMissile.ability_Attack = ability_Attack;//攻撃力を付与
         if(self.position.y<targetEnemyPos.y){
             zOrder=1;
         }else{
@@ -299,13 +302,13 @@ CGSize winSize;
         [self unschedule:@selector(moveVehicle_Schedule:)];//移動スケジュール
         [self unschedule:@selector(moveGun_Schedule:)];//砲塔制御スケジュール開始
         [self unschedule:@selector(status_Schedule:)];//状態スケジュール
-        [self unschedule:@selector(fireMissile_Schedule:)];//ミサイル発射制御スケジュール
+        [self unschedule:@selector(pFireMissile_Schedule:)];//ミサイル発射制御スケジュール
         [self unschedule:@selector(animalDance_Schedule:)];//タンクアニメーション
     }else{
         [self schedule:@selector(moveVehicle_Schedule:) interval:0.01];//移動スケジュール
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];//砲塔制御スケジュール開始
         [self schedule:@selector(status_Schedule:)interval:0.1];//状態スケジュール
-        [self schedule:@selector(fireMissile_Schedule:)interval:1.5];//ミサイル発射制御スケジュール
+        [self schedule:@selector(pFireMissile_Schedule:)interval:1.5];//ミサイル発射制御スケジュール
     }
 }
 
@@ -374,6 +377,8 @@ CGSize winSize;
             ability_Defense=[ObjectManager load_Object_Ability_Defense:objName];
             ability_Traveling=[ObjectManager load_Object_Ability_Traveling:objName];
         }
+        
+        //ライフ初期値
         maxLife=ability_Defense;
 
         //砲塔の描画
@@ -407,14 +412,14 @@ CGSize winSize;
         arrow.rotation=180;
         [self addChild:arrow];
         arrow.visible=false;
-        //射撃フラグ
-        //fireFlg=false;
+        //撃破回収フラグ
+        destCollectFlg=false;
         //砲塔制御スケジュール開始
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];
         //状態スケジュール
         [self schedule:@selector(status_Schedule:)interval:0.1];
         //ミサイル発射制御スケジュール
-        [self schedule:@selector(fireMissile_Schedule:)interval:1.5];
+        [self schedule:@selector(pFireMissile_Schedule:)interval:1.5];
     }
     return self;
 }

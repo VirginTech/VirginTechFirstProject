@@ -8,11 +8,16 @@
 
 #import "AnimalEnemy.h"
 #import "BasicMath.h"
+#import "StageLevel_01.h"
 
 @implementation AnimalEnemy
 
-@synthesize totalAbility;
+@synthesize ability_Attack;
+@synthesize ability_Defense;
+@synthesize ability_Traveling;
+
 @synthesize stopFlg;
+@synthesize destCollectFlg;
 
 CGSize winSize;
 
@@ -243,6 +248,36 @@ CGSize winSize;
     }
 }
 
+//====================
+//　ミサイル発射！
+//====================
+-(void)eFireMissile_Schedule:(CCTime)dt{
+    
+    if(playerSearchFlg){
+
+        int zOrder;
+        eMissile = [EnemyMissile createMissile:self.position playerPos:targetPlayerPos];
+        eMissile.ability_Attack = ability_Attack;//攻撃力を付与
+        if(targetPlayerPos.y < self.position.y){
+            zOrder=1;
+        }else{
+            zOrder=3;
+        }
+        [StageLevel_01 setEnemyMissile:eMissile zOrder:zOrder];
+    }
+}
+
+-(void)status_Schedule:(CCTime)dt
+{
+    //ライフゲージ
+    if(self.rotationalSkewX==self.rotationalSkewY){
+        lifeGauge1.rotation=-self.rotation;//常に０度を維持
+    }
+    nowRatio=(100/maxLife)*ability_Defense;
+    lifeGauge2.scaleX=nowRatio*0.01;
+    lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
+}
+
 -(void)setTarget:(NSMutableArray*)targetArray{
     
     float range;
@@ -255,6 +290,7 @@ CGSize winSize;
             if(range < nearRange){
                 nearRange = range;
                 targetPlayer = target;
+                targetPlayerPos=target.position;
                 if([self isLevel:target]){//自分が強ければ追跡モード
                     modeFlg=1;
                 }else{                          //相手が強ければ逃避モード
@@ -326,8 +362,10 @@ CGSize winSize;
 -(BOOL)isLevel:(AnimalPlayer*)player{
     
     bool flg=false;//自分は弱い
-    
-    if(targetPlayer.totalAbility < self.totalAbility){
+    float pAbility = targetPlayer.ability_Attack + targetPlayer.ability_Defense + targetPlayer.ability_Traveling;
+    float eAbility = ability_Attack + ability_Defense + ability_Traveling;
+
+    if(pAbility < eAbility){
         flg=true;//自分が強い
     }
     return  flg;
@@ -344,8 +382,8 @@ CGSize winSize;
         }else if(modeFlg==2){
             [self unschedule:@selector(escape_Schedule:)];
         }
-        
         [self unschedule:@selector(moveGun_Schedule:)];
+        [self unschedule:@selector(eFireMissile_Schedule:)];
         
     }else{
         
@@ -356,8 +394,8 @@ CGSize winSize;
         }else if(modeFlg==2){
             [self schedule:@selector(escape_Schedule:)interval:0.01];//回避スケジュール
         }
-        
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];//砲塔制御スケジュール
+        [self schedule:@selector(eFireMissile_Schedule:)interval:1.5];//ミサイル発射スケジュール
     }
 }
 
@@ -380,33 +418,60 @@ CGSize winSize;
     if(self=[super initWithSpriteFrame:[vFrameArray objectAtIndex:4]]){
         
         winSize = [[CCDirector sharedDirector]viewSize];
+        
+        ability_Attack=2.0;
+        ability_Defense=20.0;
+        ability_Traveling=0.15;
+        
+        //ライフ初期値
+        maxLife=ability_Defense;
+        
         self.rotation=180;
+        
         //ポジション設定
-        int minX = self.contentSize.width/2;
-        int maxX = winSize.width-self.contentSize.width/2;
-        int rangeX = maxX - minX;
-        int actualX =(arc4random()% rangeX) + minX;
-        self.position = CGPointMake(actualX, 550);
+        //int minX = self.contentSize.width/2;
+        //int maxX = winSize.width-self.contentSize.width/2;
+        //int rangeX = maxX - minX;
+        //int actualX =(arc4random()% rangeX) + minX;
+        //self.position = CGPointMake(actualX, 550);
+        self.position=(CGPointMake(winSize.width/2, 600));
+        
         //砲塔の描画
         gSprite=[CCSprite spriteWithSpriteFrame:[gFrameArray objectAtIndex:4]];
         gSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
         [self addChild:gSprite];
+        
+        //体力ゲージ描画
+        lifeGauge1=[CCSprite spriteWithImageNamed:@"lifegauge1.png"];
+        lifeGauge1.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2 - 25);
+        [self addChild:lifeGauge1];
+        
+        lifeGauge2=[CCSprite spriteWithImageNamed:@"lifegauge2.png"];
+        nowRatio=(100/maxLife)*ability_Defense;
+        lifeGauge2.scaleX=nowRatio*0.01;
+        lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
+        [lifeGauge1 addChild:lifeGauge2];
+        
         //目標セット
         targetPoint = CGPointMake(winSize.width/2, 50);
         //速度セット
-        velocity=0.1;
+        velocity = ability_Traveling;
         //停止フラグ
         stopFlg=false;
         //敵捕捉フラグ
         playerSearchFlg=false;
         //モードフラグ 0=直進 1=追跡 2=回避
         modeFlg=0;
-        //総合能力
-        totalAbility=3;
+        //撃破回収フラグ
+        destCollectFlg=false;
         //直進スケジュール始動
         [self schedule:@selector(straight_Schedule:)interval:0.01];
         //砲塔制御スケジュール開始
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];
+        //状態スケジュール
+        [self schedule:@selector(status_Schedule:)interval:0.1];
+        //ミサイル発射制御スケジュール
+        [self schedule:@selector(eFireMissile_Schedule:)interval:1.5];
     }
     return self;
 }

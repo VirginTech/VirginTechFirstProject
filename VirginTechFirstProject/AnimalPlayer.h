@@ -32,7 +32,6 @@
     CCSprite *gSprite;
     CCSprite* lifeGauge1;
     CCSprite* lifeGauge2;
-    UIImage *imgLifeGauge;
     float maxLife;
     float nowRatio;
     
@@ -47,19 +46,21 @@
     
     float enemyAngle;
     CCSprite* arrow;
-    int totalAbility;
 
     PlayerMissile* pMissile;
     CGPoint targetEnemyPos;
-    //bool fireFlg;
+    bool destCollectFlg;
 }
+
+@property float ability_Defense ;
+@property float ability_Attack;
+@property float ability_Traveling;
 
 @property int t;
 @property NSMutableArray* inpolPosArray;
 @property bool stopFlg;
 @property bool state_PathMake_flg;
-@property int totalAbility;
-//@property bool fireFlg;
+@property bool destCollectFlg;
 
 +(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 -(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum;

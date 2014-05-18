@@ -11,6 +11,8 @@
 
 @interface PlayerMissile : CCSprite {
     
+    float ability_Attack;
+    
     float velocity;
     float targetAngle;
     float targetRange;
@@ -35,6 +37,7 @@
     float t;//時間
 }
 
+@property float ability_Attack;
 @property float timeFlg;
 
 +(id)createMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos;

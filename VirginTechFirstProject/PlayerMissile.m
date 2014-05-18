@@ -11,6 +11,7 @@
 
 @implementation PlayerMissile
 
+@synthesize ability_Attack;
 @synthesize timeFlg;
 
 -(void)missile_Move:(CCTime)dt {

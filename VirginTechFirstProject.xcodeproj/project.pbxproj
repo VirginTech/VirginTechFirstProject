@@ -14,6 +14,8 @@
 		CF0687501920E3F600AB3CD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF06874F1920E3F600AB3CD7 /* SystemConfiguration.framework */; };
 		CF0687521921AF9400AB3CD7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0687511921AF9400AB3CD7 /* iAd.framework */; };
 		CF0687551921AFFE00AB3CD7 /* IAdLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0687541921AFFE00AB3CD7 /* IAdLayer.m */; };
+		CF208CD819283AAF009A00D9 /* EnemyMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF208CD719283AAF009A00D9 /* EnemyMissile.m */; };
+		CF208CDA19284518009A00D9 /* rock2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF208CD919284518009A00D9 /* rock2.png */; };
 		CF27C7E0190B2C48004FAEBE /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7DF190B2C48004FAEBE /* TitleScene.m */; };
 		CF27C7E3190B3A5F004FAEBE /* AnimalPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */; };
 		CF27C7E8190B3DA5004FAEBE /* StageLevel_00.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E7190B3DA5004FAEBE /* StageLevel_00.m */; };
@@ -289,6 +291,9 @@
 		CF0687511921AF9400AB3CD7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		CF0687531921AFFE00AB3CD7 /* IAdLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAdLayer.h; sourceTree = "<group>"; };
 		CF0687541921AFFE00AB3CD7 /* IAdLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAdLayer.m; sourceTree = "<group>"; };
+		CF208CD619283AAF009A00D9 /* EnemyMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyMissile.h; sourceTree = "<group>"; };
+		CF208CD719283AAF009A00D9 /* EnemyMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyMissile.m; sourceTree = "<group>"; };
+		CF208CD919284518009A00D9 /* rock2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock2.png; sourceTree = "<group>"; };
 		CF27C7DE190B2C48004FAEBE /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		CF27C7DF190B2C48004FAEBE /* TitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
 		CF27C7E1190B3A5F004FAEBE /* AnimalPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalPlayer.h; sourceTree = "<group>"; };
@@ -846,6 +851,8 @@
 				CF5FE31E191DB84400821441 /* PlayerMissile.m */,
 				CF8C16C119134618002BBC13 /* AnimalEnemy.h */,
 				CF8C16C219134618002BBC13 /* AnimalEnemy.m */,
+				CF208CD619283AAF009A00D9 /* EnemyMissile.h */,
+				CF208CD719283AAF009A00D9 /* EnemyMissile.m */,
 			);
 			name = object;
 			sourceTree = "<group>";
@@ -950,6 +957,7 @@
 				CF4EA4EC1927269A00AAA872 /* lifegauge1.png */,
 				CF4EA4ED1927269A00AAA872 /* lifegauge2.png */,
 				CF5FE320191DE6AA00821441 /* rock.png */,
+				CF208CD919284518009A00D9 /* rock2.png */,
 				CF6A727219175B240027F654 /* position_line.png */,
 				CFD5A32E191229BB004E2B58 /* arrow.png */,
 				CF8C16C419137369002BBC13 /* bgLayer.png */,
@@ -1802,8 +1810,8 @@
 				CF27C7DD190B2B83004FAEBE /* Unused */,
 				CFD5A32A1911F258004E2B58 /* manager */,
 				CF6C57DC190F68BA00FCF978 /* lib */,
-				CF6C57DD190F68D200FCF978 /* object */,
 				CF6C57DE190F68F900FCF978 /* stage */,
+				CF6C57DD190F68D200FCF978 /* object */,
 				CF6C57DF190F692C00FCF978 /* layer */,
 			);
 			name = Classes;
@@ -1897,6 +1905,7 @@
 				CF6A727319175B240027F654 /* position_line.png in Resources */,
 				CFDFDEE8190A2D6F0021FBF9 /* Default-Landscape~ipad.png in Resources */,
 				CFDFDEFD190A2D6F0021FBF9 /* Icon-Small.png in Resources */,
+				CF208CDA19284518009A00D9 /* rock2.png in Resources */,
 				CFDFDEFB190A2D6F0021FBF9 /* Icon-Small-50.png in Resources */,
 				CFD5A32F191229BB004E2B58 /* arrow.png in Resources */,
 				CFA2AE90191CF20200D46940 /* bear2_default.plist in Resources */,
@@ -2038,6 +2047,7 @@
 				CFDFDFCB190A2D6F0021FBF9 /* CCSpriteFrameCache.m in Sources */,
 				CFDFE08A190A2D700021FBF9 /* mach_timing.c in Sources */,
 				CFDFE06E190A2D700021FBF9 /* ALListener.m in Sources */,
+				CF208CD819283AAF009A00D9 /* EnemyMissile.m in Sources */,
 				CFDFDF47190A2D6F0021FBF9 /* ccFPSImages.m in Sources */,
 				CFDFE01E190A2D700021FBF9 /* ccUtils.c in Sources */,
 				CFDFDF8F190A2D6F0021FBF9 /* CCPhysicsShape.m in Sources */,

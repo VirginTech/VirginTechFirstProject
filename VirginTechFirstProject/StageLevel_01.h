@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
 #import "PlayerMissile.h"
+#import "EnemyMissile.h"
 
 @interface StageLevel_01 : CCScene {
     
@@ -20,5 +21,6 @@
 +(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 +(void)createEnemy;
 +(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder;
++(void)setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder;
 
 @end
