@@ -7,33 +7,70 @@
 //
 
 #import "InformationLayer.h"
-#import "CCDrawingPrimitives.h"
+#import "GameManager.h"
 
 @implementation InformationLayer
 
-CGSize winSize;
+@synthesize coin;
+@synthesize diamond;
 
-+ (InformationLayer *)scene{
-    
+CGSize winSize;
+CCLabelTTF *coinLabel;
+CCLabelTTF *diaLabel;
+
++ (InformationLayer *)scene
+{
     return [[self alloc] init];
 }
 
-- (id)init{
-    
+- (id)init
+{
     self = [super init];
     if (!self) return(nil);
     
     winSize=[[CCDirector sharedDirector]viewSize];
     
+    //各種通貨の取得
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
+    //なければ(初回)とりあえず初期値をセーブ
+    if([dict valueForKey:@"Currency"]==nil){
+        coin=100;
+        diamond=10;
+        [GameManager save_Currency_All:coin dia:diamond];
+    }else{//あれば
+        coin=[GameManager load_Currency_Coin];
+        diamond=[GameManager load_Currency_Dia];
+    }
+    //コインバー
+    CCSprite* coinBar=[CCSprite spriteWithImageNamed:@"coinBar.png"];
+    coinBar.position=ccp(coinBar.contentSize.width/2+20, winSize.height-coinBar.contentSize.height-5);
+    [self addChild:coinBar];
+    
+    coinLabel = [CCLabelTTF labelWithString:@"" fontName:@"Verdana-Bold" fontSize:12.0];
+    coinLabel.color = [CCColor whiteColor];
+    coinLabel.position = ccp(coinBar.contentSize.width/2+15, coinBar.contentSize.height/2);
+    [coinBar addChild:coinLabel];
+
+    //ダイアバー
+    CCSprite* diaBar=[CCSprite spriteWithImageNamed:@"diaBar.png"];
+    diaBar.position=ccp(coinBar.position.x, coinBar.position.y-diaBar.contentSize.height);
+    [self addChild:diaBar];
+    
+    diaLabel = [CCLabelTTF labelWithString:@"" fontName:@"Verdana-Bold" fontSize:12.0];
+    diaLabel.color = [CCColor whiteColor];
+    diaLabel.position = ccp(diaBar.contentSize.width/2+15, diaBar.contentSize.height/2);
+    [diaBar addChild:diaLabel];
+    
+    [self updateCurrencyLabel];
+    
     return self;
 }
 
--(void)draw{
-    
-    //陣地ライン
-    glLineWidth(10.0f);
-    ccDrawColor4F(0.13f, 0.55f, 0.13f, 1.00f);
-    ccDrawLine(CGPointMake(0.0, winSize.height/4), CGPointMake(winSize.width, winSize.height/4));
+-(void)updateCurrencyLabel
+{
+    coinLabel.string=[NSString stringWithFormat:@"%05d",coin];
+    diaLabel.string=[NSString stringWithFormat:@"%04d",diamond];
 }
 
 @end

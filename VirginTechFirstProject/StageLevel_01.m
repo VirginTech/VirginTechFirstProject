@@ -16,6 +16,7 @@
 #import "BasicMath.h"
 #import "PlayerSelection.h"
 #import "IAdLayer.h"
+#import "InformationLayer.h"
 
 @implementation StageLevel_01
 
@@ -24,15 +25,16 @@ int maxHeight;
 CGSize winSize;
 CCScrollView* scrollView;
 CCSprite* bgSpLayer;
+InformationLayer* infoLayer;
 
 NSMutableArray* animalArray;
 NSMutableArray* enemyArray;
 RouteGenerationLayer* routeGeneLyer;
-AnimalPlayer* hitPlayer;
+AnimalPlayer* touchPlayer;
 
 PlayerSelection* playSelect;
-AnimalPlayer* player;
-AnimalEnemy* enemy;
+AnimalPlayer* creatPlayer;
+AnimalEnemy* creatEnemy;
 
 NSMutableArray* searchTarget;
 
@@ -100,20 +102,21 @@ NSMutableArray* removeEnemyMissileArray;
     
     //経路作成レイヤー z:1
     routeGeneLyer=[[RouteGenerationLayer alloc]init];
-    //[self addChild:routeGeneLyer];
     
-    //ポーズレイヤー z2
-    NaviLayer* navi=[[NaviLayer alloc]init];
-    [self addChild:navi z:2];
-    
-    //プレイヤー選択レイヤー z:3
+    //プレイヤー選択レイヤー z:2
     playSelect=[[PlayerSelection alloc]init];
-    //[self addChild:playSelect z:3];
-    //playSelect.visible=false;
     
-    //iAdバナー表示
+    //ポーズレイヤー z3
+    NaviLayer* navi=[[NaviLayer alloc]init];
+    [self addChild:navi z:3];
+    
+    //インフォメーション z:4
+    infoLayer=[[InformationLayer alloc]init];
+    [self addChild:infoLayer z:4];
+    
+    //iAdバナー表示 z:5
     IAdLayer* iAd=[[IAdLayer alloc]init:1];
-    [self addChild:iAd];
+    [self addChild:iAd z:5];
     
     // done
 	return self;
@@ -131,7 +134,7 @@ NSMutableArray* removeEnemyMissileArray;
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
-    [self schedule:@selector(createEnemy_Schedule:)interval:20.0];
+    [self schedule:@selector(createEnemy_Schedule:)interval:20.0 repeat:CCTimerRepeatForever delay:5.0];
     
     // In pre-v3, touch enable and scheduleUpdate was called here
     // In v3, touch is enabled by setting userInterActionEnabled for the individual nodes
@@ -174,7 +177,7 @@ NSMutableArray* removeEnemyMissileArray;
         for(AnimalEnemy* enemy in enemyArray){
             enemy.destCollectFlg=false;//便宜上ここで初期化
             if([BasicMath RadiusIntersectsRadius:enemy.position pointB:player.position
-                                         radius1:20 radius2:20]){
+                                                                            radius1:20 radius2:20]){
                 enemy.stopFlg=true;
                 player.stopFlg=true;
             }
@@ -210,7 +213,7 @@ NSMutableArray* removeEnemyMissileArray;
         }else{
             for(AnimalEnemy* enemy in enemyArray){
                 if([BasicMath RadiusIntersectsRadius:missile.position pointB:enemy.position radius1:10 radius2:20]){
-                    if(!enemy.destCollectFlg){
+                    if(!enemy.destCollectFlg){//多重判定防止
                         enemy.destCollectFlg=true;
                         [removePlayerMissileArray addObject:missile];
                         //敵ダメージ
@@ -232,7 +235,7 @@ NSMutableArray* removeEnemyMissileArray;
         }else{
             for(AnimalPlayer* player in animalArray){
                 if([BasicMath RadiusIntersectsRadius:missile.position pointB:player.position radius1:10 radius2:20]){
-                    if(!player.destCollectFlg){
+                    if(!player.destCollectFlg){//多重判定防止
                         player.destCollectFlg=true;
                         [removeEnemyMissileArray addObject:missile];
                         //プレイヤーダメージ
@@ -287,7 +290,7 @@ NSMutableArray* removeEnemyMissileArray;
             }
         }else{
             
-            [self schedule:@selector(createEnemy_Schedule:)interval:20.0];
+            [self schedule:@selector(createEnemy_Schedule:)interval:20.0 repeat:CCTimerRepeatForever delay:5.0];
             
             for(AnimalPlayer* player in animalArray){
                 [player onPause_To_Resume:false];
@@ -316,13 +319,13 @@ NSMutableArray* removeEnemyMissileArray;
     for(AnimalPlayer* _player in animalArray){
         if(type==0){//経路作成
             if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:30]){
-                hitPlayer=_player;
+                touchPlayer=_player;
                 routeGeneLyer.player=_player;
                 flg=true;
             }
         }else if(type==1){//プレイヤー追加
             if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:70]){
-                hitPlayer=_player;
+                touchPlayer=_player;
                 routeGeneLyer.player=_player;
                 flg=true;
             }
@@ -357,18 +360,22 @@ NSMutableArray* removeEnemyMissileArray;
 //============================
 +(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum{
     
-    player=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
-    [animalArray addObject:player];
-    [bgSpLayer addChild:player z:2];
+    creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
+    [animalArray addObject:creatPlayer];
+    [bgSpLayer addChild:creatPlayer z:2];
+
+    infoLayer.coin -= playerNum;//コイン数減
+    [GameManager save_Currency_Coin:infoLayer.coin];//コインセーブ
+    [infoLayer updateCurrencyLabel];//インフォレイヤーにコインを反映
 }
 //============================
 // 敵アニマルセット
 //============================
 +(void)createEnemy
 {
-    enemy=[AnimalEnemy createEnemy];
-    [enemyArray addObject:enemy];
-    [bgSpLayer addChild:enemy z:0];
+    creatEnemy=[AnimalEnemy createEnemy];
+    [enemyArray addObject:creatEnemy];
+    [bgSpLayer addChild:creatEnemy z:0];
 }
 
 //============================
@@ -411,16 +418,16 @@ NSMutableArray* removeEnemyMissileArray;
     worldLocation.y = touchLocation.y + offsetY;
     
     if([StageLevel_01 isAnimal:worldLocation type:0]){//経路作成レイヤー表示
-        if(![StageLevel_01 isCollision:hitPlayer]){//タッチした戦車が衝突継続中でなければ経路作成可能
+        if(![StageLevel_01 isCollision:touchPlayer]){//タッチした戦車が衝突継続中でなければ経路作成可能
             routeGeneLyer.offsetY=offsetY;
             [self addChild:routeGeneLyer z:1];
-            hitPlayer.state_PathMake_flg=true;
+            touchPlayer.state_PathMake_flg=true;
         }
         
     }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
         if(worldLocation.y < 200){
             //playSelect.visible=true;
-            [self addChild:playSelect z:3];
+            [self addChild:playSelect z:2];
             playSelect.createPlayerPos=worldLocation;
             [playSelect setArrowVisible:offsetY];
         }

@@ -60,7 +60,7 @@ CGSize winSize;
     }else{
         
         [self unschedule:@selector(escape_Schedule:)];
-        stopFlg=false;
+        //stopFlg=false;
     }
 }
 
@@ -104,7 +104,7 @@ CGSize winSize;
     }else{
         
         [self unschedule:@selector(chase_Schedule:)];
-        stopFlg=false;
+        //stopFlg=false;
     }
 
 }
@@ -161,7 +161,7 @@ CGSize winSize;
     }else{
         
         [self unschedule:@selector(straight_Schedule:)];
-        stopFlg=false;
+        //stopFlg=false;
     }
 }
 
@@ -275,7 +275,8 @@ CGSize winSize;
     }
     nowRatio=(100/maxLife)*ability_Defense;
     lifeGauge2.scaleX=nowRatio*0.01;
-    lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
+    //lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
+    lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
 }
 
 -(void)setTarget:(NSMutableArray*)targetArray{
@@ -301,8 +302,6 @@ CGSize winSize;
                 //砲塔旋回
                 playerSearchFlg=true;
                 gunAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
-                //ミサイル発射
-                
             }
         }
     }else{                                      //相手がいなければ直進モード
@@ -449,7 +448,8 @@ CGSize winSize;
         lifeGauge2=[CCSprite spriteWithImageNamed:@"lifegauge2.png"];
         nowRatio=(100/maxLife)*ability_Defense;
         lifeGauge2.scaleX=nowRatio*0.01;
-        lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
+        //lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
+        lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
         [lifeGauge1 addChild:lifeGauge2];
         
         //目標セット

@@ -22,6 +22,13 @@
 +(void)setPauseStateChange:(bool)flg;
 +(bool)getPauseStateChange;
 
++(NSMutableArray*)load_Currency_All;
++(void)save_Currency_All:(int)coin dia:(int)dia;
++(int)load_Currency_Coin;
++(int)load_Currency_Dia;
++(void)save_Currency_Coin:(int)coin;
++(void)save_Currency_Dia:(int)dia;
+
 +(void)submitScore_GameCenter:(NSInteger)score;
 
 @end

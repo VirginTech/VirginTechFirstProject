@@ -72,7 +72,11 @@
 +(void)save_Object_Ability_Attack:(NSString*)objName attack:(float)attack
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
-    array=[self load_Object_Ability:objName];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray=[self load_Object_Ability:objName];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
     [array replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:attack]];
     [self save_Object_Ability:objName
                                 attack:[[array objectAtIndex:0]floatValue]
@@ -85,7 +89,11 @@
 +(void)save_Object_Ability_Defense:(NSString*)objName defense:(float)defense
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
-    array=[self load_Object_Ability:objName];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray=[self load_Object_Ability:objName];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
     [array replaceObjectAtIndex:1 withObject:[NSNumber numberWithFloat:defense]];
     [self save_Object_Ability:objName
                                 attack:[[array objectAtIndex:0]floatValue]
@@ -98,7 +106,11 @@
 +(void)save_Object_Ability_Traveling:(NSString*)objName traveling:(float)traveling
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
-    array=[self load_Object_Ability:objName];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray=[self load_Object_Ability:objName];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
     [array replaceObjectAtIndex:2 withObject:[NSNumber numberWithFloat:traveling]];
     [self save_Object_Ability:objName
                                 attack:[[array objectAtIndex:0]floatValue]

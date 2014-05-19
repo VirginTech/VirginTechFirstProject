@@ -267,6 +267,8 @@
 		CFDFE177190A2D710021FBF9 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE176190A2D710021FBF9 /* IntroScene.m */; };
 		CFF39635191092F90052608E /* InformationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39634191092F90052608E /* InformationLayer.m */; };
 		CFF39638191104510052608E /* PlayerSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39637191104510052608E /* PlayerSelection.m */; };
+		CFF501151929D70A007B524F /* coinBar.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF501131929D70A007B524F /* coinBar.png */; };
+		CFF501161929D70A007B524F /* diaBar.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF501141929D70A007B524F /* diaBar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -789,6 +791,8 @@
 		CFF39634191092F90052608E /* InformationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationLayer.m; sourceTree = "<group>"; };
 		CFF39636191104510052608E /* PlayerSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSelection.h; sourceTree = "<group>"; };
 		CFF39637191104510052608E /* PlayerSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSelection.m; sourceTree = "<group>"; };
+		CFF501131929D70A007B524F /* coinBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coinBar.png; sourceTree = "<group>"; };
+		CFF501141929D70A007B524F /* diaBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diaBar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -954,6 +958,8 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFF501131929D70A007B524F /* coinBar.png */,
+				CFF501141929D70A007B524F /* diaBar.png */,
 				CF4EA4EC1927269A00AAA872 /* lifegauge1.png */,
 				CF4EA4ED1927269A00AAA872 /* lifegauge2.png */,
 				CF5FE320191DE6AA00821441 /* rock.png */,
@@ -1919,6 +1925,7 @@
 				CF68555F190E0E81004C4D43 /* 花_default.png in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
 				CFA2AE91191CF20200D46940 /* bear3_default.plist in Resources */,
+				CFF501161929D70A007B524F /* diaBar.png in Resources */,
 				CF8C16C519137369002BBC13 /* bgLayer.png in Resources */,
 				CFA2AE96191CF3F500D46940 /* interface_default.plist in Resources */,
 				CF685569190E4094004C4D43 /* 地面_default.plist in Resources */,
@@ -1927,6 +1934,7 @@
 				CFDFDF01190A2D6F0021FBF9 /* Icon-Spotlight-iOS7.png in Resources */,
 				CFA2AE93191CF20200D46940 /* bear5_default.plist in Resources */,
 				CFDFDEF5190A2D6F0021FBF9 /* Icon-76@2x.png in Resources */,
+				CFF501151929D70A007B524F /* coinBar.png in Resources */,
 				CFDFE169190A2D710021FBF9 /* LICENSE_Chipmunk.txt in Resources */,
 				CFDFDF03190A2D6F0021FBF9 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				CFDFDEF3190A2D6F0021FBF9 /* Icon-76.png in Resources */,

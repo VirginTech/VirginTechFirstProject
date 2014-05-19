@@ -16,8 +16,9 @@
     
 }
 
-+ (StageLevel_01 *)scene;
-- (id)init;
++(StageLevel_01 *)scene;
+-(id)init;
+
 +(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 +(void)createEnemy;
 +(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder;

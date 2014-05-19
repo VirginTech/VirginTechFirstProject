@@ -55,7 +55,78 @@ bool isPauseStateChange;//変化があった
     return isPauseStateChange;
 }
 
+//=========================================
+//通貨の取得（配列で一括） 0:コイン 1:ダイア
+//=========================================
++(NSMutableArray*)load_Currency_All
+{
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+	NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [userDefault objectForKey:@"Currency"];
+    return array;
+}
+//=========================================
+//通貨のセーブ（一括保存） 0:コイン 1:ダイア
+//=========================================
++(void)save_Currency_All:(int)coin dia:(int)dia
+{
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+    NSArray* array=[NSArray arrayWithObjects:[NSNumber numberWithInt:coin],[NSNumber numberWithInt:dia],nil];
+    [userDefault setObject:array forKey:@"Currency"];
+	[userDefault synchronize];
+}
+//=========================================
+//　コインの取得
+//=========================================
++(int)load_Currency_Coin
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    array=[self load_Currency_All];
+    int coin=[[array objectAtIndex:0]intValue];
+    return coin;
+}
+//=========================================
+//　ダイアの取得
+//=========================================
++(int)load_Currency_Dia
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    array=[self load_Currency_All];
+    int dia=[[array objectAtIndex:1]intValue];
+    return dia;
+}
+//=========================================
+//　コインの保存
+//=========================================
++(void)save_Currency_Coin:(int)coin
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray=[self load_Currency_All];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
+    [array replaceObjectAtIndex:0 withObject:[NSNumber numberWithInt:coin]];
+    [self save_Currency_All:[[array objectAtIndex:0]intValue] dia:[[array objectAtIndex:1]intValue]];
+}
+//=========================================
+//　ダイアの保存
+//=========================================
++(void)save_Currency_Dia:(int)dia
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray=[self load_Currency_All];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
+    [array replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:dia]];
+    [self save_Currency_All:[[array objectAtIndex:0]intValue] dia:[[array objectAtIndex:1]intValue]];
+}
+
+//=========================================
 //GameCenterへスコアを送信
+//=========================================
 +(void)submitScore_GameCenter:(NSInteger)score{
     
     GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"VirginTechFirstProject_Leaderboard"];

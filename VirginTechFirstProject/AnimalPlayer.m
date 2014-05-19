@@ -154,7 +154,7 @@ CGSize winSize;
             CGPoint pt=[value CGPointValue];
             self.position=CGPointMake(pt.x, pt.y);
         }
-        stopFlg=false;
+        //stopFlg=false;
     }
 }
 
@@ -224,7 +224,7 @@ CGSize winSize;
     }
     nowRatio=(100/maxLife)*ability_Defense;
     lifeGauge2.scaleX=nowRatio*0.01;
-    lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
+    lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
 }
 
 -(void)setTarget:(NSMutableArray*)targetArray{
@@ -396,7 +396,7 @@ CGSize winSize;
         lifeGauge2=[CCSprite spriteWithImageNamed:@"lifegauge2.png"];
         nowRatio=(100/maxLife)*ability_Defense;
         lifeGauge2.scaleX=nowRatio*0.01;
-        lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
+        lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
         [lifeGauge1 addChild:lifeGauge2];
         
         //速度セット

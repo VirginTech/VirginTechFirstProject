@@ -9,11 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface InformationLayer : CCScene {
-    
+@interface InformationLayer : CCScene
+{    
+    int coin;
+    int diamond;
 }
+
+@property int coin;
+@property int diamond;
 
 + (InformationLayer *)scene;
 - (id)init;
+
+-(void)updateCurrencyLabel;
 
 @end
