@@ -398,6 +398,11 @@ CGSize winSize;
     }
 }
 
+-(void)resumeRunning
+{
+    [self schedule:@selector(straight_Schedule:)interval:0.01];//直進スケジュール
+}
+
 //====================
 //　敵アニマルタンク作成
 //====================

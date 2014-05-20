@@ -312,6 +312,11 @@ CGSize winSize;
     }
 }
 
+-(void)resumeRunning
+{
+    [self schedule:@selector(moveVehicle_Schedule:) interval:0.01];//移動スケジュール
+}
+
 //====================
 //　プレイヤータンク作成
 //====================

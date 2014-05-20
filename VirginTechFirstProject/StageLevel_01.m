@@ -171,6 +171,18 @@ NSMutableArray* removeEnemyMissileArray;
             }
         }
     }
+    //敵　対　敵　衝突判定
+    for(AnimalEnemy* enemy1 in enemyArray){
+        for(AnimalEnemy* enemy2 in enemyArray){
+            if([BasicMath RadiusIntersectsRadius:enemy1.position pointB:enemy2.position
+                                         radius1:20 radius2:20]){
+                if(enemy1!=enemy2){
+                    enemy1.stopFlg=true;
+                    enemy2.stopFlg=true;
+                }
+            }
+        }
+    }
     //プレイヤー　対　敵
     for(AnimalPlayer* player in animalArray){
         player.destCollectFlg=false;//便宜上ここで初期化
@@ -180,6 +192,24 @@ NSMutableArray* removeEnemyMissileArray;
                                                                             radius1:20 radius2:20]){
                 enemy.stopFlg=true;
                 player.stopFlg=true;
+            }
+        }
+    }
+    //プレイヤー再稼働
+    for(AnimalPlayer* player in animalArray){
+        if(player.stopFlg){//停止中であって
+            if(![StageLevel_01 isPlayerCollision:player]){//誰とも接触していなければ
+                player.stopFlg=false;
+                [player resumeRunning];//再稼働する
+            }
+        }
+    }
+    //敵アニマル再稼働
+    for(AnimalEnemy* enemy in enemyArray){
+        if(enemy.stopFlg){//停止中であって
+            if(![StageLevel_01 isEnemyCollision:enemy]){//誰とも接触していなければ
+                enemy.stopFlg=false;
+                [enemy resumeRunning];//再稼働する
             }
         }
     }
@@ -335,26 +365,48 @@ NSMutableArray* removeEnemyMissileArray;
 }
 
 //===================================
-// タッチしたアニマル戦車が衝突継続中かどうか
+// 選択したプレイヤーが衝突継続中かどうか
 //===================================
-+(BOOL)isCollision:(AnimalPlayer*)hitPlayer{
-    
++(BOOL)isPlayerCollision:(AnimalPlayer*)player
+{
     bool flg=false;
     
     for(AnimalPlayer* _player in animalArray){
-        if([BasicMath RadiusIntersectsRadius:hitPlayer.position pointB:_player.position radius1:20 radius2:20]){
-            if(hitPlayer!=_player){
+        if([BasicMath RadiusIntersectsRadius:player.position pointB:_player.position radius1:20 radius2:20]){
+            if(player!=_player){
                 flg=true;
             }
         }
     }
     for(AnimalEnemy* _enemy in enemyArray){
-        if([BasicMath RadiusIntersectsRadius:hitPlayer.position pointB:_enemy.position radius1:20 radius2:20]){
+        if([BasicMath RadiusIntersectsRadius:player.position pointB:_enemy.position radius1:20 radius2:20]){
             flg=true;
         }
     }
     return flg;
 }
+//===================================
+// 選択した敵が衝突継続中かどうか
+//===================================
++(BOOL)isEnemyCollision:(AnimalEnemy*)enemy
+{    
+    bool flg=false;
+    
+    for(AnimalEnemy* _enemy in enemyArray){
+        if([BasicMath RadiusIntersectsRadius:enemy.position pointB:_enemy.position radius1:20 radius2:20]){
+            if(enemy!=_enemy){
+                flg=true;
+            }
+        }
+    }
+    for(AnimalPlayer* _player in animalArray){
+        if([BasicMath RadiusIntersectsRadius:enemy.position pointB:_player.position radius1:20 radius2:20]){
+            flg=true;
+        }
+    }
+    return flg;
+}
+
 //============================
 // プレイヤーアニマルセット
 //============================
@@ -418,7 +470,7 @@ NSMutableArray* removeEnemyMissileArray;
     worldLocation.y = touchLocation.y + offsetY;
     
     if([StageLevel_01 isAnimal:worldLocation type:0]){//経路作成レイヤー表示
-        if(![StageLevel_01 isCollision:touchPlayer]){//タッチした戦車が衝突継続中でなければ経路作成可能
+        if(![StageLevel_01 isPlayerCollision:touchPlayer]){//タッチした戦車が衝突継続中でなければ経路作成可能
             routeGeneLyer.offsetY=offsetY;
             [self addChild:routeGeneLyer z:1];
             touchPlayer.state_PathMake_flg=true;
