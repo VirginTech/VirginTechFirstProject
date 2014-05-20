@@ -14,16 +14,23 @@
 +(NSMutableArray*)load_Object_Ability:(NSString*)objName;
 //アビリティ一括セーブ
 +(void)save_Object_Ability:(NSString*)objName
-                                    attack:(float)attack
-                                    defense:(float)defense
-                                    traveling:(float)traveling;
+                                        level:(int)level
+                                        attack:(float)attack
+                                        defense:(float)defense
+                                        traveling:(float)traveling
+                                        build:(int)build;
 //アビリティ個々に取得
++(int)load_Object_Ability_Level:(NSString*)objName;
 +(float)load_Object_Ability_Attack:(NSString*)objName;
 +(float)load_Object_Ability_Defense:(NSString*)objName;
 +(float)load_Object_Ability_Traveling:(NSString*)objName;
++(int)load_Object_Ability_Build:(NSString*)objName;
+
 //アビリティ個々に保存
++(void)save_Object_Ability_Level:(NSString*)objName level:(int)level;
 +(void)save_Object_Ability_Attack:(NSString*)objName attack:(float)attack;
 +(void)save_Object_Ability_Defense:(NSString*)objName defense:(float)defense;
 +(void)save_Object_Ability_Traveling:(NSString*)objName traveling:(float)traveling;
++(void)save_Object_Ability_Build:(NSString*)objName build:(int)build;
 
 @end

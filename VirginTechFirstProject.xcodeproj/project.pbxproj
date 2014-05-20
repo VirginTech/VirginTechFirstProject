@@ -24,6 +24,7 @@
 		CF418ACD192098FF00196E64 /* LeaderboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF418ACC192098FF00196E64 /* LeaderboardView.m */; };
 		CF4EA4EE1927269A00AAA872 /* lifegauge1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4EA4EC1927269A00AAA872 /* lifegauge1.png */; };
 		CF4EA4EF1927269A00AAA872 /* lifegauge2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4EA4ED1927269A00AAA872 /* lifegauge2.png */; };
+		CF56B6EB192B494C00FC07DB /* InitializeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF56B6EA192B494C00FC07DB /* InitializeManager.m */; };
 		CF5CB2481922F47B001D9E65 /* PreferencesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2471922F47B001D9E65 /* PreferencesLayer.m */; };
 		CF5FE31F191DB84400821441 /* PlayerMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FE31E191DB84400821441 /* PlayerMissile.m */; };
 		CF5FE321191DE6AA00821441 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5FE320191DE6AA00821441 /* rock.png */; };
@@ -309,6 +310,8 @@
 		CF418ACC192098FF00196E64 /* LeaderboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardView.m; sourceTree = "<group>"; };
 		CF4EA4EC1927269A00AAA872 /* lifegauge1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifegauge1.png; sourceTree = "<group>"; };
 		CF4EA4ED1927269A00AAA872 /* lifegauge2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifegauge2.png; sourceTree = "<group>"; };
+		CF56B6E9192B494C00FC07DB /* InitializeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitializeManager.h; sourceTree = "<group>"; };
+		CF56B6EA192B494C00FC07DB /* InitializeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitializeManager.m; sourceTree = "<group>"; };
 		CF5CB2461922F47B001D9E65 /* PreferencesLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesLayer.h; sourceTree = "<group>"; };
 		CF5CB2471922F47B001D9E65 /* PreferencesLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesLayer.m; sourceTree = "<group>"; };
 		CF5FE31D191DB84400821441 /* PlayerMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMissile.h; sourceTree = "<group>"; };
@@ -896,6 +899,8 @@
 		CFD5A32A1911F258004E2B58 /* manager */ = {
 			isa = PBXGroup;
 			children = (
+				CF56B6E9192B494C00FC07DB /* InitializeManager.h */,
+				CF56B6EA192B494C00FC07DB /* InitializeManager.m */,
 				CF0687491920DDAE00AB3CD7 /* PaymentManager.h */,
 				CF06874A1920DDAE00AB3CD7 /* PaymentManager.m */,
 				CFD5A32B1911F29D004E2B58 /* GameManager.h */,
@@ -1989,6 +1994,7 @@
 				CFDFE098190A2D700021FBF9 /* OALTools.m in Sources */,
 				CFDFDF4E190A2D6F0021FBF9 /* ccGLStateCache.m in Sources */,
 				CFDFE046190A2D700021FBF9 /* OALActionManager.m in Sources */,
+				CF56B6EB192B494C00FC07DB /* InitializeManager.m in Sources */,
 				CF8C16C319134618002BBC13 /* AnimalEnemy.m in Sources */,
 				CF0687551921AFFE00AB3CD7 /* IAdLayer.m in Sources */,
 				CFDFDFA5190A2D6F0021FBF9 /* CCScheduler.m in Sources */,

@@ -21,6 +21,7 @@
 + (InformationLayer *)scene;
 - (id)init;
 
+-(void)saveCoin:(int)quantity addFlg:(bool)addFlg;//true:足す false:引く
 -(void)updateCurrencyLabel;
 
 @end

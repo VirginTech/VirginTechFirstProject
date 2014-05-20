@@ -31,17 +31,9 @@ CCLabelTTF *diaLabel;
     winSize=[[CCDirector sharedDirector]viewSize];
     
     //各種通貨の取得
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
-    //なければ(初回)とりあえず初期値をセーブ
-    if([dict valueForKey:@"Currency"]==nil){
-        coin=100;
-        diamond=10;
-        [GameManager save_Currency_All:coin dia:diamond];
-    }else{//あれば
-        coin=[GameManager load_Currency_Coin];
-        diamond=[GameManager load_Currency_Dia];
-    }
+    coin=[GameManager load_Currency_Coin];
+    diamond=[GameManager load_Currency_Dia];
+
     //コインバー
     CCSprite* coinBar=[CCSprite spriteWithImageNamed:@"coinBar.png"];
     coinBar.position=ccp(coinBar.contentSize.width/2+20, winSize.height-coinBar.contentSize.height-5);
@@ -65,6 +57,17 @@ CCLabelTTF *diaLabel;
     [self updateCurrencyLabel];
     
     return self;
+}
+
+-(void)saveCoin:(int)quantity addFlg:(bool)addFlg //true:足す false:引く
+{
+    if(addFlg){
+        coin += quantity;
+    }else{
+        coin -= quantity;
+    }
+    [GameManager save_Currency_Coin:coin];//コインセーブ
+    [self updateCurrencyLabel];//コインを再描画
 }
 
 -(void)updateCurrencyLabel

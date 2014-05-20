@@ -19,6 +19,8 @@
 
 + (PlayerSelection *)scene;
 - (id)init;
+
+-(void)setButtonLevel;
 -(void)setArrowVisible:(float)offsetY;
 
 @end

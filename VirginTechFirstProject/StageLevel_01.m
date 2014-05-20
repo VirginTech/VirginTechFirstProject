@@ -8,6 +8,7 @@
 
 #import "StageLevel_01.h"
 #import "GameManager.h"
+#import "ObjectManager.h"
 #import "AnimalPlayer.h"
 #import "AnimalEnemy.h"
 #import "NaviLayer.h"
@@ -248,7 +249,8 @@ NSMutableArray* removeEnemyMissileArray;
                         [removePlayerMissileArray addObject:missile];
                         //敵ダメージ
                         enemy.ability_Defense -= missile.ability_Attack;
-                        if(enemy.ability_Defense<=0){
+                        if(enemy.ability_Defense<=0){//敵撃破！
+                            [infoLayer saveCoin:(int)enemy.ability_Attack addFlg:true];//コイン報酬
                             [removeEnemyArray addObject:enemy];
                         }
                         break;//二重判定防止
@@ -416,9 +418,7 @@ NSMutableArray* removeEnemyMissileArray;
     [animalArray addObject:creatPlayer];
     [bgSpLayer addChild:creatPlayer z:2];
 
-    infoLayer.coin -= playerNum;//コイン数減
-    [GameManager save_Currency_Coin:infoLayer.coin];//コインセーブ
-    [infoLayer updateCurrencyLabel];//インフォレイヤーにコインを反映
+    [infoLayer saveCoin:playerNum addFlg:false];//コイン減
 }
 //============================
 // 敵アニマルセット
@@ -481,6 +481,7 @@ NSMutableArray* removeEnemyMissileArray;
             //playSelect.visible=true;
             [self addChild:playSelect z:2];
             playSelect.createPlayerPos=worldLocation;
+            [playSelect setButtonLevel];
             [playSelect setArrowVisible:offsetY];
         }
     }

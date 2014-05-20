@@ -14,9 +14,11 @@
 
 @implementation AnimalPlayer
 
+@synthesize ability_Level;
 @synthesize ability_Attack;
 @synthesize ability_Defense;
 @synthesize ability_Traveling;
+@synthesize ability_Build;
 
 @synthesize t;
 @synthesize inpolPosArray;
@@ -331,58 +333,37 @@ CGSize winSize;
     if(playerNum==1){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
         objName=@"beartank1";
-        ability_Attack=1.0;
-        ability_Defense=20.0;
-        ability_Traveling=0.2;
     }else if(playerNum==2){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear2_default.plist"];
         objName=@"beartank2";
-        ability_Attack=1.0;
-        ability_Defense=15.0;
-        ability_Traveling=0.2;
     }else if(playerNum==3){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear3_default.plist"];
         objName=@"beartank3";
-        ability_Attack=2.0;
-        ability_Defense=10.0;
-        ability_Traveling=0.15;
     }else if(playerNum==4){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear4_default.plist"];
         objName=@"beartank4";
-        ability_Attack=2.0;
-        ability_Defense=10.0;
-        ability_Traveling=0.15;
     }else if(playerNum==5){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear5_default.plist"];
         objName=@"beartank5";
-        ability_Attack=5.0;
-        ability_Defense=5.0;
-        ability_Traveling=0.1;
     }
     
     for(int i=0;i<8;i++){
         [vFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"v%02d.png",i]]];
         [gFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"g%02d.png",i]]];
     }
+    
     if(self=[super initWithSpriteFrame:[vFrameArray objectAtIndex:0]]){
         
         winSize = [[CCDirector sharedDirector]viewSize];
         self.position = playerPos;
         
         //各種能力の取得
-        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-        NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
-        //なければ(初回)とりあえず初期値をセーブ
-        if([dict valueForKey:objName]==nil){
-            [ObjectManager save_Object_Ability:objName attack:ability_Attack
-                                                            defense:ability_Defense
-                                                            traveling:ability_Traveling];
-        }else{//あればロードする
-            ability_Attack=[ObjectManager load_Object_Ability_Attack:objName];
-            ability_Defense=[ObjectManager load_Object_Ability_Defense:objName];
-            ability_Traveling=[ObjectManager load_Object_Ability_Traveling:objName];
-        }
-        
+        ability_Level=[ObjectManager load_Object_Ability_Level:objName];
+        ability_Attack=[ObjectManager load_Object_Ability_Attack:objName];
+        ability_Defense=[ObjectManager load_Object_Ability_Defense:objName];
+        ability_Traveling=[ObjectManager load_Object_Ability_Traveling:objName];
+        ability_Build=[ObjectManager load_Object_Ability_Build:objName];
+
         //ライフ初期値
         maxLife=ability_Defense;
 

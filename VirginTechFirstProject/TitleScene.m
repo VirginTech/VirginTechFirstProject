@@ -13,6 +13,7 @@
 #import "ShopView.h"
 #import "IAdLayer.h"
 #import "PreferencesLayer.h"
+#import "InitializeManager.h"
 
 @implementation TitleScene
 
@@ -44,6 +45,10 @@
         [GameManager setDevice:0];
     }
     //NSLog(@"デバイスは %d です。",[GameManager getDevice]);
+    
+    //初回データ初期値設定
+    [InitializeManager initializeObject];
+    [InitializeManager initializeCurrency];
     
     // Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];

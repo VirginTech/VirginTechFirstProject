@@ -23,9 +23,11 @@
     
     //各種能力変数
     NSString* objName;
+    int ability_Level;
     float ability_Defense ;
     float ability_Attack;
     float ability_Traveling;
+    int ability_Build;
     
     NSMutableArray* vFrameArray;
     NSMutableArray* gFrameArray;
@@ -52,9 +54,11 @@
     bool destCollectFlg;
 }
 
+@property int ability_Level;
 @property float ability_Defense ;
 @property float ability_Attack;
 @property float ability_Traveling;
+@property int ability_Build;
 
 @property int t;
 @property NSMutableArray* inpolPosArray;
