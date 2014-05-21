@@ -14,8 +14,11 @@
 #import "IAdLayer.h"
 #import "PreferencesLayer.h"
 #import "InitializeManager.h"
+#import "ItemSetupLayer.h"
 
 @implementation TitleScene
+
+CGSize winSize;
 
 + (TitleScene *)scene
 {
@@ -28,10 +31,15 @@
     self = [super init];
     if (!self) return(nil);
     
+    winSize=[[CCDirector sharedDirector]viewSize];
+    
     //ゲーム状態セット
     [GameManager setPlaying:false];
     [GameManager setPauseing:false];
     [GameManager setPauseStateChange:false];
+    
+    //画面状態
+    [GameManager setActive:true];
     
     //デバイス登録
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
@@ -89,13 +97,17 @@
     
     //環境設定
     CCButton *preferencesButton = [CCButton buttonWithTitle:@"[ 環境設定 ]" fontName:@"Verdana-Bold" fontSize:18.0f];
-    preferencesButton.positionType = CCPositionTypeNormalized;
-    preferencesButton.position = ccp(0.15f, 0.95f);
+    //preferencesButton.positionType = CCPositionTypeNormalized;
+    preferencesButton.position = ccp(preferencesButton.contentSize.width/2, winSize.height-20);
     [preferencesButton setTarget:self selector:@selector(onPreferencesButtonClicked:)];
     [self addChild:preferencesButton];
     
-    //マシンメンテナンス
-    
+    //アイテムセットアップ
+    CCButton *itemSetupButton = [CCButton buttonWithTitle:@"[パワーアップ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    //itemSetupButton.positionType = CCPositionTypeNormalized;
+    itemSetupButton.position = ccp(itemSetupButton.contentSize.width/2, winSize.height-50);
+    [itemSetupButton setTarget:self selector:@selector(onItemSetupButtonClicked:)];
+    [self addChild:itemSetupButton];
     
     // done
 	return self;
@@ -103,40 +115,59 @@
 
 - (void)onSelectStageClicked:(id)sender
 {
-    // start spinning scene with transition
-    [[CCDirector sharedDirector] replaceScene:[SelectStage scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
-    //[[CCDirector sharedDirector] replaceScene:[Level_00 scene]withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
+    if([GameManager getActive]){
+        // start spinning scene with transition
+        [[CCDirector sharedDirector] replaceScene:
+                        [SelectStage scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+        //[[CCDirector sharedDirector] replaceScene:[Level_00 scene]withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
+    }
 }
 
 -(void)onGameCenterClicked:(id)sender
-{    
-    lbv=[[LeaderboardView alloc]init];
-    [lbv showLeaderboard];
+{
+    if([GameManager getActive]){
+        lbv=[[LeaderboardView alloc]init];
+        [lbv showLeaderboard];
+    }
 }
 
 -(void)onInAppPurchaseClicked:(id)sender
 {
-    //アプリ内購入の設定チェック
-    if (![SKPaymentQueue canMakePayments]){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー！"
-                                                        message:@"アプリ内課金が使用制限されています。"
-                                                        delegate:nil
-                                                        cancelButtonTitle:nil
-                                                        otherButtonTitles:@"OK", nil];
-        [alert show];
-        return;
-        
-    }else{
-        //ショップ画面へ
-        [[CCDirector sharedDirector] replaceScene:[ShopView scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+    if([GameManager getActive]){
+        //アプリ内購入の設定チェック
+        if (![SKPaymentQueue canMakePayments]){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー！"
+                                                            message:@"アプリ内課金が使用制限されています。"
+                                                            delegate:nil
+                                                            cancelButtonTitle:nil
+                                                            otherButtonTitles:@"OK", nil];
+            [alert show];
+            return;
+            
+        }else{
+            //ショップ画面へ
+            [[CCDirector sharedDirector] replaceScene:[ShopView scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 
+        }
     }
 }
 
 -(void)onPreferencesButtonClicked:(id)sender
 {
-    PreferencesLayer* prefence=[[PreferencesLayer alloc]init];
-    [self addChild:prefence];
+    if([GameManager getActive]){
+        [GameManager setActive:false];
+        PreferencesLayer* prefence=[[PreferencesLayer alloc]init];
+        [self addChild:prefence];
+    }
+}
+
+-(void)onItemSetupButtonClicked:(id)sender
+{
+    if([GameManager getActive]){
+        [GameManager setActive:false];
+        ItemSetupLayer* itemSetup=[[ItemSetupLayer alloc]init];
+        [self addChild:itemSetup];
+    }
 }
 
 @end

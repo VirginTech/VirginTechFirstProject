@@ -11,8 +11,8 @@
 
 @implementation InformationLayer
 
-@synthesize coin;
-@synthesize diamond;
+//@synthesize coin;
+//@synthesize diamond;
 
 CGSize winSize;
 CCLabelTTF *coinLabel;
@@ -31,8 +31,8 @@ CCLabelTTF *diaLabel;
     winSize=[[CCDirector sharedDirector]viewSize];
     
     //各種通貨の取得
-    coin=[GameManager load_Currency_Coin];
-    diamond=[GameManager load_Currency_Dia];
+    //coin=[GameManager load_Currency_Coin];
+    //diamond=[GameManager load_Currency_Dia];
 
     //コインバー
     CCSprite* coinBar=[CCSprite spriteWithImageNamed:@"coinBar.png"];
@@ -54,26 +54,15 @@ CCLabelTTF *diaLabel;
     diaLabel.position = ccp(diaBar.contentSize.width/2+15, diaBar.contentSize.height/2);
     [diaBar addChild:diaLabel];
     
-    [self updateCurrencyLabel];
+    [InformationLayer updateCurrencyLabel];
     
     return self;
 }
 
--(void)saveCoin:(int)quantity addFlg:(bool)addFlg //true:足す false:引く
++(void)updateCurrencyLabel
 {
-    if(addFlg){
-        coin += quantity;
-    }else{
-        coin -= quantity;
-    }
-    [GameManager save_Currency_Coin:coin];//コインセーブ
-    [self updateCurrencyLabel];//コインを再描画
-}
-
--(void)updateCurrencyLabel
-{
-    coinLabel.string=[NSString stringWithFormat:@"%05d",coin];
-    diaLabel.string=[NSString stringWithFormat:@"%04d",diamond];
+    coinLabel.string=[NSString stringWithFormat:@"%05d",[GameManager load_Currency_Coin]];
+    diaLabel.string=[NSString stringWithFormat:@"%04d",[GameManager load_Currency_Dia]];
 }
 
 @end

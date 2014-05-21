@@ -33,4 +33,7 @@
 +(void)save_Object_Ability_Traveling:(NSString*)objName traveling:(float)traveling;
 +(void)save_Object_Ability_Build:(NSString*)objName build:(int)build;
 
+//アビリティ・レベルアップ
++(void)levelUp_Object_Ability:(NSString*)objName;
+
 @end

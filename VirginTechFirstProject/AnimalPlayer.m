@@ -151,11 +151,11 @@ CGSize winSize;
         [self unschedule:@selector(moveVehicle_Schedule:)];
         
         //位置を戻す
-        if(t>=10){
+        /*if(t>=10){
             NSValue *value=[inpolPosArray objectAtIndex:t-10];
             CGPoint pt=[value CGPointValue];
             self.position=CGPointMake(pt.x, pt.y);
-        }
+        }*/
         //stopFlg=false;
     }
 }

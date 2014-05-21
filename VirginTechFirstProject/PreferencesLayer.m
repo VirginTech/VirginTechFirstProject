@@ -7,7 +7,7 @@
 //
 
 #import "PreferencesLayer.h"
-
+#import "GameManager.h"
 
 @implementation PreferencesLayer
 
@@ -24,7 +24,8 @@ CGSize winSize;
     if (!self) return(nil);
     
     winSize=[[CCDirector sharedDirector]viewSize];
-    
+    //self.userInteractionEnabled = YES;
+
     //BGカラー
     CCNodeColor* background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
     [self addChild:background];
@@ -41,6 +42,7 @@ CGSize winSize;
 
 -(void)onCloseClicked:(id)sender
 {
+    [GameManager setActive:true];
     [self removeFromParentAndCleanup:YES];
 }
 

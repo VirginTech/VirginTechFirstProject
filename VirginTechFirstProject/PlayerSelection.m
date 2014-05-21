@@ -16,7 +16,7 @@
 @synthesize createPlayerPos;
 
 CGSize winSize;
-CCSprite* bg;
+CCSprite* bgSprite;
 CCSprite* arrow;
 int afterCoin;
 
@@ -34,7 +34,8 @@ CCLabelTTF* label05;
 - (id)init{
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
-    bg=[CCSprite spriteWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"playerselect.png"]];
+    bgSprite=[CCSprite spriteWithSpriteFrame:
+                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"playerselect.png"]];
 
     CCButton* animal01=[CCButton buttonWithTitle:@""
                     spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal01.png"]];
@@ -59,11 +60,11 @@ CCLabelTTF* label05;
     animal04.position=CGPointMake(animal04.contentSize.width*3+60, animal04.contentSize.height/2+10);
     animal05.position=CGPointMake(animal05.contentSize.width*4+60, animal05.contentSize.height/2+10);
 
-    [bg addChild:animal01];
-    [bg addChild:animal02];
-    [bg addChild:animal03];
-    [bg addChild:animal04];
-    [bg addChild:animal05];
+    [bgSprite addChild:animal01];
+    [bgSprite addChild:animal02];
+    [bgSprite addChild:animal03];
+    [bgSprite addChild:animal04];
+    [bgSprite addChild:animal05];
     
     //レベルラベル
     label01=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
@@ -91,12 +92,15 @@ CCLabelTTF* label05;
     label05.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height/2-40);
     [animal05 addChild:label05];
 
-    self = [super initWithContentNode:bg];
+    self = [super initWithContentNode:bgSprite];
     if (!self) return(nil);
     
     winSize=[[CCDirector sharedDirector]viewSize];
     self.userInteractionEnabled = YES;
     self.verticalScrollEnabled=NO;
+    
+    //ラベル表示
+    [self setButtonLevel];
     
     //矢印初期化
     arrow=[CCSprite spriteWithImageNamed:@"arrow.png"];
@@ -113,8 +117,9 @@ CCLabelTTF* label05;
     label04.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"beartank4"]];
     label05.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"beartank5"]];
 }
--(void)setArrowVisible:(float)offsetY{
-    
+
+-(void)setArrowVisible:(float)offsetY
+{    
     arrow.rotation=180;
     arrow.position=CGPointMake(createPlayerPos.x, createPlayerPos.y - offsetY - arrow.contentSize.height/2);
     arrow.visible=true;

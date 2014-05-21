@@ -11,17 +11,16 @@
 
 @interface InformationLayer : CCScene
 {    
-    int coin;
-    int diamond;
+    //int coin;
+    //int diamond;
 }
 
-@property int coin;
-@property int diamond;
+//@property int coin;
+//@property int diamond;
 
 + (InformationLayer *)scene;
 - (id)init;
 
--(void)saveCoin:(int)quantity addFlg:(bool)addFlg;//true:足す false:引く
--(void)updateCurrencyLabel;
++(void)updateCurrencyLabel;
 
 @end

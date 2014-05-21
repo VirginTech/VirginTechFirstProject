@@ -135,7 +135,7 @@ NSMutableArray* removeEnemyMissileArray;
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
-    [self schedule:@selector(createEnemy_Schedule:)interval:20.0 repeat:CCTimerRepeatForever delay:5.0];
+    [self schedule:@selector(createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
     
     // In pre-v3, touch enable and scheduleUpdate was called here
     // In v3, touch is enabled by setting userInterActionEnabled for the individual nodes
@@ -250,7 +250,8 @@ NSMutableArray* removeEnemyMissileArray;
                         //敵ダメージ
                         enemy.ability_Defense -= missile.ability_Attack;
                         if(enemy.ability_Defense<=0){//敵撃破！
-                            [infoLayer saveCoin:(int)enemy.ability_Attack addFlg:true];//コイン報酬
+                            [GameManager in_Out_Coin:(int)enemy.ability_Attack addFlg:true];//コイン報酬
+                            [InformationLayer updateCurrencyLabel];
                             [removeEnemyArray addObject:enemy];
                         }
                         break;//二重判定防止
@@ -322,7 +323,7 @@ NSMutableArray* removeEnemyMissileArray;
             }
         }else{
             
-            [self schedule:@selector(createEnemy_Schedule:)interval:20.0 repeat:CCTimerRepeatForever delay:5.0];
+            [self schedule:@selector(createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
             
             for(AnimalPlayer* player in animalArray){
                 [player onPause_To_Resume:false];
@@ -418,7 +419,8 @@ NSMutableArray* removeEnemyMissileArray;
     [animalArray addObject:creatPlayer];
     [bgSpLayer addChild:creatPlayer z:2];
 
-    [infoLayer saveCoin:playerNum addFlg:false];//コイン減
+    [GameManager in_Out_Coin:playerNum addFlg:false];//コイン減
+    [InformationLayer updateCurrencyLabel];
 }
 //============================
 // 敵アニマルセット
@@ -478,10 +480,9 @@ NSMutableArray* removeEnemyMissileArray;
         
     }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
         if(worldLocation.y < 200){
-            //playSelect.visible=true;
+            playSelect=[[PlayerSelection alloc]init];
             [self addChild:playSelect z:2];
             playSelect.createPlayerPos=worldLocation;
-            [playSelect setButtonLevel];
             [playSelect setArrowVisible:offsetY];
         }
     }

@@ -21,6 +21,8 @@
 +(bool)getPauseing;
 +(void)setPauseStateChange:(bool)flg;
 +(bool)getPauseStateChange;
++(void)setActive:(bool)flg;
++(bool)getActive;
 
 +(NSMutableArray*)load_Currency_All;
 +(void)save_Currency_All:(int)coin dia:(int)dia;
@@ -28,6 +30,9 @@
 +(int)load_Currency_Dia;
 +(void)save_Currency_Coin:(int)coin;
 +(void)save_Currency_Dia:(int)dia;
+
++(void)in_Out_Coin:(int)quantity addFlg:(bool)addFlg;
++(void)in_Out_Dia:(int)quantity addFlg:(bool)addFlg;
 
 +(void)submitScore_GameCenter:(NSInteger)score;
 

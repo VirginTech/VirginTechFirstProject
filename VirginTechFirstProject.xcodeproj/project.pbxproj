@@ -270,6 +270,7 @@
 		CFF39638191104510052608E /* PlayerSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39637191104510052608E /* PlayerSelection.m */; };
 		CFF501151929D70A007B524F /* coinBar.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF501131929D70A007B524F /* coinBar.png */; };
 		CFF501161929D70A007B524F /* diaBar.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF501141929D70A007B524F /* diaBar.png */; };
+		CFFDB93E192C386400979A14 /* ItemSetupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFDB93D192C386400979A14 /* ItemSetupLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -796,6 +797,8 @@
 		CFF39637191104510052608E /* PlayerSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSelection.m; sourceTree = "<group>"; };
 		CFF501131929D70A007B524F /* coinBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coinBar.png; sourceTree = "<group>"; };
 		CFF501141929D70A007B524F /* diaBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diaBar.png; sourceTree = "<group>"; };
+		CFFDB93C192C386400979A14 /* ItemSetupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSetupLayer.h; sourceTree = "<group>"; };
+		CFFDB93D192C386400979A14 /* ItemSetupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSetupLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -876,6 +879,10 @@
 		CF6C57DF190F692C00FCF978 /* layer */ = {
 			isa = PBXGroup;
 			children = (
+				CFFDB93C192C386400979A14 /* ItemSetupLayer.h */,
+				CFFDB93D192C386400979A14 /* ItemSetupLayer.m */,
+				CFF39636191104510052608E /* PlayerSelection.h */,
+				CFF39637191104510052608E /* PlayerSelection.m */,
 				CF0687531921AFFE00AB3CD7 /* IAdLayer.h */,
 				CF0687541921AFFE00AB3CD7 /* IAdLayer.m */,
 				CF8C16CC1913B71A002BBC13 /* NaviLayer.h */,
@@ -884,8 +891,6 @@
 				CF5CB2471922F47B001D9E65 /* PreferencesLayer.m */,
 				CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */,
 				CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */,
-				CFF39636191104510052608E /* PlayerSelection.h */,
-				CFF39637191104510052608E /* PlayerSelection.m */,
 				CFF39633191092F90052608E /* InformationLayer.h */,
 				CFF39634191092F90052608E /* InformationLayer.m */,
 				CF685560190E2FA1004C4D43 /* BgLowerLayer.h */,
@@ -2057,6 +2062,7 @@
 				CFDFE083190A2D700021FBF9 /* OALSuspendHandler.m in Sources */,
 				CFDFE0E2190A2D700021FBF9 /* vec4.c in Sources */,
 				CFDFDFF4190A2D6F0021FBF9 /* CCDirectorIOS.m in Sources */,
+				CFFDB93E192C386400979A14 /* ItemSetupLayer.m in Sources */,
 				CF5FFACA1924B6F000A1647C /* ObjectManager.m in Sources */,
 				CFDFDFCB190A2D6F0021FBF9 /* CCSpriteFrameCache.m in Sources */,
 				CFDFE08A190A2D700021FBF9 /* mach_timing.c in Sources */,

@@ -11,6 +11,7 @@
 #import "SelectStage.h"
 #import "PreferencesLayer.h"
 #import "GameManager.h"
+#import "ItemSetupLayer.h"
 
 @implementation NaviLayer
 
@@ -21,6 +22,7 @@ CCButton *pauseButton;
 CCButton *titleButton;
 CCButton *stageButton;
 CCButton *preferencesButton;
+CCButton *itemSetupButton;
 
 + (NaviLayer *)scene{
     
@@ -70,6 +72,14 @@ CCButton *preferencesButton;
     [self addChild:preferencesButton];
     preferencesButton.visible=false;
     
+    //アイテムセットアップ
+    itemSetupButton = [CCButton buttonWithTitle:@"[パワーアップ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    itemSetupButton.positionType = CCPositionTypeNormalized;
+    itemSetupButton.position = ccp(0.5f, 0.35f);
+    [itemSetupButton setTarget:self selector:@selector(onItemSetupButtonClicked:)];
+    [self addChild:itemSetupButton];
+    itemSetupButton.visible=false;
+    
     return self;
 }
 
@@ -81,12 +91,14 @@ CCButton *preferencesButton;
         titleButton.visible=true;
         stageButton.visible=true;
         preferencesButton.visible=true;
+        itemSetupButton.visible=true;
     }else{//再開中
         pauseButton.title=@"[ポーズ]";
         background.visible=false;
         titleButton.visible=false;
         stageButton.visible=false;
         preferencesButton.visible=false;
+        itemSetupButton.visible=false;
     }
 }
 
@@ -117,4 +129,13 @@ CCButton *preferencesButton;
     PreferencesLayer* prefence=[[PreferencesLayer alloc]init];
     [self addChild:prefence];
 }
+-(void)onItemSetupButtonClicked:(id)sender
+{
+    if([GameManager getActive]){
+        //[GameManager setActive:false];
+        ItemSetupLayer* itemSetup=[[ItemSetupLayer alloc]init];
+        [self addChild:itemSetup];
+    }
+}
+
 @end

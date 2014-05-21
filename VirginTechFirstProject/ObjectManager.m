@@ -186,5 +186,16 @@
                         build:[[array objectAtIndex:4]intValue]];
 }
 
+//=========================================
+//　アビリティのレベルアップ
+//=========================================
++(void)levelUp_Object_Ability:(NSString*)objName
+{
+    [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
+    [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.5];
+    [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+1.5];
+    [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.03];
+    [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
+}
 
 @end

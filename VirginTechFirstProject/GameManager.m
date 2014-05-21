@@ -18,7 +18,8 @@ int deviceType;// 1:iPhone5 2:iPhone4 3:iPad2
 int stageLevel;//ステージレベル
 bool isPlaying;//プレイ中かどうか(true:プレイ中)
 bool isPauseing;//ポーズ中か(true:ポーズ中)
-bool isPauseStateChange;//変化があった
+bool isPauseStateChange;//ポーズに変化があった
+bool isActive;//アクティブ状態か？
 
 //デバイス取得／登録
 +(void)setDevice:(int)type{
@@ -53,6 +54,13 @@ bool isPauseStateChange;//変化があった
 }
 +(bool)getPauseStateChange{
     return isPauseStateChange;
+}
+//画面がアクティブかどうか
++(void)setActive:(bool)flg{
+    isActive=flg;
+}
++(bool)getActive{
+    return isActive;
 }
 
 //=========================================
@@ -122,6 +130,28 @@ bool isPauseStateChange;//変化があった
     }
     [array replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:dia]];
     [self save_Currency_All:[[array objectAtIndex:0]intValue] dia:[[array objectAtIndex:1]intValue]];
+}
+//=========================================
+//　コインの入出力
+//=========================================
++(void)in_Out_Coin:(int)quantity addFlg:(bool)addFlg //true:足す false:引く
+{
+    if(addFlg){
+        [GameManager save_Currency_Coin:[GameManager load_Currency_Coin] + quantity];
+    }else{
+        [GameManager save_Currency_Coin:[GameManager load_Currency_Coin] - quantity];
+    }
+}
+//=========================================
+//　ダイアの入出力
+//=========================================
++(void)in_Out_Dia:(int)quantity addFlg:(bool)addFlg //true:足す false:引く
+{
+    if(addFlg){
+        [GameManager save_Currency_Dia:[GameManager load_Currency_Dia] + quantity];
+    }else{
+        [GameManager save_Currency_Dia:[GameManager load_Currency_Dia] - quantity];
+    }
 }
 
 //=========================================
