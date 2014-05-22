@@ -156,8 +156,8 @@ CCLabelTTF* label05;
     if(afterDia >= 0){
         [ObjectManager levelUp_Object_Ability:@"beartank1"];
         [self setButtonLevel];
-        [GameManager in_Out_Dia:1 addFlg:false];//コイン1減
-        [InformationLayer updateCurrencyLabel];
+        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
+        [InformationLayer update_CurrencyLabel];
     }
 }
 -(void)onSetBtn02_Clicked:(id)sender
@@ -166,8 +166,8 @@ CCLabelTTF* label05;
     if(afterDia >= 0){
         [ObjectManager levelUp_Object_Ability:@"beartank2"];
         [self setButtonLevel];
-        [GameManager in_Out_Dia:1 addFlg:false];//コイン1減
-        [InformationLayer updateCurrencyLabel];
+        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
+        [InformationLayer update_CurrencyLabel];
     }
 }
 -(void)onSetBtn03_Clicked:(id)sender
@@ -176,8 +176,8 @@ CCLabelTTF* label05;
     if(afterDia >= 0){
         [ObjectManager levelUp_Object_Ability:@"beartank3"];
         [self setButtonLevel];
-        [GameManager in_Out_Dia:1 addFlg:false];//コイン1減
-        [InformationLayer updateCurrencyLabel];
+        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
+        [InformationLayer update_CurrencyLabel];
     }
 }
 -(void)onSetBtn04_Clicked:(id)sender
@@ -186,8 +186,8 @@ CCLabelTTF* label05;
     if(afterDia >= 0){
         [ObjectManager levelUp_Object_Ability:@"beartank4"];
         [self setButtonLevel];
-        [GameManager in_Out_Dia:1 addFlg:false];//コイン1減
-        [InformationLayer updateCurrencyLabel];
+        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
+        [InformationLayer update_CurrencyLabel];
     }
 }
 -(void)onSetBtn05_Clicked:(id)sender
@@ -196,8 +196,8 @@ CCLabelTTF* label05;
     if(afterDia >= 0){
         [ObjectManager levelUp_Object_Ability:@"beartank5"];
         [self setButtonLevel];
-        [GameManager in_Out_Dia:1 addFlg:false];//コイン1減
-        [InformationLayer updateCurrencyLabel];
+        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
+        [InformationLayer update_CurrencyLabel];
     }
 }
 -(void)onCloseClicked:(id)sender

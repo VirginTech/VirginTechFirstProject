@@ -17,6 +17,7 @@
 CGSize winSize;
 CCLabelTTF *coinLabel;
 CCLabelTTF *diaLabel;
+CCLabelTTF* scoreLabel;
 
 + (InformationLayer *)scene
 {
@@ -34,9 +35,15 @@ CCLabelTTF *diaLabel;
     //coin=[GameManager load_Currency_Coin];
     //diamond=[GameManager load_Currency_Dia];
 
+    //ハイスコア
+    scoreLabel=[CCLabelTTF labelWithString:@"Score:00000" fontName:@"Verdana-Bold" fontSize:12];
+    scoreLabel.color=[CCColor whiteColor];
+    scoreLabel.position=ccp(scoreLabel.contentSize.width/2+10, winSize.height-10);
+    [self addChild:scoreLabel];
+
     //コインバー
     CCSprite* coinBar=[CCSprite spriteWithImageNamed:@"coinBar.png"];
-    coinBar.position=ccp(coinBar.contentSize.width/2+20, winSize.height-coinBar.contentSize.height-5);
+    coinBar.position=ccp(coinBar.contentSize.width/2+10, winSize.height-30);
     [self addChild:coinBar];
     
     coinLabel = [CCLabelTTF labelWithString:@"" fontName:@"Verdana-Bold" fontSize:12.0];
@@ -46,7 +53,7 @@ CCLabelTTF *diaLabel;
 
     //ダイアバー
     CCSprite* diaBar=[CCSprite spriteWithImageNamed:@"diaBar.png"];
-    diaBar.position=ccp(coinBar.position.x, coinBar.position.y-diaBar.contentSize.height);
+    diaBar.position=ccp(diaBar.contentSize.width/2+10, winSize.height-50);
     [self addChild:diaBar];
     
     diaLabel = [CCLabelTTF labelWithString:@"" fontName:@"Verdana-Bold" fontSize:12.0];
@@ -54,12 +61,17 @@ CCLabelTTF *diaLabel;
     diaLabel.position = ccp(diaBar.contentSize.width/2+15, diaBar.contentSize.height/2);
     [diaBar addChild:diaLabel];
     
-    [InformationLayer updateCurrencyLabel];
+    [InformationLayer update_CurrencyLabel];
+    [InformationLayer update_HighScoreLabel];
     
     return self;
 }
++(void)update_HighScoreLabel
+{
+    scoreLabel.string=[NSString stringWithFormat:@"Score:%05ld",[GameManager load_HighScore]];
+}
 
-+(void)updateCurrencyLabel
++(void)update_CurrencyLabel
 {
     coinLabel.string=[NSString stringWithFormat:@"%05d",[GameManager load_Currency_Coin]];
     diaLabel.string=[NSString stringWithFormat:@"%04d",[GameManager load_Currency_Dia]];

@@ -12,5 +12,6 @@
 
 +(void)initializeObject;
 +(void)initializeCurrency;
++(void)initializeHighScore;
 
 @end

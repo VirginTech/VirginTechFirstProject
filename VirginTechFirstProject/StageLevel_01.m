@@ -250,8 +250,17 @@ NSMutableArray* removeEnemyMissileArray;
                         //敵ダメージ
                         enemy.ability_Defense -= missile.ability_Attack;
                         if(enemy.ability_Defense<=0){//敵撃破！
-                            [GameManager in_Out_Coin:(int)enemy.ability_Attack addFlg:true];//コイン報酬
-                            [InformationLayer updateCurrencyLabel];
+                            //コイン報酬
+                            [GameManager in_Out_Coin:(int)enemy.ability_Attack addFlg:true];
+                            [InformationLayer update_CurrencyLabel];
+                            //ハイスコア更新
+                            [GameManager save_HighScore:[GameManager load_HighScore]+1];
+                            [InformationLayer update_HighScoreLabel];
+                            //リーダーボードテスト
+                            [GameManager submitScore_GameCenter:[GameManager load_HighScore]];
+                            //アチーブメントテスト
+                            //[GameManager reportAchievement_GameCenter:(float)[GameManager loadHighScore]/10*100];
+                            //敵削除配列へ
                             [removeEnemyArray addObject:enemy];
                         }
                         break;//二重判定防止
@@ -420,7 +429,7 @@ NSMutableArray* removeEnemyMissileArray;
     [bgSpLayer addChild:creatPlayer z:2];
 
     [GameManager in_Out_Coin:playerNum addFlg:false];//コイン減
-    [InformationLayer updateCurrencyLabel];
+    [InformationLayer update_CurrencyLabel];
 }
 //============================
 // 敵アニマルセット

@@ -16,6 +16,7 @@
 //===========
 int deviceType;// 1:iPhone5 2:iPhone4 3:iPad2
 int stageLevel;//ステージレベル
+
 bool isPlaying;//プレイ中かどうか(true:プレイ中)
 bool isPauseing;//ポーズ中か(true:ポーズ中)
 bool isPauseStateChange;//ポーズに変化があった
@@ -61,6 +62,25 @@ bool isActive;//アクティブ状態か？
 }
 +(bool)getActive{
     return isActive;
+}
+
+//=========================================
+//　ハイスコアの取得
+//=========================================
++(long)load_HighScore
+{
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+    long highScore=[[userDefault objectForKey:@"HighScore"]longValue];
+    return highScore;
+}
+//=========================================
+//　ハイスコアの保存
+//=========================================
++(void)save_HighScore:(long)score
+{
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+    NSNumber* scoreNum=[NSNumber numberWithLong:score];
+    [userDefault setObject:scoreNum forKey:@"HighScore"];
 }
 
 //=========================================
@@ -157,8 +177,8 @@ bool isActive;//アクティブ状態か？
 //=========================================
 //GameCenterへスコアを送信
 //=========================================
-+(void)submitScore_GameCenter:(NSInteger)score{
-    
++(void)submitScore_GameCenter:(NSInteger)score
+{
     GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"VirginTechFirstProject_Leaderboard"];
     NSInteger scoreR = score;
     scoreReporter.value = scoreR;
@@ -167,6 +187,49 @@ bool isActive;//アクティブ状態か？
             NSLog(@"error %@",error);
         }
     }];
+}
+//=========================================
+//GameCenterからハイスコアを取得
+//=========================================
++(void)get_HighScore_GameCenter
+{
+    NSArray* playerID = [[NSArray alloc] initWithObjects:[GKLocalPlayer localPlayer].playerID, nil];
+    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] initWithPlayerIDs:playerID];
+    
+    if (leaderboardRequest != nil) {
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeAllTime;
+        leaderboardRequest.category = @"VirginTechFirstProject_Leaderboard";
+        leaderboardRequest.range = NSMakeRange(1,1);//ハイスコア
+        [leaderboardRequest loadScoresWithCompletionHandler: ^(NSArray *scores, NSError *error) {
+            if (error != nil) {
+                NSLog(@"error %@",error);
+            }
+            NSInteger highScore;
+            if (scores != nil) {
+                highScore = ((GKScore *)[scores objectAtIndex:0]).value;
+            } else {
+                highScore = 0;// 初回プレイ
+            }
+        }];
+    }
+}
+
+
+//=========================================
+//GameCenterへアチーブメントを送信
+//=========================================
++(void)reportAchievement_GameCenter:(float)percent
+{
+    GKAchievement *achievement = [[GKAchievement alloc]initWithIdentifier:
+                                                            @"VirginTechFirstProject_Achievement_01"];
+    if (achievement){
+        achievement.percentComplete = percent;
+        [achievement reportAchievementWithCompletionHandler:^(NSError *error){
+            if (error != nil){
+                NSLog(@"Error in reporting achievements: %@", error);
+            }
+        }];
+    }
 }
 
 @end

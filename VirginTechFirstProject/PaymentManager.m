@@ -126,17 +126,18 @@ SKProduct* product_;
 -(void)bought:(NSString*)productIds
 {
     
-    if([productIds isEqualToString:@"VirginTechFirstProject_Jewel10Pack"]){
-        //購入処理
-        
-    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel20Pack"]){
-        //購入処理
-        
-    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel30Pack"]){
-        //購入処理
-        
+    if([productIds isEqualToString:@"VirginTechFirstProject_Jewel10Pack"])
+    {
+        [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+10];
     }
-    NSLog(@"%@",productIds);
+    else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel20Pack"])
+    {
+        [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+20];
+    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel30Pack"])
+    {
+        [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+30];
+    }
+    //NSLog(@"%@",productIds);
 }
 
 @end

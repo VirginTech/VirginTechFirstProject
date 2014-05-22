@@ -48,6 +48,18 @@
     }
 }
 
++(void)initializeHighScore
+{
+    //各種通貨の取得
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
+    
+    //なければ(初回)とりあえず初期値をセーブ
+    if([dict valueForKey:@"HighScore"]==nil){
+        [GameManager save_HighScore:0];
+    }
+}
+
 @end
 
 

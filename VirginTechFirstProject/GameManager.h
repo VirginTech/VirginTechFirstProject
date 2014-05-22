@@ -15,6 +15,7 @@
 +(int)getDevice;
 +(void)setStageLevel:(int)level;
 +(int)getStageLevel;
+
 +(void)setPlaying:(bool)flg;
 +(bool)getPlaying;
 +(void)setPauseing:(bool)flg;
@@ -34,6 +35,11 @@
 +(void)in_Out_Coin:(int)quantity addFlg:(bool)addFlg;
 +(void)in_Out_Dia:(int)quantity addFlg:(bool)addFlg;
 
++(void)save_HighScore:(long)score;
++(long)load_HighScore;
+
 +(void)submitScore_GameCenter:(NSInteger)score;
++(void)get_HighScore_GameCenter;
++(void)reportAchievement_GameCenter:(float)percent;
 
 @end

@@ -21,6 +21,7 @@
 + (InformationLayer *)scene;
 - (id)init;
 
-+(void)updateCurrencyLabel;
++(void)update_CurrencyLabel;
++(void)update_HighScoreLabel;
 
 @end
