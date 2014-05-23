@@ -12,12 +12,23 @@
 
 @implementation InitializeManager
 
-+(void)initializeObject
+NSString *appDomain;
+NSDictionary *dict;
+
++(void)initialize_All
 {
     //各種能力の取得
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
-    
+    appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
+
+    [InitializeManager initialize_Object];
+    [InitializeManager initialize_Currency];
+    [InitializeManager initialize_HighScore];
+    [InitializeManager initialize_Aggregate];
+}
+
++(void)initialize_Object
+{
     //なければ(初回)とりあえず初期値をセーブ
     if([dict valueForKey:@"beartank1"]==nil){
         [ObjectManager save_Object_Ability:@"beartank1" level:1 attack:1.0 defense:20.0 traveling:0.2 build:1];
@@ -36,27 +47,111 @@
     }
 }
 
-+(void)initializeCurrency
++(void)initialize_Currency
 {
-    //各種通貨の取得
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
-    
     //なければ(初回)とりあえず初期値をセーブ
     if([dict valueForKey:@"Currency"]==nil){
         [GameManager save_Currency_All:1000 dia:10];
     }
 }
 
-+(void)initializeHighScore
++(void)initialize_HighScore
 {
-    //各種通貨の取得
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
-    
     //なければ(初回)とりあえず初期値をセーブ
     if([dict valueForKey:@"HighScore"]==nil){
         [GameManager save_HighScore:0];
+    }
+}
+
++(void)initialize_Aggregate
+{
+    //なければ(初回)とりあえず初期値をセーブ
+    if([dict valueForKey:@"Aggregate"]==nil){
+        [GameManager save_Aggregate_All:0 fortress:0 level:0 stage:0];
+    }
+}
+
+//===================================
+//0:キーID 1:達成値 2:達成率 3:報酬ポイント 4:支払Flg
+//===================================
++(void)initialize_Achievement_Tank
+{
+    //なければ(初回)とりあえず初期値をセーブ
+    if([dict valueForKey:@"Achievement_Tank"]==nil){
+        NSMutableArray* array=[[NSMutableArray alloc]init];
+        NSArray* tankArray;
+        
+        tankArray=[NSArray arrayWithObjects:@"",
+                    [NSNumber numberWithInt:5],
+                    [NSNumber numberWithFloat:0.0],
+                    [NSNumber numberWithInt:1],
+                    [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+        
+        tankArray=[NSArray arrayWithObjects:@"",
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+
+        tankArray=[NSArray arrayWithObjects:@"",
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+
+        tankArray=[NSArray arrayWithObjects:@"",
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+
+        tankArray=[NSArray arrayWithObjects:@"",
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+
+        tankArray=[NSArray arrayWithObjects:@"",
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+
+        tankArray=[NSArray arrayWithObjects:@"",
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+
+        tankArray=[NSArray arrayWithObjects:@"",
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+
+        tankArray=[NSArray arrayWithObjects:@"",
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+
+        tankArray=[NSArray arrayWithObjects:@"",
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tankArray];
+        
+        [GameManager save_Achievement_Tank_All:array];
     }
 }
 

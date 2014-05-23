@@ -40,6 +40,21 @@
 
 +(void)submitScore_GameCenter:(NSInteger)score;
 +(void)get_HighScore_GameCenter;
+
++(void)save_Aggregate_All:(int)tank fortress:(int)fortress level:(int)level stage:(int)stage;
++(NSMutableArray*)load_Aggregate_All;
++(int)load_Aggregate_Tank;
++(int)load_Aggregate_Fortress;
++(int)load_Aggregate_Level;
++(int)load_Aggregate_Stage;
++(void)save_Aggregate_Tank:(int)tank;
++(void)save_Aggregate_Fortress:(int)fortress;
++(void)save_Aggregate_Level:(int)level;
++(void)save_Aggregate_Stage:(int)stage;
+
++(void)save_Achievement_Tank_All:(NSMutableArray*)array;
++(NSMutableArray*)load_Achievement_Tank_All;
+
 +(void)reportAchievement_GameCenter:(float)percent;
 
 @end

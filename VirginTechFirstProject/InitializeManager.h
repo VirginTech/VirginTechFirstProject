@@ -10,8 +10,11 @@
 
 @interface InitializeManager : NSObject
 
-+(void)initializeObject;
-+(void)initializeCurrency;
-+(void)initializeHighScore;
++(void)initialize_All;
+
++(void)initialize_Object;
++(void)initialize_Currency;
++(void)initialize_HighScore;
++(void)initialize_Aggregate;
 
 @end

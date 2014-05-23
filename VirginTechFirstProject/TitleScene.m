@@ -55,9 +55,7 @@ CGSize winSize;
     //NSLog(@"デバイスは %d です。",[GameManager getDevice]);
     
     //初回データ初期値設定
-    [InitializeManager initializeObject];
-    [InitializeManager initializeCurrency];
-    [InitializeManager initializeHighScore];
+    [InitializeManager initialize_All];
     
     // Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];

@@ -250,6 +250,8 @@ NSMutableArray* removeEnemyMissileArray;
                         //敵ダメージ
                         enemy.ability_Defense -= missile.ability_Attack;
                         if(enemy.ability_Defense<=0){//敵撃破！
+                            //撃破数更新
+                            [GameManager save_Aggregate_Tank:[GameManager load_Aggregate_Tank]+1];
                             //コイン報酬
                             [GameManager in_Out_Coin:(int)enemy.ability_Attack addFlg:true];
                             [InformationLayer update_CurrencyLabel];

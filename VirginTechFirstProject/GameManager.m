@@ -213,8 +213,156 @@ bool isActive;//アクティブ状態か？
         }];
     }
 }
-
-
+//=========================================
+//アチーブメント基礎集計 一括保存（0:タンク撃破数 1:敵要塞撃破数 2:最高レベル数 3:ステージ数）
+//=========================================
++(void)save_Aggregate_All:(int)tank fortress:(int)fortress level:(int)level stage:(int)stage
+{
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+    NSArray* array=[NSArray arrayWithObjects:[NSNumber numberWithInt:tank],
+                                                        [NSNumber numberWithInt:fortress],
+                                                        [NSNumber numberWithInt:level],
+                                                        [NSNumber numberWithInt:stage],nil];
+    [userDefault setObject:array forKey:@"Aggregate"];
+	[userDefault synchronize];
+}
+//=========================================
+//アチーブメント基礎集計 一括取得（0:タンク撃破数 1:敵要塞撃破数 2:最高レベル数 3:ステージ数）
+//=========================================
++(NSMutableArray*)load_Aggregate_All
+{
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+	NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [userDefault objectForKey:@"Aggregate"];
+    return array;
+}
+//=========================================
+//　タンク撃破数の取得
+//=========================================
++(int)load_Aggregate_Tank
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    array=[self load_Aggregate_All];
+    int tank=[[array objectAtIndex:0]intValue];
+    return tank;
+}
+//=========================================
+//　要塞撃破数の取得
+//=========================================
++(int)load_Aggregate_Fortress
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    array=[self load_Aggregate_All];
+    int fortress=[[array objectAtIndex:1]intValue];
+    return fortress;
+}
+//=========================================
+//　最高レベルアップ数の取得
+//=========================================
++(int)load_Aggregate_Level
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    array=[self load_Aggregate_All];
+    int level=[[array objectAtIndex:2]intValue];
+    return level;
+}
+//=========================================
+//　ステージクリア数の取得
+//=========================================
++(int)load_Aggregate_Stage
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    array=[self load_Aggregate_All];
+    int stage=[[array objectAtIndex:3]intValue];
+    return stage;
+}
+//=========================================
+//　タンク撃破数の保存
+//=========================================
++(void)save_Aggregate_Tank:(int)tank
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray=[self load_Aggregate_All];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
+    [array replaceObjectAtIndex:0 withObject:[NSNumber numberWithInt:tank]];
+    [self save_Aggregate_All:[[array objectAtIndex:0]intValue]
+                                    fortress:[[array objectAtIndex:1]intValue]
+                                    level:[[array objectAtIndex:2]intValue]
+                                    stage:[[array objectAtIndex:3]intValue]];
+}
+//=========================================
+//　要塞撃破数の保存
+//=========================================
++(void)save_Aggregate_Fortress:(int)fortress
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray=[self load_Aggregate_All];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
+    [array replaceObjectAtIndex:1 withObject:[NSNumber numberWithInt:fortress]];
+    [self save_Aggregate_All:[[array objectAtIndex:0]intValue]
+                                    fortress:[[array objectAtIndex:1]intValue]
+                                    level:[[array objectAtIndex:2]intValue]
+                                    stage:[[array objectAtIndex:3]intValue]];
+}
+//=========================================
+//　最高レベルアップ数の保存
+//=========================================
++(void)save_Aggregate_Level:(int)level
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray=[self load_Aggregate_All];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
+    [array replaceObjectAtIndex:2 withObject:[NSNumber numberWithInt:level]];
+    [self save_Aggregate_All:[[array objectAtIndex:0]intValue]
+                                    fortress:[[array objectAtIndex:1]intValue]
+                                    level:[[array objectAtIndex:2]intValue]
+                                    stage:[[array objectAtIndex:3]intValue]];
+}
+//=========================================
+//　ステージクリア数の保存
+//=========================================
++(void)save_Aggregate_Stage:(int)stage
+{
+    NSMutableArray* array=[[NSMutableArray alloc]init];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray=[self load_Aggregate_All];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
+    [array replaceObjectAtIndex:3 withObject:[NSNumber numberWithInt:stage]];
+    [self save_Aggregate_All:[[array objectAtIndex:0]intValue]
+                                    fortress:[[array objectAtIndex:1]intValue]
+                                    level:[[array objectAtIndex:2]intValue]
+                                    stage:[[array objectAtIndex:3]intValue]];
+}
+//=========================================
+//アチーブメント(戦車撃破)　一括保存
+//=========================================
++(void)save_Achievement_Tank_All:(NSMutableArray*)array
+{
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+    [userDefault setObject:array forKey:@"Achievement_Tank"];
+	[userDefault synchronize];
+}
+//=========================================
+//アチーブメント(戦車撃破)　一括取得
+//=========================================
++(NSMutableArray*)load_Achievement_Tank_All
+{
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+	NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [userDefault objectForKey:@"Achievement_Tank"];
+    return array;
+}
 //=========================================
 //GameCenterへアチーブメントを送信
 //=========================================
