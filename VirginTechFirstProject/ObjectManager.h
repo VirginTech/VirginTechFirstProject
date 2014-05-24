@@ -11,9 +11,9 @@
 @interface ObjectManager : NSObject
 
 //アビリティ一括ロード
-+(NSMutableArray*)load_Object_Ability:(NSString*)objName;
++(NSMutableArray*)load_Object_Ability_All:(NSString*)objName;
 //アビリティ一括セーブ
-+(void)save_Object_Ability:(NSString*)objName
++(void)save_Object_Ability_All:(NSString*)objName
                                         level:(int)level
                                         attack:(float)attack
                                         defense:(float)defense

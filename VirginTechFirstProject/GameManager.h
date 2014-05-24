@@ -52,9 +52,4 @@
 +(void)save_Aggregate_Level:(int)level;
 +(void)save_Aggregate_Stage:(int)stage;
 
-+(void)save_Achievement_Tank_All:(NSMutableArray*)array;
-+(NSMutableArray*)load_Achievement_Tank_All;
-
-+(void)reportAchievement_GameCenter:(float)percent;
-
 @end

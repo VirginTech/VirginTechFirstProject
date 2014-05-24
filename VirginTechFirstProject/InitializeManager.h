@@ -16,5 +16,6 @@
 +(void)initialize_Currency;
 +(void)initialize_HighScore;
 +(void)initialize_Aggregate;
++(void)initialize_Achievement_Tank;
 
 @end

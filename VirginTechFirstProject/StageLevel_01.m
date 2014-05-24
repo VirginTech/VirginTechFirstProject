@@ -18,6 +18,7 @@
 #import "PlayerSelection.h"
 #import "IAdLayer.h"
 #import "InformationLayer.h"
+#import "AchievementManeger.h"
 
 @implementation StageLevel_01
 
@@ -250,18 +251,16 @@ NSMutableArray* removeEnemyMissileArray;
                         //敵ダメージ
                         enemy.ability_Defense -= missile.ability_Attack;
                         if(enemy.ability_Defense<=0){//敵撃破！
-                            //撃破数更新
-                            [GameManager save_Aggregate_Tank:[GameManager load_Aggregate_Tank]+1];
                             //コイン報酬
                             [GameManager in_Out_Coin:(int)enemy.ability_Attack addFlg:true];
                             [InformationLayer update_CurrencyLabel];
+                            //撃破数更新
+                            [GameManager save_Aggregate_Tank:[GameManager load_Aggregate_Tank]+1];
                             //ハイスコア更新
                             [GameManager save_HighScore:[GameManager load_HighScore]+1];
                             [InformationLayer update_HighScoreLabel];
-                            //リーダーボードテスト
-                            [GameManager submitScore_GameCenter:[GameManager load_HighScore]];
-                            //アチーブメントテスト
-                            //[GameManager reportAchievement_GameCenter:(float)[GameManager loadHighScore]/10*100];
+                            //アチーブメント保存
+                            [self setAchievement];
                             //敵削除配列へ
                             [removeEnemyArray addObject:enemy];
                         }
@@ -350,6 +349,35 @@ NSMutableArray* removeEnemyMissileArray;
             }
         }
         [GameManager setPauseStateChange:false];
+    }
+}
+//=====================
+//　アチーブメント保存
+//=====================
+-(void)setAchievement
+{
+    //タンク撃破率セーブ
+    [AchievementManeger save_Achievement_All_Tank_Rate2];
+    //達成報酬付与
+    NSMutableArray* achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_Tank_All];
+    for(int i=0;i<achiveArray.count;i++){
+        if([[[achiveArray objectAtIndex:i]objectAtIndex:2]floatValue]>=100){//100%以上だったら
+            if(![[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
+                [AchievementManeger save_Achievement_Tank_Reward:i reward:true];
+                [GameManager in_Out_Dia:[AchievementManeger load_Achievement_Tank_Point:i] addFlg:true];//ダイア付与
+                [InformationLayer update_CurrencyLabel];//ダイア表示更新
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
+                        [NSString stringWithFormat:@"敵 %d 撃破達成！",
+                                                            [AchievementManeger load_Achievement_Tank_Value:i]]
+                        message:[NSString stringWithFormat:@"ダイヤモンドを %d 入手しました！",
+                                                             [AchievementManeger load_Achievement_Tank_Point:i]]
+                        delegate:nil
+                        cancelButtonTitle:nil
+                        otherButtonTitles:@"O K", nil];
+                [alert show];
+            }
+        }
     }
 }
 

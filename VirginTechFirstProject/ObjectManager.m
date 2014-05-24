@@ -13,7 +13,7 @@
 //=========================================
 //アビリティの取得（配列で一括） 0:レベル 1:攻撃力 2:防御力 3:移動能力 4:生産性
 //=========================================
-+(NSMutableArray*)load_Object_Ability:(NSString*)objName
++(NSMutableArray*)load_Object_Ability_All:(NSString*)objName
 {
     NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
 	NSMutableArray *array = [[NSMutableArray alloc] init];
@@ -23,7 +23,7 @@
 //=========================================
 //アビリティのセーブ（一括保存） 0:レベル 1:攻撃力 2:防御力 3:移動能力 4:生産性
 //=========================================
-+(void)save_Object_Ability:(NSString*)objName
++(void)save_Object_Ability_All:(NSString*)objName
                                             level:(int)level
                                             attack:(float)attack
                                             defense:(float)defense
@@ -46,7 +46,7 @@
 +(int)load_Object_Ability_Level:(NSString*)objName
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
-    array=[self load_Object_Ability:objName];
+    array=[self load_Object_Ability_All:objName];
     int level=[[array objectAtIndex:0]intValue];
     return level;
 }
@@ -56,7 +56,7 @@
 +(float)load_Object_Ability_Attack:(NSString*)objName
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
-    array=[self load_Object_Ability:objName];
+    array=[self load_Object_Ability_All:objName];
     float ability=[[array objectAtIndex:1]floatValue];
     return ability;
 }
@@ -66,7 +66,7 @@
 +(float)load_Object_Ability_Defense:(NSString*)objName
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
-    array=[self load_Object_Ability:objName];
+    array=[self load_Object_Ability_All:objName];
     float ability=[[array objectAtIndex:2]floatValue];
     return ability;
 }
@@ -76,7 +76,7 @@
 +(float)load_Object_Ability_Traveling:(NSString*)objName
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
-    array=[self load_Object_Ability:objName];
+    array=[self load_Object_Ability_All:objName];
     float ability=[[array objectAtIndex:3]floatValue];
     return ability;
 }
@@ -86,7 +86,7 @@
 +(int)load_Object_Ability_Build:(NSString*)objName
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
-    array=[self load_Object_Ability:objName];
+    array=[self load_Object_Ability_All:objName];
     int build=[[array objectAtIndex:4]intValue];
     return build;
 }
@@ -97,12 +97,12 @@
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
     NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
-    tmpArray=[self load_Object_Ability:objName];
+    tmpArray=[self load_Object_Ability_All:objName];
     for(int i=0;i<tmpArray.count;i++){//コピー
         [array addObject:[tmpArray objectAtIndex:i]];
     }
     [array replaceObjectAtIndex:0 withObject:[NSNumber numberWithInt:level]];
-    [self save_Object_Ability:objName
+    [self save_Object_Ability_All:objName
                                 level:[[array objectAtIndex:0]intValue]
                                 attack:[[array objectAtIndex:1]floatValue]
                                 defense:[[array objectAtIndex:2]floatValue]
@@ -116,12 +116,12 @@
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
     NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
-    tmpArray=[self load_Object_Ability:objName];
+    tmpArray=[self load_Object_Ability_All:objName];
     for(int i=0;i<tmpArray.count;i++){//コピー
         [array addObject:[tmpArray objectAtIndex:i]];
     }
     [array replaceObjectAtIndex:1 withObject:[NSNumber numberWithFloat:attack]];
-    [self save_Object_Ability:objName
+    [self save_Object_Ability_All:objName
                                 level:[[array objectAtIndex:0]intValue]
                                 attack:[[array objectAtIndex:1]floatValue]
                                 defense:[[array objectAtIndex:2]floatValue]
@@ -135,12 +135,12 @@
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
     NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
-    tmpArray=[self load_Object_Ability:objName];
+    tmpArray=[self load_Object_Ability_All:objName];
     for(int i=0;i<tmpArray.count;i++){//コピー
         [array addObject:[tmpArray objectAtIndex:i]];
     }
     [array replaceObjectAtIndex:2 withObject:[NSNumber numberWithFloat:defense]];
-    [self save_Object_Ability:objName
+    [self save_Object_Ability_All:objName
                         level:[[array objectAtIndex:0]intValue]
                        attack:[[array objectAtIndex:1]floatValue]
                       defense:[[array objectAtIndex:2]floatValue]
@@ -154,12 +154,12 @@
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
     NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
-    tmpArray=[self load_Object_Ability:objName];
+    tmpArray=[self load_Object_Ability_All:objName];
     for(int i=0;i<tmpArray.count;i++){//コピー
         [array addObject:[tmpArray objectAtIndex:i]];
     }
     [array replaceObjectAtIndex:3 withObject:[NSNumber numberWithFloat:traveling]];
-    [self save_Object_Ability:objName
+    [self save_Object_Ability_All:objName
                         level:[[array objectAtIndex:0]intValue]
                        attack:[[array objectAtIndex:1]floatValue]
                       defense:[[array objectAtIndex:2]floatValue]
@@ -173,12 +173,12 @@
 {
     NSMutableArray* array=[[NSMutableArray alloc]init];
     NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
-    tmpArray=[self load_Object_Ability:objName];
+    tmpArray=[self load_Object_Ability_All:objName];
     for(int i=0;i<tmpArray.count;i++){//コピー
         [array addObject:[tmpArray objectAtIndex:i]];
     }
     [array replaceObjectAtIndex:4 withObject:[NSNumber numberWithInt:build]];
-    [self save_Object_Ability:objName
+    [self save_Object_Ability_All:objName
                         level:[[array objectAtIndex:0]intValue]
                        attack:[[array objectAtIndex:1]floatValue]
                       defense:[[array objectAtIndex:2]floatValue]

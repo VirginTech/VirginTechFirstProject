@@ -175,46 +175,7 @@ bool isActive;//アクティブ状態か？
 }
 
 //=========================================
-//GameCenterへスコアを送信
-//=========================================
-+(void)submitScore_GameCenter:(NSInteger)score
-{
-    GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"VirginTechFirstProject_Leaderboard"];
-    NSInteger scoreR = score;
-    scoreReporter.value = scoreR;
-    [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
-        if (error != nil){
-            NSLog(@"error %@",error);
-        }
-    }];
-}
-//=========================================
-//GameCenterからハイスコアを取得
-//=========================================
-+(void)get_HighScore_GameCenter
-{
-    NSArray* playerID = [[NSArray alloc] initWithObjects:[GKLocalPlayer localPlayer].playerID, nil];
-    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] initWithPlayerIDs:playerID];
-    
-    if (leaderboardRequest != nil) {
-        leaderboardRequest.timeScope = GKLeaderboardTimeScopeAllTime;
-        leaderboardRequest.category = @"VirginTechFirstProject_Leaderboard";
-        leaderboardRequest.range = NSMakeRange(1,1);//ハイスコア
-        [leaderboardRequest loadScoresWithCompletionHandler: ^(NSArray *scores, NSError *error) {
-            if (error != nil) {
-                NSLog(@"error %@",error);
-            }
-            NSInteger highScore;
-            if (scores != nil) {
-                highScore = ((GKScore *)[scores objectAtIndex:0]).value;
-            } else {
-                highScore = 0;// 初回プレイ
-            }
-        }];
-    }
-}
-//=========================================
-//アチーブメント基礎集計 一括保存（0:タンク撃破数 1:敵要塞撃破数 2:最高レベル数 3:ステージ数）
+//基礎集計 一括保存（0:タンク撃破数 1:敵要塞撃破数 2:最高レベル数 3:ステージ数）
 //=========================================
 +(void)save_Aggregate_All:(int)tank fortress:(int)fortress level:(int)level stage:(int)stage
 {
@@ -227,7 +188,7 @@ bool isActive;//アクティブ状態か？
 	[userDefault synchronize];
 }
 //=========================================
-//アチーブメント基礎集計 一括取得（0:タンク撃破数 1:敵要塞撃破数 2:最高レベル数 3:ステージ数）
+//基礎集計 一括取得（0:タンク撃破数 1:敵要塞撃破数 2:最高レベル数 3:ステージ数）
 //=========================================
 +(NSMutableArray*)load_Aggregate_All
 {
@@ -344,37 +305,42 @@ bool isActive;//アクティブ状態か？
                                     level:[[array objectAtIndex:2]intValue]
                                     stage:[[array objectAtIndex:3]intValue]];
 }
+
 //=========================================
-//アチーブメント(戦車撃破)　一括保存
+//GameCenterへスコアを送信
 //=========================================
-+(void)save_Achievement_Tank_All:(NSMutableArray*)array
++(void)submitScore_GameCenter:(NSInteger)score
 {
-    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
-    [userDefault setObject:array forKey:@"Achievement_Tank"];
-	[userDefault synchronize];
+    GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"VirginTechFirstProject_Leaderboard"];
+    NSInteger scoreR = score;
+    scoreReporter.value = scoreR;
+    [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
+        if (error != nil){
+            NSLog(@"error %@",error);
+        }
+    }];
 }
 //=========================================
-//アチーブメント(戦車撃破)　一括取得
+//GameCenterからハイスコアを取得
 //=========================================
-+(NSMutableArray*)load_Achievement_Tank_All
++(void)get_HighScore_GameCenter
 {
-    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
-	NSMutableArray *array = [[NSMutableArray alloc] init];
-    array = [userDefault objectForKey:@"Achievement_Tank"];
-    return array;
-}
-//=========================================
-//GameCenterへアチーブメントを送信
-//=========================================
-+(void)reportAchievement_GameCenter:(float)percent
-{
-    GKAchievement *achievement = [[GKAchievement alloc]initWithIdentifier:
-                                                            @"VirginTechFirstProject_Achievement_01"];
-    if (achievement){
-        achievement.percentComplete = percent;
-        [achievement reportAchievementWithCompletionHandler:^(NSError *error){
-            if (error != nil){
-                NSLog(@"Error in reporting achievements: %@", error);
+    NSArray* playerID = [[NSArray alloc] initWithObjects:[GKLocalPlayer localPlayer].playerID, nil];
+    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] initWithPlayerIDs:playerID];
+    
+    if (leaderboardRequest != nil) {
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeAllTime;
+        leaderboardRequest.category = @"VirginTechFirstProject_Leaderboard";
+        leaderboardRequest.range = NSMakeRange(1,1);//ハイスコア
+        [leaderboardRequest loadScoresWithCompletionHandler: ^(NSArray *scores, NSError *error) {
+            if (error != nil) {
+                NSLog(@"error %@",error);
+            }
+            NSInteger highScore;
+            if (scores != nil) {
+                highScore = ((GKScore *)[scores objectAtIndex:0]).value;
+            } else {
+                highScore = 0;// 初回プレイ
             }
         }];
     }

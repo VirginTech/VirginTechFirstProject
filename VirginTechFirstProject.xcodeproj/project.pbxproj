@@ -58,6 +58,7 @@
 		CFA2AE97191CF3F500D46940 /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFA2AE95191CF3F500D46940 /* interface_default.png */; };
 		CFA2AE9A191CF75900D46940 /* enemy_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFA2AE98191CF75900D46940 /* enemy_default.plist */; };
 		CFA2AE9B191CF75900D46940 /* enemy_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFA2AE99191CF75900D46940 /* enemy_default.png */; };
+		CFAB6D8E1930A97B000FA153 /* AchievementManeger.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */; };
 		CFAB7C2D191505AF0084D0F8 /* RouteGenerationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */; };
 		CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD5A32C1911F29D004E2B58 /* GameManager.m */; };
 		CFD5A32F191229BB004E2B58 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A32E191229BB004E2B58 /* arrow.png */; };
@@ -358,6 +359,8 @@
 		CFA2AE95191CF3F500D46940 /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
 		CFA2AE98191CF75900D46940 /* enemy_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy_default.plist; sourceTree = "<group>"; };
 		CFA2AE99191CF75900D46940 /* enemy_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_default.png; sourceTree = "<group>"; };
+		CFAB6D8C1930A97B000FA153 /* AchievementManeger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementManeger.h; sourceTree = "<group>"; };
+		CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementManeger.m; sourceTree = "<group>"; };
 		CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteGenerationLayer.h; sourceTree = "<group>"; };
 		CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteGenerationLayer.m; sourceTree = "<group>"; };
 		CFD5A32B1911F29D004E2B58 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
@@ -906,6 +909,8 @@
 			children = (
 				CF56B6E9192B494C00FC07DB /* InitializeManager.h */,
 				CF56B6EA192B494C00FC07DB /* InitializeManager.m */,
+				CFAB6D8C1930A97B000FA153 /* AchievementManeger.h */,
+				CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */,
 				CF0687491920DDAE00AB3CD7 /* PaymentManager.h */,
 				CF06874A1920DDAE00AB3CD7 /* PaymentManager.m */,
 				CFD5A32B1911F29D004E2B58 /* GameManager.h */,
@@ -2041,6 +2046,7 @@
 				CFDFDF17190A2D6F0021FBF9 /* CCActionInstant.m in Sources */,
 				CFDFE011190A2D700021FBF9 /* base64.c in Sources */,
 				CF5FE31F191DB84400821441 /* PlayerMissile.m in Sources */,
+				CFAB6D8E1930A97B000FA153 /* AchievementManeger.m in Sources */,
 				CFDFE050190A2D700021FBF9 /* OALAudioTrack.m in Sources */,
 				CFDFDF93190A2D6F0021FBF9 /* CCProgressNode.m in Sources */,
 				CFDFDF86190A2D6F0021FBF9 /* CCPhysicsBody.m in Sources */,
