@@ -11,6 +11,7 @@
 #import "GameManager.h"
 #import "ObjectManager.h"
 #import "InformationLayer.h"
+#import "AchievementManeger.h"
 
 @implementation ItemSetupLayer
 
@@ -143,61 +144,109 @@ CCLabelTTF* label05;
 
 -(void)setButtonLevel
 {
-    label01.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"beartank1"]];
-    label02.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"beartank2"]];
-    label03.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"beartank3"]];
-    label04.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"beartank4"]];
-    label05.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"beartank5"]];
+    label01.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"player01"]];
+    label02.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"player02"]];
+    label03.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"player03"]];
+    label04.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"player04"]];
+    label05.string=[NSString stringWithFormat:@"Lv.%d",[ObjectManager load_Object_Ability_Level:@"player05"]];
 }
-
+//=====================
+//　アチーブメント保存
+//=====================
+-(void)setAchievement
+{
+    //基礎集計（レベル）セーブ
+    int level=0;
+    for(int i=1;i<=5;i++){//タンク種類数決め打ち
+        NSString* objName=[NSString stringWithFormat:@"player%02d",i];
+        if([ObjectManager load_Object_Ability_Level:objName]>level){
+            [GameManager save_Aggregate_Level:[ObjectManager load_Object_Ability_Level:objName]-1];
+            level=[ObjectManager load_Object_Ability_Level:objName];
+        }
+    }
+    //アチーブメント（レベル）セーブ
+    [AchievementManeger save_Achievement_All_Rate2:@"Achievement_Level"];
+    
+    //達成報酬付与
+    NSMutableArray* achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Level"];
+    for(int i=0;i<achiveArray.count;i++){
+        if([[[achiveArray objectAtIndex:i]objectAtIndex:2]floatValue]>=100){//100%以上だったら
+            if(![[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
+                //フラグを立てる（報酬済み）
+                [AchievementManeger save_Achievement_Reward:i reward:true forKey:@"Achievement_Level"];
+                //ダイア付与
+                [GameManager in_Out_Dia:
+                 [AchievementManeger load_Achievement_Point:i forKey:@"Achievement_Level"] addFlg:true];
+                //ダイア表示更新
+                [InformationLayer update_CurrencyLabel];
+                //メッセージボックス
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
+                            [NSString stringWithFormat:@"レベル %d 達成！",
+                                       [AchievementManeger load_Achievement_Value:i forKey:@"Achievement_Level"]+1]
+                            message:[NSString stringWithFormat:@"ダイヤモンドを %d 入手しました！",
+                                        [AchievementManeger load_Achievement_Point:i forKey:@"Achievement_Level"]]
+                            delegate:nil
+                            cancelButtonTitle:nil
+                            otherButtonTitles:@"O K", nil];
+                [alert show];
+            }
+        }
+    }
+}
 -(void)onSetBtn01_Clicked:(id)sender
 {
     afterDia = [GameManager load_Currency_Dia] - 1;
     if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"beartank1"];
+        [ObjectManager levelUp_Object_Ability:@"player01"];
         [self setButtonLevel];
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
+        [self setAchievement];
     }
 }
 -(void)onSetBtn02_Clicked:(id)sender
 {
     afterDia = [GameManager load_Currency_Dia] - 1;
     if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"beartank2"];
+        [ObjectManager levelUp_Object_Ability:@"player02"];
         [self setButtonLevel];
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
+        [self setAchievement];
     }
 }
 -(void)onSetBtn03_Clicked:(id)sender
 {
     afterDia = [GameManager load_Currency_Dia] - 1;
     if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"beartank3"];
+        [ObjectManager levelUp_Object_Ability:@"player03"];
         [self setButtonLevel];
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
+        [self setAchievement];
     }
 }
 -(void)onSetBtn04_Clicked:(id)sender
 {
     afterDia = [GameManager load_Currency_Dia] - 1;
     if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"beartank4"];
+        [ObjectManager levelUp_Object_Ability:@"player04"];
         [self setButtonLevel];
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
+        [self setAchievement];
     }
 }
 -(void)onSetBtn05_Clicked:(id)sender
 {
     afterDia = [GameManager load_Currency_Dia] - 1;
     if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"beartank5"];
+        [ObjectManager levelUp_Object_Ability:@"player05"];
         [self setButtonLevel];
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
+        [self setAchievement];
     }
 }
 -(void)onCloseClicked:(id)sender

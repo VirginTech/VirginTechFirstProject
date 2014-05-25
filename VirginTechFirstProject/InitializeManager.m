@@ -27,25 +27,26 @@ NSDictionary *dict;
     [self initialize_HighScore];
     [self initialize_Aggregate];
     [self initialize_Achievement_Tank];
+    [self initialize_Achievement_Level];
 }
 
 +(void)initialize_Object
 {
     //なければ(初回)とりあえず初期値をセーブ
-    if([dict valueForKey:@"beartank1"]==nil){
-        [ObjectManager save_Object_Ability_All:@"beartank1" level:1 attack:1.0 defense:20.0 traveling:0.2 build:1];
+    if([dict valueForKey:@"player01"]==nil){
+        [ObjectManager save_Object_Ability_All:@"player01" level:1 attack:1.0 defense:20.0 traveling:0.2 build:1];
     }
-    if([dict valueForKey:@"beartank2"]==nil){
-        [ObjectManager save_Object_Ability_All:@"beartank2" level:1 attack:1.5 defense:15.0 traveling:0.2 build:2];
+    if([dict valueForKey:@"player02"]==nil){
+        [ObjectManager save_Object_Ability_All:@"player02" level:1 attack:1.5 defense:15.0 traveling:0.2 build:2];
     }
-    if([dict valueForKey:@"beartank3"]==nil){
-        [ObjectManager save_Object_Ability_All:@"beartank3" level:1 attack:2.0 defense:10.0 traveling:0.15 build:3];
+    if([dict valueForKey:@"player03"]==nil){
+        [ObjectManager save_Object_Ability_All:@"player03" level:1 attack:2.0 defense:10.0 traveling:0.15 build:3];
     }
-    if([dict valueForKey:@"beartank4"]==nil){
-        [ObjectManager save_Object_Ability_All:@"beartank4" level:1 attack:3.0 defense:10.0 traveling:0.15 build:4];
+    if([dict valueForKey:@"player04"]==nil){
+        [ObjectManager save_Object_Ability_All:@"player04" level:1 attack:3.0 defense:10.0 traveling:0.15 build:4];
     }
-    if([dict valueForKey:@"beartank5"]==nil){
-        [ObjectManager save_Object_Ability_All:@"beartank5" level:1 attack:4.0 defense:8.0 traveling:0.1 build:5];
+    if([dict valueForKey:@"player05"]==nil){
+        [ObjectManager save_Object_Ability_All:@"player05" level:1 attack:4.0 defense:8.0 traveling:0.1 build:5];
     }
 }
 
@@ -167,7 +168,70 @@ NSDictionary *dict;
                    [NSNumber numberWithBool:false],nil];
         [array addObject:tankArray];
 
-        [AchievementManeger save_Achievement_Tank_All:array];
+        [AchievementManeger save_Achievement_All:array forKey:@"Achievement_Tank"];
+    }
+}
+
+//===================================
+//アチーブメント(レベルアップ) 0:キーID 1:達成値 2:達成率 3:報酬ポイント 4:報酬Flg
+//===================================
++(void)initialize_Achievement_Level
+{
+    //なければ(初回)とりあえず初期値をセーブ
+    if([dict valueForKey:@"Achievement_Level"]==nil){
+        NSMutableArray* array=[[NSMutableArray alloc]init];
+        NSArray* tmpArray;
+        
+        tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_002",
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tmpArray];
+        
+        tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_005",
+                   [NSNumber numberWithInt:4],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:2],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tmpArray];
+        
+        tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_010",
+                   [NSNumber numberWithInt:9],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:3],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tmpArray];
+        
+        tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_020",
+                   [NSNumber numberWithInt:19],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tmpArray];
+        
+        tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_030",
+                   [NSNumber numberWithInt:29],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tmpArray];
+        
+        tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_040",
+                   [NSNumber numberWithInt:39],
+                   [NSNumber numberWithFloat:0.0],
+                   [NSNumber numberWithInt:5],
+                   [NSNumber numberWithBool:false],nil];
+        [array addObject:tmpArray];
+
+        tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_050",
+                  [NSNumber numberWithInt:49],
+                  [NSNumber numberWithFloat:0.0],
+                  [NSNumber numberWithInt:10],
+                  [NSNumber numberWithBool:false],nil];
+        [array addObject:tmpArray];
+
+        [AchievementManeger save_Achievement_All:array forKey:@"Achievement_Level"];
     }
 }
 

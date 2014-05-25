@@ -332,19 +332,19 @@ CGSize winSize;
     //画像を配列に格納
     if(playerNum==1){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
-        objName=@"beartank1";
+        objName=@"player01";
     }else if(playerNum==2){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear2_default.plist"];
-        objName=@"beartank2";
+        objName=@"player02";
     }else if(playerNum==3){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear3_default.plist"];
-        objName=@"beartank3";
+        objName=@"player03";
     }else if(playerNum==4){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear4_default.plist"];
-        objName=@"beartank4";
+        objName=@"player04";
     }else if(playerNum==5){
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear5_default.plist"];
-        objName=@"beartank5";
+        objName=@"player05";
     }
     
     for(int i=0;i<8;i++){

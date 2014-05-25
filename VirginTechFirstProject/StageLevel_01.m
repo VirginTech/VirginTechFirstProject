@@ -254,7 +254,7 @@ NSMutableArray* removeEnemyMissileArray;
                             //コイン報酬
                             [GameManager in_Out_Coin:(int)enemy.ability_Attack addFlg:true];
                             [InformationLayer update_CurrencyLabel];
-                            //撃破数更新
+                            //基礎集計（タンク撃破率）セーブ
                             [GameManager save_Aggregate_Tank:[GameManager load_Aggregate_Tank]+1];
                             //ハイスコア更新
                             [GameManager save_HighScore:[GameManager load_HighScore]+1];
@@ -356,22 +356,27 @@ NSMutableArray* removeEnemyMissileArray;
 //=====================
 -(void)setAchievement
 {
-    //タンク撃破率セーブ
-    [AchievementManeger save_Achievement_All_Tank_Rate2];
+    //アチーブメント（タンク撃破率）セーブ
+    [AchievementManeger save_Achievement_All_Rate2:@"Achievement_Tank"];
     //達成報酬付与
     NSMutableArray* achiveArray=[[NSMutableArray alloc]init];
-    achiveArray=[AchievementManeger load_Achievement_Tank_All];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Tank"];
     for(int i=0;i<achiveArray.count;i++){
         if([[[achiveArray objectAtIndex:i]objectAtIndex:2]floatValue]>=100){//100%以上だったら
             if(![[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
-                [AchievementManeger save_Achievement_Tank_Reward:i reward:true];
-                [GameManager in_Out_Dia:[AchievementManeger load_Achievement_Tank_Point:i] addFlg:true];//ダイア付与
-                [InformationLayer update_CurrencyLabel];//ダイア表示更新
+                //フラグを立てる（報酬済み）
+                [AchievementManeger save_Achievement_Reward:i reward:true forKey:@"Achievement_Tank"];
+                //ダイア付与
+                [GameManager in_Out_Dia:
+                        [AchievementManeger load_Achievement_Point:i forKey:@"Achievement_Tank"] addFlg:true];
+                //ダイア表示更新
+                [InformationLayer update_CurrencyLabel];
+                //メッセージボックス
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
                         [NSString stringWithFormat:@"敵 %d 撃破達成！",
-                                                            [AchievementManeger load_Achievement_Tank_Value:i]]
+                                            [AchievementManeger load_Achievement_Value:i forKey:@"Achievement_Tank"]]
                         message:[NSString stringWithFormat:@"ダイヤモンドを %d 入手しました！",
-                                                             [AchievementManeger load_Achievement_Tank_Point:i]]
+                                            [AchievementManeger load_Achievement_Point:i forKey:@"Achievement_Tank"]]
                         delegate:nil
                         cancelButtonTitle:nil
                         otherButtonTitles:@"O K", nil];
