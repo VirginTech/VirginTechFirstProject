@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "AnimalPlayer.h"
 #import "EnemyMissile.h"
+#import "Fortress.h"
 
 @interface AnimalEnemy : CCSprite
 {    
@@ -36,6 +37,7 @@
     float oldRange;
     
     AnimalPlayer* targetPlayer;
+    Fortress* targetFortress;
     
     int modeFlg;//0=直進 1=追跡 2=回避
     float escapeAngle;
@@ -43,6 +45,7 @@
     CGPoint targetPlayerPos;
     EnemyMissile* eMissile;
     bool destCollectFlg;
+    bool fortressFlg;
 }
 
 @property float ability_Defense ;
@@ -51,6 +54,7 @@
 
 @property bool stopFlg;
 @property bool destCollectFlg;
+@property bool fortressFlg;
 
 +(id)createEnemy;
 -(id)initWithEnemy;

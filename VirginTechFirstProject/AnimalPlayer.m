@@ -11,6 +11,7 @@
 #import "StageLevel_01.h"
 #import "AnimalEnemy.h"
 #import "ObjectManager.h"
+#import "Fortress.h"
 
 @implementation AnimalPlayer
 
@@ -25,6 +26,7 @@
 @synthesize stopFlg;
 @synthesize state_PathMake_flg;
 @synthesize destCollectFlg;
+@synthesize fortressFlg;
 
 CGSize winSize;
 
@@ -229,21 +231,30 @@ CGSize winSize;
     lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
 }
 
--(void)setTarget:(NSMutableArray*)targetArray{
+-(void)setTarget:(NSMutableArray*)targetArray
+{
     float range;
     float nearRange=500;
     
     if(targetArray.count>0){
-        for(AnimalEnemy* target in targetArray){
-            //一番近いターゲットを取得
-            range = [BasicMath getPosDistance:self.position pos2:target.position];
-            if(range < nearRange){
-                nearRange = range;
-                targetEnemyPos = target.position;//ターゲットポジション取得
-                //砲塔旋回
-                enemySearchFlg=true;
-                enemyAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
+        if(!fortressFlg){//タンク
+            for(AnimalEnemy* target in targetArray){
+                //一番近いターゲットを取得
+                range = [BasicMath getPosDistance:self.position pos2:target.position];
+                if(range < nearRange){
+                    nearRange = range;
+                    targetEnemyPos = target.position;//ターゲットポジション取得
+                    //砲塔旋回
+                    enemySearchFlg=true;
+                    enemyAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
+                }
             }
+        }else{//要塞
+            Fortress* target=[targetArray objectAtIndex:0];
+            targetEnemyPos=target.position;
+            //砲塔旋回
+            enemySearchFlg=true;
+            enemyAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
         }
     }else{
         enemySearchFlg=false;
@@ -391,6 +402,8 @@ CGSize winSize;
         stopFlg=false;
         //敵捕捉フラグ
         enemySearchFlg=false;
+        //要塞攻撃モード
+        fortressFlg=false;
         //経路作成フラグ
         state_PathMake_flg=false;
         //経路作成マーク
@@ -410,8 +423,8 @@ CGSize winSize;
     return self;
 }
 
-+(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum{
-
++(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum
+{
     return [[self alloc] initWithPlayer:playerPos playerNum:playerNum];
 }
 

@@ -16,6 +16,7 @@
 //===========
 int deviceType;// 1:iPhone5 2:iPhone4 3:iPad2
 int stageLevel;//ステージレベル
+CGSize worldSize;//ワールドサイズ
 
 bool isPlaying;//プレイ中かどうか(true:プレイ中)
 bool isPauseing;//ポーズ中か(true:ポーズ中)
@@ -36,6 +37,14 @@ bool isActive;//アクティブ状態か？
 +(int)getStageLevel{
     return stageLevel;
 }
+//ワールドサイズ
++(void)setWorldSize:(CGSize)size{
+    worldSize=size;
+}
++(CGSize)getWorldSize{
+    return worldSize;
+}
+
 //プレイ中かどうか
 +(void)setPlaying:(bool)flg{
     isPlaying=flg;

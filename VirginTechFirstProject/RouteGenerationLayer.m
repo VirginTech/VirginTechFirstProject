@@ -50,11 +50,13 @@ NSMutableArray* disPosArray;
 
 -(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
     
+    CGPoint worldLocation;
     CGPoint touchLocation = [touch locationInNode:self];
-    touchLocation.y = touchLocation.y + offsetY;
+    worldLocation.x = touchLocation.x;
+    worldLocation.y = touchLocation.y + offsetY;
     
-    if(![BasicMath RadiusContainsPoint:player.position pointB:touchLocation radius:30]){
-        NSValue *value = [NSValue valueWithCGPoint:touchLocation];
+    if(![BasicMath RadiusContainsPoint:player.position pointB:worldLocation radius:30]){
+        NSValue *value = [NSValue valueWithCGPoint:worldLocation];
         [posArray addObject:value];
     }
 }

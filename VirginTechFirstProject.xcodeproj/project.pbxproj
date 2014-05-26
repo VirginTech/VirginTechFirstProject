@@ -24,6 +24,8 @@
 		CF418ACD192098FF00196E64 /* LeaderboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF418ACC192098FF00196E64 /* LeaderboardView.m */; };
 		CF4EA4EE1927269A00AAA872 /* lifegauge1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4EA4EC1927269A00AAA872 /* lifegauge1.png */; };
 		CF4EA4EF1927269A00AAA872 /* lifegauge2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4EA4ED1927269A00AAA872 /* lifegauge2.png */; };
+		CF505F271932D2C30068A24A /* fortress.png in Resources */ = {isa = PBXBuildFile; fileRef = CF505F261932D2C30068A24A /* fortress.png */; };
+		CF505F2A1932D9E90068A24A /* Fortress.m in Sources */ = {isa = PBXBuildFile; fileRef = CF505F291932D9E90068A24A /* Fortress.m */; };
 		CF56B6EB192B494C00FC07DB /* InitializeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF56B6EA192B494C00FC07DB /* InitializeManager.m */; };
 		CF5CB2481922F47B001D9E65 /* PreferencesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2471922F47B001D9E65 /* PreferencesLayer.m */; };
 		CF5FE31F191DB84400821441 /* PlayerMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FE31E191DB84400821441 /* PlayerMissile.m */; };
@@ -312,6 +314,9 @@
 		CF418ACC192098FF00196E64 /* LeaderboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardView.m; sourceTree = "<group>"; };
 		CF4EA4EC1927269A00AAA872 /* lifegauge1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifegauge1.png; sourceTree = "<group>"; };
 		CF4EA4ED1927269A00AAA872 /* lifegauge2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifegauge2.png; sourceTree = "<group>"; };
+		CF505F261932D2C30068A24A /* fortress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fortress.png; sourceTree = "<group>"; };
+		CF505F281932D9E90068A24A /* Fortress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fortress.h; sourceTree = "<group>"; };
+		CF505F291932D9E90068A24A /* Fortress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fortress.m; sourceTree = "<group>"; };
 		CF56B6E9192B494C00FC07DB /* InitializeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitializeManager.h; sourceTree = "<group>"; };
 		CF56B6EA192B494C00FC07DB /* InitializeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitializeManager.m; sourceTree = "<group>"; };
 		CF5CB2461922F47B001D9E65 /* PreferencesLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesLayer.h; sourceTree = "<group>"; };
@@ -866,6 +871,8 @@
 				CF8C16C219134618002BBC13 /* AnimalEnemy.m */,
 				CF208CD619283AAF009A00D9 /* EnemyMissile.h */,
 				CF208CD719283AAF009A00D9 /* EnemyMissile.m */,
+				CF505F281932D9E90068A24A /* Fortress.h */,
+				CF505F291932D9E90068A24A /* Fortress.m */,
 			);
 			name = object;
 			sourceTree = "<group>";
@@ -973,6 +980,7 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF505F261932D2C30068A24A /* fortress.png */,
 				CFF501131929D70A007B524F /* coinBar.png */,
 				CFF501141929D70A007B524F /* diaBar.png */,
 				CF4EA4EC1927269A00AAA872 /* lifegauge1.png */,
@@ -1931,6 +1939,7 @@
 				CFD5A32F191229BB004E2B58 /* arrow.png in Resources */,
 				CFA2AE90191CF20200D46940 /* bear2_default.plist in Resources */,
 				CF6A727619176C160027F654 /* Localizable.strings in Resources */,
+				CF505F271932D2C30068A24A /* fortress.png in Resources */,
 				CFA2AE89191CF0F000D46940 /* bear3_default.png in Resources */,
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
 				CFA2AE92191CF20200D46940 /* bear4_default.plist in Resources */,
@@ -2076,6 +2085,7 @@
 				CF208CD819283AAF009A00D9 /* EnemyMissile.m in Sources */,
 				CFDFDF47190A2D6F0021FBF9 /* ccFPSImages.m in Sources */,
 				CFDFE01E190A2D700021FBF9 /* ccUtils.c in Sources */,
+				CF505F2A1932D9E90068A24A /* Fortress.m in Sources */,
 				CFDFDF8F190A2D6F0021FBF9 /* CCPhysicsShape.m in Sources */,
 				CFDFDF97190A2D6F0021FBF9 /* CCRenderTexture.m in Sources */,
 				CFDFDF1D190A2D6F0021FBF9 /* CCActionManager.m in Sources */,

@@ -19,11 +19,10 @@
 #import "IAdLayer.h"
 #import "InformationLayer.h"
 #import "AchievementManeger.h"
+#import "Fortress.h"
 
 @implementation StageLevel_01
 
-
-int maxHeight;
 CGSize winSize;
 CCScrollView* scrollView;
 CCSprite* bgSpLayer;
@@ -39,6 +38,8 @@ AnimalPlayer* creatPlayer;
 AnimalEnemy* creatEnemy;
 
 NSMutableArray* searchTarget;
+Fortress* playerFortress;
+Fortress* enemyFortress;
 
 //審判用配列
 NSMutableArray* removePlayerArray;
@@ -80,13 +81,13 @@ NSMutableArray* removeEnemyMissileArray;
     
     //レベルに応じた画面の大きさ
     if(stageLevel==1){//Level1
-        maxHeight=600;
+        [GameManager setWorldSize:CGSizeMake(winSize.width, 650.0f)];
     }else{
-        maxHeight=600;
+        [GameManager setWorldSize:CGSizeMake(winSize.width, 650.0f)];
     }
     UIImage *image = [UIImage imageNamed:@"bgLayer.png"];
-    UIGraphicsBeginImageContext(CGSizeMake(winSize.width, maxHeight));
-    [image drawInRect:CGRectMake(0, 0, winSize.width, maxHeight)];
+    UIGraphicsBeginImageContext(CGSizeMake(winSize.width,[GameManager getWorldSize].height));
+    [image drawInRect:CGRectMake(0, 0, winSize.width,[GameManager getWorldSize].height)];
     image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -133,6 +134,9 @@ NSMutableArray* removeEnemyMissileArray;
 {
     // always call super onEnter first
     [super onEnter];
+    //要塞陣地
+    [self createPlayerFortress];
+    [self createEnemyFortress];
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
@@ -161,7 +165,7 @@ NSMutableArray* removeEnemyMissileArray;
     removePlayerMissileArray=[[NSMutableArray alloc]init];
     removeEnemyMissileArray=[[NSMutableArray alloc]init];
     
-    //プレイヤー対プレイヤー衝突判定
+    /*/プレイヤー対プレイヤー衝突判定
     for(AnimalPlayer* player1 in animalArray){
         for(AnimalPlayer* player2 in animalArray){
             if([BasicMath RadiusIntersectsRadius:player1.position pointB:player2.position
@@ -183,6 +187,21 @@ NSMutableArray* removeEnemyMissileArray;
                     enemy2.stopFlg=true;
                 }
             }
+        }
+    }*/
+    
+    //プレイヤー　対　敵要塞基地
+    for(AnimalPlayer* player in animalArray){
+        if([BasicMath RadiusIntersectsRadius:player.position pointB:enemyFortress.position
+                                     radius1:20 radius2:30]){
+            player.stopFlg=true;
+        }
+    }
+    //敵　対　要塞基地
+    for(AnimalEnemy* enemy in enemyArray){
+        if([BasicMath RadiusIntersectsRadius:enemy.position pointB:playerFortress.position
+                                     radius1:20 radius2:30]){
+            enemy.stopFlg=true;
         }
     }
     //プレイヤー　対　敵
@@ -215,29 +234,57 @@ NSMutableArray* removeEnemyMissileArray;
             }
         }
     }
-    //敵アニマル戦車の捕捉用レーダー
+    //敵アニマル戦車の我要塞基地捕捉用レーダー
     for(AnimalEnemy* enemy in enemyArray){
         searchTarget=[[NSMutableArray alloc]init];
-        for(AnimalPlayer* player in animalArray){
-            if([BasicMath RadiusIntersectsRadius:enemy.position pointB:player.position
-                                         radius1:120 radius2:20]){
-                [searchTarget addObject:player];
-            }
+        if([BasicMath RadiusIntersectsRadius:enemy.position pointB:playerFortress.position
+                                     radius1:120 radius2:30]){
+            [searchTarget addObject:playerFortress];
+            enemy.fortressFlg=true;//要塞攻撃モード
         }
         [enemy setTarget:searchTarget];
     }
-    //我アニマル戦車の捕捉用レーダー
+    //敵アニマル戦車の我タンク捕捉用レーダー
+    for(AnimalEnemy* enemy in enemyArray){
+        if(!enemy.fortressFlg){
+            searchTarget=[[NSMutableArray alloc]init];
+            for(AnimalPlayer* player in animalArray){
+                if([BasicMath RadiusIntersectsRadius:enemy.position pointB:player.position
+                                             radius1:120 radius2:20]){
+                    [searchTarget addObject:player];
+                }
+            }
+            [enemy setTarget:searchTarget];
+        }
+    }
+    
+    //我アニマル戦車の敵要塞基地捕捉用レーダー
     for(AnimalPlayer* player in animalArray){
         searchTarget=[[NSMutableArray alloc]init];
-        for(AnimalEnemy* enemy in enemyArray){
-            if([BasicMath RadiusIntersectsRadius:player.position pointB:enemy.position
-                                         radius1:120 radius2:20]){
-                [searchTarget addObject:enemy];
-            }
+        if([BasicMath RadiusIntersectsRadius:player.position pointB:enemyFortress.position
+                                     radius1:120 radius2:30]){
+            [searchTarget addObject:enemyFortress];
+            player.fortressFlg=true;//要塞攻撃モード
+        }else{
+            player.fortressFlg=false;//通常攻撃モード
         }
         [player setTarget:searchTarget];
     }
-    //プレイヤーミサイル当たり判定
+    //我アニマル戦車の敵タンク捕捉用レーダー
+    for(AnimalPlayer* player in animalArray){
+        if(!player.fortressFlg){
+            searchTarget=[[NSMutableArray alloc]init];
+            for(AnimalEnemy* enemy in enemyArray){
+                if([BasicMath RadiusIntersectsRadius:player.position pointB:enemy.position
+                                             radius1:120 radius2:20]){
+                    [searchTarget addObject:enemy];
+                }
+            }
+            [player setTarget:searchTarget];
+        }
+    }
+    
+    //プレイヤーミサイル　対　敵
     for(PlayerMissile* missile in playerMissileArray){
         //時限切れミサイル削除
         if(missile.timeFlg){
@@ -270,7 +317,7 @@ NSMutableArray* removeEnemyMissileArray;
             }
         }
     }
-    //敵ミサイル当たり判定
+    //敵ミサイル　対　プレイヤー
     for(EnemyMissile* missile in enemyMissileArray){
         //時限切れミサイル削除
         if(missile.timeFlg){
@@ -292,26 +339,35 @@ NSMutableArray* removeEnemyMissileArray;
             }
         }
     }
-
-    //当たり判定ミサイル削除
-    for(PlayerMissile* missile in removePlayerMissileArray){
-        [playerMissileArray removeObject:missile];
-        [bgSpLayer removeChild:missile cleanup:YES];
+    //不要アイテム削除
+    [self garbageDeletion];
+    
+    //プレイヤーミサイル　対　敵要塞
+    for(PlayerMissile* missile in playerMissileArray){
+        //時限切れミサイル削除
+        if(missile.timeFlg){
+            //[removePlayerMissileArray addObject:missile];
+        }else{
+            if([BasicMath RadiusIntersectsRadius:missile.position pointB:enemyFortress.position radius1:10 radius2:30]){
+                [removePlayerMissileArray addObject:missile];
+                NSLog(@"敵要塞ヒット！");
+            }
+        }
     }
-    for(EnemyMissile* missile in removeEnemyMissileArray){
-        [enemyMissileArray removeObject:missile];
-        [bgSpLayer removeChild:missile cleanup:YES];
+    //敵ミサイル　対　要塞
+    for(EnemyMissile* missile in enemyMissileArray){
+        //時限切れミサイル削除
+        if(missile.timeFlg){
+            //[removeEnemyMissileArray addObject:missile];
+        }else{
+            if([BasicMath RadiusIntersectsRadius:missile.position pointB:playerFortress.position radius1:10 radius2:30]){
+                [removeEnemyMissileArray addObject:missile];
+                NSLog(@"プレイヤー要塞ヒット！");
+            }
+        }
     }
-    //消滅プレイヤー削除
-    for(AnimalPlayer* player in removePlayerArray){
-        [animalArray removeObject:player];
-        [bgSpLayer removeChild:player cleanup:YES];
-    }
-    //消滅「敵」削除
-    for(AnimalEnemy* enemy in removeEnemyArray){
-        [enemyArray removeObject:enemy];
-        [bgSpLayer removeChild:enemy cleanup:YES];
-    }
+    //不要アイテム削除
+    [self garbageDeletion];
     
     //ポーズ監視
     if([GameManager getPauseStateChange]){
@@ -351,6 +407,35 @@ NSMutableArray* removeEnemyMissileArray;
         [GameManager setPauseStateChange:false];
     }
 }
+
+-(void)garbageDeletion
+{
+    //当たり判定ミサイル削除
+    for(PlayerMissile* missile in removePlayerMissileArray){
+        [playerMissileArray removeObject:missile];
+        [bgSpLayer removeChild:missile cleanup:YES];
+    }
+    for(EnemyMissile* missile in removeEnemyMissileArray){
+        [enemyMissileArray removeObject:missile];
+        [bgSpLayer removeChild:missile cleanup:YES];
+    }
+    //消滅プレイヤー削除
+    for(AnimalPlayer* player in removePlayerArray){
+        [animalArray removeObject:player];
+        [bgSpLayer removeChild:player cleanup:YES];
+    }
+    //消滅「敵」削除
+    for(AnimalEnemy* enemy in removeEnemyArray){
+        [enemyArray removeObject:enemy];
+        [bgSpLayer removeChild:enemy cleanup:YES];
+    }
+
+    removePlayerArray=[[NSMutableArray alloc]init];
+    removeEnemyArray=[[NSMutableArray alloc]init];
+    removePlayerMissileArray=[[NSMutableArray alloc]init];
+    removeEnemyMissileArray=[[NSMutableArray alloc]init];
+}
+
 //=====================
 //　アチーブメント保存
 //=====================
@@ -417,18 +502,21 @@ NSMutableArray* removeEnemyMissileArray;
 +(BOOL)isPlayerCollision:(AnimalPlayer*)player
 {
     bool flg=false;
-    
+    /*
     for(AnimalPlayer* _player in animalArray){
         if([BasicMath RadiusIntersectsRadius:player.position pointB:_player.position radius1:20 radius2:20]){
             if(player!=_player){
                 flg=true;
             }
         }
-    }
+    }*/
     for(AnimalEnemy* _enemy in enemyArray){
         if([BasicMath RadiusIntersectsRadius:player.position pointB:_enemy.position radius1:20 radius2:20]){
             flg=true;
         }
+    }
+    if([BasicMath RadiusIntersectsRadius:player.position pointB:enemyFortress.position radius1:20 radius2:30]){
+        flg=true;
     }
     return flg;
 }
@@ -438,18 +526,21 @@ NSMutableArray* removeEnemyMissileArray;
 +(BOOL)isEnemyCollision:(AnimalEnemy*)enemy
 {    
     bool flg=false;
-    
+    /*
     for(AnimalEnemy* _enemy in enemyArray){
         if([BasicMath RadiusIntersectsRadius:enemy.position pointB:_enemy.position radius1:20 radius2:20]){
             if(enemy!=_enemy){
                 flg=true;
             }
         }
-    }
+    }*/
     for(AnimalPlayer* _player in animalArray){
         if([BasicMath RadiusIntersectsRadius:enemy.position pointB:_player.position radius1:20 radius2:20]){
             flg=true;
         }
+    }
+    if([BasicMath RadiusIntersectsRadius:enemy.position pointB:playerFortress.position radius1:20 radius2:30]){
+        flg=true;
     }
     return flg;
 }
@@ -493,8 +584,25 @@ NSMutableArray* removeEnemyMissileArray;
     [bgSpLayer addChild:missile z:zOrder];
     [enemyMissileArray addObject:missile];
 }
+//============================
+// プレイヤー要塞セット
+//============================
+-(void)createPlayerFortress
+{
+    playerFortress=[Fortress createFortress:ccp(winSize.width/2, 30)];
+    [bgSpLayer addChild:playerFortress z:0];
+}
+//============================
+// 敵要塞セット
+//============================
+-(void)createEnemyFortress
+{
+    enemyFortress=[Fortress createFortress:ccp(winSize.width/2,[GameManager getWorldSize].height-30)];
+    [bgSpLayer addChild:enemyFortress z:0];
+}
 
--(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
 
 }
 
@@ -502,8 +610,8 @@ NSMutableArray* removeEnemyMissileArray;
 //
 //}
 
--(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
-
+-(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
     if([GameManager getPauseing]){
         return;
     }

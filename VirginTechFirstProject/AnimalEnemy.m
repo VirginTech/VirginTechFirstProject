@@ -9,6 +9,7 @@
 #import "AnimalEnemy.h"
 #import "BasicMath.h"
 #import "StageLevel_01.h"
+#import "GameManager.h"
 
 @implementation AnimalEnemy
 
@@ -18,6 +19,7 @@
 
 @synthesize stopFlg;
 @synthesize destCollectFlg;
+@synthesize fortressFlg;
 
 CGSize winSize;
 
@@ -279,30 +281,39 @@ CGSize winSize;
     lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
 }
 
--(void)setTarget:(NSMutableArray*)targetArray{
-    
+-(void)setTarget:(NSMutableArray*)targetArray
+{    
     float range;
     float nearRange=500;
     
     if(targetArray.count>0){
-        for(AnimalPlayer* target in targetArray){
-            //一番近いターゲットを取得
-            range = [BasicMath getPosDistance:self.position pos2:target.position];
-            if(range < nearRange){
-                nearRange = range;
-                targetPlayer = target;
-                targetPlayerPos=target.position;
-                if([self isLevel:target]){//自分が強ければ追跡モード
-                    modeFlg=1;
-                }else{                          //相手が強ければ逃避モード
-                    if([self doEscape:target]){ //回避の必要性
-                        modeFlg=2;//あり
+        if(!fortressFlg){//タンク
+            for(AnimalPlayer* target in targetArray){
+                //一番近いターゲットを取得
+                range = [BasicMath getPosDistance:self.position pos2:target.position];
+                if(range < nearRange){
+                    nearRange = range;
+                    targetPlayer = target;
+                    targetPlayerPos=target.position;
+                    if([self isLevel:target]){//自分が強ければ追跡モード
+                        modeFlg=1;
+                    }else{                          //相手が強ければ逃避モード
+                        if([self doEscape:target]){ //回避の必要性
+                            modeFlg=2;//あり
+                        }
                     }
+                    //砲塔旋回
+                    playerSearchFlg=true;
+                    gunAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
                 }
-                //砲塔旋回
-                playerSearchFlg=true;
-                gunAngle=[BasicMath getAngle_To_Degree:self.position ePos:target.position];
             }
+        }else{//要塞
+            targetFortress=[targetArray objectAtIndex:0];
+            targetPlayerPos=targetFortress.position;
+            //砲塔旋回
+            gunAngle=[BasicMath getAngle_To_Degree:self.position ePos:targetFortress.position];
+            modeFlg=0;
+            playerSearchFlg=true;
         }
     }else{                                      //相手がいなければ直進モード
         modeFlg=0;
@@ -438,7 +449,7 @@ CGSize winSize;
         //int rangeX = maxX - minX;
         //int actualX =(arc4random()% rangeX) + minX;
         //self.position = CGPointMake(actualX, 550);
-        self.position=(CGPointMake(winSize.width/2, 600));
+        self.position=(CGPointMake(winSize.width/2,[GameManager getWorldSize].height-50));
         
         //砲塔の描画
         gSprite=[CCSprite spriteWithSpriteFrame:[gFrameArray objectAtIndex:4]];
@@ -458,13 +469,15 @@ CGSize winSize;
         [lifeGauge1 addChild:lifeGauge2];
         
         //目標セット
-        targetPoint = CGPointMake(winSize.width/2, 50);
+        targetPoint = CGPointMake(winSize.width/2,0);
         //速度セット
         velocity = ability_Traveling;
         //停止フラグ
         stopFlg=false;
         //敵捕捉フラグ
         playerSearchFlg=false;
+        //要塞攻撃モード
+        fortressFlg=false;
         //モードフラグ 0=直進 1=追跡 2=回避
         modeFlg=0;
         //撃破回収フラグ

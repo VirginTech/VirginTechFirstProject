@@ -52,6 +52,7 @@
     PlayerMissile* pMissile;
     CGPoint targetEnemyPos;
     bool destCollectFlg;
+    bool fortressFlg;
 }
 
 @property int ability_Level;
@@ -65,6 +66,7 @@
 @property bool stopFlg;
 @property bool state_PathMake_flg;
 @property bool destCollectFlg;
+@property bool fortressFlg;
 
 +(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 -(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum;

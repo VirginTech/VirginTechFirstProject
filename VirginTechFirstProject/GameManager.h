@@ -15,6 +15,8 @@
 +(int)getDevice;
 +(void)setStageLevel:(int)level;
 +(int)getStageLevel;
++(void)setWorldSize:(CGSize)size;
++(CGSize)getWorldSize;
 
 +(void)setPlaying:(bool)flg;
 +(bool)getPlaying;
