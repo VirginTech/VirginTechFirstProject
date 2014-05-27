@@ -17,6 +17,7 @@
 + (NaviLayer *)scene;
 - (id)init;
 
++(void)setStageEndingScreen:(bool)clearFlg;
 +(void)setPauseScreen;
 
 @end

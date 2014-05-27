@@ -46,37 +46,59 @@
     [backButton setTarget:self selector:@selector(onBackClicked:)];
     [self addChild:backButton];
     
-    //ステージ１
+    /*/ステージ１
     CCButton *button1 = [CCButton buttonWithTitle:@"[ステージレベル１]" fontName:@"Verdana-Bold" fontSize:18.0f];
     button1.positionType = CCPositionTypeNormalized;
-    button1.position = ccp(0.5f, 0.7f);
-    [button1 setTarget:self selector:@selector(onSpinningClicked1:)];
+    button1.position = ccp(0.5f, 0.70f);
+    [button1 setTarget:self selector:@selector(onStageLevel01:)];
     [self addChild:button1];
     
     //ステージ２
     CCButton *button2 = [CCButton buttonWithTitle:@"[ステージレベル２]" fontName:@"Verdana-Bold" fontSize:18.0f];
     button2.positionType = CCPositionTypeNormalized;
-    button2.position = ccp(0.5f, 0.6f);
-    [button2 setTarget:self selector:@selector(onSpinningClicked2:)];
-    //[self addChild:button2];
+    button2.position = ccp(0.5f, 0.65f);
+    [button2 setTarget:self selector:@selector(onStageLevel02:)];
+    [self addChild:button2];*/
+    
+    float y = 0.80;
+    for(int i=1;i<=15;i++){
+        CCButton* stageBtn=[CCButton buttonWithTitle:
+                          [NSString stringWithFormat:@"[ステージレヴェル %02d]",i] fontName:@"Verdana-Bold" fontSize:18.0f];
+        stageBtn.positionType = CCPositionTypeNormalized;
+        stageBtn.position = ccp(0.5f, y);
+        stageBtn.name=[NSString stringWithFormat:@"%d",i];
+        y -= 0.05;
+        [stageBtn setTarget:self selector:@selector(onStageLevel:)];
+        [self addChild:stageBtn];
+    }
+    
     
     // done
 	return self;
 }
 
-- (void)onSpinningClicked1:(id)sender
+- (void)onStageLevel:(id)sender
+{
+    // start spinning scene with transition
+    CCButton* button =(CCButton*)sender;
+    [GameManager setStageLevel:[[button name]intValue]];
+    [[CCDirector sharedDirector] replaceScene:[StageLevel_01 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+}
+/*
+- (void)onStageLevel01:(id)sender
 {
     // start spinning scene with transition
     [GameManager setStageLevel:1];
     [[CCDirector sharedDirector] replaceScene:[StageLevel_01 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
 
-- (void)onSpinningClicked2:(id)sender
+- (void)onStageLevel02:(id)sender
 {
     // start spinning scene with transition
-    //[[CCDirector sharedDirector] replaceScene:[StageLevel_02 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+    [GameManager setStageLevel:2];
+    [[CCDirector sharedDirector] replaceScene:[StageLevel_01 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
-
+*/
 - (void)onBackClicked:(id)sender
 {
     // back to intro scene with transition

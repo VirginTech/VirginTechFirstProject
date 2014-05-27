@@ -17,6 +17,7 @@
 
 CGSize winSize;
 
+CCLabelTTF *label;
 CCNodeColor *background;
 CCButton *pauseButton;
 CCButton *titleButton;
@@ -80,11 +81,33 @@ CCButton *itemSetupButton;
     [self addChild:itemSetupButton];
     itemSetupButton.visible=false;
     
+    //ラベル
+    label = [CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:36.0f];
+    label.color = [CCColor whiteColor];
+    label.positionType = CCPositionTypeNormalized;
+    label.position = ccp(0.50f, 0.65f); // Top Right of screen
+    [self addChild:label];
+    
     return self;
 }
 
-+(void)setPauseScreen{
-    
++(void)setStageEndingScreen:(bool)clearFlg
+{
+    if(clearFlg){
+        label.string = @"あなたの勝利です！";
+    }else{
+        label.string = @"あなたの負けです";
+    }
+    pauseButton.visible=false;
+    background.visible=true;
+    titleButton.visible=true;
+    stageButton.visible=true;
+    preferencesButton.visible=true;
+    itemSetupButton.visible=true;
+}
+
++(void)setPauseScreen
+{
     if([GameManager getPauseing]){//ポーズ中
         pauseButton.title=@"[再　開]";
         background.visible=true;

@@ -434,9 +434,9 @@ CGSize winSize;
         
         winSize = [[CCDirector sharedDirector]viewSize];
         
-        ability_Attack=2.0;
-        ability_Defense=20.0;
-        ability_Traveling=0.15;
+        ability_Attack=2.0+((float)((float)([GameManager getStageLevel]-1)*0.5f));
+        ability_Defense=20.0+((float)((float)([GameManager getStageLevel]-1)*1.5f));
+        ability_Traveling=0.15+((float)((float)([GameManager getStageLevel]-1)*0.03f));
         
         //ライフ初期値
         maxLife=ability_Defense;

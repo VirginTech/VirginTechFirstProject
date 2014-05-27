@@ -80,11 +80,8 @@ NSMutableArray* removeEnemyMissileArray;
     int stageLevel=[GameManager getStageLevel];
     
     //レベルに応じた画面の大きさ
-    if(stageLevel==1){//Level1
-        [GameManager setWorldSize:CGSizeMake(winSize.width, 650.0f)];
-    }else{
-        [GameManager setWorldSize:CGSizeMake(winSize.width, 650.0f)];
-    }
+    [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*50))];
+
     UIImage *image = [UIImage imageNamed:@"bgLayer.png"];
     UIGraphicsBeginImageContext(CGSizeMake(winSize.width,[GameManager getWorldSize].height));
     [image drawInRect:CGRectMake(0, 0, winSize.width,[GameManager getWorldSize].height)];
@@ -346,11 +343,19 @@ NSMutableArray* removeEnemyMissileArray;
     for(PlayerMissile* missile in playerMissileArray){
         //時限切れミサイル削除
         if(missile.timeFlg){
-            //[removePlayerMissileArray addObject:missile];
+            [removePlayerMissileArray addObject:missile];
         }else{
             if([BasicMath RadiusIntersectsRadius:missile.position pointB:enemyFortress.position radius1:10 radius2:30]){
                 [removePlayerMissileArray addObject:missile];
-                NSLog(@"敵要塞ヒット！");
+                enemyFortress.ability_Defense -= missile.ability_Attack;
+                if(enemyFortress.ability_Defense<=0){
+                    [bgSpLayer removeChild:enemyFortress cleanup:YES];
+                    [self unscheduleAllSelectors];
+                    [GameManager setPauseStateChange:true];
+                    [GameManager setPauseing:true];
+                    [NaviLayer setStageEndingScreen:true];
+                    break;
+                }
             }
         }
     }
@@ -358,11 +363,19 @@ NSMutableArray* removeEnemyMissileArray;
     for(EnemyMissile* missile in enemyMissileArray){
         //時限切れミサイル削除
         if(missile.timeFlg){
-            //[removeEnemyMissileArray addObject:missile];
+            [removeEnemyMissileArray addObject:missile];
         }else{
             if([BasicMath RadiusIntersectsRadius:missile.position pointB:playerFortress.position radius1:10 radius2:30]){
                 [removeEnemyMissileArray addObject:missile];
-                NSLog(@"プレイヤー要塞ヒット！");
+                playerFortress.ability_Defense -= missile.ability_Attack;
+                if(playerFortress.ability_Defense<=0){
+                    [bgSpLayer removeChild:playerFortress cleanup:YES];
+                    [self unscheduleAllSelectors];
+                    [GameManager setPauseStateChange:true];
+                    [GameManager setPauseing:true];
+                    [NaviLayer setStageEndingScreen:false];
+                    break;
+                }
             }
         }
     }

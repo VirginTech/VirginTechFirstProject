@@ -9,9 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface Fortress : CCSprite {
+@interface Fortress : CCSprite
+{
+    float ability_Defense ;
     
+    CCSprite* lifeGauge1;
+    CCSprite* lifeGauge2;
+    float maxLife;
+    float nowRatio;
 }
+
+@property float ability_Defense;
 
 -(id)initWithFortress:(CGPoint)pos;
 +(id)createFortress:(CGPoint)pos;
