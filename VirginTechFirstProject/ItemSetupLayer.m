@@ -139,6 +139,13 @@ CCLabelTTF* label05;
     [closeButton setTarget:self selector:@selector(onCloseClicked:)];
     [self addChild:closeButton];
     
+    //ダイア1をコイン50と交換
+    CCButton *barterCoinButton = [CCButton buttonWithTitle:@"[ダイア1をコイン50と交換]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    barterCoinButton.positionType = CCPositionTypeNormalized;
+    barterCoinButton.position = ccp(0.5f, 0.2f); // Top Right of screen
+    [barterCoinButton setTarget:self selector:@selector(onBarterCoinClicked:)];
+    [self addChild:barterCoinButton];
+    
     return self;
 }
 
@@ -249,6 +256,17 @@ CCLabelTTF* label05;
         [self setAchievement];
     }
 }
+
+-(void)onBarterCoinClicked:(id)sender
+{
+    afterDia = [GameManager load_Currency_Dia] - 1;
+    if(afterDia >= 0){
+        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
+        [GameManager in_Out_Coin:50 addFlg:true];//コイン50増
+        [InformationLayer update_CurrencyLabel];
+    }
+}
+
 -(void)onCloseClicked:(id)sender
 {
     [GameManager setActive:true];

@@ -30,7 +30,7 @@ CGSize winSize;
     if(self=[super initWithImageNamed:@"fortress.png"])
     {
         self.position=pos;
-        ability_Defense=30.0f+(([GameManager getStageLevel]-1)*5);
+        ability_Defense=20.0f+(([GameManager getStageLevel]-1)*5);
         //体力ゲージ描画
         maxLife=ability_Defense;
         lifeGauge1=[CCSprite spriteWithImageNamed:@"lifegauge1.png"];

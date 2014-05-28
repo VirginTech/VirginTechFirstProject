@@ -191,11 +191,37 @@
 //=========================================
 +(void)levelUp_Object_Ability:(NSString*)objName
 {
-    [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
-    [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.5];
-    [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+1.5];
-    [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.03];
-    [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
+    if([objName isEqualToString:@"player01"]){
+        [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.10f];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+1.0f];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.03f];
+        [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
+    }else if([objName isEqualToString:@"player02"]){
+        [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.10f];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+0.5f];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.05f];
+        [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
+    }else if([objName isEqualToString:@"player03"]){
+        [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.25f];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+1.0f];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.02f];
+        [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
+    }else if([objName isEqualToString:@"player04"]){
+        [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.35f];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+2.0f];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.005f];
+        [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
+    }else if([objName isEqualToString:@"player05"]){
+        [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.50f];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+3.0f];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.001f];
+        [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
+    }
 }
 
 @end

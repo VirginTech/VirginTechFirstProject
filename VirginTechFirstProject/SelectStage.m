@@ -15,6 +15,10 @@
 
 @implementation SelectStage
 
+CGSize winSize;
+CCScrollView* scrollView;
+CCSprite* bgSpLayer;
+
 + (SelectStage *)scene
 {
 	return [[self alloc] init];
@@ -22,14 +26,30 @@
 
 - (id)init
 {
+    winSize=[[CCDirector sharedDirector]viewSize];
+    
     // Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
     
     // Create a colored background (Dark Grey)
-    CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
-    [self addChild:background];
+    //CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
+    //[self addChild:background];
 
+    //背景画像セット
+    UIImage *image = [UIImage imageNamed:@"bgLayer.png"];
+    UIGraphicsBeginImageContext(CGSizeMake(winSize.width,1400));
+    [image drawInRect:CGRectMake(0, 0, winSize.width,1400)];
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //スクロールビュー配置
+    bgSpLayer=[CCSprite spriteWithCGImage:image.CGImage key:nil];
+    scrollView=[[CCScrollView alloc]initWithContentNode:bgSpLayer];
+    scrollView.horizontalScrollEnabled=NO;
+    //bgSpLayer.position=CGPointMake(0, -bgSpLayer.contentSize.height);
+    [self addChild:scrollView z:0];
+    
     //ゲーム状態セット
     [GameManager setPlaying:false];
     [GameManager setPauseing:false];
@@ -60,16 +80,15 @@
     [button2 setTarget:self selector:@selector(onStageLevel02:)];
     [self addChild:button2];*/
     
-    float y = 0.80;
-    for(int i=1;i<=15;i++){
+    float y = bgSpLayer.contentSize.height - 50;
+    for(int i=1;i<=50;i++){
         CCButton* stageBtn=[CCButton buttonWithTitle:
-                          [NSString stringWithFormat:@"[ステージレヴェル %02d]",i] fontName:@"Verdana-Bold" fontSize:18.0f];
-        stageBtn.positionType = CCPositionTypeNormalized;
-        stageBtn.position = ccp(0.5f, y);
+                          [NSString stringWithFormat:@"[ステージレヴェル %02d]",i] fontName:@"Verdana-Bold" fontSize:15.0f];
+        stageBtn.position = ccp(winSize.width/2 - 50, y);
         stageBtn.name=[NSString stringWithFormat:@"%d",i];
-        y -= 0.05;
+        y -= 25;
         [stageBtn setTarget:self selector:@selector(onStageLevel:)];
-        [self addChild:stageBtn];
+        [bgSpLayer addChild:stageBtn];
     }
     
     

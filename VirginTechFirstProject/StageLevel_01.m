@@ -40,6 +40,7 @@ AnimalEnemy* creatEnemy;
 NSMutableArray* searchTarget;
 Fortress* playerFortress;
 Fortress* enemyFortress;
+int enemyCount;
 
 //審判用配列
 NSMutableArray* removePlayerArray;
@@ -80,7 +81,7 @@ NSMutableArray* removeEnemyMissileArray;
     int stageLevel=[GameManager getStageLevel];
     
     //レベルに応じた画面の大きさ
-    [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*50))];
+    [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*30))];
 
     UIImage *image = [UIImage imageNamed:@"bgLayer.png"];
     UIGraphicsBeginImageContext(CGSizeMake(winSize.width,[GameManager getWorldSize].height));
@@ -97,7 +98,7 @@ NSMutableArray* removeEnemyMissileArray;
     
     //陣地ライン
     CCSprite* line=[CCSprite spriteWithImageNamed:@"position_line.png"];
-    line.position=CGPointMake(0, 200);
+    line.position=CGPointMake(0, [GameManager getWorldSize].height / 5.0f);
     [bgSpLayer addChild:line];
     
     //経路作成レイヤー z:1
@@ -137,6 +138,7 @@ NSMutableArray* removeEnemyMissileArray;
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
+    enemyCount=0;
     [self schedule:@selector(createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
     
     // In pre-v3, touch enable and scheduleUpdate was called here
@@ -152,7 +154,10 @@ NSMutableArray* removeEnemyMissileArray;
 
 -(void)createEnemy_Schedule:(CCTime)dt
 {
-    [StageLevel_01 createEnemy];
+    if(enemyCount<[GameManager getStageLevel]*5){
+        [StageLevel_01 createEnemy];
+    }
+    enemyCount++;
 }
 
 -(void)judgement_Schedule:(CCTime)dt
@@ -296,12 +301,12 @@ NSMutableArray* removeEnemyMissileArray;
                         enemy.ability_Defense -= missile.ability_Attack;
                         if(enemy.ability_Defense<=0){//敵撃破！
                             //コイン報酬
-                            [GameManager in_Out_Coin:(int)enemy.ability_Attack addFlg:true];
+                            [GameManager in_Out_Coin:1 addFlg:true];
                             [InformationLayer update_CurrencyLabel];
                             //基礎集計（タンク撃破率）セーブ
                             [GameManager save_Aggregate_Tank:[GameManager load_Aggregate_Tank]+1];
                             //ハイスコア更新
-                            [GameManager save_HighScore:[GameManager load_HighScore]+1];
+                            [GameManager save_HighScore:[GameManager load_HighScore]+round(enemy.ability_Attack)];
                             [InformationLayer update_HighScoreLabel];
                             //アチーブメント保存
                             [self setAchievement];
@@ -354,6 +359,12 @@ NSMutableArray* removeEnemyMissileArray;
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     [NaviLayer setStageEndingScreen:true];
+                    //ハイスコア更新
+                    [GameManager save_HighScore:[GameManager load_HighScore]+[GameManager getStageLevel]*100];
+                    [InformationLayer update_HighScoreLabel];
+                    //コイン報酬
+                    [GameManager in_Out_Coin:10+(([GameManager getStageLevel]-1)*2) addFlg:true];
+                    [InformationLayer update_CurrencyLabel];
                     break;
                 }
             }
@@ -644,7 +655,7 @@ NSMutableArray* removeEnemyMissileArray;
         }
         
     }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
-        if(worldLocation.y < 200){
+        if(worldLocation.y < [GameManager getWorldSize].height / 5.0f){
             playSelect=[[PlayerSelection alloc]init];
             [self addChild:playSelect z:2];
             playSelect.createPlayerPos=worldLocation;

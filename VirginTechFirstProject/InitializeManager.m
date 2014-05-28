@@ -34,19 +34,19 @@ NSDictionary *dict;
 {
     //なければ(初回)とりあえず初期値をセーブ
     if([dict valueForKey:@"player01"]==nil){
-        [ObjectManager save_Object_Ability_All:@"player01" level:1 attack:1.0 defense:15.0 traveling:0.15 build:1];
+        [ObjectManager save_Object_Ability_All:@"player01" level:1 attack:1.0 defense:15.0 traveling:0.20 build:1];
     }
     if([dict valueForKey:@"player02"]==nil){
-        [ObjectManager save_Object_Ability_All:@"player02" level:1 attack:1.5 defense:15.0 traveling:0.15 build:2];
+        [ObjectManager save_Object_Ability_All:@"player02" level:1 attack:1.0 defense:10.0 traveling:0.25 build:2];
     }
     if([dict valueForKey:@"player03"]==nil){
-        [ObjectManager save_Object_Ability_All:@"player03" level:1 attack:2.0 defense:20.0 traveling:0.20 build:3];
+        [ObjectManager save_Object_Ability_All:@"player03" level:1 attack:1.5 defense:15.0 traveling:0.15 build:3];
     }
     if([dict valueForKey:@"player04"]==nil){
-        [ObjectManager save_Object_Ability_All:@"player04" level:1 attack:3.0 defense:20.0 traveling:0.20 build:4];
+        [ObjectManager save_Object_Ability_All:@"player04" level:1 attack:2.0 defense:20.0 traveling:0.10 build:4];
     }
     if([dict valueForKey:@"player05"]==nil){
-        [ObjectManager save_Object_Ability_All:@"player05" level:1 attack:5.0 defense:25.0 traveling:0.25 build:5];
+        [ObjectManager save_Object_Ability_All:@"player05" level:1 attack:3.0 defense:25.0 traveling:0.05 build:5];
     }
 }
 
@@ -54,7 +54,7 @@ NSDictionary *dict;
 {
     //なければ(初回)とりあえず初期値をセーブ
     if([dict valueForKey:@"Currency"]==nil){
-        [GameManager save_Currency_All:1000 dia:10];
+        [GameManager save_Currency_All:100 dia:5];
     }
 }
 
