@@ -28,6 +28,10 @@
 @synthesize destCollectFlg;
 @synthesize fortressFlg;
 
+@synthesize leaderPlayer;
+@synthesize leaderFlg;
+@synthesize leaderOldPos;
+
 CGSize winSize;
 
 -(void)moveTank:(NSMutableArray*)posArray{
@@ -231,6 +235,23 @@ CGSize winSize;
     lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
 }
 
+-(void)flocking_Schedule:(CCTime)dt {
+    
+    if(leaderPlayer!=nil){
+        if(leaderOldPos.x!=leaderPlayer.position.x || leaderOldPos.y!=leaderPlayer.position.y){
+            float flockAngle=[BasicMath getAngle_To_Radian:leaderOldPos ePos:leaderPlayer.position];
+            CGPoint flockNextPos=CGPointMake(velocity*cosf(flockAngle), velocity*sin(flockAngle));
+            self.position=CGPointMake(self.position.x+flockNextPos.x,self.position.y+flockNextPos.y);
+            //方向設定(度)・差替画像設定
+            if(leaderPlayer.rotationalSkewX==leaderPlayer.rotationalSkewY){
+                self.rotation=leaderPlayer.rotation;
+                [self getVehicleFrame:leaderPlayer.rotation];
+            }
+        }
+        leaderOldPos=leaderPlayer.position;
+    }
+}
+
 -(void)setTarget:(NSMutableArray*)targetArray
 {
     float range;
@@ -413,12 +434,16 @@ CGSize winSize;
         arrow.visible=false;
         //撃破回収フラグ
         destCollectFlg=false;
+        //リーダーフラグ
+        leaderFlg=false;
         //砲塔制御スケジュール開始
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];
         //状態スケジュール
         [self schedule:@selector(status_Schedule:)interval:0.1];
         //ミサイル発射制御スケジュール
         [self schedule:@selector(pFireMissile_Schedule:)interval:1.5];
+        //フロッキングスケジュール
+        [self schedule:@selector(flocking_Schedule:)interval:0.01];
     }
     return self;
 }

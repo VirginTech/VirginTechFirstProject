@@ -53,6 +53,10 @@
     CGPoint targetEnemyPos;
     bool destCollectFlg;
     bool fortressFlg;
+    
+    AnimalPlayer* leaderPlayer;
+    bool leaderFlg;
+    CGPoint leaderOldPos;
 }
 
 @property int ability_Level;
@@ -67,6 +71,10 @@
 @property bool state_PathMake_flg;
 @property bool destCollectFlg;
 @property bool fortressFlg;
+
+@property AnimalPlayer* leaderPlayer;
+@property bool leaderFlg;
+@property CGPoint leaderOldPos;
 
 +(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 -(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
