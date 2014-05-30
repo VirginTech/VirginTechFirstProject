@@ -57,6 +57,7 @@
     AnimalPlayer* leaderPlayer;
     bool leaderFlg;
     CGPoint leaderOldPos;
+    int groupNum;
 }
 
 @property int ability_Level;
@@ -75,6 +76,7 @@
 @property AnimalPlayer* leaderPlayer;
 @property bool leaderFlg;
 @property CGPoint leaderOldPos;
+@property int groupNum;
 
 +(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 -(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum;

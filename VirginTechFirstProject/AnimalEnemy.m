@@ -36,6 +36,8 @@ CGSize winSize;
         
         if(modeFlg==0){//直進
             [self unschedule:@selector(escape_Schedule:)];
+            targetPoint = CGPointMake([self setRandomPositionX:self.contentSize.width/2
+                                rightBound:winSize.width-self.contentSize.width/2], self.position.y-300);
             [self schedule:@selector(straight_Schedule:)interval:0.01];
         }else if(modeFlg==1){//追跡
             [self unschedule:@selector(escape_Schedule:)];
@@ -62,6 +64,8 @@ CGSize winSize;
     }else{
         
         [self unschedule:@selector(escape_Schedule:)];
+        targetPoint = CGPointMake([self setRandomPositionX:self.contentSize.width/2
+                            rightBound:winSize.width-self.contentSize.width/2], self.position.y-300);
         //stopFlg=false;
     }
 }
@@ -79,6 +83,8 @@ CGSize winSize;
         
         if(modeFlg==0){//直進
             [self unschedule:@selector(chase_Schedule:)];
+            targetPoint = CGPointMake([self setRandomPositionX:self.contentSize.width/2
+                            rightBound:winSize.width-self.contentSize.width/2], self.position.y-300);
             [self schedule:@selector(straight_Schedule:)interval:0.01];
         }else if(modeFlg==1){//追跡
             
@@ -106,6 +112,8 @@ CGSize winSize;
     }else{
         
         [self unschedule:@selector(chase_Schedule:)];
+        targetPoint = CGPointMake([self setRandomPositionX:self.contentSize.width/2
+                            rightBound:winSize.width-self.contentSize.width/2], self.position.y-300);
         //stopFlg=false;
     }
 
@@ -156,15 +164,27 @@ CGSize winSize;
         }
         //目標到達
         if(targetDistance < 5.0){
-            [self unschedule:@selector(straight_Schedule:)];
+            targetPoint = CGPointMake([self setRandomPositionX:self.contentSize.width/2
+                        rightBound:winSize.width-self.contentSize.width/2], self.position.y-300);
+        }else if(self.position.y<300){
+            targetPoint = CGPointMake(winSize.width/2,0);
         }
         oldPt=self.position;
         
     }else{
         
         [self unschedule:@selector(straight_Schedule:)];
+        targetPoint = CGPointMake([self setRandomPositionX:self.contentSize.width/2
+                        rightBound:winSize.width-self.contentSize.width/2], self.position.y-300);
         //stopFlg=false;
     }
+}
+
+-(float)setRandomPositionX:(float)leftBound rightBound:(float)rightBound
+{
+    int rangeX = rightBound - leftBound;
+    float actualX =(arc4random()% rangeX) + leftBound;
+    return actualX;
 }
 
 //========================
@@ -469,7 +489,11 @@ CGSize winSize;
         [lifeGauge1 addChild:lifeGauge2];
         
         //目標セット
-        targetPoint = CGPointMake(winSize.width/2,0);
+        int minX = self.contentSize.width/2;
+        int maxX = winSize.width-self.contentSize.width/2;
+        int rangeX = maxX - minX;
+        int actualX =(arc4random()% rangeX) + minX;
+        targetPoint = CGPointMake(actualX, self.position.y-300);
         //速度セット
         velocity = ability_Traveling;
         //停止フラグ

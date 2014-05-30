@@ -31,6 +31,7 @@
 @synthesize leaderPlayer;
 @synthesize leaderFlg;
 @synthesize leaderOldPos;
+@synthesize groupNum;
 
 CGSize winSize;
 
@@ -39,6 +40,7 @@ CGSize winSize;
     t=0;
     stopFlg=false;
     inpolPosArray=[[NSMutableArray alloc]init];
+    leaderFlg=true;
     
     //補間座標を作成(取得)
     inpolPosArray=[self lineInterpolation:posArray];
@@ -148,6 +150,7 @@ CGSize winSize;
                 //移動終了
                 if(inpolPosArray.count-1==t){
                     [self unschedule:@selector(moveVehicle_Schedule:)];
+                    leaderFlg=false;
                 }
                 oldPt=pt;
                 t++;
@@ -155,7 +158,7 @@ CGSize winSize;
         }
     }else{
         [self unschedule:@selector(moveVehicle_Schedule:)];
-        
+        leaderFlg=false;
         //位置を戻す
         /*if(t>=10){
             NSValue *value=[inpolPosArray objectAtIndex:t-10];
@@ -436,6 +439,8 @@ CGSize winSize;
         destCollectFlg=false;
         //リーダーフラグ
         leaderFlg=false;
+        //グループ番号付与
+        groupNum=playerNum;
         //砲塔制御スケジュール開始
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];
         //状態スケジュール

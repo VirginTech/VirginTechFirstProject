@@ -7,7 +7,7 @@
 //
 
 #import "TitleScene.h"
-//#import "HelloWorldScene.h"
+#import "InformationLayer.h"
 #import "SelectStage.h"
 #import "GameManager.h"
 #import "ShopView.h"
@@ -59,12 +59,16 @@ CGSize winSize;
     
     // Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
-    [self addChild:background];
+    [self addChild:background z:0];
     
     //iAdバナー表示
     IAdLayer* iAd=[[IAdLayer alloc]init:1];
     [self addChild:iAd];
     
+    //インフォメーション z:1
+    InformationLayer* infoLayer=[[InformationLayer alloc]init];
+    [self addChild:infoLayer z:1];
+
     // タイトル
     CCLabelTTF *label = [CCLabelTTF labelWithString:
                                 NSLocalizedString(@"Title",NULL) fontName:@"Chalkduster" fontSize:36.0f];
@@ -96,15 +100,15 @@ CGSize winSize;
     
     //環境設定
     CCButton *preferencesButton = [CCButton buttonWithTitle:@"[ 環境設定 ]" fontName:@"Verdana-Bold" fontSize:18.0f];
-    //preferencesButton.positionType = CCPositionTypeNormalized;
-    preferencesButton.position = ccp(preferencesButton.contentSize.width/2, winSize.height-20);
+    preferencesButton.positionType = CCPositionTypeNormalized;
+    preferencesButton.position = ccp(0.5f, 0.20f);
     [preferencesButton setTarget:self selector:@selector(onPreferencesButtonClicked:)];
     [self addChild:preferencesButton];
     
     //アイテムセットアップ
     CCButton *itemSetupButton = [CCButton buttonWithTitle:@"[パワーアップ]" fontName:@"Verdana-Bold" fontSize:18.0f];
-    //itemSetupButton.positionType = CCPositionTypeNormalized;
-    itemSetupButton.position = ccp(itemSetupButton.contentSize.width/2, winSize.height-50);
+    itemSetupButton.positionType = CCPositionTypeNormalized;
+    itemSetupButton.position = ccp(0.5f, 0.15f);
     [itemSetupButton setTarget:self selector:@selector(onItemSetupButtonClicked:)];
     [self addChild:itemSetupButton];
     

@@ -138,8 +138,8 @@ NSMutableArray* removeEnemyMissileArray;
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
-    enemyCount=0;
-    //[self schedule:@selector(createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
+    enemyCount=1;
+    [self schedule:@selector(createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
     
     // In pre-v3, touch enable and scheduleUpdate was called here
     // In v3, touch is enabled by setting userInterActionEnabled for the individual nodes
@@ -154,8 +154,28 @@ NSMutableArray* removeEnemyMissileArray;
 
 -(void)createEnemy_Schedule:(CCTime)dt
 {
-    if(enemyCount<[GameManager getStageLevel]*5){
-        [StageLevel_01 createEnemy];
+    if(enemyCount<=[GameManager getStageLevel]*3){
+        if(enemyCount%3==0){
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+        }else if(enemyCount%5==0){
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+        }else if(enemyCount%19==0){
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+        }else if(enemyCount%29==0){
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+        }else{
+            [StageLevel_01 createEnemy];
+        }
     }
     enemyCount++;
 }
@@ -288,44 +308,22 @@ NSMutableArray* removeEnemyMissileArray;
     //フロッキング用リーダー監視
     for(AnimalPlayer* player1 in animalArray){
         player1.leaderPlayer=nil;
-        for(AnimalPlayer* player2 in animalArray){
-            if([BasicMath RadiusIntersectsRadius:player1.position pointB:player2.position
-                                         radius1:80 radius2:20]){
-                if(player1!=player2){
-                    if(!player1.stopFlg){
-                        if(player1.position.y<=player2.position.y){
-                            //if(player2.leaderFlg){
-                                player1.leaderPlayer=player2;
-                                player1.leaderOldPos=player2.position;
-                                break;
-                            //}
+        if(!player1.leaderFlg && !player1.stopFlg){
+            for(AnimalPlayer* player2 in animalArray){
+                if(player1!=player2 && player1.groupNum==player2.groupNum){
+                    if(player1.position.y<=player2.position.y){
+                        if([BasicMath RadiusIntersectsRadius:player1.position pointB:player2.position
+                                             radius1:80 radius2:20]){
+                            player1.leaderPlayer=player2;
+                            player1.leaderOldPos=player2.position;
+                            break;
                         }
                     }
                 }
             }
         }
     }
-    /*for(AnimalPlayer* player1 in animalArray){
-        player1.leaderPlayer=nil;
-        float range;
-        float nearRange=500;
-        for(AnimalPlayer* player2 in animalArray){
-            if([BasicMath RadiusIntersectsRadius:player1.position pointB:player2.position
-                                         radius1:80 radius2:20]){
-                if(player1!=player2){
-                    if(!player1.stopFlg){
-                        range = [BasicMath getPosDistance:player1.position pos2:player2.position];
-                        if(range < nearRange){
-                            nearRange = range;
-                            player1.leaderPlayer=player2;
-                            player1.leaderOldPos=player2.position;
-                        }
-                    }
-                }
-            }
-        }
-    }*/
-    
+
     //プレイヤーミサイル　対　敵
     for(PlayerMissile* missile in playerMissileArray){
         //時限切れミサイル削除
@@ -426,6 +424,9 @@ NSMutableArray* removeEnemyMissileArray;
                     [GameManager setPauseing:true];
                     [NaviLayer setStageEndingScreen:false];
                     break;
+                }else{
+                    //画面を揺する
+                    [self schedule:@selector(crisis_Schedule:)interval:0.1 repeat:3 delay:0.0];
                 }
             }
         }
@@ -498,6 +499,11 @@ NSMutableArray* removeEnemyMissileArray;
     removeEnemyArray=[[NSMutableArray alloc]init];
     removePlayerMissileArray=[[NSMutableArray alloc]init];
     removeEnemyMissileArray=[[NSMutableArray alloc]init];
+}
+
+-(void)crisis_Schedule:(CCTime)dt
+{
+    bgSpLayer.position = CGPointMake(bgSpLayer.position.x+10, bgSpLayer.position.y-10);
 }
 
 //=====================
@@ -664,19 +670,6 @@ NSMutableArray* removeEnemyMissileArray;
     enemyFortress=[Fortress createFortress:ccp(winSize.width/2,[GameManager getWorldSize].height-30)];
     [bgSpLayer addChild:enemyFortress z:0];
 }
-//============================
-// リーダーフラグセット
-//============================
--(void)setLeaderPlayer:(AnimalPlayer*)leaderPlayer
-{
-    for(AnimalPlayer* player in animalArray){
-        if(player==leaderPlayer){
-            player.leaderFlg=true;
-        }else{
-            player.leaderFlg=false;
-        }
-    }
-}
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
@@ -705,8 +698,6 @@ NSMutableArray* removeEnemyMissileArray;
             routeGeneLyer.offsetY=offsetY;
             [self addChild:routeGeneLyer z:1];
             touchPlayer.state_PathMake_flg=true;
-            //[self setLeaderPlayer:touchPlayer];
-            //touchPlayer.leaderFlg=true;
         }
         
     }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
