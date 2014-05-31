@@ -210,6 +210,8 @@ CCLabelTTF* label05;
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
         [self setAchievement];
+    }else{
+        [self showMassage];
     }
 }
 -(void)onSetBtn02_Clicked:(id)sender
@@ -221,6 +223,8 @@ CCLabelTTF* label05;
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
         [self setAchievement];
+    }else{
+        [self showMassage];
     }
 }
 -(void)onSetBtn03_Clicked:(id)sender
@@ -232,6 +236,8 @@ CCLabelTTF* label05;
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
         [self setAchievement];
+    }else{
+        [self showMassage];
     }
 }
 -(void)onSetBtn04_Clicked:(id)sender
@@ -243,6 +249,8 @@ CCLabelTTF* label05;
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
         [self setAchievement];
+    }else{
+        [self showMassage];
     }
 }
 -(void)onSetBtn05_Clicked:(id)sender
@@ -254,6 +262,8 @@ CCLabelTTF* label05;
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [InformationLayer update_CurrencyLabel];
         [self setAchievement];
+    }else{
+        [self showMassage];
     }
 }
 
@@ -264,6 +274,8 @@ CCLabelTTF* label05;
         [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
         [GameManager in_Out_Coin:50 addFlg:true];//コイン50増
         [InformationLayer update_CurrencyLabel];
+    }else{
+        [self showMassage];
     }
 }
 
@@ -271,6 +283,15 @@ CCLabelTTF* label05;
 {
     [GameManager setActive:true];
     [self removeFromParentAndCleanup:YES];
+}
+
+-(void)showMassage{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ダイアが足りません"
+                                                    message:@"ダイアはショップで購入できます。"
+                                                    delegate:nil
+                                                    cancelButtonTitle:nil
+                                                    otherButtonTitles:@"O K", nil];
+    [alert show];
 }
 
 @end

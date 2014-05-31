@@ -51,6 +51,7 @@
 @property float ability_Defense ;
 @property float ability_Attack;
 @property float ability_Traveling;
+@property float maxLife;
 
 @property bool stopFlg;
 @property bool destCollectFlg;

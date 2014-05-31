@@ -144,6 +144,8 @@ CCLabelTTF* label05;
     if(afterCoin >= 0){
         [StageLevel_01 createPlayer:createPlayerPos playerNum:1];
         [self removeFromParentAndCleanup:YES];
+    }else{
+        [self showMassage];
     }
 }
 -(void)onAnimal02_Clicked:(id)sender
@@ -152,6 +154,8 @@ CCLabelTTF* label05;
     if(afterCoin >= 0){
         [StageLevel_01 createPlayer:createPlayerPos playerNum:2];
         [self removeFromParentAndCleanup:YES];
+    }else{
+        [self showMassage];
     }
 }
 -(void)onAnimal03_Clicked:(id)sender
@@ -160,6 +164,8 @@ CCLabelTTF* label05;
     if(afterCoin >= 0){
         [StageLevel_01 createPlayer:createPlayerPos playerNum:3];
         [self removeFromParentAndCleanup:YES];
+    }else{
+        [self showMassage];
     }
 }
 -(void)onAnimal04_Clicked:(id)sender
@@ -168,6 +174,8 @@ CCLabelTTF* label05;
     if(afterCoin >= 0){
         [StageLevel_01 createPlayer:createPlayerPos playerNum:4];
         [self removeFromParentAndCleanup:YES];
+    }else{
+        [self showMassage];
     }
 }
 -(void)onAnimal05_Clicked:(id)sender
@@ -176,7 +184,18 @@ CCLabelTTF* label05;
     if(afterCoin >= 0){
         [StageLevel_01 createPlayer:createPlayerPos playerNum:5];
         [self removeFromParentAndCleanup:YES];
+    }else{
+        [self showMassage];
     }
+}
+
+-(void)showMassage{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"コインが足りません"
+                                                    message:@"コインはダイアと交換できます。"
+                                                    delegate:nil
+                                                    cancelButtonTitle:nil
+                                                    otherButtonTitles:@"O K", nil];
+    [alert show];
 }
 
 @end

@@ -16,6 +16,7 @@
 @synthesize ability_Attack;
 @synthesize ability_Defense;
 @synthesize ability_Traveling;
+@synthesize maxLife;
 
 @synthesize stopFlg;
 @synthesize destCollectFlg;
@@ -454,8 +455,8 @@ CGSize winSize;
         
         winSize = [[CCDirector sharedDirector]viewSize];
         
-        ability_Attack=1.5+((float)((float)([GameManager getStageLevel]-1)*0.25f));
-        ability_Defense=15.0+((float)((float)([GameManager getStageLevel]-1)*1.0f));
+        ability_Attack=0.75+((float)((float)([GameManager getStageLevel]-1)*0.125f));
+        ability_Defense=7.5+((float)((float)([GameManager getStageLevel]-1)*0.5f));
         ability_Traveling=0.15+((float)((float)([GameManager getStageLevel]-1)*0.02f));
         
         //ライフ初期値
