@@ -30,6 +30,7 @@ NSDictionary *dict;
     [self initialize_Achievement_Level];
     [self initialize_Achievement_Fortress];
     [self initialize_Achievement_Stage];
+    [self initialize_StageClear_State];
 }
 
 +(void)initialize_Object
@@ -73,6 +74,20 @@ NSDictionary *dict;
     //なければ(初回)とりあえず初期値をセーブ
     if([dict valueForKey:@"Aggregate"]==nil){
         [GameManager save_Aggregate_All:0 fortress:0 level:0 stage:0];
+    }
+}
+
++(void)initialize_StageClear_State
+{
+    //なければ(初回)とりあえず初期値をセーブ
+    if([dict valueForKey:@"StageClearState"]==nil){
+        NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+        NSMutableArray* array=[[NSMutableArray alloc]init];
+        for(int i=0;i<50;i++){
+            [array addObject:[NSNumber numberWithInt:0]];
+        }
+        [userDefault setObject:array forKey:@"StageClearState"];
+        [userDefault synchronize];
     }
 }
 

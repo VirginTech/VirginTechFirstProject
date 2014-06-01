@@ -54,4 +54,7 @@
 +(void)save_Aggregate_Level:(int)level;
 +(void)save_Aggregate_Stage:(int)stage;
 
++(void)save_StageClear_State:(int)stageNum rate:(int)rate;
++(int)load_StageClear_State:(int)stageNum;
+
 @end

@@ -38,8 +38,8 @@ CCSprite* bgSpLayer;
 
     //背景画像セット
     UIImage *image = [UIImage imageNamed:@"bgLayer.png"];
-    UIGraphicsBeginImageContext(CGSizeMake(winSize.width,1400));
-    [image drawInRect:CGRectMake(0, 0, winSize.width,1400)];
+    UIGraphicsBeginImageContext(CGSizeMake(winSize.width,600));
+    [image drawInRect:CGRectMake(0, 0, winSize.width,600)];
     image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -80,15 +80,46 @@ CCSprite* bgSpLayer;
     [button2 setTarget:self selector:@selector(onStageLevel02:)];
     [self addChild:button2];*/
     
-    float y = bgSpLayer.contentSize.height - 50;
-    for(int i=1;i<=50;i++){
-        CCButton* stageBtn=[CCButton buttonWithTitle:
-                          [NSString stringWithFormat:@"[ステージレヴェル %02d]",i] fontName:@"Verdana-Bold" fontSize:15.0f];
-        stageBtn.position = ccp(winSize.width/2 - 50, y);
-        stageBtn.name=[NSString stringWithFormat:@"%d",i];
-        y -= 25;
-        [stageBtn setTarget:self selector:@selector(onStageLevel:)];
-        [bgSpLayer addChild:stageBtn];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
+    CGPoint btnPos=CGPointMake(70, bgSpLayer.contentSize.height-50);
+
+    for(int i=0;i<50;i++){
+        
+        int stageNum=i+1;
+        CCButton* levelBtn=[CCButton buttonWithTitle:[NSString stringWithFormat:@"%02d",stageNum]
+                    spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"stageBtn.png"]];
+        levelBtn.scale=0.5;
+        
+        if(i%5 !=0){
+            btnPos=CGPointMake(btnPos.x+50, btnPos.y);
+        }else{
+            btnPos=CGPointMake(70, btnPos.y-50);
+        }
+        
+        levelBtn.position = CGPointMake(btnPos.x, btnPos.y);
+        levelBtn.name=[NSString stringWithFormat:@"%d",stageNum];
+        [levelBtn setTarget:self selector:@selector(onStageLevel:)];
+        [bgSpLayer addChild:levelBtn];
+        
+        //星ラベル
+        if([GameManager load_StageClear_State:stageNum]>0){
+            CCSprite* star;
+            star=[CCSprite spriteWithSpriteFrame:
+                            [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:
+                            [NSString stringWithFormat:@"star%d.png",[GameManager load_StageClear_State:stageNum]]]];
+            star.scale=0.7;
+            star.position=CGPointMake(levelBtn.contentSize.width/2, levelBtn.contentSize.height+15);
+            [levelBtn addChild:star];
+        }
+        //錠前
+        if(i>[GameManager load_Aggregate_Stage]){
+            CCSprite* lock=[CCSprite spriteWithSpriteFrame:
+                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"lock.png"]];
+            lock.scale=0.7;
+            lock.position=CGPointMake(levelBtn.contentSize.width/2, levelBtn.contentSize.height/2);
+            [levelBtn addChild:lock];
+            levelBtn.enabled=false;
+        }
     }
     
     

@@ -12,6 +12,7 @@
 @implementation Fortress
 
 @synthesize ability_Defense;
+@synthesize maxLife;
 
 CGSize winSize;
 

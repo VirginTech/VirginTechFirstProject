@@ -158,7 +158,7 @@ CGSize winSize;
         }
     }else{
         [self unschedule:@selector(moveVehicle_Schedule:)];
-        leaderFlg=false;
+        //leaderFlg=false;
         //位置を戻す
         /*if(t>=10){
             NSValue *value=[inpolPosArray objectAtIndex:t-10];

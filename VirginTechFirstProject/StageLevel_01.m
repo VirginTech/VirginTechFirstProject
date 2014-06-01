@@ -346,6 +346,8 @@ NSMutableArray* removeEnemyMissileArray;
                             //ハイスコア更新
                             [GameManager save_HighScore:[GameManager load_HighScore]+round(enemy.maxLife)];
                             [InformationLayer update_HighScoreLabel];
+                            //リーダーボードテスト
+                            [GameManager submitScore_GameCenter:[GameManager load_HighScore]];
                             //アチーブメント保存
                             [self setAchievement:@"Achievement_Tank"];
                             //敵削除配列へ
@@ -400,6 +402,8 @@ NSMutableArray* removeEnemyMissileArray;
                     //ハイスコア更新
                     [GameManager save_HighScore:[GameManager load_HighScore]+[GameManager getStageLevel]*100];
                     [InformationLayer update_HighScoreLabel];
+                    //リーダーボードテスト
+                    [GameManager submitScore_GameCenter:[GameManager load_HighScore]];
                     //コイン報酬
                     [GameManager in_Out_Coin:10+(([GameManager getStageLevel]-1)*2) addFlg:true];
                     [InformationLayer update_CurrencyLabel];
@@ -413,6 +417,21 @@ NSMutableArray* removeEnemyMissileArray;
                     }
                     //アチーブメント保存
                     [self setAchievement:@"Achievement_Stage"];
+                    //ステージクリア状態のセーブ
+                    float fortRemainPower=(100/playerFortress.maxLife)*playerFortress.ability_Defense;
+                    if(fortRemainPower>=80.0f){
+                        if([GameManager load_StageClear_State:[GameManager getStageLevel]]<3){
+                            [GameManager save_StageClear_State:[GameManager getStageLevel] rate:3];
+                        }
+                    }else if(fortRemainPower>=50.0f){
+                        if([GameManager load_StageClear_State:[GameManager getStageLevel]]<2){
+                            [GameManager save_StageClear_State:[GameManager getStageLevel] rate:2];
+                        }
+                    }else{
+                        if([GameManager load_StageClear_State:[GameManager getStageLevel]]<1){
+                            [GameManager save_StageClear_State:[GameManager getStageLevel] rate:1];
+                        }
+                    }
                     break;
                 }
             }

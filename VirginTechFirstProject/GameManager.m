@@ -314,13 +314,40 @@ bool isActive;//アクティブ状態か？
                                     level:[[array objectAtIndex:2]intValue]
                                     stage:[[array objectAtIndex:3]intValue]];
 }
-
+//=========================================
+//ステージクリア状態の保存(0:未達成 1:星1つ 2:星2つ 3:星3つ)
+//=========================================
++(void)save_StageClear_State:(int)stageNum rate:(int)rate
+{
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+	NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSMutableArray* tmpArray=[[NSMutableArray alloc]init];
+    tmpArray = [userDefault objectForKey:@"StageClearState"];
+    for(int i=0;i<tmpArray.count;i++){//コピー
+        [array addObject:[tmpArray objectAtIndex:i]];
+    }
+    [array replaceObjectAtIndex:stageNum-1 withObject:[NSNumber numberWithInt:rate]];
+    [userDefault setObject:array forKey:@"StageClearState"];
+    [userDefault synchronize];
+}
+//=========================================
+//ステージクリア状態の取得(0:未達成 1:星1つ 2:星2つ 3:星3つ)
+//=========================================
++(int)load_StageClear_State:(int)stageNum
+{
+    int rate;
+    NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
+	NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [userDefault objectForKey:@"StageClearState"];
+    rate=[[array objectAtIndex:stageNum-1]intValue];
+    return rate;
+}
 //=========================================
 //GameCenterへスコアを送信
 //=========================================
 +(void)submitScore_GameCenter:(NSInteger)score
 {
-    GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"VirginTechFirstProject_Leaderboard"];
+    GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"VirginTechFirstProject_Leaderboard_2"];
     NSInteger scoreR = score;
     scoreReporter.value = scoreR;
     [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
