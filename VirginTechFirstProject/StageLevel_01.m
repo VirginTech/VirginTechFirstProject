@@ -135,6 +135,8 @@ NSMutableArray* removeEnemyMissileArray;
     //要塞陣地
     [self createPlayerFortress];
     [self createEnemyFortress];
+    //植樹
+    [self setTreePlanting];
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
@@ -150,6 +152,26 @@ NSMutableArray* removeEnemyMissileArray;
 {
     // always call super onExit last
     [super onExit];
+}
+
+-(void)setTreePlanting
+{
+    CGPoint plantPos;
+    NSString* leafName;
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"leaf_default.plist"];
+
+    for(int i=200;i<[GameManager getWorldSize].height-200;i+=150)
+    {
+        plantPos.x = arc4random() % (int)winSize.width;
+        plantPos.y = (arc4random() % 150) + i;
+        
+        leafName=[NSString stringWithFormat:@"leaf%02d.png",(arc4random()%5)+1];
+        CCSprite* leaf=[CCSprite spriteWithSpriteFrame:
+                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:leafName]];
+        leaf.scale=((arc4random()%3)+3)/10.0f;
+        leaf.position=plantPos;
+        [bgSpLayer addChild:leaf z:3];
+    }
 }
 
 -(void)createEnemy_Schedule:(CCTime)dt

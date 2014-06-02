@@ -14,6 +14,8 @@
 		CF0687501920E3F600AB3CD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF06874F1920E3F600AB3CD7 /* SystemConfiguration.framework */; };
 		CF0687521921AF9400AB3CD7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0687511921AF9400AB3CD7 /* iAd.framework */; };
 		CF0687551921AFFE00AB3CD7 /* IAdLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0687541921AFFE00AB3CD7 /* IAdLayer.m */; };
+		CF1BF75B193C47F400EEA664 /* leaf_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF1BF759193C47F400EEA664 /* leaf_default.plist */; };
+		CF1BF75C193C47F400EEA664 /* leaf_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1BF75A193C47F400EEA664 /* leaf_default.png */; };
 		CF208CD819283AAF009A00D9 /* EnemyMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF208CD719283AAF009A00D9 /* EnemyMissile.m */; };
 		CF208CDA19284518009A00D9 /* rock2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF208CD919284518009A00D9 /* rock2.png */; };
 		CF27C7E0190B2C48004FAEBE /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7DF190B2C48004FAEBE /* TitleScene.m */; };
@@ -32,11 +34,7 @@
 		CF5FE321191DE6AA00821441 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5FE320191DE6AA00821441 /* rock.png */; };
 		CF5FFACA1924B6F000A1647C /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FFAC91924B6F000A1647C /* ObjectManager.m */; };
 		CF685547190DE72E004C4D43 /* BgHigherLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685546190DE72E004C4D43 /* BgHigherLayer.m */; };
-		CF68555E190E0E81004C4D43 /* 花_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF68555C190E0E81004C4D43 /* 花_default.plist */; };
-		CF68555F190E0E81004C4D43 /* 花_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF68555D190E0E81004C4D43 /* 花_default.png */; };
 		CF685562190E2FA1004C4D43 /* BgLowerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF685561190E2FA1004C4D43 /* BgLowerLayer.m */; };
-		CF685569190E4094004C4D43 /* 地面_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF685567190E4094004C4D43 /* 地面_default.plist */; };
-		CF68556A190E4094004C4D43 /* 地面_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF685568190E4094004C4D43 /* 地面_default.png */; };
 		CF6A727319175B240027F654 /* position_line.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727219175B240027F654 /* position_line.png */; };
 		CF6A727619176C160027F654 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727819176C160027F654 /* Localizable.strings */; };
 		CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727F19176CC50027F654 /* InfoPlist.strings */; };
@@ -60,7 +58,6 @@
 		CFA2AE9B191CF75900D46940 /* enemy_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFA2AE99191CF75900D46940 /* enemy_default.png */; };
 		CFAB6D8E1930A97B000FA153 /* AchievementManeger.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */; };
 		CFAB7C2D191505AF0084D0F8 /* RouteGenerationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */; };
-		CFB8B065193ABC0200527859 /* stageBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB8B064193ABC0200527859 /* stageBtn.png */; };
 		CFB8B074193AEA9D00527859 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFB8B072193AEA9D00527859 /* interface_default.plist */; };
 		CFB8B075193AEA9D00527859 /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB8B073193AEA9D00527859 /* interface_default.png */; };
 		CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD5A32C1911F29D004E2B58 /* GameManager.m */; };
@@ -299,6 +296,8 @@
 		CF0687511921AF9400AB3CD7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		CF0687531921AFFE00AB3CD7 /* IAdLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAdLayer.h; sourceTree = "<group>"; };
 		CF0687541921AFFE00AB3CD7 /* IAdLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAdLayer.m; sourceTree = "<group>"; };
+		CF1BF759193C47F400EEA664 /* leaf_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = leaf_default.plist; sourceTree = "<group>"; };
+		CF1BF75A193C47F400EEA664 /* leaf_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf_default.png; sourceTree = "<group>"; };
 		CF208CD619283AAF009A00D9 /* EnemyMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyMissile.h; sourceTree = "<group>"; };
 		CF208CD719283AAF009A00D9 /* EnemyMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyMissile.m; sourceTree = "<group>"; };
 		CF208CD919284518009A00D9 /* rock2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock2.png; sourceTree = "<group>"; };
@@ -329,12 +328,8 @@
 		CF5FFAC91924B6F000A1647C /* ObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectManager.m; sourceTree = "<group>"; };
 		CF685545190DE72E004C4D43 /* BgHigherLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BgHigherLayer.h; sourceTree = "<group>"; };
 		CF685546190DE72E004C4D43 /* BgHigherLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BgHigherLayer.m; sourceTree = "<group>"; };
-		CF68555C190E0E81004C4D43 /* 花_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "花_default.plist"; sourceTree = "<group>"; };
-		CF68555D190E0E81004C4D43 /* 花_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "花_default.png"; sourceTree = "<group>"; };
 		CF685560190E2FA1004C4D43 /* BgLowerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BgLowerLayer.h; sourceTree = "<group>"; };
 		CF685561190E2FA1004C4D43 /* BgLowerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BgLowerLayer.m; sourceTree = "<group>"; };
-		CF685567190E4094004C4D43 /* 地面_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "地面_default.plist"; sourceTree = "<group>"; };
-		CF685568190E4094004C4D43 /* 地面_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地面_default.png"; sourceTree = "<group>"; };
 		CF6A727219175B240027F654 /* position_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = position_line.png; sourceTree = "<group>"; };
 		CF6A727719176C160027F654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF6A727A19176C670027F654 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -367,7 +362,6 @@
 		CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementManeger.m; sourceTree = "<group>"; };
 		CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteGenerationLayer.h; sourceTree = "<group>"; };
 		CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteGenerationLayer.m; sourceTree = "<group>"; };
-		CFB8B064193ABC0200527859 /* stageBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stageBtn.png; sourceTree = "<group>"; };
 		CFB8B072193AEA9D00527859 /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
 		CFB8B073193AEA9D00527859 /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
 		CFD5A32B1911F29D004E2B58 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
@@ -847,6 +841,10 @@
 				CFDFE173190A2D710021FBF9 /* HelloWorldScene.m */,
 				CFDFE175190A2D710021FBF9 /* IntroScene.h */,
 				CFDFE176190A2D710021FBF9 /* IntroScene.m */,
+				CF685560190E2FA1004C4D43 /* BgLowerLayer.h */,
+				CF685561190E2FA1004C4D43 /* BgLowerLayer.m */,
+				CF685545190DE72E004C4D43 /* BgHigherLayer.h */,
+				CF685546190DE72E004C4D43 /* BgHigherLayer.m */,
 			);
 			name = Unused;
 			sourceTree = "<group>";
@@ -905,10 +903,6 @@
 				CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */,
 				CFF39633191092F90052608E /* InformationLayer.h */,
 				CFF39634191092F90052608E /* InformationLayer.m */,
-				CF685560190E2FA1004C4D43 /* BgLowerLayer.h */,
-				CF685561190E2FA1004C4D43 /* BgLowerLayer.m */,
-				CF685545190DE72E004C4D43 /* BgHigherLayer.h */,
-				CF685546190DE72E004C4D43 /* BgHigherLayer.m */,
 			);
 			name = layer;
 			sourceTree = "<group>";
@@ -982,9 +976,10 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF1BF759193C47F400EEA664 /* leaf_default.plist */,
+				CF1BF75A193C47F400EEA664 /* leaf_default.png */,
 				CFB8B072193AEA9D00527859 /* interface_default.plist */,
 				CFB8B073193AEA9D00527859 /* interface_default.png */,
-				CFB8B064193ABC0200527859 /* stageBtn.png */,
 				CF505F261932D2C30068A24A /* fortress.png */,
 				CFF501131929D70A007B524F /* coinBar.png */,
 				CFF501141929D70A007B524F /* diaBar.png */,
@@ -1007,10 +1002,6 @@
 				CFA2AE8D191CF20200D46940 /* bear3_default.plist */,
 				CFA2AE8E191CF20200D46940 /* bear4_default.plist */,
 				CFA2AE8F191CF20200D46940 /* bear5_default.plist */,
-				CF685567190E4094004C4D43 /* 地面_default.plist */,
-				CF685568190E4094004C4D43 /* 地面_default.png */,
-				CF68555C190E0E81004C4D43 /* 花_default.plist */,
-				CF68555D190E0E81004C4D43 /* 花_default.png */,
 				CFDFDEE1190A2D6F0021FBF9 /* Default.png */,
 				CFDFDEE3190A2D6F0021FBF9 /* Default@2x.png */,
 				CFDFDEE5190A2D6F0021FBF9 /* Default-568h@2x.png */,
@@ -1922,9 +1913,9 @@
 				CFDFDEE4190A2D6F0021FBF9 /* Default@2x.png in Resources */,
 				CFDFDEF7190A2D6F0021FBF9 /* Icon-120.png in Resources */,
 				CFA2AE88191CF0F000D46940 /* bear2_default.png in Resources */,
+				CF1BF75B193C47F400EEA664 /* leaf_default.plist in Resources */,
 				CFDFE0FB190A2D700021FBF9 /* LICENSE_CCBReader.txt in Resources */,
 				CFDFDEED190A2D6F0021FBF9 /* Icon@2x.png in Resources */,
-				CF68555E190E0E81004C4D43 /* 花_default.plist in Resources */,
 				CFDFDEFF190A2D6F0021FBF9 /* Icon-Small@2x.png in Resources */,
 				CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */,
 				CFDFDEF1190A2D6F0021FBF9 /* Icon-72@2x.png in Resources */,
@@ -1934,6 +1925,7 @@
 				CFA2AE82191CD85B00D46940 /* bear_default.plist in Resources */,
 				CFA2AE9A191CF75900D46940 /* enemy_default.plist in Resources */,
 				CFDFDEF9190A2D6F0021FBF9 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
+				CF1BF75C193C47F400EEA664 /* leaf_default.png in Resources */,
 				CF6A727319175B240027F654 /* position_line.png in Resources */,
 				CFDFDEE8190A2D6F0021FBF9 /* Default-Landscape~ipad.png in Resources */,
 				CFDFDEFD190A2D6F0021FBF9 /* Icon-Small.png in Resources */,
@@ -1949,13 +1941,10 @@
 				CFDFDEEF190A2D6F0021FBF9 /* Icon-72.png in Resources */,
 				CF5FE321191DE6AA00821441 /* rock.png in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
-				CF68555F190E0E81004C4D43 /* 花_default.png in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
 				CFA2AE91191CF20200D46940 /* bear3_default.plist in Resources */,
 				CFF501161929D70A007B524F /* diaBar.png in Resources */,
 				CF8C16C519137369002BBC13 /* bgLayer.png in Resources */,
-				CF685569190E4094004C4D43 /* 地面_default.plist in Resources */,
-				CF68556A190E4094004C4D43 /* 地面_default.png in Resources */,
 				CFDFDF06190A2D6F0021FBF9 /* iTunesArtwork in Resources */,
 				CFB8B075193AEA9D00527859 /* interface_default.png in Resources */,
 				CFDFDF01190A2D6F0021FBF9 /* Icon-Spotlight-iOS7.png in Resources */,
@@ -1972,7 +1961,6 @@
 				CFA2AE8B191CF0F000D46940 /* bear5_default.png in Resources */,
 				CFA2AE9B191CF75900D46940 /* enemy_default.png in Resources */,
 				CFDFDF08190A2D6F0021FBF9 /* iTunesArtwork@2x in Resources */,
-				CFB8B065193ABC0200527859 /* stageBtn.png in Resources */,
 				CF4EA4EE1927269A00AAA872 /* lifegauge1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
