@@ -25,6 +25,9 @@ CCButton *stageButton;
 CCButton *preferencesButton;
 CCButton *itemSetupButton;
 
+NSMutableArray* starB_Array;
+NSMutableArray* starG_Array;
+
 + (NaviLayer *)scene{
     
     return [[self alloc] init];
@@ -86,13 +89,55 @@ CCButton *itemSetupButton;
     label.color = [CCColor whiteColor];
     label.positionType = CCPositionTypeNormalized;
     label.position = ccp(0.50f, 0.65f); // Top Right of screen
-    [self addChild:label];
+    [self addChild:label z:2];
     
+    //星
+    CCSprite* starG;
+    CCSprite* starB;
+    starB_Array=[[NSMutableArray alloc]init];
+    starG_Array=[[NSMutableArray alloc]init];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
+    for(int i=0;i<3;i++)
+    {
+        starG=[CCSprite spriteWithSpriteFrame:
+               [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"star_G.png"]];
+        starB=[CCSprite spriteWithSpriteFrame:
+               [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"star_B.png"]];
+        
+        starG.positionType = CCPositionTypeNormalized;
+        starB.positionType = CCPositionTypeNormalized;
+        if(i==0){
+            starB.position=ccp(0.20f,0.65f);
+            starG.position=ccp(0.20f,0.65f);
+        }else if(i==1){
+            starB.position=ccp(0.50f,0.75f);
+            starG.position=ccp(0.50f,0.75f);
+        }else{
+            starB.position=ccp(0.80f,0.65f);
+            starG.position=ccp(0.80f,0.65f);
+        }
+        [starB_Array addObject:starB];
+        [starG_Array addObject:starG];
+        [self addChild:starB z:0];
+        [self addChild:starG z:1];
+        starB.visible=false;
+        starG.visible=false;
+    }
     return self;
 }
 
-+(void)setStageEndingScreen:(bool)clearFlg
++(void)setStageEndingScreen:(bool)clearFlg rate:(int)rate
 {
+    int i=0;
+    for(CCSprite* star_B in starB_Array){
+        star_B.visible=true;
+    }
+    for(CCSprite* star_G in starG_Array){
+        if(rate > i){
+            star_G.visible=true;
+        }
+        i++;
+    }
     if(clearFlg){
         label.string = @"あなたの勝利です！";
     }else{
@@ -150,14 +195,14 @@ CCButton *itemSetupButton;
 - (void)onPreferencesButtonClicked:(id)sender
 {
     PreferencesLayer* prefence=[[PreferencesLayer alloc]init];
-    [self addChild:prefence];
+    [self addChild:prefence z:3];
 }
 -(void)onItemSetupButtonClicked:(id)sender
 {
     if([GameManager getActive]){
         //[GameManager setActive:false];
         ItemSetupLayer* itemSetup=[[ItemSetupLayer alloc]init];
-        [self addChild:itemSetup];
+        [self addChild:itemSetup z:3];
     }
 }
 

@@ -96,6 +96,9 @@ NSMutableArray* removeEnemyMissileArray;
     bgSpLayer.position=CGPointMake(0, -bgSpLayer.contentSize.height);
     [self addChild:scrollView z:0];
     
+    //地面
+    [self setGround];
+    
     //陣地ライン
     CCSprite* line=[CCSprite spriteWithImageNamed:@"position_line.png"];
     line.position=CGPointMake(0, [GameManager getWorldSize].height / 5.0f);
@@ -152,6 +155,34 @@ NSMutableArray* removeEnemyMissileArray;
 {
     // always call super onExit last
     [super onExit];
+}
+
+-(void)setGround
+{
+    float offsetX;
+    float offsetY;
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"ground_default.plist"];
+    CCSprite* frame = [CCSprite spriteWithSpriteFrame:
+                                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"ground_00.png"]];
+    CGSize frameCount = CGSizeMake(winSize.width/frame.contentSize.width+1,
+                                    [GameManager getWorldSize].height/frame.contentSize.height+1);
+    NSString* bgName=[NSString stringWithFormat:@"ground_%02d.png",(arc4random()%10)];
+    for(int i=0;i<frameCount.width*frameCount.height;i++)
+    {
+        frame = [CCSprite spriteWithSpriteFrame:
+                                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:bgName]];
+        if(i==0){
+            offsetX = frame.contentSize.width/2-1;
+            offsetY = frame.contentSize.height/2-1;
+        }else if(i%(int)frameCount.width==0){
+            offsetX = frame.contentSize.width/2-1;
+            offsetY = offsetY + frame.contentSize.height-1;
+        }else{
+            offsetX = offsetX + frame.contentSize.width-1;
+        }
+        frame.position = CGPointMake(offsetX,offsetY);
+        [bgSpLayer addChild:frame z:0];
+    }
 }
 
 -(void)setTreePlanting
@@ -420,7 +451,7 @@ NSMutableArray* removeEnemyMissileArray;
                     [self unscheduleAllSelectors];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
-                    [NaviLayer setStageEndingScreen:true];
+                    
                     //ハイスコア更新
                     [GameManager save_HighScore:[GameManager load_HighScore]+[GameManager getStageLevel]*100];
                     [InformationLayer update_HighScoreLabel];
@@ -442,14 +473,17 @@ NSMutableArray* removeEnemyMissileArray;
                     //ステージクリア状態のセーブ
                     float fortRemainPower=(100/playerFortress.maxLife)*playerFortress.ability_Defense;
                     if(fortRemainPower>=80.0f){
+                        [NaviLayer setStageEndingScreen:true rate:3];
                         if([GameManager load_StageClear_State:[GameManager getStageLevel]]<3){
                             [GameManager save_StageClear_State:[GameManager getStageLevel] rate:3];
                         }
                     }else if(fortRemainPower>=50.0f){
+                        [NaviLayer setStageEndingScreen:true rate:2];
                         if([GameManager load_StageClear_State:[GameManager getStageLevel]]<2){
                             [GameManager save_StageClear_State:[GameManager getStageLevel] rate:2];
                         }
                     }else{
+                        [NaviLayer setStageEndingScreen:true rate:1];
                         if([GameManager load_StageClear_State:[GameManager getStageLevel]]<1){
                             [GameManager save_StageClear_State:[GameManager getStageLevel] rate:1];
                         }
@@ -473,7 +507,7 @@ NSMutableArray* removeEnemyMissileArray;
                     [self unscheduleAllSelectors];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
-                    [NaviLayer setStageEndingScreen:false];
+                    [NaviLayer setStageEndingScreen:false rate:0];
                     break;
                 }else{
                     //画面を揺する

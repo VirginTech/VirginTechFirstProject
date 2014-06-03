@@ -28,18 +28,18 @@ CCSprite* bgSpLayer;
 {
     winSize=[[CCDirector sharedDirector]viewSize];
     
-    // Apple recommend assigning self with supers return value
+    //Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
     
-    // Create a colored background (Dark Grey)
-    //CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
-    //[self addChild:background];
+    //Create a colored background (Dark Grey)
+    CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor blackColor]];
+    [self addChild:background];
 
     //背景画像セット
-    UIImage *image = [UIImage imageNamed:@"bgLayer.png"];
-    UIGraphicsBeginImageContext(CGSizeMake(winSize.width,600));
-    [image drawInRect:CGRectMake(0, 0, winSize.width,600)];
+    UIImage *image = [UIImage imageNamed:@"stageSelect2.png"];
+    UIGraphicsBeginImageContext(CGSizeMake(winSize.width+50,700));
+    [image drawInRect:CGRectMake(0, 0, winSize.width+50,700)];
     image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -66,36 +66,20 @@ CCSprite* bgSpLayer;
     [backButton setTarget:self selector:@selector(onBackClicked:)];
     [self addChild:backButton];
     
-    /*/ステージ１
-    CCButton *button1 = [CCButton buttonWithTitle:@"[ステージレベル１]" fontName:@"Verdana-Bold" fontSize:18.0f];
-    button1.positionType = CCPositionTypeNormalized;
-    button1.position = ccp(0.5f, 0.70f);
-    [button1 setTarget:self selector:@selector(onStageLevel01:)];
-    [self addChild:button1];
-    
-    //ステージ２
-    CCButton *button2 = [CCButton buttonWithTitle:@"[ステージレベル２]" fontName:@"Verdana-Bold" fontSize:18.0f];
-    button2.positionType = CCPositionTypeNormalized;
-    button2.position = ccp(0.5f, 0.65f);
-    [button2 setTarget:self selector:@selector(onStageLevel02:)];
-    [self addChild:button2];*/
-    
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
     CGPoint btnPos=CGPointMake(70, bgSpLayer.contentSize.height-50);
 
     for(int i=0;i<50;i++){
         
         int stageNum=i+1;
-        CCButton* levelBtn=[CCButton buttonWithTitle:[NSString stringWithFormat:@"%02d",stageNum]
-                    spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"stageBtn.png"]];
-        levelBtn.scale=0.5;
-        
+        CCButton* levelBtn=[CCButton buttonWithTitle:
+                            [NSString stringWithFormat:@"%02d",stageNum] fontName:@"Chalkduster" fontSize:25];
+        levelBtn.color=[CCColor blackColor];
         if(i%5 !=0){
-            btnPos=CGPointMake(btnPos.x+50, btnPos.y);
+            btnPos=CGPointMake(btnPos.x+50, btnPos.y+10);
         }else{
-            btnPos=CGPointMake(70, btnPos.y-50);
+            btnPos=CGPointMake(70, btnPos.y-90);
         }
-        
         levelBtn.position = CGPointMake(btnPos.x, btnPos.y);
         levelBtn.name=[NSString stringWithFormat:@"%d",stageNum];
         [levelBtn setTarget:self selector:@selector(onStageLevel:)];
@@ -107,22 +91,20 @@ CCSprite* bgSpLayer;
             star=[CCSprite spriteWithSpriteFrame:
                             [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:
                             [NSString stringWithFormat:@"star%d.png",[GameManager load_StageClear_State:stageNum]]]];
-            star.scale=0.7;
-            star.position=CGPointMake(levelBtn.contentSize.width/2, levelBtn.contentSize.height+15);
+            star.position=CGPointMake(levelBtn.contentSize.width/2, levelBtn.contentSize.height+5);
+            star.scale=0.3;
             [levelBtn addChild:star];
         }
         //錠前
         if(i>[GameManager load_Aggregate_Stage]){
-            CCSprite* lock=[CCSprite spriteWithSpriteFrame:
-                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"lock.png"]];
-            lock.scale=0.7;
-            lock.position=CGPointMake(levelBtn.contentSize.width/2, levelBtn.contentSize.height/2);
-            [levelBtn addChild:lock];
+            //CCSprite* lock=[CCSprite spriteWithSpriteFrame:
+            //            [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"lock.png"]];
+            //lock.scale=0.7;
+            //lock.position=CGPointMake(levelBtn.contentSize.width/2, levelBtn.contentSize.height/2);
+            //[levelBtn addChild:lock z:1];
             levelBtn.enabled=false;
         }
     }
-    
-    
     // done
 	return self;
 }
@@ -134,26 +116,11 @@ CCSprite* bgSpLayer;
     [GameManager setStageLevel:[[button name]intValue]];
     [[CCDirector sharedDirector] replaceScene:[StageLevel_01 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
-/*
-- (void)onStageLevel01:(id)sender
-{
-    // start spinning scene with transition
-    [GameManager setStageLevel:1];
-    [[CCDirector sharedDirector] replaceScene:[StageLevel_01 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
-}
 
-- (void)onStageLevel02:(id)sender
-{
-    // start spinning scene with transition
-    [GameManager setStageLevel:2];
-    [[CCDirector sharedDirector] replaceScene:[StageLevel_01 scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
-}
-*/
 - (void)onBackClicked:(id)sender
 {
     // back to intro scene with transition
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
-    //[[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:1.0f]];
 }
 
 @end
