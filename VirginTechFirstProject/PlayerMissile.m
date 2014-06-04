@@ -48,10 +48,15 @@
     }
 }
 
--(id)initWithMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos{
+-(id)initWithMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos playerNum:(int)playerNum{
     
-    if(self=[super initWithImageNamed:@"rock.png"]){
-
+    [[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFrames];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+                        [NSString stringWithFormat:@"player%02d_default.plist",playerNum]];
+    
+    if(self=[super initWithSpriteFrame:
+                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"missile.png" ]])
+    {
         //初期化
         t = 0;
         vfx = 0;
@@ -86,9 +91,9 @@
     return self;
 }
 
-+(id)createMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos{
++(id)createMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos playerNum:(int)playerNum{
     
-    return [[self alloc] initWithMissile:playerPos enemyPos:enemyPos];
+    return [[self alloc] initWithMissile:playerPos enemyPos:enemyPos playerNum:playerNum];
 }
 
 @end

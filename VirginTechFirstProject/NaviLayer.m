@@ -20,6 +20,7 @@ CGSize winSize;
 CCLabelTTF *label;
 CCNodeColor *background;
 CCButton *pauseButton;
+CCButton *resumeButton;
 CCButton *titleButton;
 CCButton *stageButton;
 CCButton *preferencesButton;
@@ -45,33 +46,54 @@ NSMutableArray* starG_Array;
     [self addChild:background];
     background.visible=false;
 
+    //画像読込み
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
+
     //ポーズボタン
-    pauseButton = [CCButton buttonWithTitle:@"[ポーズ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    pauseButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"pause.png"]];
     pauseButton.positionType = CCPositionTypeNormalized;
-    pauseButton.position = ccp(0.85f, 0.95f); // Top Right of screen
+    pauseButton.position = ccp(0.9f, 0.95f); // Top Right of screen
+    pauseButton.scale=0.3;
     [pauseButton setTarget:self selector:@selector(onPauseClicked:)];
     [self addChild:pauseButton];
 
-    //タイトルボタン
-    titleButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    //リジュームボタン
+    resumeButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"resume.png"]];
+    resumeButton.positionType = CCPositionTypeNormalized;
+    resumeButton.position = ccp(0.9f, 0.95f); // Top Right of screen
+    resumeButton.scale=0.3;
+    [resumeButton setTarget:self selector:@selector(onPauseClicked:)];
+    [self addChild:resumeButton];
+    resumeButton.visible=false;
+    
+    //ホームボタン
+    titleButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"homeBtn.png"]];
     titleButton.positionType = CCPositionTypeNormalized;
-    titleButton.position = ccp(0.50f, 0.50f); // Top Right of screen
+    titleButton.position = ccp(0.35f, 0.45f); // Top Right of screen
+    titleButton.scale=0.35;
     [titleButton setTarget:self selector:@selector(onTitleClicked:)];
     [self addChild:titleButton];
     titleButton.visible=false;
     
     //セレクトステージ
-    stageButton = [CCButton buttonWithTitle:@"[セレクトステージ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    stageButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"stageListBtn.png"]];
     stageButton.positionType = CCPositionTypeNormalized;
     stageButton.position = ccp(0.5f, 0.45f);
+    stageButton.scale=0.35;
     [stageButton setTarget:self selector:@selector(onSelectStageClicked:)];
     [self addChild:stageButton];
     stageButton.visible=false;
     
     //環境設定
-    preferencesButton = [CCButton buttonWithTitle:@"[ 環境設定 ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    preferencesButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"configBtn2.png"]];
     preferencesButton.positionType = CCPositionTypeNormalized;
-    preferencesButton.position = ccp(0.5f, 0.40f);
+    preferencesButton.position = ccp(0.65f, 0.45f);
+    preferencesButton.scale=0.35;
     [preferencesButton setTarget:self selector:@selector(onPreferencesButtonClicked:)];
     [self addChild:preferencesButton];
     preferencesButton.visible=false;
@@ -144,6 +166,7 @@ NSMutableArray* starG_Array;
         label.string = @"あなたの負けです";
     }
     pauseButton.visible=false;
+    resumeButton.visible=false;
     background.visible=true;
     titleButton.visible=true;
     stageButton.visible=true;
@@ -154,14 +177,18 @@ NSMutableArray* starG_Array;
 +(void)setPauseScreen
 {
     if([GameManager getPauseing]){//ポーズ中
-        pauseButton.title=@"[再　開]";
+        //pauseButton.title=@"[再　開]";
+        pauseButton.visible=false;
+        resumeButton.visible=true;
         background.visible=true;
         titleButton.visible=true;
         stageButton.visible=true;
         preferencesButton.visible=true;
         itemSetupButton.visible=true;
     }else{//再開中
-        pauseButton.title=@"[ポーズ]";
+        //pauseButton.title=@"[ポーズ]";
+        pauseButton.visible=true;
+        resumeButton.visible=false;
         background.visible=false;
         titleButton.visible=false;
         stageButton.visible=false;

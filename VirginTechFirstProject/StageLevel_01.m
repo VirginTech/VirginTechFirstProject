@@ -101,7 +101,7 @@ NSMutableArray* removeEnemyMissileArray;
     
     //陣地ライン
     CCSprite* line=[CCSprite spriteWithImageNamed:@"position_line.png"];
-    line.position=CGPointMake(0, [GameManager getWorldSize].height / 5.0f);
+    line.position=CGPointMake(winSize.width/2, [GameManager getWorldSize].height / 5.0f);
     [bgSpLayer addChild:line];
     
     //経路作成レイヤー z:1
@@ -164,7 +164,7 @@ NSMutableArray* removeEnemyMissileArray;
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"ground_default.plist"];
     CCSprite* frame = [CCSprite spriteWithSpriteFrame:
                                     [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"ground_00.png"]];
-    CGSize frameCount = CGSizeMake(winSize.width/frame.contentSize.width+1,
+    CGSize frameCount = CGSizeMake(winSize.width/frame.contentSize.width+2,
                                     [GameManager getWorldSize].height/frame.contentSize.height+1);
     NSString* bgName=[NSString stringWithFormat:@"ground_%02d.png",(arc4random()%10)];
     for(int i=0;i<frameCount.width*frameCount.height;i++)

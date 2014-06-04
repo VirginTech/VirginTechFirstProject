@@ -77,38 +77,76 @@ CGSize winSize;
     label.position = ccp(0.5f, 0.6f); // Middle of screen
     [self addChild:label];
     
-    // スタートボタン
-    CCButton *stageButton = [CCButton buttonWithTitle:@"[ スタート ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    //画像読込み
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
+    
+    //プレイボタン
+    CCButton *stageButton=[CCButton buttonWithTitle:@"" spriteFrame:
+                           [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"play.png"]];
     stageButton.positionType = CCPositionTypeNormalized;
     stageButton.position = ccp(0.5f, 0.35f);
+    stageButton.scale=0.4;
     [stageButton setTarget:self selector:@selector(onSelectStageClicked:)];
     [self addChild:stageButton];
 
     // GameCenterボタン
-    CCButton *gameCenterButton = [CCButton buttonWithTitle:@"[Game Center]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCButton *gameCenterButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                  [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"gamecenter.png"]];
     gameCenterButton.positionType = CCPositionTypeNormalized;
-    gameCenterButton.position = ccp(0.5f, 0.30f);
+    gameCenterButton.position = ccp(0.95f, 0.15f);
+    gameCenterButton.scale=0.5;
     [gameCenterButton setTarget:self selector:@selector(onGameCenterClicked:)];
     [self addChild:gameCenterButton];
+    
+    //Twitter
+    CCButton *twitterButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                  [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"twitter.png"]];
+    twitterButton.positionType = CCPositionTypeNormalized;
+    twitterButton.position = ccp(0.95f, 0.22f);
+    twitterButton.scale=0.5;
+    //[twitterButton setTarget:self selector:@selector(onTwitterClicked:)];
+    [self addChild:twitterButton];
+    
+    //Facebook
+    CCButton *facebookButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                  [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"facebook.png"]];
+    facebookButton.positionType = CCPositionTypeNormalized;
+    facebookButton.position = ccp(0.95f, 0.29f);
+    facebookButton.scale=0.5;
+    //[facebookButton setTarget:self selector:@selector(onFacebookClicked:)];
+    [self addChild:facebookButton];
 
     //In-AppPurchaseボタン
-    CCButton *inAppButton = [CCButton buttonWithTitle:@"[ ショップ ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCButton *inAppButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"shopBtn.png"]];
     inAppButton.positionType = CCPositionTypeNormalized;
-    inAppButton.position = ccp(0.5f, 0.25f);
+    inAppButton.position = ccp(0.05f, 0.15f);
+    inAppButton.scale=0.5;
     [inAppButton setTarget:self selector:@selector(onInAppPurchaseClicked:)];
     [self addChild:inAppButton];
     
     //環境設定
-    CCButton *preferencesButton = [CCButton buttonWithTitle:@"[ 環境設定 ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCButton *preferencesButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                   [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"configBtn.png"]];
     preferencesButton.positionType = CCPositionTypeNormalized;
-    preferencesButton.position = ccp(0.5f, 0.20f);
+    preferencesButton.position = ccp(0.05f, 0.22f);
+    preferencesButton.scale=0.5;
     [preferencesButton setTarget:self selector:@selector(onPreferencesButtonClicked:)];
     [self addChild:preferencesButton];
     
+    //クレジット
+    CCButton *creditButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                   [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"creditBtn.png"]];
+    creditButton.positionType = CCPositionTypeNormalized;
+    creditButton.position = ccp(0.05f, 0.29f);
+    creditButton.scale=0.5;
+    //[creditButton setTarget:self selector:@selector(onCreditButtonClicked:)];
+    [self addChild:creditButton];
+
     //アイテムセットアップ
     CCButton *itemSetupButton = [CCButton buttonWithTitle:@"[パワーアップ]" fontName:@"Verdana-Bold" fontSize:18.0f];
     itemSetupButton.positionType = CCPositionTypeNormalized;
-    itemSetupButton.position = ccp(0.5f, 0.15f);
+    itemSetupButton.position = ccp(0.5f, 0.2f);
     [itemSetupButton setTarget:self selector:@selector(onItemSetupButtonClicked:)];
     [self addChild:itemSetupButton];
     

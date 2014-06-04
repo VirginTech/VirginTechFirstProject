@@ -40,8 +40,8 @@
 @property float ability_Attack;
 @property float timeFlg;
 
-+(id)createMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos;
--(id)initWithMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos;
++(id)createMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos playerNum:(int)playerNum;
+-(id)initWithMissile:(CGPoint)playerPos enemyPos:(CGPoint)enemyPos playerNum:(int)playerNum;
 
 -(void)onPause_To_Resume:(bool)flg;
 

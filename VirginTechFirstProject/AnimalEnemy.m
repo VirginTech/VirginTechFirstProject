@@ -279,7 +279,7 @@ CGSize winSize;
     if(playerSearchFlg){
 
         int zOrder;
-        eMissile = [EnemyMissile createMissile:self.position playerPos:targetPlayerPos];
+        eMissile = [EnemyMissile createMissile:self.position playerPos:targetPlayerPos enemyNum:enemyNum];
         eMissile.ability_Attack = ability_Attack;//攻撃力を付与
         if(targetPlayerPos.y < self.position.y){
             zOrder=1;
@@ -440,12 +440,16 @@ CGSize winSize;
 //====================
 -(id)initWithEnemy{
     
+    enemyNum=1;//決め打ち
+    
     //初期化
     vFrameArray=[[NSMutableArray alloc]init];
     gFrameArray=[[NSMutableArray alloc]init];
     [[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFrames];
+    
     //画像
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"enemy_default.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+                                        [NSString stringWithFormat:@"enemy%02d_default.plist",enemyNum]];
     
     for(int i=0;i<8;i++){
         [vFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"v%02d.png",i]]];
@@ -478,11 +482,13 @@ CGSize winSize;
         [self addChild:gSprite];
         
         //体力ゲージ描画
-        lifeGauge1=[CCSprite spriteWithImageNamed:@"lifegauge1.png"];
+        lifeGauge1=[CCSprite spriteWithSpriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"lifegauge1.png"]];
         lifeGauge1.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2 - 25);
         [self addChild:lifeGauge1];
         
-        lifeGauge2=[CCSprite spriteWithImageNamed:@"lifegauge2.png"];
+        lifeGauge2=[CCSprite spriteWithSpriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"lifegauge2.png"]];
         nowRatio=(100/maxLife)*ability_Defense;
         lifeGauge2.scaleX=nowRatio*0.01;
         //lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);

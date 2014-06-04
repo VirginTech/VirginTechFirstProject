@@ -59,13 +59,17 @@ CCSprite* bgSpLayer;
     IAdLayer* iAd=[[IAdLayer alloc]init:1];
     [self addChild:iAd];
     
-    //タイトル
-    CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    //戻るボタン
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
+    CCButton *backButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"backBtn.png"]];
     backButton.positionType = CCPositionTypeNormalized;
-    backButton.position = ccp(0.85f, 0.95f); // Top Right of screen
+    backButton.position = ccp(0.1f, 0.95f); // Top Right of screen
+    backButton.scale=0.3;
     [backButton setTarget:self selector:@selector(onBackClicked:)];
     [self addChild:backButton];
     
+    //ステージレヴェル
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
     CGPoint btnPos=CGPointMake(70, bgSpLayer.contentSize.height-50);
 

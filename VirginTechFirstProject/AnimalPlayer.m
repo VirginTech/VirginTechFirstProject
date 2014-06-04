@@ -298,7 +298,7 @@ CGSize winSize;
         vf=vi;
         
         int zOrder;
-        pMissile = [PlayerMissile createMissile:self.position enemyPos:targetEnemyPos];
+        pMissile = [PlayerMissile createMissile:self.position enemyPos:targetEnemyPos playerNum:groupNum];
         pMissile.ability_Attack = ability_Attack;//攻撃力を付与
         if(self.position.y<targetEnemyPos.y){
             zOrder=1;
@@ -357,38 +357,24 @@ CGSize winSize;
 //====================
 //　プレイヤータンク作成
 //====================
--(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum{
-    
+-(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum
+{
     //初期化
     vFrameArray=[[NSMutableArray alloc]init];
     gFrameArray=[[NSMutableArray alloc]init];
     [[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFrames];
     
     //画像を配列に格納
-    if(playerNum==1){
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear_default.plist"];
-        objName=@"player01";
-    }else if(playerNum==2){
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear2_default.plist"];
-        objName=@"player02";
-    }else if(playerNum==3){
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear3_default.plist"];
-        objName=@"player03";
-    }else if(playerNum==4){
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear4_default.plist"];
-        objName=@"player04";
-    }else if(playerNum==5){
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bear5_default.plist"];
-        objName=@"player05";
-    }
-    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+                                    [NSString stringWithFormat:@"player%02d_default.plist",playerNum]];
+    objName=[NSString stringWithFormat:@"player%02d",playerNum];
     for(int i=0;i<8;i++){
         [vFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"v%02d.png",i]]];
         [gFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"g%02d.png",i]]];
     }
     
-    if(self=[super initWithSpriteFrame:[vFrameArray objectAtIndex:0]]){
-        
+    if(self=[super initWithSpriteFrame:[vFrameArray objectAtIndex:0]])
+    {
         winSize = [[CCDirector sharedDirector]viewSize];
         self.position = playerPos;
         
@@ -408,13 +394,13 @@ CGSize winSize;
         [self addChild:gSprite];
         
         //体力ゲージ描画
-        lifeGauge1=[CCSprite spriteWithImageNamed:@"lifegauge1.png"];
+        lifeGauge1=[CCSprite spriteWithSpriteFrame:
+                     [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"lifegauge1.png"]];
         lifeGauge1.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2 - 25);
-        //CCColor* color=[CCColor colorWithCcColor3b:ccc3(1.0, 1.0, 1.0)];
-        //[lifeGauge1 setColor:color];
         [self addChild:lifeGauge1];
         
-        lifeGauge2=[CCSprite spriteWithImageNamed:@"lifegauge2.png"];
+        lifeGauge2=[CCSprite spriteWithSpriteFrame:
+                     [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"lifegauge2.png"]];
         nowRatio=(100/maxLife)*ability_Defense;
         lifeGauge2.scaleX=nowRatio*0.01;
         lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
@@ -431,7 +417,8 @@ CGSize winSize;
         //経路作成フラグ
         state_PathMake_flg=false;
         //経路作成マーク
-        arrow = [CCSprite spriteWithImageNamed:@"arrow.png"];
+        arrow = [CCSprite spriteWithSpriteFrame:
+                            [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"arrow1.png"]];
         arrow.rotation=180;
         [self addChild:arrow];
         arrow.visible=false;

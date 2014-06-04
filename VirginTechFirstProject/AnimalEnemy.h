@@ -13,7 +13,9 @@
 #import "Fortress.h"
 
 @interface AnimalEnemy : CCSprite
-{    
+{
+    int enemyNum;
+
     //各種能力変数
     float ability_Defense ;
     float ability_Attack;

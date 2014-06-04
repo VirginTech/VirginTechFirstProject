@@ -133,9 +133,12 @@ CCLabelTTF* label05;
     [self addChild:iTemScroll];
     
     //閉じるボタン
-    CCButton *closeButton = [CCButton buttonWithTitle:@"[閉じる]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
+    CCButton *closeButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"close.png"]];
     closeButton.positionType = CCPositionTypeNormalized;
-    closeButton.position = ccp(0.85f, 0.95f); // Top Right of screen
+    closeButton.position = ccp(0.9f, 0.95f); // Top Right of screen
+    closeButton.scale=0.3;
     [closeButton setTarget:self selector:@selector(onCloseClicked:)];
     [self addChild:closeButton];
     
