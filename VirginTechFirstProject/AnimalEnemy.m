@@ -440,7 +440,7 @@ CGSize winSize;
 //====================
 -(id)initWithEnemy{
     
-    enemyNum=1;//決め打ち
+    enemyNum=(arc4random()%3)+1;
     
     //初期化
     vFrameArray=[[NSMutableArray alloc]init];
@@ -449,7 +449,7 @@ CGSize winSize;
     
     //画像
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
-                                        [NSString stringWithFormat:@"enemy%02d_default.plist",enemyNum]];
+                                            [NSString stringWithFormat:@"enemy%02d_default.plist",enemyNum]];
     
     for(int i=0;i<8;i++){
         [vFrameArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"v%02d.png",i]]];

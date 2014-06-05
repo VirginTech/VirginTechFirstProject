@@ -207,20 +207,20 @@ NSMutableArray* removeEnemyMissileArray;
 
 -(void)createEnemy_Schedule:(CCTime)dt
 {
-    if(enemyCount<=[GameManager getStageLevel]*3){
-        if(enemyCount%3==0){
+    if(enemyCount<=[GameManager getStageLevel]*2){
+        if(enemyCount%5==0){
             [StageLevel_01 createEnemy];
             [StageLevel_01 createEnemy];
-        }else if(enemyCount%5==0){
-            [StageLevel_01 createEnemy];
-            [StageLevel_01 createEnemy];
-            [StageLevel_01 createEnemy];
-        }else if(enemyCount%19==0){
+        }else if(enemyCount%11==0){
             [StageLevel_01 createEnemy];
             [StageLevel_01 createEnemy];
             [StageLevel_01 createEnemy];
+        }else if(enemyCount%23==0){
             [StageLevel_01 createEnemy];
-        }else if(enemyCount%29==0){
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+            [StageLevel_01 createEnemy];
+        }else if(enemyCount%31==0){
             [StageLevel_01 createEnemy];
             [StageLevel_01 createEnemy];
             [StageLevel_01 createEnemy];

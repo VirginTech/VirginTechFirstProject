@@ -43,6 +43,13 @@
 		CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5013193D734B005E5BF6 /* stageSelect2.png */; };
 		CF2F5017193D90E6005E5BF6 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5015193D90E6005E5BF6 /* interface_default.plist */; };
 		CF2F5018193D90E6005E5BF6 /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5016193D90E6005E5BF6 /* interface_default.png */; };
+		CF36CC51193FF1D6007D2293 /* enemy02_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC4F193FF1D6007D2293 /* enemy02_default.plist */; };
+		CF36CC52193FF1D6007D2293 /* enemy02_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC50193FF1D6007D2293 /* enemy02_default.png */; };
+		CF36CC55193FF1E8007D2293 /* enemy03_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC53193FF1E8007D2293 /* enemy03_default.plist */; };
+		CF36CC56193FF1E8007D2293 /* enemy03_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC54193FF1E8007D2293 /* enemy03_default.png */; };
+		CF36CC5819400BAF007D2293 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC5719400BAF007D2293 /* Default-Portrait~ipad.png */; };
+		CF36CC6F1940441F007D2293 /* info_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC6D1940441F007D2293 /* info_default.plist */; };
+		CF36CC701940441F007D2293 /* info_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC6E1940441F007D2293 /* info_default.png */; };
 		CF418ACA1920947700196E64 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF418AC91920947600196E64 /* GameKit.framework */; };
 		CF418ACD192098FF00196E64 /* LeaderboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF418ACC192098FF00196E64 /* LeaderboardView.m */; };
 		CF505F2A1932D9E90068A24A /* Fortress.m in Sources */ = {isa = PBXBuildFile; fileRef = CF505F291932D9E90068A24A /* Fortress.m */; };
@@ -332,6 +339,13 @@
 		CF2F5013193D734B005E5BF6 /* stageSelect2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stageSelect2.png; sourceTree = "<group>"; };
 		CF2F5015193D90E6005E5BF6 /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
 		CF2F5016193D90E6005E5BF6 /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
+		CF36CC4F193FF1D6007D2293 /* enemy02_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy02_default.plist; sourceTree = "<group>"; };
+		CF36CC50193FF1D6007D2293 /* enemy02_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy02_default.png; sourceTree = "<group>"; };
+		CF36CC53193FF1E8007D2293 /* enemy03_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy03_default.plist; sourceTree = "<group>"; };
+		CF36CC54193FF1E8007D2293 /* enemy03_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy03_default.png; sourceTree = "<group>"; };
+		CF36CC5719400BAF007D2293 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		CF36CC6D1940441F007D2293 /* info_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info_default.plist; sourceTree = "<group>"; };
+		CF36CC6E1940441F007D2293 /* info_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_default.png; sourceTree = "<group>"; };
 		CF418AC91920947600196E64 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CF418ACB192098FF00196E64 /* LeaderboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardView.h; sourceTree = "<group>"; };
 		CF418ACC192098FF00196E64 /* LeaderboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardView.m; sourceTree = "<group>"; };
@@ -980,6 +994,12 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF36CC6D1940441F007D2293 /* info_default.plist */,
+				CF36CC6E1940441F007D2293 /* info_default.png */,
+				CF36CC53193FF1E8007D2293 /* enemy03_default.plist */,
+				CF36CC54193FF1E8007D2293 /* enemy03_default.png */,
+				CF36CC4F193FF1D6007D2293 /* enemy02_default.plist */,
+				CF36CC50193FF1D6007D2293 /* enemy02_default.png */,
 				CF04A81F193F3B5500D390C0 /* enemy01_default.plist */,
 				CF04A820193F3B5500D390C0 /* enemy01_default.png */,
 				CF04A81B193F39EA00D390C0 /* player05_default.plist */,
@@ -1011,6 +1031,7 @@
 				CFDFDEE1190A2D6F0021FBF9 /* Default.png */,
 				CFDFDEE3190A2D6F0021FBF9 /* Default@2x.png */,
 				CFDFDEE5190A2D6F0021FBF9 /* Default-568h@2x.png */,
+				CF36CC5719400BAF007D2293 /* Default-Portrait~ipad.png */,
 				CFDFDEE7190A2D6F0021FBF9 /* Default-Landscape~ipad.png */,
 				CFDFDF04190A2D6F0021FBF9 /* Info.plist */,
 				CFDFDF05190A2D6F0021FBF9 /* iTunesArtwork */,
@@ -1917,6 +1938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFDFDEE4190A2D6F0021FBF9 /* Default@2x.png in Resources */,
+				CF36CC56193FF1E8007D2293 /* enemy03_default.png in Resources */,
 				CFDFDEF7190A2D6F0021FBF9 /* Icon-120.png in Resources */,
 				CF1BF75B193C47F400EEA664 /* leaf_default.plist in Resources */,
 				CFDFE0FB190A2D700021FBF9 /* LICENSE_CCBReader.txt in Resources */,
@@ -1926,6 +1948,7 @@
 				CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */,
 				CFDFDEF1190A2D6F0021FBF9 /* Icon-72@2x.png in Resources */,
 				CF04A812193F39B200D390C0 /* player02_default.png in Resources */,
+				CF36CC52193FF1D6007D2293 /* enemy02_default.png in Resources */,
 				CFDFDEE2190A2D6F0021FBF9 /* Default.png in Resources */,
 				CFDFDEEB190A2D6F0021FBF9 /* Icon.png in Resources */,
 				CFDFDEF9190A2D6F0021FBF9 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
@@ -1934,6 +1957,7 @@
 				CFDFDEE8190A2D6F0021FBF9 /* Default-Landscape~ipad.png in Resources */,
 				CFDFDEFD190A2D6F0021FBF9 /* Icon-Small.png in Resources */,
 				CF2F500A193D5A65005E5BF6 /* ground_default.png in Resources */,
+				CF36CC6F1940441F007D2293 /* info_default.plist in Resources */,
 				CF04A80E193F39A000D390C0 /* player01_default.png in Resources */,
 				CFDFDEFB190A2D6F0021FBF9 /* Icon-Small-50.png in Resources */,
 				CFD5A32F191229BB004E2B58 /* arrow.png in Resources */,
@@ -1948,10 +1972,12 @@
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
 				CF04A81D193F39EA00D390C0 /* player05_default.plist in Resources */,
+				CF36CC55193FF1E8007D2293 /* enemy03_default.plist in Resources */,
 				CF04A811193F39B200D390C0 /* player02_default.plist in Resources */,
 				CFF501161929D70A007B524F /* diaBar.png in Resources */,
 				CFDFDF06190A2D6F0021FBF9 /* iTunesArtwork in Resources */,
 				CFDFDF01190A2D6F0021FBF9 /* Icon-Spotlight-iOS7.png in Resources */,
+				CF36CC5819400BAF007D2293 /* Default-Portrait~ipad.png in Resources */,
 				CF04A7ED193F070400D390C0 /* button_default.plist in Resources */,
 				CF2F5018193D90E6005E5BF6 /* interface_default.png in Resources */,
 				CFDFDEF5190A2D6F0021FBF9 /* Icon-76@2x.png in Resources */,
@@ -1961,8 +1987,10 @@
 				CF04A816193F39C400D390C0 /* player03_default.png in Resources */,
 				CFDFE169190A2D710021FBF9 /* LICENSE_Chipmunk.txt in Resources */,
 				CFDFDF03190A2D6F0021FBF9 /* Icon-Spotlight-iOS7@2x.png in Resources */,
+				CF36CC701940441F007D2293 /* info_default.png in Resources */,
 				CFDFDEF3190A2D6F0021FBF9 /* Icon-76.png in Resources */,
 				CF04A815193F39C400D390C0 /* player03_default.plist in Resources */,
+				CF36CC51193FF1D6007D2293 /* enemy02_default.plist in Resources */,
 				CFDFE0C9190A2D700021FBF9 /* ChangeLog in Resources */,
 				CF2F5017193D90E6005E5BF6 /* interface_default.plist in Resources */,
 				CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */,

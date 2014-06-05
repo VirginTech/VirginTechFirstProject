@@ -18,6 +18,7 @@ CGSize winSize;
 CCLabelTTF *coinLabel;
 CCLabelTTF *diaLabel;
 CCLabelTTF* scoreLabel;
+CCLabelTTF* achieveLabel;
 
 + (InformationLayer *)scene
 {
@@ -35,31 +36,52 @@ CCLabelTTF* scoreLabel;
     //coin=[GameManager load_Currency_Coin];
     //diamond=[GameManager load_Currency_Dia];
 
+    //画像読込み
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"info_default.plist"];
+    
+    //月桂樹
+    CCSprite* laurel= [CCSprite spriteWithSpriteFrame:
+                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"laurel.png"]];
+    laurel.position=ccp(15, winSize.height-10);
+    laurel.scale=0.3;
+    [self addChild:laurel];
+    
+    //アチーブメント
+    achieveLabel=[CCLabelTTF labelWithString:@"00" fontName:@"Verdana-Bold" fontSize:13];
+    achieveLabel.color=[CCColor whiteColor];
+    achieveLabel.position=ccp(laurel.contentSize.width/2,laurel.contentSize.height/2);
+    achieveLabel.scale=2.7;
+    [laurel addChild:achieveLabel];
+    
     //ハイスコア
-    scoreLabel=[CCLabelTTF labelWithString:@"Score:00000" fontName:@"Verdana-Bold" fontSize:12];
+    scoreLabel=[CCLabelTTF labelWithString:@"00000" fontName:@"Verdana-Bold" fontSize:13];
     scoreLabel.color=[CCColor whiteColor];
-    scoreLabel.position=ccp(scoreLabel.contentSize.width/2+10, winSize.height-10);
+    scoreLabel.position=ccp(laurel.position.x+scoreLabel.contentSize.width/2+15, laurel.position.y);
     [self addChild:scoreLabel];
 
     //コインバー
-    CCSprite* coinBar=[CCSprite spriteWithImageNamed:@"coinBar.png"];
-    coinBar.position=ccp(coinBar.contentSize.width/2+10, winSize.height-30);
+    CCSprite* coinBar= [CCSprite spriteWithSpriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
+    coinBar.position=ccp(15, winSize.height-35);
+    coinBar.scale=0.2;
     [self addChild:coinBar];
     
-    coinLabel = [CCLabelTTF labelWithString:@"" fontName:@"Verdana-Bold" fontSize:12.0];
+    coinLabel = [CCLabelTTF labelWithString:@"0000" fontName:@"Verdana-Bold" fontSize:13.0];
     coinLabel.color = [CCColor whiteColor];
-    coinLabel.position = ccp(coinBar.contentSize.width/2+15, coinBar.contentSize.height/2);
-    [coinBar addChild:coinLabel];
+    coinLabel.position = ccp(coinBar.position.x+coinLabel.contentSize.width/2+15, coinBar.position.y);
+    [self addChild:coinLabel];
 
     //ダイアバー
-    CCSprite* diaBar=[CCSprite spriteWithImageNamed:@"diaBar.png"];
-    diaBar.position=ccp(diaBar.contentSize.width/2+10, winSize.height-50);
+    CCSprite* diaBar= [CCSprite spriteWithSpriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"diamond.png"]];
+    diaBar.position=ccp(15, winSize.height-60);
+    diaBar.scale=0.2;
     [self addChild:diaBar];
     
-    diaLabel = [CCLabelTTF labelWithString:@"" fontName:@"Verdana-Bold" fontSize:12.0];
+    diaLabel = [CCLabelTTF labelWithString:@"000" fontName:@"Verdana-Bold" fontSize:13.0];
     diaLabel.color = [CCColor whiteColor];
-    diaLabel.position = ccp(diaBar.contentSize.width/2+15, diaBar.contentSize.height/2);
-    [diaBar addChild:diaLabel];
+    diaLabel.position = ccp(diaBar.position.x+diaLabel.contentSize.width/2+15, diaBar.position.y);
+    [self addChild:diaLabel];
     
     [InformationLayer update_CurrencyLabel];
     [InformationLayer update_HighScoreLabel];
@@ -68,13 +90,13 @@ CCLabelTTF* scoreLabel;
 }
 +(void)update_HighScoreLabel
 {
-    scoreLabel.string=[NSString stringWithFormat:@"Score:%05ld",[GameManager load_HighScore]];
+    scoreLabel.string=[NSString stringWithFormat:@"%05ld",[GameManager load_HighScore]];
 }
 
 +(void)update_CurrencyLabel
 {
-    coinLabel.string=[NSString stringWithFormat:@"%05d",[GameManager load_Currency_Coin]];
-    diaLabel.string=[NSString stringWithFormat:@"%04d",[GameManager load_Currency_Dia]];
+    coinLabel.string=[NSString stringWithFormat:@"%04d",[GameManager load_Currency_Coin]];
+    diaLabel.string=[NSString stringWithFormat:@"%03d",[GameManager load_Currency_Dia]];
 }
 
 @end
