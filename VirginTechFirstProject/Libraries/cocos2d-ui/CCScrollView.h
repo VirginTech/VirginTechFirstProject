@@ -62,7 +62,11 @@
     BOOL _animatingX;
     BOOL _animatingY;
     CGPoint _velocity;
+    
+    float scrollViewDeacceleration;
 }
+
+@property float scrollViewDeacceleration;
 
 @property (nonatomic, weak) id<CCScrollViewDelegate> delegate;
 

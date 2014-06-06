@@ -12,8 +12,9 @@
 #import "PlayerMissile.h"
 #import "EnemyMissile.h"
 
-@interface StageLevel_01 : CCScene {
-    
+@interface StageLevel_01 : CCScene
+{
+    CCScrollView* scrollView;
 }
 
 +(StageLevel_01 *)scene;

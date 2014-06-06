@@ -44,7 +44,7 @@
 #pragma mark Constants
 
 #define kCCScrollViewBoundsSlowDown 0.5
-#define kCCScrollViewDeacceleration 0.95
+//#define kCCScrollViewDeacceleration 0.95
 #define kCCScrollViewVelocityLowerCap 20.0
 #define kCCScrollViewAllowInteractionBelowVelocity 50.0
 #define kCCScrollViewSnapDuration 0.4
@@ -179,6 +179,8 @@
 }
 
 #pragma mark Initializers
+
+@synthesize scrollViewDeacceleration;
 
 - (id) init
 {
@@ -465,12 +467,14 @@
     float fps = 1.0/df;
     float p = 60/fps;
 
-	if (! CGPointEqualToPoint(_velocity, CGPointZero) ) {
+	if (! CGPointEqualToPoint(_velocity, CGPointZero) ) {//スクロール中
+        self.userInteractionEnabled=NO;//タッチ拒否
 		[self scrollViewDidScroll];
-	} else {
+	} else {//停止中
 
 #ifdef __CC_PLATFORM_IOS
-		if ( _decelerating && !(_animatingX || _animatingY)) {
+		if ( _decelerating && !(_animatingX || _animatingY)) {//今！停止
+            self.userInteractionEnabled=YES;//タッチ受付開始
 			[self scrollViewDidEndDecelerating];
 			_decelerating = NO;
 		}
@@ -491,8 +495,11 @@
             _contentNode.position = ccpAdd(_contentNode.position, delta);
             
             // Deaccelerate layer
-            float deaccelerationX = kCCScrollViewDeacceleration;
-            float deaccelerationY = kCCScrollViewDeacceleration;
+            
+            //float deaccelerationX = kCCScrollViewDeacceleration;
+            //float deaccelerationY = kCCScrollViewDeacceleration;
+            float deaccelerationX = scrollViewDeacceleration;
+            float deaccelerationY = scrollViewDeacceleration;
             
             // Adjust for frame rate
             deaccelerationX = powf(deaccelerationX, p);
@@ -564,6 +571,9 @@
 
 - (void)handlePan:(UIGestureRecognizer *)gestureRecognizer
 {
+    //ドラッグ中
+    scrollViewDeacceleration=0.99;
+    
     CCDirector* dir = [CCDirector sharedDirector];
     UIPanGestureRecognizer* pgr = (UIPanGestureRecognizer*)gestureRecognizer;
     

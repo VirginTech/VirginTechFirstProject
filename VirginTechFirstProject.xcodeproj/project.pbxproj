@@ -41,8 +41,6 @@
 		CF2F5009193D5A65005E5BF6 /* ground_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5007193D5A65005E5BF6 /* ground_default.plist */; };
 		CF2F500A193D5A65005E5BF6 /* ground_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5008193D5A65005E5BF6 /* ground_default.png */; };
 		CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5013193D734B005E5BF6 /* stageSelect2.png */; };
-		CF2F5017193D90E6005E5BF6 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5015193D90E6005E5BF6 /* interface_default.plist */; };
-		CF2F5018193D90E6005E5BF6 /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5016193D90E6005E5BF6 /* interface_default.png */; };
 		CF36CC51193FF1D6007D2293 /* enemy02_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC4F193FF1D6007D2293 /* enemy02_default.plist */; };
 		CF36CC52193FF1D6007D2293 /* enemy02_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC50193FF1D6007D2293 /* enemy02_default.png */; };
 		CF36CC55193FF1E8007D2293 /* enemy03_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC53193FF1E8007D2293 /* enemy03_default.plist */; };
@@ -71,6 +69,8 @@
 		CFAB7C2D191505AF0084D0F8 /* RouteGenerationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */; };
 		CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD5A32C1911F29D004E2B58 /* GameManager.m */; };
 		CFD5A32F191229BB004E2B58 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD5A32E191229BB004E2B58 /* arrow.png */; };
+		CFD998C61941533100AEA1DD /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFD998C41941533100AEA1DD /* interface_default.plist */; };
+		CFD998C71941533100AEA1DD /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD998C51941533100AEA1DD /* interface_default.png */; };
 		CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */; };
 		CFDFDECA190A2D6E0021FBF9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */; };
 		CFDFDECC190A2D6E0021FBF9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDECB190A2D6E0021FBF9 /* OpenAL.framework */; };
@@ -337,8 +337,6 @@
 		CF2F5007193D5A65005E5BF6 /* ground_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ground_default.plist; sourceTree = "<group>"; };
 		CF2F5008193D5A65005E5BF6 /* ground_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground_default.png; sourceTree = "<group>"; };
 		CF2F5013193D734B005E5BF6 /* stageSelect2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stageSelect2.png; sourceTree = "<group>"; };
-		CF2F5015193D90E6005E5BF6 /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
-		CF2F5016193D90E6005E5BF6 /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
 		CF36CC4F193FF1D6007D2293 /* enemy02_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy02_default.plist; sourceTree = "<group>"; };
 		CF36CC50193FF1D6007D2293 /* enemy02_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy02_default.png; sourceTree = "<group>"; };
 		CF36CC53193FF1E8007D2293 /* enemy03_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy03_default.plist; sourceTree = "<group>"; };
@@ -385,6 +383,8 @@
 		CFD5A32B1911F29D004E2B58 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		CFD5A32C1911F29D004E2B58 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		CFD5A32E191229BB004E2B58 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		CFD998C41941533100AEA1DD /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
+		CFD998C51941533100AEA1DD /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
 		CFDFDEC4190A2D6E0021FBF9 /* VirginTechFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirginTechFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -994,6 +994,8 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFD998C41941533100AEA1DD /* interface_default.plist */,
+				CFD998C51941533100AEA1DD /* interface_default.png */,
 				CF36CC6D1940441F007D2293 /* info_default.plist */,
 				CF36CC6E1940441F007D2293 /* info_default.png */,
 				CF36CC53193FF1E8007D2293 /* enemy03_default.plist */,
@@ -1016,8 +1018,6 @@
 				CF04A804193F313500D390C0 /* fortress_default.png */,
 				CF04A7EB193F070400D390C0 /* button_default.plist */,
 				CF04A7EC193F070400D390C0 /* button_default.png */,
-				CF2F5015193D90E6005E5BF6 /* interface_default.plist */,
-				CF2F5016193D90E6005E5BF6 /* interface_default.png */,
 				CF2F5007193D5A65005E5BF6 /* ground_default.plist */,
 				CF2F5008193D5A65005E5BF6 /* ground_default.png */,
 				CF1BF759193C47F400EEA664 /* leaf_default.plist */,
@@ -1979,7 +1979,6 @@
 				CFDFDF01190A2D6F0021FBF9 /* Icon-Spotlight-iOS7.png in Resources */,
 				CF36CC5819400BAF007D2293 /* Default-Portrait~ipad.png in Resources */,
 				CF04A7ED193F070400D390C0 /* button_default.plist in Resources */,
-				CF2F5018193D90E6005E5BF6 /* interface_default.png in Resources */,
 				CFDFDEF5190A2D6F0021FBF9 /* Icon-76@2x.png in Resources */,
 				CF04A822193F3B5500D390C0 /* enemy01_default.png in Resources */,
 				CFF501151929D70A007B524F /* coinBar.png in Resources */,
@@ -1992,11 +1991,12 @@
 				CF04A815193F39C400D390C0 /* player03_default.plist in Resources */,
 				CF36CC51193FF1D6007D2293 /* enemy02_default.plist in Resources */,
 				CFDFE0C9190A2D700021FBF9 /* ChangeLog in Resources */,
-				CF2F5017193D90E6005E5BF6 /* interface_default.plist in Resources */,
 				CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */,
 				CFDFDF08190A2D6F0021FBF9 /* iTunesArtwork@2x in Resources */,
 				CF2F5009193D5A65005E5BF6 /* ground_default.plist in Resources */,
 				CF04A805193F313500D390C0 /* fortress_default.plist in Resources */,
+				CFD998C61941533100AEA1DD /* interface_default.plist in Resources */,
+				CFD998C71941533100AEA1DD /* interface_default.png in Resources */,
 				CF04A821193F3B5500D390C0 /* enemy01_default.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

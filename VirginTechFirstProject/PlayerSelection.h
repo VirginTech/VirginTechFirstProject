@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "CCScrollView.h"
 
-@interface PlayerSelection : CCScrollView {
+@interface PlayerSelection : CCScene {
     
     CGPoint createPlayerPos;
 }

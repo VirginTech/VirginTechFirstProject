@@ -32,6 +32,8 @@ CCSprite* bgSpLayer;
     self = [super init];
     if (!self) return(nil);
     
+    self.userInteractionEnabled = YES;
+    
     //Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor blackColor]];
     [self addChild:background];
@@ -111,6 +113,11 @@ CCSprite* bgSpLayer;
     }
     // done
 	return self;
+}
+
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    scrollView.scrollViewDeacceleration=0.3;
 }
 
 - (void)onStageLevel:(id)sender

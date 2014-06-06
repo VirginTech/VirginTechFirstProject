@@ -17,6 +17,8 @@
 
 int afterDia;
 
+CCScrollView* scrollView;
+
 CCLabelTTF* label01;
 CCLabelTTF* label02;
 CCLabelTTF* label03;
@@ -33,7 +35,7 @@ CCLabelTTF* label05;
     self = [super init];
     if (!self) return(nil);
     
-    //self.userInteractionEnabled = YES;
+    self.userInteractionEnabled = YES;
 
     //BGカラー
     CCNodeColor* background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
@@ -55,39 +57,39 @@ CCLabelTTF* label05;
     CCSprite* animal05=[CCSprite spriteWithSpriteFrame:
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal05.png"]];;
     
-    animal01.position=CGPointMake(animal01.contentSize.width/2, animal01.contentSize.height/2+10);
-    animal02.position=CGPointMake(animal02.contentSize.width+60, animal02.contentSize.height/2+10);
-    animal03.position=CGPointMake(animal03.contentSize.width*2+60, animal03.contentSize.height/2+10);
-    animal04.position=CGPointMake(animal04.contentSize.width*3+60, animal04.contentSize.height/2+10);
-    animal05.position=CGPointMake(animal05.contentSize.width*4+60, animal05.contentSize.height/2+10);
+    animal01.position=CGPointMake(80,                               130);
+    animal02.position=CGPointMake(bgSprite.contentSize.width/2-150, 130);
+    animal03.position=CGPointMake(bgSprite.contentSize.width/2,     130);
+    animal04.position=CGPointMake(bgSprite.contentSize.width/2+150, 130);
+    animal05.position=CGPointMake(bgSprite.contentSize.width/2+300, 130);
     
     //パワーアップボタン
     CCButton* setBtn01=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn01.position=ccp(animal01.contentSize.width/2, animal01.contentSize.height/2-40);
+    setBtn01.position=ccp(animal01.contentSize.width/2, -10);
     [setBtn01 setTarget:self selector:@selector(onSetBtn01_Clicked:)];
     setBtn01.color=[CCColor blueColor];
     [animal01 addChild:setBtn01];
     
     CCButton* setBtn02=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn02.position=ccp(animal02.contentSize.width/2, animal02.contentSize.height/2-40);
+    setBtn02.position=ccp(animal02.contentSize.width/2, -10);
     [setBtn02 setTarget:self selector:@selector(onSetBtn02_Clicked:)];
     setBtn02.color=[CCColor blueColor];
     [animal02 addChild:setBtn02];
     
     CCButton* setBtn03=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn03.position=ccp(animal03.contentSize.width/2, animal03.contentSize.height/2-40);
+    setBtn03.position=ccp(animal03.contentSize.width/2, -10);
     [setBtn03 setTarget:self selector:@selector(onSetBtn03_Clicked:)];
     setBtn03.color=[CCColor blueColor];
     [animal03 addChild:setBtn03];
     
     CCButton* setBtn04=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn04.position=ccp(animal04.contentSize.width/2, animal04.contentSize.height/2-40);
+    setBtn04.position=ccp(animal04.contentSize.width/2, -10);
     [setBtn04 setTarget:self selector:@selector(onSetBtn04_Clicked:)];
     setBtn04.color=[CCColor blueColor];
     [animal04 addChild:setBtn04];
     
     CCButton* setBtn05=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn05.position=ccp(animal05.contentSize.width/2, animal05.contentSize.height/2-40);
+    setBtn05.position=ccp(animal05.contentSize.width/2, -10);
     [setBtn05 setTarget:self selector:@selector(onSetBtn05_Clicked:)];
     setBtn05.color=[CCColor blueColor];
     [animal05 addChild:setBtn05];
@@ -95,27 +97,27 @@ CCLabelTTF* label05;
     //レベルラベル
     label01=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label01.color = [CCColor blueColor];
-    label01.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height/2);
+    label01.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height+10);
     [animal01 addChild:label01];
     
     label02=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label02.color = [CCColor blueColor];
-    label02.position=CGPointMake(animal02.contentSize.width/2,animal02.contentSize.height/2);
+    label02.position=CGPointMake(animal02.contentSize.width/2,animal02.contentSize.height+10);
     [animal02 addChild:label02];
     
     label03=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label03.color = [CCColor blueColor];
-    label03.position=CGPointMake(animal03.contentSize.width/2,animal03.contentSize.height/2);
+    label03.position=CGPointMake(animal03.contentSize.width/2,animal03.contentSize.height+10);
     [animal03 addChild:label03];
     
     label04=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label04.color = [CCColor blueColor];
-    label04.position=CGPointMake(animal04.contentSize.width/2,animal04.contentSize.height/2);
+    label04.position=CGPointMake(animal04.contentSize.width/2,animal04.contentSize.height+10);
     [animal04 addChild:label04];
     
     label05=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label05.color = [CCColor blueColor];
-    label05.position=CGPointMake(animal05.contentSize.width/2,animal05.contentSize.height/2);
+    label05.position=CGPointMake(animal05.contentSize.width/2,animal05.contentSize.height+10);
     [animal05 addChild:label05];
     
     [bgSprite addChild:animal01];
@@ -128,9 +130,9 @@ CCLabelTTF* label05;
     [self setButtonLevel];
     
     //スクロールビュー
-    CCScrollView* iTemScroll=[[CCScrollView alloc]initWithContentNode:bgSprite];
-    iTemScroll.verticalScrollEnabled=NO;
-    [self addChild:iTemScroll];
+    scrollView=[[CCScrollView alloc]initWithContentNode:bgSprite];
+    scrollView.verticalScrollEnabled=NO;
+    [self addChild:scrollView];
     
     //閉じるボタン
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
@@ -204,6 +206,12 @@ CCLabelTTF* label05;
         }
     }
 }
+
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    scrollView.scrollViewDeacceleration=0.3;
+}
+
 -(void)onSetBtn01_Clicked:(id)sender
 {
     afterDia = [GameManager load_Currency_Dia] - 1;

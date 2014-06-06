@@ -20,6 +20,8 @@ CCSprite* bgSprite;
 CCSprite* arrow;
 int afterCoin;
 
+CCScrollView* scrollView;
+
 CCLabelTTF* label01;
 CCLabelTTF* label02;
 CCLabelTTF* label03;
@@ -32,6 +34,12 @@ CCLabelTTF* label05;
 }
 
 - (id)init{
+    
+    self = [super init];
+    if (!self) return(nil);
+    
+    winSize=[[CCDirector sharedDirector]viewSize];
+    self.userInteractionEnabled = YES;
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
     bgSprite=[CCSprite spriteWithSpriteFrame:
@@ -54,11 +62,11 @@ CCLabelTTF* label05;
     [animal04 setTarget:self selector:@selector(onAnimal04_Clicked:)];
     [animal05 setTarget:self selector:@selector(onAnimal05_Clicked:)];
     
-    animal01.position=CGPointMake(animal01.contentSize.width/2, animal01.contentSize.height/2+10);
-    animal02.position=CGPointMake(animal02.contentSize.width+60, animal02.contentSize.height/2+10);
-    animal03.position=CGPointMake(animal03.contentSize.width*2+60, animal03.contentSize.height/2+10);
-    animal04.position=CGPointMake(animal04.contentSize.width*3+60, animal04.contentSize.height/2+10);
-    animal05.position=CGPointMake(animal05.contentSize.width*4+60, animal05.contentSize.height/2+10);
+    animal01.position=CGPointMake(80,                               120);
+    animal02.position=CGPointMake(bgSprite.contentSize.width/2-150, 120);
+    animal03.position=CGPointMake(bgSprite.contentSize.width/2,     120);
+    animal04.position=CGPointMake(bgSprite.contentSize.width/2+150, 120);
+    animal05.position=CGPointMake(bgSprite.contentSize.width/2+300, 120);
 
     [bgSprite addChild:animal01];
     [bgSprite addChild:animal02];
@@ -69,35 +77,33 @@ CCLabelTTF* label05;
     //レベルラベル
     label01=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label01.color = [CCColor blueColor];
-    label01.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height/2-40);
+    label01.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height+20);
     [animal01 addChild:label01];
     
     label02=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label02.color = [CCColor blueColor];
-    label02.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height/2-40);
+    label02.position=CGPointMake(animal02.contentSize.width/2,animal02.contentSize.height+20);
     [animal02 addChild:label02];
 
     label03=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label03.color = [CCColor blueColor];
-    label03.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height/2-40);
+    label03.position=CGPointMake(animal03.contentSize.width/2,animal03.contentSize.height+20);
     [animal03 addChild:label03];
 
     label04=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label04.color = [CCColor blueColor];
-    label04.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height/2-40);
+    label04.position=CGPointMake(animal04.contentSize.width/2,animal04.contentSize.height+20);
     [animal04 addChild:label04];
 
     label05=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label05.color = [CCColor blueColor];
-    label05.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height/2-40);
+    label05.position=CGPointMake(animal05.contentSize.width/2,animal05.contentSize.height+20);
     [animal05 addChild:label05];
 
-    self = [super initWithContentNode:bgSprite];
-    if (!self) return(nil);
-    
-    winSize=[[CCDirector sharedDirector]viewSize];
-    self.userInteractionEnabled = YES;
-    self.verticalScrollEnabled=NO;
+    //スクロールビュー
+    scrollView=[[CCScrollView alloc]initWithContentNode:bgSprite];
+    scrollView.verticalScrollEnabled=NO;
+    [self addChild:scrollView];
     
     //ラベル表示
     [self setButtonLevel];
@@ -125,8 +131,9 @@ CCLabelTTF* label05;
     arrow.visible=true;
 }
 
--(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    scrollView.scrollViewDeacceleration=0.3;
 }
 
 //-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
@@ -135,7 +142,11 @@ CCLabelTTF* label05;
 
 -(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
     
-    [self removeFromParentAndCleanup:YES];
+    CGPoint touchLocation = [touch locationInNode:self];
+    if(touchLocation.y<winSize.height-bgSprite.contentSize.height ||
+                                                touchLocation.y>bgSprite.contentSize.height){
+        [self removeFromParentAndCleanup:YES];
+    }
 }
 
 -(void)onAnimal01_Clicked:(id)sender

@@ -24,7 +24,6 @@
 @implementation StageLevel_01
 
 CGSize winSize;
-CCScrollView* scrollView;
 CCSprite* bgSpLayer;
 InformationLayer* infoLayer;
 
@@ -108,7 +107,7 @@ NSMutableArray* removeEnemyMissileArray;
     routeGeneLyer=[[RouteGenerationLayer alloc]init];
     
     //プレイヤー選択レイヤー z:2
-    playSelect=[[PlayerSelection alloc]init];
+    //playSelect=[[PlayerSelection alloc]init];
     
     //ポーズレイヤー z3
     NaviLayer* navi=[[NaviLayer alloc]init];
@@ -767,7 +766,7 @@ NSMutableArray* removeEnemyMissileArray;
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-
+    scrollView.scrollViewDeacceleration=0.3;
 }
 
 //-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
