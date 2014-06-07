@@ -50,6 +50,10 @@
 		CF36CC701940441F007D2293 /* info_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC6E1940441F007D2293 /* info_default.png */; };
 		CF418ACA1920947700196E64 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF418AC91920947600196E64 /* GameKit.framework */; };
 		CF418ACD192098FF00196E64 /* LeaderboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF418ACC192098FF00196E64 /* LeaderboardView.m */; };
+		CF4A7BFC1942C364005C3C17 /* playerAdding.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF4A7BFB1942C364005C3C17 /* playerAdding.plist */; };
+		CF4A7BFE1942D644005C3C17 /* playerDead.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF4A7BFD1942D644005C3C17 /* playerDead.plist */; };
+		CF4A7C001942E872005C3C17 /* enemyDead.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF4A7BFF1942E872005C3C17 /* enemyDead.plist */; };
+		CF4A7C0219431978005C3C17 /* damage.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF4A7C0119431978005C3C17 /* damage.plist */; };
 		CF505F2A1932D9E90068A24A /* Fortress.m in Sources */ = {isa = PBXBuildFile; fileRef = CF505F291932D9E90068A24A /* Fortress.m */; };
 		CF56B6EB192B494C00FC07DB /* InitializeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF56B6EA192B494C00FC07DB /* InitializeManager.m */; };
 		CF5CB2481922F47B001D9E65 /* PreferencesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2471922F47B001D9E65 /* PreferencesLayer.m */; };
@@ -347,6 +351,10 @@
 		CF418AC91920947600196E64 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CF418ACB192098FF00196E64 /* LeaderboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardView.h; sourceTree = "<group>"; };
 		CF418ACC192098FF00196E64 /* LeaderboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardView.m; sourceTree = "<group>"; };
+		CF4A7BFB1942C364005C3C17 /* playerAdding.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = playerAdding.plist; sourceTree = "<group>"; };
+		CF4A7BFD1942D644005C3C17 /* playerDead.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = playerDead.plist; sourceTree = "<group>"; };
+		CF4A7BFF1942E872005C3C17 /* enemyDead.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemyDead.plist; sourceTree = "<group>"; };
+		CF4A7C0119431978005C3C17 /* damage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = damage.plist; sourceTree = "<group>"; };
 		CF505F281932D9E90068A24A /* Fortress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fortress.h; sourceTree = "<group>"; };
 		CF505F291932D9E90068A24A /* Fortress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fortress.m; sourceTree = "<group>"; };
 		CF56B6E9192B494C00FC07DB /* InitializeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitializeManager.h; sourceTree = "<group>"; };
@@ -867,6 +875,17 @@
 			name = Unused;
 			sourceTree = "<group>";
 		};
+		CF4A7C0319431989005C3C17 /* Particle */ = {
+			isa = PBXGroup;
+			children = (
+				CF4A7C0119431978005C3C17 /* damage.plist */,
+				CF4A7BFF1942E872005C3C17 /* enemyDead.plist */,
+				CF4A7BFD1942D644005C3C17 /* playerDead.plist */,
+				CF4A7BFB1942C364005C3C17 /* playerAdding.plist */,
+			);
+			name = Particle;
+			sourceTree = "<group>";
+		};
 		CF6C57DC190F68BA00FCF978 /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -994,6 +1013,7 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF4A7C0319431989005C3C17 /* Particle */,
 				CFD998C41941533100AEA1DD /* interface_default.plist */,
 				CFD998C51941533100AEA1DD /* interface_default.png */,
 				CF36CC6D1940441F007D2293 /* info_default.plist */,
@@ -1959,6 +1979,7 @@
 				CF2F500A193D5A65005E5BF6 /* ground_default.png in Resources */,
 				CF36CC6F1940441F007D2293 /* info_default.plist in Resources */,
 				CF04A80E193F39A000D390C0 /* player01_default.png in Resources */,
+				CF4A7BFC1942C364005C3C17 /* playerAdding.plist in Resources */,
 				CFDFDEFB190A2D6F0021FBF9 /* Icon-Small-50.png in Resources */,
 				CFD5A32F191229BB004E2B58 /* arrow.png in Resources */,
 				CF6A727619176C160027F654 /* Localizable.strings in Resources */,
@@ -1970,6 +1991,7 @@
 				CF04A81E193F39EA00D390C0 /* player05_default.png in Resources */,
 				CF04A819193F39D900D390C0 /* player04_default.plist in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
+				CF4A7BFE1942D644005C3C17 /* playerDead.plist in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
 				CF04A81D193F39EA00D390C0 /* player05_default.plist in Resources */,
 				CF36CC55193FF1E8007D2293 /* enemy03_default.plist in Resources */,
@@ -1984,10 +2006,12 @@
 				CFF501151929D70A007B524F /* coinBar.png in Resources */,
 				CF04A81A193F39D900D390C0 /* player04_default.png in Resources */,
 				CF04A816193F39C400D390C0 /* player03_default.png in Resources */,
+				CF4A7C0219431978005C3C17 /* damage.plist in Resources */,
 				CFDFE169190A2D710021FBF9 /* LICENSE_Chipmunk.txt in Resources */,
 				CFDFDF03190A2D6F0021FBF9 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				CF36CC701940441F007D2293 /* info_default.png in Resources */,
 				CFDFDEF3190A2D6F0021FBF9 /* Icon-76.png in Resources */,
+				CF4A7C001942E872005C3C17 /* enemyDead.plist in Resources */,
 				CF04A815193F39C400D390C0 /* player03_default.plist in Resources */,
 				CF36CC51193FF1D6007D2293 /* enemy02_default.plist in Resources */,
 				CFDFE0C9190A2D700021FBF9 /* ChangeLog in Resources */,

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "PlayerMissile.h"
+#import "CCParticleSystem.h"
 
 @interface AnimalPlayer : CCSprite {
     
@@ -58,6 +59,8 @@
     bool leaderFlg;
     CGPoint leaderOldPos;
     int groupNum;
+    
+    CCParticleSystem* damageParticle;
 }
 
 @property int ability_Level;

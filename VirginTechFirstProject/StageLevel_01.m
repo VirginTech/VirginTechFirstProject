@@ -20,6 +20,7 @@
 #import "InformationLayer.h"
 #import "AchievementManeger.h"
 #import "Fortress.h"
+#import "CCParticleSystem.h"
 
 @implementation StageLevel_01
 
@@ -40,6 +41,10 @@ NSMutableArray* searchTarget;
 Fortress* playerFortress;
 Fortress* enemyFortress;
 int enemyCount;
+
+int finishCount;
+CCParticleSystem* playerParticle;
+CCParticleSystem* enemyParticle;
 
 //審判用配列
 NSMutableArray* removePlayerArray;
@@ -70,6 +75,9 @@ NSMutableArray* removeEnemyMissileArray;
     enemyArray =[[NSMutableArray alloc]init];
     playerMissileArray=[[NSMutableArray alloc]init];
     enemyMissileArray=[[NSMutableArray alloc]init];
+    playerParticle=nil;
+    enemyParticle=nil;
+    finishCount=0;
     
     //ゲーム状態セット
     [GameManager setPlaying:true];//プレイ中
@@ -103,11 +111,11 @@ NSMutableArray* removeEnemyMissileArray;
     line.position=CGPointMake(winSize.width/2, [GameManager getWorldSize].height / 5.0f);
     [bgSpLayer addChild:line];
     
-    //経路作成レイヤー z:1
-    routeGeneLyer=[[RouteGenerationLayer alloc]init];
-    
-    //プレイヤー選択レイヤー z:2
+    //プレイヤー選択レイヤー z:1
     //playSelect=[[PlayerSelection alloc]init];
+
+    //経路作成レイヤー z:2
+    routeGeneLyer=[[RouteGenerationLayer alloc]init];
     
     //ポーズレイヤー z3
     NaviLayer* navi=[[NaviLayer alloc]init];
@@ -390,6 +398,8 @@ NSMutableArray* removeEnemyMissileArray;
                         //敵ダメージ
                         enemy.ability_Defense -= missile.ability_Attack;
                         if(enemy.ability_Defense<=0){//敵撃破！
+                            //パーティクル
+                            [StageLevel_01 setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
                             //コイン報酬
                             [GameManager in_Out_Coin:1 addFlg:true];
                             [InformationLayer update_CurrencyLabel];
@@ -426,6 +436,8 @@ NSMutableArray* removeEnemyMissileArray;
                         player.ability_Defense -= missile.ability_Attack;
                         if(player.ability_Defense<=0){
                             [removePlayerArray addObject:player];
+                            //パーティクル
+                            [StageLevel_01 setPlayerParticle:0 pos:player.position fileName:@"playerDead.plist"];
                         }
                         break;//二重判定防止
                     }
@@ -446,11 +458,10 @@ NSMutableArray* removeEnemyMissileArray;
                 [removePlayerMissileArray addObject:missile];
                 enemyFortress.ability_Defense -= missile.ability_Attack;
                 if(enemyFortress.ability_Defense<=0){
-                    [bgSpLayer removeChild:enemyFortress cleanup:YES];
-                    [self unscheduleAllSelectors];
+                    //フィニッシュ
+                    [self schedule:@selector(finish_Success_Schedule:)interval:0.1 repeat:10 delay:0.1];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
-                    
                     //ハイスコア更新
                     [GameManager save_HighScore:[GameManager load_HighScore]+[GameManager getStageLevel]*100];
                     [InformationLayer update_HighScoreLabel];
@@ -469,24 +480,7 @@ NSMutableArray* removeEnemyMissileArray;
                     }
                     //アチーブメント保存
                     [self setAchievement:@"Achievement_Stage"];
-                    //ステージクリア状態のセーブ
-                    float fortRemainPower=(100/playerFortress.maxLife)*playerFortress.ability_Defense;
-                    if(fortRemainPower>=80.0f){
-                        [NaviLayer setStageEndingScreen:true rate:3];
-                        if([GameManager load_StageClear_State:[GameManager getStageLevel]]<3){
-                            [GameManager save_StageClear_State:[GameManager getStageLevel] rate:3];
-                        }
-                    }else if(fortRemainPower>=50.0f){
-                        [NaviLayer setStageEndingScreen:true rate:2];
-                        if([GameManager load_StageClear_State:[GameManager getStageLevel]]<2){
-                            [GameManager save_StageClear_State:[GameManager getStageLevel] rate:2];
-                        }
-                    }else{
-                        [NaviLayer setStageEndingScreen:true rate:1];
-                        if([GameManager load_StageClear_State:[GameManager getStageLevel]]<1){
-                            [GameManager save_StageClear_State:[GameManager getStageLevel] rate:1];
-                        }
-                    }
+                    
                     break;
                 }
             }
@@ -502,11 +496,10 @@ NSMutableArray* removeEnemyMissileArray;
                 [removeEnemyMissileArray addObject:missile];
                 playerFortress.ability_Defense -= missile.ability_Attack;
                 if(playerFortress.ability_Defense<=0){
-                    [bgSpLayer removeChild:playerFortress cleanup:YES];
-                    [self unscheduleAllSelectors];
+                    //フィニッシュ
+                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.1 repeat:10 delay:0.1];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
-                    [NaviLayer setStageEndingScreen:false rate:0];
                     break;
                 }else{
                     //画面を揺する
@@ -583,6 +576,47 @@ NSMutableArray* removeEnemyMissileArray;
     removeEnemyArray=[[NSMutableArray alloc]init];
     removePlayerMissileArray=[[NSMutableArray alloc]init];
     removeEnemyMissileArray=[[NSMutableArray alloc]init];
+}
+
+-(void)finish_Failure_Schedule:(CCTime)dt
+{
+    finishCount++;
+    [StageLevel_01 setPlayerParticle:1 pos:playerFortress.position fileName:@"playerDead.plist"];
+    bgSpLayer.position = CGPointMake(bgSpLayer.position.x+10, bgSpLayer.position.y-10);
+    if(finishCount==10){
+        [self unscheduleAllSelectors];
+        [bgSpLayer removeChild:playerFortress cleanup:YES];
+        [NaviLayer setStageEndingScreen:false rate:0];
+    }
+}
+
+-(void)finish_Success_Schedule:(CCTime)dt
+{
+    finishCount++;
+    [StageLevel_01 setEnemyParticle:1 pos:enemyFortress.position fileName:@"enemyDead.plist"];
+    bgSpLayer.position = CGPointMake(bgSpLayer.position.x-10, bgSpLayer.position.y+10);
+    if(finishCount==10){
+        [self unscheduleAllSelectors];
+        [bgSpLayer removeChild:enemyFortress cleanup:YES];
+        //ステージクリア状態のセーブ
+        float fortRemainPower=(100/playerFortress.maxLife)*playerFortress.ability_Defense;
+        if(fortRemainPower>=80.0f){
+            [NaviLayer setStageEndingScreen:true rate:3];
+            if([GameManager load_StageClear_State:[GameManager getStageLevel]]<3){
+                [GameManager save_StageClear_State:[GameManager getStageLevel] rate:3];
+            }
+        }else if(fortRemainPower>=50.0f){
+            [NaviLayer setStageEndingScreen:true rate:2];
+            if([GameManager load_StageClear_State:[GameManager getStageLevel]]<2){
+                [GameManager save_StageClear_State:[GameManager getStageLevel] rate:2];
+            }
+        }else{
+            [NaviLayer setStageEndingScreen:true rate:1];
+            if([GameManager load_StageClear_State:[GameManager getStageLevel]]<1){
+                [GameManager save_StageClear_State:[GameManager getStageLevel] rate:1];
+            }
+        }
+    }
 }
 
 -(void)crisis_Schedule:(CCTime)dt
@@ -711,11 +745,14 @@ NSMutableArray* removeEnemyMissileArray;
 //============================
 // プレイヤーアニマルセット
 //============================
-+(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum{
-    
++(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum
+{
+    //パーティクル
+    [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
+
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
-    [bgSpLayer addChild:creatPlayer z:2];
+    [bgSpLayer addChild:creatPlayer z:1];
 
     [GameManager in_Out_Coin:playerNum addFlg:false];//コイン減
     [InformationLayer update_CurrencyLabel];
@@ -763,6 +800,40 @@ NSMutableArray* removeEnemyMissileArray;
     enemyFortress=[Fortress createFortress:ccp(winSize.width/2,[GameManager getWorldSize].height-30)];
     [bgSpLayer addChild:enemyFortress z:0];
 }
+//============================
+// パーティクルセット(プレイヤー)
+//============================
++(void)setPlayerParticle:(int)type pos:(CGPoint)pos fileName:(NSString*)fileName
+{
+    if(playerParticle!=nil){//その都度削除
+        [bgSpLayer removeChild:playerParticle cleanup:YES];
+    }
+    playerParticle=[[CCParticleSystem alloc]initWithFile:fileName];
+    playerParticle.position=pos;
+    if(type==0){//タンク
+        playerParticle.scale=0.3;
+    }else if(type==1){//要塞
+        playerParticle.scale=5.0;
+    }
+    [bgSpLayer addChild:playerParticle z:2];
+}
+//============================
+// パーティクルセット(敵)
+//============================
++(void)setEnemyParticle:(int)type pos:(CGPoint)pos fileName:(NSString*)fileName
+{
+    if(enemyParticle!=nil){//その都度削除
+        [bgSpLayer removeChild:enemyParticle cleanup:YES];
+    }
+    enemyParticle=[[CCParticleSystem alloc]initWithFile:fileName];
+    enemyParticle.position=pos;
+    if(type==0){//タンク
+        enemyParticle.scale=0.3;
+    }else if(type==1){//要塞
+        enemyParticle.scale=5.0;
+    }
+    [bgSpLayer addChild:enemyParticle z:2];
+}
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
@@ -789,14 +860,14 @@ NSMutableArray* removeEnemyMissileArray;
     if([StageLevel_01 isAnimal:worldLocation type:0]){//経路作成レイヤー表示
         if(![StageLevel_01 isPlayerCollision:touchPlayer]){//タッチした戦車が衝突継続中でなければ経路作成可能
             routeGeneLyer.offsetY=offsetY;
-            [self addChild:routeGeneLyer z:1];
+            [self addChild:routeGeneLyer z:2];
             touchPlayer.state_PathMake_flg=true;
         }
         
     }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
         if(worldLocation.y < [GameManager getWorldSize].height / 5.0f){
             playSelect=[[PlayerSelection alloc]init];
-            [self addChild:playSelect z:2];
+            [self addChild:playSelect z:1];
             playSelect.createPlayerPos=worldLocation;
             [playSelect setArrowVisible:offsetY];
         }

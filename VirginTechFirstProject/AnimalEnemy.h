@@ -11,6 +11,7 @@
 #import "AnimalPlayer.h"
 #import "EnemyMissile.h"
 #import "Fortress.h"
+#import "CCParticleSystem.h"
 
 @interface AnimalEnemy : CCSprite
 {
@@ -48,6 +49,8 @@
     EnemyMissile* eMissile;
     bool destCollectFlg;
     bool fortressFlg;
+    
+    CCParticleSystem* damageParticle;
 }
 
 @property float ability_Defense ;

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "CCParticleSystem.h"
 
 @interface Fortress : CCSprite
 {
@@ -17,6 +18,8 @@
     CCSprite* lifeGauge2;
     float maxLife;
     float nowRatio;
+    
+    CCParticleSystem* damageParticle;
 }
 
 @property float ability_Defense;

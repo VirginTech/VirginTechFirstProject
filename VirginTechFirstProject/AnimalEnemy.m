@@ -300,6 +300,10 @@ CGSize winSize;
     lifeGauge2.scaleX=nowRatio*0.01;
     //lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
     lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
+    
+    if(nowRatio<50){
+        damageParticle.visible=true;
+    }
 }
 
 -(void)setTarget:(NSMutableArray*)targetArray
@@ -494,6 +498,13 @@ CGSize winSize;
         //lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
         lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
         [lifeGauge1 addChild:lifeGauge2];
+        
+        //ダメージパーティクルセット
+        damageParticle=[[CCParticleSystem alloc]initWithFile:@"damage.plist"];
+        damageParticle.position=ccp(self.contentSize.width/2,self.contentSize.height/2);
+        damageParticle.scale=0.1;
+        damageParticle.visible=false;
+        [self addChild:damageParticle];
         
         //目標セット
         int minX = self.contentSize.width/2;

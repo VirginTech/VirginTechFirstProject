@@ -236,6 +236,9 @@ CGSize winSize;
     nowRatio=(100/maxLife)*ability_Defense;
     lifeGauge2.scaleX=nowRatio*0.01;
     lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
+    if(nowRatio<50){
+        damageParticle.visible=true;
+    }
 }
 
 -(void)flocking_Schedule:(CCTime)dt {
@@ -405,6 +408,13 @@ CGSize winSize;
         lifeGauge2.scaleX=nowRatio*0.01;
         lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
         [lifeGauge1 addChild:lifeGauge2];
+        
+        //ダメージパーティクルセット
+        damageParticle=[[CCParticleSystem alloc]initWithFile:@"damage.plist"];
+        damageParticle.position=ccp(self.contentSize.width/2,self.contentSize.height/2);
+        damageParticle.scale=0.1;
+        damageParticle.visible=false;
+        [self addChild:damageParticle];
         
         //速度セット
         velocity = ability_Traveling;//補間間隔(速さの調整に使用する)
