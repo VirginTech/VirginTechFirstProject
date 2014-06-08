@@ -27,6 +27,28 @@
 			<false/>
 		</dict>
 		
+		<key>backBtn2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {128, 57}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{128, 57}</string>
+			<key>spriteSourceSize</key>
+			<string>{128, 57}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{423, 418}, {128, 57}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
 		<key>close.png</key>
 		<dict>
 			<key>aliases</key>

@@ -15,6 +15,7 @@
 @synthesize maxLife;
 
 CGSize winSize;
+NSString* fileName;
 
 -(void)status_Schedule:(CCTime)dt
 {
@@ -28,14 +29,20 @@ CGSize winSize;
     }
 }
 
--(id)initWithFortress:(CGPoint)pos
+-(id)initWithFortress:(CGPoint)pos type:(int)type
 {
     winSize=[[CCDirector sharedDirector]viewSize];
     [[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFrames];
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"fortress_default.plist"];
 
+    if(type==0){//我
+        fileName=@"fortress02.png";
+    }else{//敵
+        fileName=@"fortress01.png";
+    }
+    
     if(self=[super initWithSpriteFrame:
-                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"fortress.png" ]])
+                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:fileName]])
     {
         self.position=pos;
         ability_Defense=10.0f+(([GameManager getStageLevel]-1)*3);
@@ -66,9 +73,9 @@ CGSize winSize;
     return self;
 }
 
-+(id)createFortress:(CGPoint)pos
++(id)createFortress:(CGPoint)pos type:(int)type
 {
-    return [[self alloc] initWithFortress:pos];
+    return [[self alloc] initWithFortress:pos type:type];
 }
 
 @end

@@ -40,11 +40,15 @@ SKProduct* product03;
     [self addChild:background];
     
     // Create a back button
-    CCButton *backButton = [CCButton buttonWithTitle:@"[タイトル]" fontName:@"Verdana-Bold" fontSize:18.0f];
-    backButton.positionType = CCPositionTypeNormalized;
-    backButton.position = ccp(0.85f, 0.95f); // Top Right of screen
-    [backButton setTarget:self selector:@selector(onBackClicked:)];
-    [self addChild:backButton];
+    //閉じるボタン
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
+    CCButton *closeButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                             [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"close.png"]];
+    closeButton.positionType = CCPositionTypeNormalized;
+    closeButton.position = ccp(0.9f, 0.95f); // Top Right of screen
+    closeButton.scale=0.3;
+    [closeButton setTarget:self selector:@selector(onCloseClicked:)];
+    [self addChild:closeButton];
     
     
     return self;
@@ -157,7 +161,7 @@ SKProduct* product03;
 
 }
 
-- (void)onBackClicked:(id)sender
+- (void)onCloseClicked:(id)sender
 {
     //プロダクトリクエストをキャンセル
     [productsRequest cancel];

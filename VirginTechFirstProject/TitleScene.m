@@ -15,6 +15,7 @@
 #import "PreferencesLayer.h"
 #import "InitializeManager.h"
 #import "ItemSetupLayer.h"
+#import "CreditLayer.h"
 
 @implementation TitleScene
 
@@ -140,7 +141,7 @@ CGSize winSize;
     creditButton.positionType = CCPositionTypeNormalized;
     creditButton.position = ccp(0.05f, 0.29f);
     creditButton.scale=0.5;
-    //[creditButton setTarget:self selector:@selector(onCreditButtonClicked:)];
+    [creditButton setTarget:self selector:@selector(onCreditButtonClicked:)];
     [self addChild:creditButton];
 
     //アイテムセットアップ
@@ -208,6 +209,14 @@ CGSize winSize;
         [GameManager setActive:false];
         ItemSetupLayer* itemSetup=[[ItemSetupLayer alloc]init];
         [self addChild:itemSetup];
+    }
+}
+
+-(void)onCreditButtonClicked:(id)sender
+{
+    if([GameManager getActive]){
+        [GameManager setActive:false];
+        [[CCDirector sharedDirector] replaceScene:[CreditLayer scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
     }
 }
 

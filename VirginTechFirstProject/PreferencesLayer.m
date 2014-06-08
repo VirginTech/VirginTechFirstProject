@@ -39,6 +39,7 @@ CGSize winSize;
     closeButton.scale=0.3;
     [closeButton setTarget:self selector:@selector(onCloseClicked:)];
     [self addChild:closeButton];
+    
     return self;
 }
 

@@ -789,7 +789,7 @@ NSMutableArray* removeEnemyMissileArray;
 //============================
 -(void)createPlayerFortress
 {
-    playerFortress=[Fortress createFortress:ccp(winSize.width/2, 30)];
+    playerFortress=[Fortress createFortress:ccp(winSize.width/2, 30) type:0];
     [bgSpLayer addChild:playerFortress z:0];
 }
 //============================
@@ -797,7 +797,7 @@ NSMutableArray* removeEnemyMissileArray;
 //============================
 -(void)createEnemyFortress
 {
-    enemyFortress=[Fortress createFortress:ccp(winSize.width/2,[GameManager getWorldSize].height-30)];
+    enemyFortress=[Fortress createFortress:ccp(winSize.width/2,[GameManager getWorldSize].height-30) type:1];
     [bgSpLayer addChild:enemyFortress z:0];
 }
 //============================

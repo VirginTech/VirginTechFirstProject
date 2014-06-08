@@ -109,7 +109,7 @@ CCLabelTTF* label05;
     [self setButtonLevel];
     
     //矢印初期化
-    arrow=[CCSprite spriteWithImageNamed:@"arrow.png"];
+    arrow=[CCSprite spriteWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"arrow.png"]];
     [self addChild:arrow];
     
     return self;
@@ -126,9 +126,9 @@ CCLabelTTF* label05;
 
 -(void)setArrowVisible:(float)offsetY
 {    
-    arrow.rotation=180;
+    //arrow.rotation=180;
     arrow.position=CGPointMake(createPlayerPos.x, createPlayerPos.y - offsetY - arrow.contentSize.height/2);
-    arrow.visible=true;
+    //arrow.visible=true;
 }
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event

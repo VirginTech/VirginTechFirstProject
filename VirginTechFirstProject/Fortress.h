@@ -25,7 +25,7 @@
 @property float ability_Defense;
 @property float maxLife;
 
--(id)initWithFortress:(CGPoint)pos;
-+(id)createFortress:(CGPoint)pos;
+-(id)initWithFortress:(CGPoint)pos type:(int)type;
++(id)createFortress:(CGPoint)pos type:(int)type;
 
 @end

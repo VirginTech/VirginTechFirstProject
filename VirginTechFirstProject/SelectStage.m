@@ -64,10 +64,10 @@ CCSprite* bgSpLayer;
     //戻るボタン
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
     CCButton *backButton = [CCButton buttonWithTitle:@"" spriteFrame:
-                                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"backBtn.png"]];
+                                    [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"backBtn2.png"]];
     backButton.positionType = CCPositionTypeNormalized;
     backButton.position = ccp(0.1f, 0.95f); // Top Right of screen
-    backButton.scale=0.3;
+    backButton.scale=0.5;
     [backButton setTarget:self selector:@selector(onBackClicked:)];
     [self addChild:backButton];
     

@@ -54,7 +54,7 @@ CCLabelTTF* achieveLabel;
     [laurel addChild:achieveLabel];
     
     //ハイスコア
-    scoreLabel=[CCLabelTTF labelWithString:@"00000" fontName:@"Verdana-Bold" fontSize:13];
+    scoreLabel=[CCLabelTTF labelWithString:@"00000" fontName:@"Chalkduster" fontSize:13];
     scoreLabel.color=[CCColor whiteColor];
     scoreLabel.position=ccp(laurel.position.x+scoreLabel.contentSize.width/2+15, laurel.position.y);
     [self addChild:scoreLabel];
@@ -66,7 +66,7 @@ CCLabelTTF* achieveLabel;
     coinBar.scale=0.2;
     [self addChild:coinBar];
     
-    coinLabel = [CCLabelTTF labelWithString:@"0000" fontName:@"Verdana-Bold" fontSize:13.0];
+    coinLabel = [CCLabelTTF labelWithString:@"0000" fontName:@"Chalkduster" fontSize:13.0];
     coinLabel.color = [CCColor whiteColor];
     coinLabel.position = ccp(coinBar.position.x+coinLabel.contentSize.width/2+15, coinBar.position.y);
     [self addChild:coinLabel];
@@ -78,7 +78,7 @@ CCLabelTTF* achieveLabel;
     diaBar.scale=0.2;
     [self addChild:diaBar];
     
-    diaLabel = [CCLabelTTF labelWithString:@"000" fontName:@"Verdana-Bold" fontSize:13.0];
+    diaLabel = [CCLabelTTF labelWithString:@"000" fontName:@"Chalkduster" fontSize:13.0];
     diaLabel.color = [CCColor whiteColor];
     diaLabel.position = ccp(diaBar.position.x+diaLabel.contentSize.width/2+15, diaBar.position.y);
     [self addChild:diaLabel];
