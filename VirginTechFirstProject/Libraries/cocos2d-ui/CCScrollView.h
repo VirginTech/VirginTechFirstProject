@@ -64,8 +64,10 @@
     CGPoint _velocity;
     
     float scrollViewDeacceleration;
+    int mode;
 }
 
+@property int mode;
 @property float scrollViewDeacceleration;
 
 @property (nonatomic, weak) id<CCScrollViewDelegate> delegate;

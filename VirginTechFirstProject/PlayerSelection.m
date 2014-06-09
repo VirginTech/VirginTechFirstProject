@@ -19,6 +19,8 @@ CGSize winSize;
 CCSprite* bgSprite;
 CCSprite* arrow;
 int afterCoin;
+int serialCount1;
+int serialCount2;
 
 CCScrollView* scrollView;
 
@@ -103,6 +105,7 @@ CCLabelTTF* label05;
     //スクロールビュー
     scrollView=[[CCScrollView alloc]initWithContentNode:bgSprite];
     scrollView.verticalScrollEnabled=NO;
+    scrollView.mode=1;
     [self addChild:scrollView];
     
     //ラベル表示
@@ -111,6 +114,10 @@ CCLabelTTF* label05;
     //矢印初期化
     arrow=[CCSprite spriteWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"arrow.png"]];
     [self addChild:arrow];
+    
+    //連続カウント初期化
+    serialCount1=0;
+    serialCount2=0;
     
     return self;
 }
@@ -149,12 +156,34 @@ CCLabelTTF* label05;
     }
 }
 
--(void)onAnimal01_Clicked:(id)sender
+-(void)playerSet:(int)type
 {
+    CGPoint tmpPos=createPlayerPos;
+    if(serialCount1==0){
+        [StageLevel_01 createPlayer:tmpPos playerNum:type];
+    }else if(serialCount1%2==0){
+        tmpPos.x=createPlayerPos.x - (serialCount2*50);
+        if(tmpPos.x > 30.0f){
+            [StageLevel_01 createPlayer:tmpPos playerNum:type];
+        }else{
+            [self removeFromParentAndCleanup:YES];
+        }
+    }else if(serialCount1%2!=0){
+        serialCount2++;
+        tmpPos.x=createPlayerPos.x + (serialCount2*50);
+        if(tmpPos.x < winSize.width-30){
+            [StageLevel_01 createPlayer:tmpPos playerNum:type];
+        }else{
+            [self removeFromParentAndCleanup:YES];
+        }
+    }
+    serialCount1++;
+}
+
+-(void)onAnimal01_Clicked:(id)sender{
     afterCoin = [GameManager load_Currency_Coin] - 1;
     if(afterCoin >= 0){
-        [StageLevel_01 createPlayer:createPlayerPos playerNum:1];
-        [self removeFromParentAndCleanup:YES];
+        [self playerSet:1];
     }else{
         [self showMassage];
     }
@@ -163,8 +192,7 @@ CCLabelTTF* label05;
 {
     afterCoin = [GameManager load_Currency_Coin] - 2;
     if(afterCoin >= 0){
-        [StageLevel_01 createPlayer:createPlayerPos playerNum:2];
-        [self removeFromParentAndCleanup:YES];
+        [self playerSet:2];
     }else{
         [self showMassage];
     }
@@ -173,8 +201,7 @@ CCLabelTTF* label05;
 {
     afterCoin = [GameManager load_Currency_Coin] - 3;
     if(afterCoin >= 0){
-        [StageLevel_01 createPlayer:createPlayerPos playerNum:3];
-        [self removeFromParentAndCleanup:YES];
+        [self playerSet:3];
     }else{
         [self showMassage];
     }
@@ -183,8 +210,7 @@ CCLabelTTF* label05;
 {
     afterCoin = [GameManager load_Currency_Coin] - 4;
     if(afterCoin >= 0){
-        [StageLevel_01 createPlayer:createPlayerPos playerNum:4];
-        [self removeFromParentAndCleanup:YES];
+        [self playerSet:4];
     }else{
         [self showMassage];
     }
@@ -193,8 +219,7 @@ CCLabelTTF* label05;
 {
     afterCoin = [GameManager load_Currency_Coin] - 5;
     if(afterCoin >= 0){
-        [StageLevel_01 createPlayer:createPlayerPos playerNum:5];
-        [self removeFromParentAndCleanup:YES];
+        [self playerSet:5];
     }else{
         [self showMassage];
     }

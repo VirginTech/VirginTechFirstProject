@@ -132,6 +132,7 @@ CCLabelTTF* label05;
     //スクロールビュー
     scrollView=[[CCScrollView alloc]initWithContentNode:bgSprite];
     scrollView.verticalScrollEnabled=NO;
+    scrollView.mode=1;
     [self addChild:scrollView];
     
     //閉じるボタン

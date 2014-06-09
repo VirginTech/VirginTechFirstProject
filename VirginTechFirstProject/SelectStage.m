@@ -49,6 +49,7 @@ CCSprite* bgSpLayer;
     bgSpLayer=[CCSprite spriteWithCGImage:image.CGImage key:nil];
     scrollView=[[CCScrollView alloc]initWithContentNode:bgSpLayer];
     scrollView.horizontalScrollEnabled=NO;
+    scrollView.mode=0;
     //bgSpLayer.position=CGPointMake(0, -bgSpLayer.contentSize.height);
     [self addChild:scrollView z:0];
     

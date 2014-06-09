@@ -180,6 +180,7 @@
 
 #pragma mark Initializers
 
+@synthesize mode;
 @synthesize scrollViewDeacceleration;
 
 - (id) init
@@ -572,7 +573,11 @@
 - (void)handlePan:(UIGestureRecognizer *)gestureRecognizer
 {
     //ドラッグ中
-    scrollViewDeacceleration=0.99;
+    if(mode==0){
+        scrollViewDeacceleration=0.99;
+    }else if(mode==1){
+        scrollViewDeacceleration=0.70;
+    }
     
     CCDirector* dir = [CCDirector sharedDirector];
     UIPanGestureRecognizer* pgr = (UIPanGestureRecognizer*)gestureRecognizer;
