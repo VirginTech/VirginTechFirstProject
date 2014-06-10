@@ -16,6 +16,7 @@
 #import "InitializeManager.h"
 #import "ItemSetupLayer.h"
 #import "CreditLayer.h"
+#import "TutorialLevel.h"
 
 @implementation TitleScene
 
@@ -150,9 +151,25 @@ CGSize winSize;
     itemSetupButton.position = ccp(0.5f, 0.2f);
     [itemSetupButton setTarget:self selector:@selector(onItemSetupButtonClicked:)];
     [self addChild:itemSetupButton];
-    
+
+    //アイテムセットアップ
+    CCButton *tutorialButton = [CCButton buttonWithTitle:@"[遊び方]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    tutorialButton.positionType = CCPositionTypeNormalized;
+    tutorialButton.position = ccp(0.5f, 0.15f);
+    [tutorialButton setTarget:self selector:@selector(onTutorialButtonClicked:)];
+    [self addChild:tutorialButton];
+
     // done
 	return self;
+}
+
+- (void)onTutorialButtonClicked:(id)sender
+{
+    if([GameManager getActive]){
+        [GameManager setStageLevel:0];
+        [[CCDirector sharedDirector] replaceScene:
+                        [TutorialLevel scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+    }
 }
 
 - (void)onSelectStageClicked:(id)sender

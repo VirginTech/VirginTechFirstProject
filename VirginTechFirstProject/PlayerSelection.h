@@ -10,7 +10,13 @@
 #import "cocos2d.h"
 #import "CCScrollView.h"
 
-@interface PlayerSelection : CCScene {
+@interface PlayerSelection : CCScene
+{
+    //チュートリアル用
+    CCSprite* finger;
+    CGPoint targetPos;
+    float velocity;
+    int touchCount;
     
     CGPoint createPlayerPos;
 }

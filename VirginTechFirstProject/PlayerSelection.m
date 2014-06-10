@@ -10,6 +10,8 @@
 #import "GameManager.h"
 #import "ObjectManager.h"
 #import "StageLevel_01.h"
+#import "TutorialLevel.h"
+#import "BasicMath.h"
 
 @implementation PlayerSelection
 
@@ -111,6 +113,20 @@ CCLabelTTF* label05;
     //ラベル表示
     [self setButtonLevel];
     
+    //チュートリアル
+    if([GameManager getStageLevel]==0)
+    {
+        velocity = 1.5;
+        touchCount=0;
+        targetPos=CGPointMake(150, 150);
+        
+        finger=[CCSprite spriteWithSpriteFrame:
+                            [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"finger.png"]];
+        finger.position=CGPointMake(winSize.width/2, winSize.height/2+50);
+        [self addChild:finger];
+        [self schedule:@selector(finger_Rotation_Schedule:)interval:0.01];
+    }
+    
     //矢印初期化
     arrow=[CCSprite spriteWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"arrow.png"]];
     [self addChild:arrow];
@@ -138,6 +154,35 @@ CCLabelTTF* label05;
     //arrow.visible=true;
 }
 
+-(void)finger_Move_Schedule:(CCTime)dt
+{
+    CGPoint nextPos;
+    float targetAngle;
+    float targetDistance;
+    
+    //方角セット
+    targetAngle = [BasicMath getAngle_To_Radian:finger.position ePos:targetPos];
+    //総距離セット
+    targetDistance = sqrtf(powf(finger.position.x - targetPos.x,2) + powf(finger.position.y - targetPos.y,2));
+    //次位置セット
+    nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+    finger.position=CGPointMake(finger.position.x+nextPos.x, finger.position.y+nextPos.y);
+    
+    if(targetDistance < 5.0){
+        [self unschedule:@selector(finger_Move_Schedule:)];
+        [self schedule:@selector(finger_Rotation_Schedule:)interval:0.01];
+    }
+}
+
+-(void)finger_Rotation_Schedule:(CCTime)dt
+{
+    if(finger.rotation<15){
+        finger.rotation=finger.rotation+0.3;
+    }else{
+        finger.rotation=0;
+    }
+}
+
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     scrollView.scrollViewDeacceleration=0.3;
@@ -153,6 +198,9 @@ CCLabelTTF* label05;
     if(touchLocation.y<winSize.height-bgSprite.contentSize.height ||
                                                 touchLocation.y>bgSprite.contentSize.height){
         [self removeFromParentAndCleanup:YES];
+        if([GameManager getStageLevel]==0){
+            [TutorialLevel setFinger];
+        }
     }
 }
 
@@ -160,11 +208,19 @@ CCLabelTTF* label05;
 {
     CGPoint tmpPos=createPlayerPos;
     if(serialCount1==0){
-        [StageLevel_01 createPlayer:tmpPos playerNum:type];
+        if([GameManager getStageLevel]==0){
+            [TutorialLevel createPlayer:tmpPos playerNum:type];
+        }else{
+            [StageLevel_01 createPlayer:tmpPos playerNum:type];
+        }
     }else if(serialCount1%2==0){
         tmpPos.x=createPlayerPos.x - (serialCount2*50);
         if(tmpPos.x > 30.0f){
-            [StageLevel_01 createPlayer:tmpPos playerNum:type];
+            if([GameManager getStageLevel]==0){
+                [TutorialLevel createPlayer:tmpPos playerNum:type];
+            }else{
+                [StageLevel_01 createPlayer:tmpPos playerNum:type];
+            }
         }else{
             [self removeFromParentAndCleanup:YES];
         }
@@ -172,7 +228,11 @@ CCLabelTTF* label05;
         serialCount2++;
         tmpPos.x=createPlayerPos.x + (serialCount2*50);
         if(tmpPos.x < winSize.width-30){
-            [StageLevel_01 createPlayer:tmpPos playerNum:type];
+            if([GameManager getStageLevel]==0){
+                [TutorialLevel createPlayer:tmpPos playerNum:type];
+            }else{
+                [StageLevel_01 createPlayer:tmpPos playerNum:type];
+            }
         }else{
             [self removeFromParentAndCleanup:YES];
         }
@@ -180,48 +240,94 @@ CCLabelTTF* label05;
     serialCount1++;
 }
 
--(void)onAnimal01_Clicked:(id)sender{
-    afterCoin = [GameManager load_Currency_Coin] - 1;
-    if(afterCoin >= 0){
+-(void)onAnimal01_Clicked:(id)sender
+{
+    if([GameManager getStageLevel]==0){
         [self playerSet:1];
+        touchCount++;
+        if(touchCount>=3){
+            [self unschedule:@selector(finger_Rotation_Schedule:)];
+            [self schedule:@selector(finger_Move_Schedule:)interval:0.01];
+        }
     }else{
-        [self showMassage];
+        afterCoin = [GameManager load_Currency_Coin] - 1;
+        if(afterCoin >= 0){
+            [self playerSet:1];
+        }else{
+            [self showMassage];
+        }
     }
 }
 -(void)onAnimal02_Clicked:(id)sender
 {
-    afterCoin = [GameManager load_Currency_Coin] - 2;
-    if(afterCoin >= 0){
+    if([GameManager getStageLevel]==0){
         [self playerSet:2];
+        touchCount++;
+        if(touchCount>=3){
+            [self unschedule:@selector(finger_Rotation_Schedule:)];
+            [self schedule:@selector(finger_Move_Schedule:)interval:0.01];
+        }
     }else{
-        [self showMassage];
+        afterCoin = [GameManager load_Currency_Coin] - 2;
+        if(afterCoin >= 0){
+            [self playerSet:2];
+        }else{
+            [self showMassage];
+        }
     }
 }
 -(void)onAnimal03_Clicked:(id)sender
 {
-    afterCoin = [GameManager load_Currency_Coin] - 3;
-    if(afterCoin >= 0){
+    if([GameManager getStageLevel]==0){
         [self playerSet:3];
+        touchCount++;
+        if(touchCount>=3){
+            [self unschedule:@selector(finger_Rotation_Schedule:)];
+            [self schedule:@selector(finger_Move_Schedule:)interval:0.01];
+        }
     }else{
-        [self showMassage];
+        afterCoin = [GameManager load_Currency_Coin] - 3;
+        if(afterCoin >= 0){
+            [self playerSet:3];
+        }else{
+            [self showMassage];
+        }
     }
 }
 -(void)onAnimal04_Clicked:(id)sender
 {
-    afterCoin = [GameManager load_Currency_Coin] - 4;
-    if(afterCoin >= 0){
+    if([GameManager getStageLevel]==0){
         [self playerSet:4];
+        touchCount++;
+        if(touchCount>=3){
+            [self unschedule:@selector(finger_Rotation_Schedule:)];
+            [self schedule:@selector(finger_Move_Schedule:)interval:0.01];
+        }
     }else{
-        [self showMassage];
+        afterCoin = [GameManager load_Currency_Coin] - 4;
+        if(afterCoin >= 0){
+            [self playerSet:4];
+        }else{
+            [self showMassage];
+        }
     }
 }
 -(void)onAnimal05_Clicked:(id)sender
 {
-    afterCoin = [GameManager load_Currency_Coin] - 5;
-    if(afterCoin >= 0){
+    if([GameManager getStageLevel]==0){
         [self playerSet:5];
+        touchCount++;
+        if(touchCount>=3){
+            [self unschedule:@selector(finger_Rotation_Schedule:)];
+            [self schedule:@selector(finger_Move_Schedule:)interval:0.01];
+        }
     }else{
-        [self showMassage];
+        afterCoin = [GameManager load_Currency_Coin] - 5;
+        if(afterCoin >= 0){
+            [self playerSet:5];
+        }else{
+            [self showMassage];
+        }
     }
 }
 
