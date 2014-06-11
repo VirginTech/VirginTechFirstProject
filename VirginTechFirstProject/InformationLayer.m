@@ -8,6 +8,7 @@
 
 #import "InformationLayer.h"
 #import "GameManager.h"
+#import "AchievementManeger.h"
 
 @implementation InformationLayer
 
@@ -85,9 +86,45 @@ CCLabelTTF* achieveLabel;
     
     [InformationLayer update_CurrencyLabel];
     [InformationLayer update_HighScoreLabel];
+    [InformationLayer update_AchievementLabel];
     
     return self;
 }
+
++(void)update_AchievementLabel
+{
+    int achievCount=0;
+    NSMutableArray* achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Tank"];
+    for(int i=0;i<achiveArray.count;i++){
+        if([[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
+            achievCount++;
+        }
+    }
+    achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Level"];
+    for(int i=0;i<achiveArray.count;i++){
+        if([[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
+            achievCount++;
+        }
+    }
+    achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Fortress"];
+    for(int i=0;i<achiveArray.count;i++){
+        if([[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
+            achievCount++;
+        }
+    }
+    achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Stage"];
+    for(int i=0;i<achiveArray.count;i++){
+        if([[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
+            achievCount++;
+        }
+    }
+    achieveLabel.string=[NSString stringWithFormat:@"%02d",achievCount];
+}
+
 +(void)update_HighScoreLabel
 {
     scoreLabel.string=[NSString stringWithFormat:@"%05ld",[GameManager load_HighScore]];

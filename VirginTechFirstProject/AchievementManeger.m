@@ -163,6 +163,37 @@
 }
 
 //=========================================
+//GameCenterへ全てのアチーブメント保存
+//=========================================
++(void)reportAchievement_All
+{
+    NSMutableArray* achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Tank"];
+    for(int i=0;i<achiveArray.count;i++){
+        [self reportAchievement_GameCenter:[[[achiveArray objectAtIndex:i]objectAtIndex:2]floatValue]
+                                identifier:[[achiveArray objectAtIndex:i]objectAtIndex:0]];
+    }
+    achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Level"];
+    for(int i=0;i<achiveArray.count;i++){
+        [self reportAchievement_GameCenter:[[[achiveArray objectAtIndex:i]objectAtIndex:2]floatValue]
+                                identifier:[[achiveArray objectAtIndex:i]objectAtIndex:0]];
+    }
+    achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Fortress"];
+    for(int i=0;i<achiveArray.count;i++){
+        [self reportAchievement_GameCenter:[[[achiveArray objectAtIndex:i]objectAtIndex:2]floatValue]
+                                identifier:[[achiveArray objectAtIndex:i]objectAtIndex:0]];
+    }
+    achiveArray=[[NSMutableArray alloc]init];
+    achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Stage"];
+    for(int i=0;i<achiveArray.count;i++){
+        [self reportAchievement_GameCenter:[[[achiveArray objectAtIndex:i]objectAtIndex:2]floatValue]
+                                identifier:[[achiveArray objectAtIndex:i]objectAtIndex:0]];
+    }
+}
+
+//=========================================
 //GameCenterへアチーブメントを送信
 //=========================================
 +(void)reportAchievement_GameCenter:(float)percent identifier:(NSString*)identifier

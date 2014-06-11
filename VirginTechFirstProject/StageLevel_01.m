@@ -413,6 +413,8 @@ NSMutableArray* removeEnemyMissileArray;
                             [GameManager submitScore_GameCenter:[GameManager load_HighScore]];
                             //アチーブメント保存
                             [self setAchievement:@"Achievement_Tank"];
+                            //アチーブメントラベル更新
+                            [InformationLayer update_AchievementLabel];
                             //敵削除配列へ
                             [removeEnemyArray addObject:enemy];
                         }
@@ -481,7 +483,9 @@ NSMutableArray* removeEnemyMissileArray;
                     }
                     //アチーブメント保存
                     [self setAchievement:@"Achievement_Stage"];
-                    
+                    //アチーブメントラベル更新
+                    [InformationLayer update_AchievementLabel];
+
                     break;
                 }
             }
@@ -588,6 +592,8 @@ NSMutableArray* removeEnemyMissileArray;
         [self unscheduleAllSelectors];
         [bgSpLayer removeChild:playerFortress cleanup:YES];
         [NaviLayer setStageEndingScreen:false rate:0];
+        //アチーブメント送信（まだ）
+        //[AchievementManeger reportAchievement_All];
     }
 }
 
@@ -617,6 +623,32 @@ NSMutableArray* removeEnemyMissileArray;
                 [GameManager save_StageClear_State:[GameManager getStageLevel] rate:1];
             }
         }
+        //アチーブメント送信（まだ）
+        //[AchievementManeger reportAchievement_All];
+        
+        //レビュー誘導
+        if([GameManager getStageLevel]%10==0){
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            alert.tag=1;
+            alert.delegate = self;
+            alert.title = @"評価をお願いします";
+            [alert addButtonWithTitle:@"後で評価する"];
+            [alert addButtonWithTitle:@"今すぐ評価する"];
+            [alert show];
+        }
+    }
+}
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSURL* url;
+    switch (buttonIndex){
+    case 0:
+        break;
+    case 1:
+        url = [NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=869207877&mt=8&type=Purple+Software"];
+        [[UIApplication sharedApplication]openURL:url];
+        break;
     }
 }
 

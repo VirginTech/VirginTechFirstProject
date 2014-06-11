@@ -23,5 +23,6 @@
 
 +(void)update_CurrencyLabel;
 +(void)update_HighScoreLabel;
++(void)update_AchievementLabel;
 
 @end

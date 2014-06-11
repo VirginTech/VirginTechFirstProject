@@ -23,5 +23,6 @@
 +(void)save_Achievement_Reward:(int)index reward:(bool)reward forKey:(NSString*)forKey;
 
 +(void)reportAchievement_GameCenter:(float)percent identifier:(NSString*)identifier;
++(void)reportAchievement_All;
 
 @end
