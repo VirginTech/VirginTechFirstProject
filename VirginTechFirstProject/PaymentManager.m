@@ -8,6 +8,7 @@
 
 #import "PaymentManager.h"
 #import "GameManager.h"
+#import "InformationLayer.h"
 
 @implementation PaymentManager
 
@@ -136,7 +137,15 @@ SKProduct* product_;
     }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel30Pack"])
     {
         [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+30];
+    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel50Pack"])
+    {
+        [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+50];
+    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel100Pack"])
+    {
+        [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+100];
     }
+
+    [InformationLayer update_CurrencyLabel];
     //NSLog(@"%@",productIds);
 }
 

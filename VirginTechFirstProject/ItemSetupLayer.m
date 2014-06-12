@@ -15,6 +15,7 @@
 
 @implementation ItemSetupLayer
 
+CGSize winSize;
 int afterDia;
 
 CCScrollView* scrollView;
@@ -55,6 +56,7 @@ CCLabelTTF* label05_Traveling;
     self = [super init];
     if (!self) return(nil);
     
+    winSize=[[CCDirector sharedDirector]viewSize];
     self.userInteractionEnabled = YES;
 
     //BGカラー
@@ -244,11 +246,60 @@ CCLabelTTF* label05_Traveling;
     [self addChild:closeButton];
     
     //ダイア1をコイン50と交換
-    CCButton *barterCoinButton = [CCButton buttonWithTitle:@"[ダイア1をコイン50と交換]" fontName:@"Verdana-Bold" fontSize:18.0f];
-    barterCoinButton.positionType = CCPositionTypeNormalized;
-    barterCoinButton.position = ccp(0.5f, 0.2f); // Top Right of screen
-    [barterCoinButton setTarget:self selector:@selector(onBarterCoinClicked:)];
-    [self addChild:barterCoinButton];
+    CCSprite* coin01=[CCSprite spriteWithSpriteFrame:
+                      [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
+    coin01.position=ccp(40, winSize.height -380);
+    coin01.scale=0.2;
+    [self addChild:coin01];
+    
+    CCLabelTTF* label06=[CCLabelTTF labelWithString:@"コイン　５０パック" fontName:@"Verdana-Bold" fontSize:18.0f];
+    label06.position = ccp(coin01.position.x+100, coin01.position.y);
+    [self addChild:label06];
+    
+    CCButton *barterCoinButton01 = [CCButton buttonWithTitle:@""
+                                                 spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"buyBtn.png"]];
+    barterCoinButton01.position = ccp(label06.position.x+130, coin01.position.y);
+    barterCoinButton01.scale=0.6;
+    [barterCoinButton01 setTarget:self selector:@selector(onBarterCoin01Clicked:)];
+    [self addChild:barterCoinButton01];
+    
+    CCSprite* dia06=[CCSprite spriteWithSpriteFrame:
+                     [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"diamond.png"]];
+    dia06.position=ccp(40,barterCoinButton01.contentSize.height/2);
+    dia06.scale=0.2;
+    [barterCoinButton01 addChild:dia06];
+    
+    CCLabelTTF* labelBtn06=[CCLabelTTF labelWithString:@" × 1" fontName:@"Verdana-Bold" fontSize:18];
+    labelBtn06.position=ccp(barterCoinButton01.contentSize.width/2+10,barterCoinButton01.contentSize.height/2);
+    [barterCoinButton01 addChild:labelBtn06];
+    
+    //ダイア2をコイン100と交換
+    CCSprite* coin02=[CCSprite spriteWithSpriteFrame:
+                      [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
+    coin02.position=ccp(40, coin01.position.y -40);
+    coin02.scale=0.2;
+    [self addChild:coin02];
+    
+    CCLabelTTF* label07=[CCLabelTTF labelWithString:@"コイン１００パック" fontName:@"Verdana-Bold" fontSize:18.0f];
+    label07.position = ccp(coin02.position.x+100, coin02.position.y);
+    [self addChild:label07];
+    
+    CCButton *barterCoinButton02 = [CCButton buttonWithTitle:@""
+                                                 spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"buyBtn.png"]];
+    barterCoinButton02.position = ccp(label07.position.x+130, coin02.position.y);
+    barterCoinButton02.scale=0.6;
+    [barterCoinButton02 setTarget:self selector:@selector(onBarterCoin02Clicked:)];
+    [self addChild:barterCoinButton02];
+    
+    CCSprite* dia07=[CCSprite spriteWithSpriteFrame:
+                     [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"diamond.png"]];
+    dia07.position=ccp(40,barterCoinButton02.contentSize.height/2);
+    dia07.scale=0.2;
+    [barterCoinButton02 addChild:dia07];
+    
+    CCLabelTTF* labelBtn07=[CCLabelTTF labelWithString:@" × 2" fontName:@"Verdana-Bold" fontSize:18];
+    labelBtn07.position=ccp(barterCoinButton02.contentSize.width/2+10,barterCoinButton02.contentSize.height/2);
+    [barterCoinButton02 addChild:labelBtn07];
     
     return self;
 }
@@ -354,85 +405,152 @@ CCLabelTTF* label05_Traveling;
 
 -(void)onSetBtn01_Clicked:(id)sender
 {
-    afterDia = [GameManager load_Currency_Dia] - 1;
-    if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"player01"];
-        [self setButtonLevel];
-        [self setAbility];
-        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
-        [InformationLayer update_CurrencyLabel];
-        [self setAchievement];
-    }else{
-        [self showMassage];
-    }
+    [self showMessageAlert:1];
 }
 -(void)onSetBtn02_Clicked:(id)sender
 {
-    afterDia = [GameManager load_Currency_Dia] - 1;
-    if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"player02"];
-        [self setButtonLevel];
-        [self setAbility];
-        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
-        [InformationLayer update_CurrencyLabel];
-        [self setAchievement];
-    }else{
-        [self showMassage];
-    }
+    [self showMessageAlert:2];
 }
 -(void)onSetBtn03_Clicked:(id)sender
 {
-    afterDia = [GameManager load_Currency_Dia] - 1;
-    if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"player03"];
-        [self setButtonLevel];
-        [self setAbility];
-        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
-        [InformationLayer update_CurrencyLabel];
-        [self setAchievement];
-    }else{
-        [self showMassage];
-    }
+    [self showMessageAlert:3];
 }
 -(void)onSetBtn04_Clicked:(id)sender
 {
-    afterDia = [GameManager load_Currency_Dia] - 1;
-    if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"player04"];
-        [self setButtonLevel];
-        [self setAbility];
-        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
-        [InformationLayer update_CurrencyLabel];
-        [self setAchievement];
-    }else{
-        [self showMassage];
-    }
+    [self showMessageAlert:4];
 }
 -(void)onSetBtn05_Clicked:(id)sender
 {
-    afterDia = [GameManager load_Currency_Dia] - 1;
-    if(afterDia >= 0){
-        [ObjectManager levelUp_Object_Ability:@"player05"];
-        [self setButtonLevel];
-        [self setAbility];
-        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
-        [InformationLayer update_CurrencyLabel];
-        [self setAchievement];
-    }else{
-        [self showMassage];
+    [self showMessageAlert:5];
+}
+
+-(void)showMessageAlert:(int)type
+{
+    UIAlertView *alert = [[UIAlertView alloc] init];
+    alert.tag=type;
+    alert.delegate = self;
+    alert.title = @"レベルアップ！";
+    alert.message= [NSString stringWithFormat:
+                    @"\nアイテムをレベルアップします。\n\n攻撃:%.2fアップ\n防御:%.2fアップ\n移動:%.2fアップ\n\nよろしいですか？",
+                    [self levelUp_Quantity:type key:0],
+                    [self levelUp_Quantity:type key:1],
+                    [self levelUp_Quantity:type key:2]];
+    [alert addButtonWithTitle:@"いいえ"];
+    [alert addButtonWithTitle:@"はい"];
+    [alert show];
+
+}
+
+-(float)levelUp_Quantity:(int)type key:(int)key //0:攻撃 1:防御 2:移動
+{
+    float quantity;
+    if(type==1){
+        if(key==0){
+            quantity=0.05*100;
+        }else if(key==1){
+            quantity=0.5*100;
+        }else if(key==2){
+            quantity=0.03*100;
+        }
+    }else if(type==2){
+        if(key==0){
+            quantity=0.05*100;
+        }else if(key==1){
+            quantity=0.25*100;
+        }else if(key==2){
+            quantity=0.05*100;
+        }
+    }else if(type==3){
+        if(key==0){
+            quantity=0.1*100;
+        }else if(key==1){
+            quantity=0.5*100;
+        }else if(key==2){
+            quantity=0.01*100;
+        }
+    }else if(type==4){
+        if(key==0){
+            quantity=0.175*100;
+        }else if(key==1){
+            quantity=1.0*100;
+        }else if(key==2){
+            quantity=0.003*100;
+        }
+    }else if(type==5){
+        if(key==0){
+            quantity=0.25*100;
+        }else if(key==1){
+            quantity=1.5*100;
+        }else if(key==2){
+            quantity=0.001*100;
+        }
+    }
+    return quantity;
+}
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (buttonIndex){
+    case 0:
+        break;
+    case 1:
+        if(alertView.tag>=1 && alertView.tag<=5){
+            afterDia = [GameManager load_Currency_Dia] - 1;
+            if(afterDia >= 0){
+                [ObjectManager levelUp_Object_Ability:[NSString stringWithFormat:@"player%02d",(int)alertView.tag]];
+                [self setButtonLevel];
+                [self setAbility];
+                [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
+                [InformationLayer update_CurrencyLabel];
+                [self setAchievement];
+            }else{
+                [self showLackMassage];
+            }
+        }else if(alertView.tag==6){
+            afterDia = [GameManager load_Currency_Dia] - 1;
+            if(afterDia >= 0){
+                [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
+                [GameManager in_Out_Coin:50 addFlg:true];//コイン50増
+                [InformationLayer update_CurrencyLabel];
+            }else{
+                [self showLackMassage];
+            }
+        }else if(alertView.tag==7){
+            afterDia = [GameManager load_Currency_Dia] - 2;
+            if(afterDia >= 0){
+                [GameManager in_Out_Dia:2 addFlg:false];//ダイア2減
+                [GameManager in_Out_Coin:100 addFlg:true];//コイン100増
+                [InformationLayer update_CurrencyLabel];
+            }else{
+                [self showLackMassage];
+            }
+        }
+        break;
     }
 }
 
--(void)onBarterCoinClicked:(id)sender
+-(void)onBarterCoin01Clicked:(id)sender
 {
-    afterDia = [GameManager load_Currency_Dia] - 1;
-    if(afterDia >= 0){
-        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
-        [GameManager in_Out_Coin:50 addFlg:true];//コイン50増
-        [InformationLayer update_CurrencyLabel];
-    }else{
-        [self showMassage];
-    }
+    UIAlertView *alert = [[UIAlertView alloc] init];
+    alert.tag=6;
+    alert.delegate = self;
+    alert.title = @"コイン５０パック";
+    alert.message=@"ダイア１をコイン５０パックと交換します。";
+    [alert addButtonWithTitle:@"いいえ"];
+    [alert addButtonWithTitle:@"はい"];
+    [alert show];
+}
+
+-(void)onBarterCoin02Clicked:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] init];
+    alert.tag=7;
+    alert.delegate = self;
+    alert.title = @"コイン１００パック";
+    alert.message=@"ダイア２をコイン１００パックと交換します。";
+    [alert addButtonWithTitle:@"いいえ"];
+    [alert addButtonWithTitle:@"はい"];
+    [alert show];
 }
 
 -(void)onCloseClicked:(id)sender
@@ -441,7 +559,7 @@ CCLabelTTF* label05_Traveling;
     [self removeFromParentAndCleanup:YES];
 }
 
--(void)showMassage{
+-(void)showLackMassage{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ダイアが足りません"
                                                     message:@"ダイアはショップで購入できます。"
                                                     delegate:nil

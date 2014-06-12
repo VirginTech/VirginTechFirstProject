@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0412A51949ACB0007767C4 /* info_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF0412A31949ACB0007767C4 /* info_default.plist */; };
+		CF0412A61949ACB0007767C4 /* info_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF0412A41949ACB0007767C4 /* info_default.png */; };
 		CF04A821193F3B5500D390C0 /* enemy01_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF04A81F193F3B5500D390C0 /* enemy01_default.plist */; };
 		CF04A822193F3B5500D390C0 /* enemy01_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF04A820193F3B5500D390C0 /* enemy01_default.png */; };
 		CF0687451920D5C200AB3CD7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0687441920D5C200AB3CD7 /* StoreKit.framework */; };
@@ -56,8 +58,6 @@
 		CF8DD34D1943F369004C26EB /* CreditLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8DD34C1943F369004C26EB /* CreditLayer.m */; };
 		CF8DD35019440DC8004C26EB /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD34E19440DC8004C26EB /* button_default.plist */; };
 		CF8DD35119440DC8004C26EB /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD34F19440DC8004C26EB /* button_default.png */; };
-		CF8DD36819444BFC004C26EB /* info_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD36619444BFC004C26EB /* info_default.plist */; };
-		CF8DD36919444BFC004C26EB /* info_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD36719444BFC004C26EB /* info_default.png */; };
 		CF8DD37019445762004C26EB /* fortress_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD36E19445762004C26EB /* fortress_default.plist */; };
 		CF8DD37119445762004C26EB /* fortress_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD36F19445762004C26EB /* fortress_default.png */; };
 		CFAB6D8E1930A97B000FA153 /* AchievementManeger.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */; };
@@ -297,6 +297,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF0412A31949ACB0007767C4 /* info_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info_default.plist; sourceTree = "<group>"; };
+		CF0412A41949ACB0007767C4 /* info_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_default.png; sourceTree = "<group>"; };
 		CF04A81F193F3B5500D390C0 /* enemy01_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy01_default.plist; sourceTree = "<group>"; };
 		CF04A820193F3B5500D390C0 /* enemy01_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy01_default.png; sourceTree = "<group>"; };
 		CF0687441920D5C200AB3CD7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -371,8 +373,6 @@
 		CF8DD34C1943F369004C26EB /* CreditLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditLayer.m; sourceTree = "<group>"; };
 		CF8DD34E19440DC8004C26EB /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
 		CF8DD34F19440DC8004C26EB /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
-		CF8DD36619444BFC004C26EB /* info_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info_default.plist; sourceTree = "<group>"; };
-		CF8DD36719444BFC004C26EB /* info_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_default.png; sourceTree = "<group>"; };
 		CF8DD36E19445762004C26EB /* fortress_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fortress_default.plist; sourceTree = "<group>"; };
 		CF8DD36F19445762004C26EB /* fortress_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fortress_default.png; sourceTree = "<group>"; };
 		CFAB6D8C1930A97B000FA153 /* AchievementManeger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementManeger.h; sourceTree = "<group>"; };
@@ -1017,6 +1017,8 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF0412A31949ACB0007767C4 /* info_default.plist */,
+				CF0412A41949ACB0007767C4 /* info_default.png */,
 				CFF3118B19484AFC00360F57 /* interface_default.plist */,
 				CFF3118C19484AFC00360F57 /* interface_default.png */,
 				CFF311831948468400360F57 /* player05_default.plist */,
@@ -1031,8 +1033,6 @@
 				CFF311741948315400360F57 /* player01_default.png */,
 				CF8DD36E19445762004C26EB /* fortress_default.plist */,
 				CF8DD36F19445762004C26EB /* fortress_default.png */,
-				CF8DD36619444BFC004C26EB /* info_default.plist */,
-				CF8DD36719444BFC004C26EB /* info_default.png */,
 				CF8DD34E19440DC8004C26EB /* button_default.plist */,
 				CF8DD34F19440DC8004C26EB /* button_default.png */,
 				CF4A7C0319431989005C3C17 /* Particle */,
@@ -1995,11 +1995,11 @@
 				CFF311821948422500360F57 /* player04_default.png in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
 				CF4A7BFE1942D644005C3C17 /* playerDead.plist in Resources */,
+				CF0412A61949ACB0007767C4 /* info_default.png in Resources */,
 				CF8DD35119440DC8004C26EB /* button_default.png in Resources */,
+				CF0412A51949ACB0007767C4 /* info_default.plist in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
 				CF36CC55193FF1E8007D2293 /* enemy03_default.plist in Resources */,
-				CF8DD36919444BFC004C26EB /* info_default.png in Resources */,
-				CF8DD36819444BFC004C26EB /* info_default.plist in Resources */,
 				CFF311811948422500360F57 /* player04_default.plist in Resources */,
 				CFDFDF06190A2D6F0021FBF9 /* iTunesArtwork in Resources */,
 				CFF3117919483A7B00360F57 /* player02_default.plist in Resources */,

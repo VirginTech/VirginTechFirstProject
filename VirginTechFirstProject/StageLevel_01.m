@@ -631,7 +631,13 @@ NSMutableArray* removeEnemyMissileArray;
             UIAlertView *alert = [[UIAlertView alloc] init];
             alert.tag=1;
             alert.delegate = self;
-            alert.title = @"評価をお願いします";
+            if([GameManager getStageLevel]==80){
+                alert.title = @"おめでとうございます！";
+                alert.message=@"最後まで遊んで頂き大変ありがとうございました。\nこれからも楽しいゲームを作り続けて行きたいと思っておりますので、これからもよろしくお願いします。\n宜しければ最後に感想をお聞かせ下さい。";
+            }else{
+                alert.title = @"評価をお願いします";
+                alert.message=@"ゲームを遊んで頂きありがとうございます。宜しければレビューをお願いします。";
+            }
             [alert addButtonWithTitle:@"後で評価する"];
             [alert addButtonWithTitle:@"今すぐ評価する"];
             [alert show];
