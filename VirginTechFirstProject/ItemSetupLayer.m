@@ -86,35 +86,65 @@ CCLabelTTF* label05_Traveling;
     animal05.position=CGPointMake(bgSprite.contentSize.width/2+300, 170);
     
     //パワーアップボタン
-    CCButton* setBtn01=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn01.position=ccp(animal01.contentSize.width/2, -80);
+    CCButton* setBtn01=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+                        spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
+    setBtn01.position=ccp(animal01.contentSize.width/2, -75);
+    setBtn01.scale=0.7;
     [setBtn01 setTarget:self selector:@selector(onSetBtn01_Clicked:)];
-    setBtn01.color=[CCColor blueColor];
     [animal01 addChild:setBtn01];
+    CCSprite* dia01=[CCSprite spriteWithSpriteFrame:
+                     [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"diamond.png"]];
+    dia01.position=ccp(15,setBtn01.contentSize.height/2);
+    dia01.scale=0.15;
+    [setBtn01 addChild:dia01];
     
-    CCButton* setBtn02=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn02.position=ccp(animal02.contentSize.width/2, -80);
+    CCButton* setBtn02=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+                        spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
+    setBtn02.position=ccp(animal02.contentSize.width/2, -75);
+    setBtn02.scale=0.7;
     [setBtn02 setTarget:self selector:@selector(onSetBtn02_Clicked:)];
-    setBtn02.color=[CCColor blueColor];
     [animal02 addChild:setBtn02];
-    
-    CCButton* setBtn03=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn03.position=ccp(animal03.contentSize.width/2, -80);
+    CCSprite* dia02=[CCSprite spriteWithSpriteFrame:
+                     [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"diamond.png"]];
+    dia02.position=ccp(15,setBtn02.contentSize.height/2);
+    dia02.scale=0.15;
+    [setBtn02 addChild:dia02];
+
+    CCButton* setBtn03=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+                        spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
+    setBtn03.position=ccp(animal03.contentSize.width/2, -75);
+    setBtn03.scale=0.7;
     [setBtn03 setTarget:self selector:@selector(onSetBtn03_Clicked:)];
-    setBtn03.color=[CCColor blueColor];
     [animal03 addChild:setBtn03];
+    CCSprite* dia03=[CCSprite spriteWithSpriteFrame:
+                     [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"diamond.png"]];
+    dia03.position=ccp(15,setBtn03.contentSize.height/2);
+    dia03.scale=0.15;
+    [setBtn03 addChild:dia03];
     
-    CCButton* setBtn04=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn04.position=ccp(animal04.contentSize.width/2, -80);
+    CCButton* setBtn04=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+                        spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
+    setBtn04.position=ccp(animal04.contentSize.width/2, -75);
+    setBtn04.scale=0.7;
     [setBtn04 setTarget:self selector:@selector(onSetBtn04_Clicked:)];
-    setBtn04.color=[CCColor blueColor];
     [animal04 addChild:setBtn04];
+    CCSprite* dia04=[CCSprite spriteWithSpriteFrame:
+                     [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"diamond.png"]];
+    dia04.position=ccp(15,setBtn04.contentSize.height/2);
+    dia04.scale=0.15;
+    [setBtn04 addChild:dia04];
     
-    CCButton* setBtn05=[CCButton buttonWithTitle:@"LevelUp!" fontName:@"Verdana-Bold" fontSize:15.0f];
-    setBtn05.position=ccp(animal05.contentSize.width/2, -80);
+    CCButton* setBtn05=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+                        spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
+    setBtn05.position=ccp(animal05.contentSize.width/2, -75);
+    setBtn05.scale=0.7;
     [setBtn05 setTarget:self selector:@selector(onSetBtn05_Clicked:)];
-    setBtn05.color=[CCColor blueColor];
     [animal05 addChild:setBtn05];
+    CCSprite* dia05=[CCSprite spriteWithSpriteFrame:
+                     [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"diamond.png"]];
+    dia05.position=ccp(15,setBtn05.contentSize.height/2);
+    dia05.scale=0.15;
+    [setBtn05 addChild:dia05];
 
     //レベルラベル
     label01=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
@@ -152,77 +182,77 @@ CCLabelTTF* label05_Traveling;
     [self setButtonLevel];
     
     //アビリティ表示
-    label01_Attack=[CCLabelTTF labelWithString:@"攻撃:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label01_Attack=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Attack",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label01_Attack.color=[CCColor blackColor];
     label01_Attack.position=CGPointMake(animal01.contentSize.width/2, -10);
     [animal01 addChild:label01_Attack];
     
-    label01_Defense=[CCLabelTTF labelWithString:@"防御:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label01_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label01_Defense.color=[CCColor blackColor];
     label01_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
     [animal01 addChild:label01_Defense];
     
-    label01_Traveling=[CCLabelTTF labelWithString:@"移動:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label01_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label01_Traveling.color=[CCColor blackColor];
     label01_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
     [animal01 addChild:label01_Traveling];
     
-    label02_Attack=[CCLabelTTF labelWithString:@"攻撃:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label02_Attack=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Attack",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label02_Attack.color=[CCColor blackColor];
     label02_Attack.position=CGPointMake(animal01.contentSize.width/2, -10);
     [animal02 addChild:label02_Attack];
     
-    label02_Defense=[CCLabelTTF labelWithString:@"防御:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label02_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label02_Defense.color=[CCColor blackColor];
     label02_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
     [animal02 addChild:label02_Defense];
     
-    label02_Traveling=[CCLabelTTF labelWithString:@"移動:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label02_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label02_Traveling.color=[CCColor blackColor];
     label02_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
     [animal02 addChild:label02_Traveling];
 
-    label03_Attack=[CCLabelTTF labelWithString:@"攻撃:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label03_Attack=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Attack",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label03_Attack.color=[CCColor blackColor];
     label03_Attack.position=CGPointMake(animal01.contentSize.width/2, -10);
     [animal03 addChild:label03_Attack];
     
-    label03_Defense=[CCLabelTTF labelWithString:@"防御:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label03_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label03_Defense.color=[CCColor blackColor];
     label03_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
     [animal03 addChild:label03_Defense];
     
-    label03_Traveling=[CCLabelTTF labelWithString:@"移動:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label03_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label03_Traveling.color=[CCColor blackColor];
     label03_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
     [animal03 addChild:label03_Traveling];
 
-    label04_Attack=[CCLabelTTF labelWithString:@"攻撃:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label04_Attack=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Attack",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label04_Attack.color=[CCColor blackColor];
     label04_Attack.position=CGPointMake(animal01.contentSize.width/2, -10);
     [animal04 addChild:label04_Attack];
     
-    label04_Defense=[CCLabelTTF labelWithString:@"防御:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label04_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label04_Defense.color=[CCColor blackColor];
     label04_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
     [animal04 addChild:label04_Defense];
     
-    label04_Traveling=[CCLabelTTF labelWithString:@"移動:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label04_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label04_Traveling.color=[CCColor blackColor];
     label04_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
     [animal04 addChild:label04_Traveling];
 
-    label05_Attack=[CCLabelTTF labelWithString:@"攻撃:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label05_Attack=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Attack",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label05_Attack.color=[CCColor blackColor];
     label05_Attack.position=CGPointMake(animal01.contentSize.width/2, -10);
     [animal05 addChild:label05_Attack];
     
-    label05_Defense=[CCLabelTTF labelWithString:@"防御:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label05_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label05_Defense.color=[CCColor blackColor];
     label05_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
     [animal05 addChild:label05_Defense];
     
-    label05_Traveling=[CCLabelTTF labelWithString:@"移動:0000" fontName:@"Verdana-Bold" fontSize:10.0f];
+    label05_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label05_Traveling.color=[CCColor blackColor];
     label05_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
     [animal05 addChild:label05_Traveling];
@@ -246,13 +276,15 @@ CCLabelTTF* label05_Traveling;
     [self addChild:closeButton];
     
     //ダイア1をコイン50と交換
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"info_default.plist"];
     CCSprite* coin01=[CCSprite spriteWithSpriteFrame:
                       [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
     coin01.position=ccp(40, winSize.height -380);
     coin01.scale=0.2;
     [self addChild:coin01];
     
-    CCLabelTTF* label06=[CCLabelTTF labelWithString:@"コイン　５０パック" fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCLabelTTF* label06=[CCLabelTTF labelWithString:
+                         NSLocalizedString(@"Coin50Pack",NULL) fontName:@"Verdana-Bold" fontSize:18.0f];
     label06.position = ccp(coin01.position.x+100, coin01.position.y);
     [self addChild:label06];
     
@@ -280,7 +312,8 @@ CCLabelTTF* label05_Traveling;
     coin02.scale=0.2;
     [self addChild:coin02];
     
-    CCLabelTTF* label07=[CCLabelTTF labelWithString:@"コイン１００パック" fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCLabelTTF* label07=[CCLabelTTF labelWithString:
+                         NSLocalizedString(@"Coin100Pack",NULL) fontName:@"Verdana-Bold" fontSize:18.0f];
     label07.position = ccp(coin02.position.x+100, coin02.position.y);
     [self addChild:label07];
     
@@ -315,40 +348,40 @@ CCLabelTTF* label05_Traveling;
 
 -(void)setAbility
 {
-    label01_Attack.string=[NSString stringWithFormat:
-                           @"攻撃:%04d",(int)roundf([ObjectManager load_Object_Ability_Attack:@"player01"]*100.0)];
-    label01_Defense.string=[NSString stringWithFormat:
-                           @"防御:%04d",(int)roundf([ObjectManager load_Object_Ability_Defense:@"player01"]*100.0)];
-    label01_Traveling.string=[NSString stringWithFormat:
-                           @"移動:%04d",(int)roundf([ObjectManager load_Object_Ability_Traveling:@"player01"]*100.0)];
+    label01_Attack.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Attack",NULL),
+                           (int)roundf([ObjectManager load_Object_Ability_Attack:@"player01"]*100.0)];
+    label01_Defense.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Defense",NULL),
+                            (int)roundf([ObjectManager load_Object_Ability_Defense:@"player01"]*100.0)];
+    label01_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
+                              (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player01"]*100.0)];
     
-    label02_Attack.string=[NSString stringWithFormat:
-                           @"攻撃:%04d",(int)roundf([ObjectManager load_Object_Ability_Attack:@"player02"]*100.0)];
-    label02_Defense.string=[NSString stringWithFormat:
-                            @"防御:%04d",(int)roundf([ObjectManager load_Object_Ability_Defense:@"player02"]*100.0)];
-    label02_Traveling.string=[NSString stringWithFormat:
-                              @"移動:%04d",(int)roundf([ObjectManager load_Object_Ability_Traveling:@"player02"]*100.0)];
+    label02_Attack.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Attack",NULL),
+                           (int)roundf([ObjectManager load_Object_Ability_Attack:@"player02"]*100.0)];
+    label02_Defense.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Defense",NULL),
+                            (int)roundf([ObjectManager load_Object_Ability_Defense:@"player02"]*100.0)];
+    label02_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
+                              (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player02"]*100.0)];
     
-    label03_Attack.string=[NSString stringWithFormat:
-                           @"攻撃:%04d",(int)roundf([ObjectManager load_Object_Ability_Attack:@"player03"]*100.0)];
-    label03_Defense.string=[NSString stringWithFormat:
-                            @"防御:%04d",(int)roundf([ObjectManager load_Object_Ability_Defense:@"player03"]*100.0)];
-    label03_Traveling.string=[NSString stringWithFormat:
-                              @"移動:%04d",(int)roundf([ObjectManager load_Object_Ability_Traveling:@"player03"]*100.0)];
+    label03_Attack.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Attack",NULL),
+                           (int)roundf([ObjectManager load_Object_Ability_Attack:@"player03"]*100.0)];
+    label03_Defense.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Defense",NULL),
+                            (int)roundf([ObjectManager load_Object_Ability_Defense:@"player03"]*100.0)];
+    label03_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
+                              (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player03"]*100.0)];
     
-    label04_Attack.string=[NSString stringWithFormat:
-                           @"攻撃:%04d",(int)roundf([ObjectManager load_Object_Ability_Attack:@"player04"]*100.0)];
-    label04_Defense.string=[NSString stringWithFormat:
-                            @"防御:%04d",(int)roundf([ObjectManager load_Object_Ability_Defense:@"player04"]*100.0)];
-    label04_Traveling.string=[NSString stringWithFormat:
-                              @"移動:%04d",(int)roundf([ObjectManager load_Object_Ability_Traveling:@"player04"]*100.0)];
+    label04_Attack.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Attack",NULL),
+                           (int)roundf([ObjectManager load_Object_Ability_Attack:@"player04"]*100.0)];
+    label04_Defense.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Defense",NULL),
+                            (int)roundf([ObjectManager load_Object_Ability_Defense:@"player04"]*100.0)];
+    label04_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
+                              (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player04"]*100.0)];
     
-    label05_Attack.string=[NSString stringWithFormat:
-                           @"攻撃:%04d",(int)roundf([ObjectManager load_Object_Ability_Attack:@"player05"]*100.0)];
-    label05_Defense.string=[NSString stringWithFormat:
-                            @"防御:%04d",(int)roundf([ObjectManager load_Object_Ability_Defense:@"player05"]*100.0)];
-    label05_Traveling.string=[NSString stringWithFormat:
-                              @"移動:%04d",(int)roundf([ObjectManager load_Object_Ability_Traveling:@"player05"]*100.0)];
+    label05_Attack.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Attack",NULL),
+                           (int)roundf([ObjectManager load_Object_Ability_Attack:@"player05"]*100.0)];
+    label05_Defense.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Defense",NULL),
+                            (int)roundf([ObjectManager load_Object_Ability_Defense:@"player05"]*100.0)];
+    label05_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
+                              (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player05"]*100.0)];
     
     
 }
@@ -385,13 +418,18 @@ CCLabelTTF* label05_Traveling;
                 [InformationLayer update_CurrencyLabel];
                 //メッセージボックス
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
-                            [NSString stringWithFormat:@"レベル %d 達成！",
-                                       [AchievementManeger load_Achievement_Value:i forKey:@"Achievement_Level"]+1]
-                            message:[NSString stringWithFormat:@"ダイヤモンドを %d 入手しました！",
-                                        [AchievementManeger load_Achievement_Point:i forKey:@"Achievement_Level"]]
+                            [NSString stringWithFormat:@"%@ %d %@",
+                                        NSLocalizedString(@"Level",NULL),
+                                       [AchievementManeger load_Achievement_Value:i forKey:@"Achievement_Level"]+1,
+                                        NSLocalizedString(@"Achievement",NULL)]
+                                      
+                            message:[NSString stringWithFormat:@"%@ %d %@",
+                                        NSLocalizedString(@"Diamond",NULL),
+                                        [AchievementManeger load_Achievement_Point:i forKey:@"Achievement_Level"],
+                                        NSLocalizedString(@"Get",NULL)]
                             delegate:nil
                             cancelButtonTitle:nil
-                            otherButtonTitles:@"O K", nil];
+                            otherButtonTitles:NSLocalizedString(@"Yes",NULL), nil];
                 [alert show];
             }
         }
@@ -429,14 +467,28 @@ CCLabelTTF* label05_Traveling;
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.tag=type;
     alert.delegate = self;
-    alert.title = @"レベルアップ！";
+    alert.title = NSLocalizedString(@"LevelUp",NULL);
     alert.message= [NSString stringWithFormat:
-                    @"\nアイテムをレベルアップします。\n\n攻撃:%.2fアップ\n防御:%.2fアップ\n移動:%.2fアップ\n\nよろしいですか？",
+                    @"\n%@ \n\n%@:%.2f%@ \n%@:%.2f%@ \n%@:%.2f%@ \n\n%@",
+                    NSLocalizedString(@"levelUpItem",NULL),
+                    
+                    NSLocalizedString(@"Attack",NULL),
                     [self levelUp_Quantity:type key:0],
+                    NSLocalizedString(@"Up",NULL),
+                    
+                    NSLocalizedString(@"Defense",NULL),
                     [self levelUp_Quantity:type key:1],
-                    [self levelUp_Quantity:type key:2]];
-    [alert addButtonWithTitle:@"いいえ"];
-    [alert addButtonWithTitle:@"はい"];
+                    NSLocalizedString(@"Up",NULL),
+                    
+                    NSLocalizedString(@"Move",NULL),
+                    [self levelUp_Quantity:type key:2],
+                    NSLocalizedString(@"Up",NULL),
+                    
+                    NSLocalizedString(@"IsItOk",NULL)
+                    ];
+    
+    [alert addButtonWithTitle:NSLocalizedString(@"No",NULL)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Yes",NULL)];
     [alert show];
 
 }
@@ -534,10 +586,10 @@ CCLabelTTF* label05_Traveling;
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.tag=6;
     alert.delegate = self;
-    alert.title = @"コイン５０パック";
-    alert.message=@"ダイア１をコイン５０パックと交換します。";
-    [alert addButtonWithTitle:@"いいえ"];
-    [alert addButtonWithTitle:@"はい"];
+    alert.title = NSLocalizedString(@"Coin50Pack",NULL);
+    alert.message=NSLocalizedString(@"BarterCoin50",NULL);
+    [alert addButtonWithTitle:NSLocalizedString(@"No",NULL)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Yes",NULL)];
     [alert show];
 }
 
@@ -546,10 +598,10 @@ CCLabelTTF* label05_Traveling;
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.tag=7;
     alert.delegate = self;
-    alert.title = @"コイン１００パック";
-    alert.message=@"ダイア２をコイン１００パックと交換します。";
-    [alert addButtonWithTitle:@"いいえ"];
-    [alert addButtonWithTitle:@"はい"];
+    alert.title = NSLocalizedString(@"Coin100Pack",NULL);
+    alert.message=NSLocalizedString(@"BarterCoin100",NULL);
+    [alert addButtonWithTitle:NSLocalizedString(@"No",NULL)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Yes",NULL)];
     [alert show];
 }
 
@@ -560,11 +612,11 @@ CCLabelTTF* label05_Traveling;
 }
 
 -(void)showLackMassage{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ダイアが足りません"
-                                                    message:@"ダイアはショップで購入できます。"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"DiamondShortage",NULL)
+                                                    message:NSLocalizedString(@"BuyShop",NULL)
                                                     delegate:nil
                                                     cancelButtonTitle:nil
-                                                    otherButtonTitles:@"O K", nil];
+                                                    otherButtonTitles:NSLocalizedString(@"Yes",NULL), nil];
     [alert show];
 }
 

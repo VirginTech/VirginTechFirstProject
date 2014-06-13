@@ -6,4 +6,33 @@
   Copyright (c) 2014年 VirginTech LLC. All rights reserved.
 */
 
+//タイトル画面
+"Locale" = "Locale";
 "Title" = "Strategy!\nAnimals\nWars ";
+
+//アイテムセットアップ
+"Yes"="Yes";
+"No"="No";
+"LevelUp"="LevelUp!!";
+"levelUpItem"="Level up the item.";
+"Attack"="Attack";
+"Defense"="Defense";
+"Move"="Move";
+"Up"="Up";
+"IsItOk"="Is it ok ?";
+
+//ショップ
+"Coin50Pack"="50 Coin pack";
+"Coin100Pack"="100 Coin pack";
+"BarterCoin50"="Replace the coin 50, the jewel 1";
+"BarterCoin100"="Replace the coin 100, the jewel 2";
+"DiamondShortage"="Jewelry is not enough.";
+"BuyShop"="Jewelry, I can buy in the shop.";
+
+//アチーブメント
+"Diamond"="Diamond";
+"Get"="Get!";
+"Level"="Level";
+"Achievement"="Achievement";
+""="";
+""="";

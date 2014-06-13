@@ -51,13 +51,15 @@
 		CF6A727619176C160027F654 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727819176C160027F654 /* Localizable.strings */; };
 		CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727F19176CC50027F654 /* InfoPlist.strings */; };
 		CF6C57DB190F67F700FCF978 /* BasicMath.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6C57DA190F67F700FCF978 /* BasicMath.m */; };
+		CF804092194AA0AA008C5EA9 /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF804090194AA0AA008C5EA9 /* button_default.plist */; };
+		CF804093194AA0AA008C5EA9 /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF804091194AA0AA008C5EA9 /* button_default.png */; };
+		CF80409E194AC1BD008C5EA9 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF80409C194AC1BD008C5EA9 /* interface_default.plist */; };
+		CF80409F194AC1BD008C5EA9 /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF80409D194AC1BD008C5EA9 /* interface_default.png */; };
 		CF8C16C319134618002BBC13 /* AnimalEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C219134618002BBC13 /* AnimalEnemy.m */; };
 		CF8C16C81913B26D002BBC13 /* StageLevel_01.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C71913B26D002BBC13 /* StageLevel_01.m */; };
 		CF8C16CB1913B2EC002BBC13 /* SelectStage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16CA1913B2EC002BBC13 /* SelectStage.m */; };
 		CF8C16CE1913B71A002BBC13 /* NaviLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16CD1913B71A002BBC13 /* NaviLayer.m */; };
 		CF8DD34D1943F369004C26EB /* CreditLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8DD34C1943F369004C26EB /* CreditLayer.m */; };
-		CF8DD35019440DC8004C26EB /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD34E19440DC8004C26EB /* button_default.plist */; };
-		CF8DD35119440DC8004C26EB /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD34F19440DC8004C26EB /* button_default.png */; };
 		CF8DD37019445762004C26EB /* fortress_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD36E19445762004C26EB /* fortress_default.plist */; };
 		CF8DD37119445762004C26EB /* fortress_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD36F19445762004C26EB /* fortress_default.png */; };
 		CFAB6D8E1930A97B000FA153 /* AchievementManeger.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */; };
@@ -279,8 +281,6 @@
 		CFF311821948422500360F57 /* player04_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF311801948422500360F57 /* player04_default.png */; };
 		CFF311851948468400360F57 /* player05_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFF311831948468400360F57 /* player05_default.plist */; };
 		CFF311861948468400360F57 /* player05_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF311841948468400360F57 /* player05_default.png */; };
-		CFF3118D19484AFC00360F57 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFF3118B19484AFC00360F57 /* interface_default.plist */; };
-		CFF3118E19484AFC00360F57 /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF3118C19484AFC00360F57 /* interface_default.png */; };
 		CFF39635191092F90052608E /* InformationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39634191092F90052608E /* InformationLayer.m */; };
 		CFF39638191104510052608E /* PlayerSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39637191104510052608E /* PlayerSelection.m */; };
 		CFFDB93E192C386400979A14 /* ItemSetupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFDB93D192C386400979A14 /* ItemSetupLayer.m */; };
@@ -361,6 +361,10 @@
 		CF6A728019176CC70027F654 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CF6C57D9190F67F700FCF978 /* BasicMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMath.h; sourceTree = "<group>"; };
 		CF6C57DA190F67F700FCF978 /* BasicMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMath.m; sourceTree = "<group>"; };
+		CF804090194AA0AA008C5EA9 /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
+		CF804091194AA0AA008C5EA9 /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
+		CF80409C194AC1BD008C5EA9 /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
+		CF80409D194AC1BD008C5EA9 /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
 		CF8C16C119134618002BBC13 /* AnimalEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalEnemy.h; sourceTree = "<group>"; };
 		CF8C16C219134618002BBC13 /* AnimalEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalEnemy.m; sourceTree = "<group>"; };
 		CF8C16C61913B26D002BBC13 /* StageLevel_01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageLevel_01.h; sourceTree = "<group>"; };
@@ -371,8 +375,6 @@
 		CF8C16CD1913B71A002BBC13 /* NaviLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviLayer.m; sourceTree = "<group>"; };
 		CF8DD34B1943F369004C26EB /* CreditLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditLayer.h; sourceTree = "<group>"; };
 		CF8DD34C1943F369004C26EB /* CreditLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditLayer.m; sourceTree = "<group>"; };
-		CF8DD34E19440DC8004C26EB /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
-		CF8DD34F19440DC8004C26EB /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
 		CF8DD36E19445762004C26EB /* fortress_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fortress_default.plist; sourceTree = "<group>"; };
 		CF8DD36F19445762004C26EB /* fortress_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fortress_default.png; sourceTree = "<group>"; };
 		CFAB6D8C1930A97B000FA153 /* AchievementManeger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementManeger.h; sourceTree = "<group>"; };
@@ -821,8 +823,6 @@
 		CFF311801948422500360F57 /* player04_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player04_default.png; sourceTree = "<group>"; };
 		CFF311831948468400360F57 /* player05_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = player05_default.plist; sourceTree = "<group>"; };
 		CFF311841948468400360F57 /* player05_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player05_default.png; sourceTree = "<group>"; };
-		CFF3118B19484AFC00360F57 /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
-		CFF3118C19484AFC00360F57 /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
 		CFF39633191092F90052608E /* InformationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationLayer.h; sourceTree = "<group>"; };
 		CFF39634191092F90052608E /* InformationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationLayer.m; sourceTree = "<group>"; };
 		CFF39636191104510052608E /* PlayerSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSelection.h; sourceTree = "<group>"; };
@@ -1017,10 +1017,12 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF80409C194AC1BD008C5EA9 /* interface_default.plist */,
+				CF80409D194AC1BD008C5EA9 /* interface_default.png */,
+				CF804090194AA0AA008C5EA9 /* button_default.plist */,
+				CF804091194AA0AA008C5EA9 /* button_default.png */,
 				CF0412A31949ACB0007767C4 /* info_default.plist */,
 				CF0412A41949ACB0007767C4 /* info_default.png */,
-				CFF3118B19484AFC00360F57 /* interface_default.plist */,
-				CFF3118C19484AFC00360F57 /* interface_default.png */,
 				CFF311831948468400360F57 /* player05_default.plist */,
 				CFF311841948468400360F57 /* player05_default.png */,
 				CFF3117F1948422500360F57 /* player04_default.plist */,
@@ -1033,8 +1035,6 @@
 				CFF311741948315400360F57 /* player01_default.png */,
 				CF8DD36E19445762004C26EB /* fortress_default.plist */,
 				CF8DD36F19445762004C26EB /* fortress_default.png */,
-				CF8DD34E19440DC8004C26EB /* button_default.plist */,
-				CF8DD34F19440DC8004C26EB /* button_default.png */,
 				CF4A7C0319431989005C3C17 /* Particle */,
 				CF36CC53193FF1E8007D2293 /* enemy03_default.plist */,
 				CF36CC54193FF1E8007D2293 /* enemy03_default.png */,
@@ -1975,7 +1975,6 @@
 				CF8DD37119445762004C26EB /* fortress_default.png in Resources */,
 				CFDFDEE2190A2D6F0021FBF9 /* Default.png in Resources */,
 				CFDFDEEB190A2D6F0021FBF9 /* Icon.png in Resources */,
-				CF8DD35019440DC8004C26EB /* button_default.plist in Resources */,
 				CFDFDEF9190A2D6F0021FBF9 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
 				CF1BF75C193C47F400EEA664 /* leaf_default.png in Resources */,
 				CF6A727319175B240027F654 /* position_line.png in Resources */,
@@ -1987,16 +1986,15 @@
 				CF6A727619176C160027F654 /* Localizable.strings in Resources */,
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
 				CF1BF75E193CADDE00EEA664 /* bgLayer.png in Resources */,
-				CFF3118D19484AFC00360F57 /* interface_default.plist in Resources */,
 				CFDFDEEF190A2D6F0021FBF9 /* Icon-72.png in Resources */,
-				CFF3118E19484AFC00360F57 /* interface_default.png in Resources */,
+				CF80409E194AC1BD008C5EA9 /* interface_default.plist in Resources */,
 				CFF3117A19483A7B00360F57 /* player02_default.png in Resources */,
+				CF80409F194AC1BD008C5EA9 /* interface_default.png in Resources */,
 				CFF3117E19483F5F00360F57 /* player03_default.png in Resources */,
 				CFF311821948422500360F57 /* player04_default.png in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
 				CF4A7BFE1942D644005C3C17 /* playerDead.plist in Resources */,
 				CF0412A61949ACB0007767C4 /* info_default.png in Resources */,
-				CF8DD35119440DC8004C26EB /* button_default.png in Resources */,
 				CF0412A51949ACB0007767C4 /* info_default.plist in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
 				CF36CC55193FF1E8007D2293 /* enemy03_default.plist in Resources */,
@@ -2015,10 +2013,12 @@
 				CFDFDEF3190A2D6F0021FBF9 /* Icon-76.png in Resources */,
 				CF4A7C001942E872005C3C17 /* enemyDead.plist in Resources */,
 				CF36CC51193FF1D6007D2293 /* enemy02_default.plist in Resources */,
+				CF804093194AA0AA008C5EA9 /* button_default.png in Resources */,
 				CFDFE0C9190A2D700021FBF9 /* ChangeLog in Resources */,
 				CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */,
 				CFDFDF08190A2D6F0021FBF9 /* iTunesArtwork@2x in Resources */,
 				CF2F5009193D5A65005E5BF6 /* ground_default.plist in Resources */,
+				CF804092194AA0AA008C5EA9 /* button_default.plist in Resources */,
 				CF04A821193F3B5500D390C0 /* enemy01_default.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,7 @@
 //===========
 // メモリ内
 //===========
+int locale;//1:英語 2:日本語
 int deviceType;// 1:iPhone5 2:iPhone4 3:iPad2
 int stageLevel;//ステージレベル
 CGSize worldSize;//ワールドサイズ
@@ -30,6 +31,14 @@ bool isActive;//アクティブ状態か？
 +(int)getDevice{
     return deviceType;
 }
+//ロケール登録
++(void)setLocale:(int)value{
+    locale=value;
+}
++(int)getLocale{
+    return locale;
+}
+
 //ステージレベル取得／登録
 +(void)setStageLevel:(int)level{
     stageLevel=level;

@@ -32,16 +32,8 @@ CGSize winSize;
     // Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
-    
+
     winSize=[[CCDirector sharedDirector]viewSize];
-    
-    //ゲーム状態セット
-    [GameManager setPlaying:false];
-    [GameManager setPauseing:false];
-    [GameManager setPauseStateChange:false];
-    
-    //画面状態
-    [GameManager setActive:true];
     
     //デバイス登録
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
@@ -54,7 +46,22 @@ CGSize winSize;
     }else{
         [GameManager setDevice:0];
     }
-    //NSLog(@"デバイスは %d です。",[GameManager getDevice]);
+    
+    //ロケール登録
+    NSString* locale = NSLocalizedString(@"Locale",NULL);
+    if([locale isEqualToString:@"Locale"]){
+        [GameManager setLocale:1];//英語
+    }else{
+        [GameManager setLocale:2];//日本語
+    }
+    
+    //ゲーム状態セット
+    [GameManager setPlaying:false];
+    [GameManager setPauseing:false];
+    [GameManager setPauseStateChange:false];
+    
+    //画面状態
+    [GameManager setActive:true];
     
     //初回データ初期値設定
     [InitializeManager initialize_All];
@@ -146,16 +153,20 @@ CGSize winSize;
     [self addChild:creditButton];
 
     //アイテムセットアップ
-    CCButton *itemSetupButton = [CCButton buttonWithTitle:@"[パワーアップ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCButton *itemSetupButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                              [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"itemSetBtn.png"]];
     itemSetupButton.positionType = CCPositionTypeNormalized;
-    itemSetupButton.position = ccp(0.5f, 0.2f);
+    itemSetupButton.position = ccp(0.32f, 0.25f);
+    itemSetupButton.scale=0.7;
     [itemSetupButton setTarget:self selector:@selector(onItemSetupButtonClicked:)];
     [self addChild:itemSetupButton];
 
-    //アイテムセットアップ
-    CCButton *tutorialButton = [CCButton buttonWithTitle:@"[遊び方]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    //チュートリアル
+    CCButton *tutorialButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                 [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"tutorialBtn.png"]];
     tutorialButton.positionType = CCPositionTypeNormalized;
-    tutorialButton.position = ccp(0.5f, 0.15f);
+    tutorialButton.position = ccp(0.68f, 0.25f);
+    tutorialButton.scale=0.7;
     [tutorialButton setTarget:self selector:@selector(onTutorialButtonClicked:)];
     [self addChild:tutorialButton];
 

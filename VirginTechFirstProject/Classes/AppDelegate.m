@@ -11,6 +11,7 @@
 //#import "IntroScene.h"
 //#import "HelloWorldScene.h"
 #import "TitleScene.h"
+#import "GameManager.h"
 
 @implementation AppDelegate
 

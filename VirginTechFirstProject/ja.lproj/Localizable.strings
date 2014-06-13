@@ -6,4 +6,33 @@
   Copyright (c) 2014年 VirginTech LLC. All rights reserved.
 */
 
+//タイトル画面
+"Locale" = "ロケール";
 "Title" = "大戦略！！\nアニマル\n大戦争！ ";
+
+//アイテムセットアップ
+"Yes"="はい";
+"No"="いいえ";
+"LevelUp"="レベルアップ！";
+"levelUpItem"="アイテムをレベルアップします。";
+"Attack"="攻撃";
+"Defense"="防御";
+"Move"="移動";
+"Up"="アップ";
+"IsItOk"="よろしいですか？";
+
+//ショップ
+"Coin50Pack"="コイン　５０パック";
+"Coin100Pack"="コイン１００パック";
+"BarterCoin50"="ダイヤ１をコイン５０パックと交換します。";
+"BarterCoin100"="ダイヤ２をコイン１００パックと交換します。";
+"DiamondShortage"="ダイヤが足りません。";
+"BuyShop"="ダイヤはショップで購入できます。";
+
+//アチーブメント
+"Diamond"="ダイヤモンド";
+"Get"="入手しました。";
+"Level"="レベル";
+"Achievement"="達成";
+""="";
+""="";

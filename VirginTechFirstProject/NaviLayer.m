@@ -99,9 +99,11 @@ NSMutableArray* starG_Array;
     preferencesButton.visible=false;
     
     //アイテムセットアップ
-    itemSetupButton = [CCButton buttonWithTitle:@"[パワーアップ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    itemSetupButton = [CCButton buttonWithTitle:@"" spriteFrame:
+                                 [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"itemSetBtn.png"]];
     itemSetupButton.positionType = CCPositionTypeNormalized;
     itemSetupButton.position = ccp(0.5f, 0.35f);
+    itemSetupButton.scale=0.7;
     [itemSetupButton setTarget:self selector:@selector(onItemSetupButtonClicked:)];
     [self addChild:itemSetupButton];
     itemSetupButton.visible=false;

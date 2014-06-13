@@ -11,6 +11,8 @@
 @interface GameManager : NSObject{
 }
 
++(void)setLocale:(int)value;//1:英語 2:日本語
++(int)getLocale;
 +(void)setDevice:(int)type;// 1:iPhone5 2:iPhone4 3:iPad2
 +(int)getDevice;
 +(void)setStageLevel:(int)level;
