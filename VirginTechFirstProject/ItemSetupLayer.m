@@ -86,7 +86,7 @@ CCLabelTTF* label05_Traveling;
     animal05.position=CGPointMake(bgSprite.contentSize.width/2+300, 170);
     
     //パワーアップボタン
-    CCButton* setBtn01=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+    CCButton* setBtn01=[CCButton buttonWithTitle:[NSString stringWithFormat:@" ×1%@",NSLocalizedString(@"LevelUp",NULL)]
                         spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
     setBtn01.position=ccp(animal01.contentSize.width/2, -75);
     setBtn01.scale=0.7;
@@ -98,7 +98,7 @@ CCLabelTTF* label05_Traveling;
     dia01.scale=0.15;
     [setBtn01 addChild:dia01];
     
-    CCButton* setBtn02=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+    CCButton* setBtn02=[CCButton buttonWithTitle:[NSString stringWithFormat:@" ×1%@",NSLocalizedString(@"LevelUp",NULL)]
                         spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
     setBtn02.position=ccp(animal02.contentSize.width/2, -75);
     setBtn02.scale=0.7;
@@ -110,7 +110,7 @@ CCLabelTTF* label05_Traveling;
     dia02.scale=0.15;
     [setBtn02 addChild:dia02];
 
-    CCButton* setBtn03=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+    CCButton* setBtn03=[CCButton buttonWithTitle:[NSString stringWithFormat:@" ×1%@",NSLocalizedString(@"LevelUp",NULL)]
                         spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
     setBtn03.position=ccp(animal03.contentSize.width/2, -75);
     setBtn03.scale=0.7;
@@ -122,7 +122,7 @@ CCLabelTTF* label05_Traveling;
     dia03.scale=0.15;
     [setBtn03 addChild:dia03];
     
-    CCButton* setBtn04=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+    CCButton* setBtn04=[CCButton buttonWithTitle:[NSString stringWithFormat:@" ×1%@",NSLocalizedString(@"LevelUp",NULL)]
                         spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
     setBtn04.position=ccp(animal04.contentSize.width/2, -75);
     setBtn04.scale=0.7;
@@ -134,7 +134,7 @@ CCLabelTTF* label05_Traveling;
     dia04.scale=0.15;
     [setBtn04 addChild:dia04];
     
-    CCButton* setBtn05=[CCButton buttonWithTitle:@" ×1 LevelUp!!"
+    CCButton* setBtn05=[CCButton buttonWithTitle:[NSString stringWithFormat:@" ×1%@",NSLocalizedString(@"LevelUp",NULL)]
                         spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"levelupBtn.png"]];
     setBtn05.position=ccp(animal05.contentSize.width/2, -75);
     setBtn05.scale=0.7;
@@ -429,7 +429,7 @@ CCLabelTTF* label05_Traveling;
                                         NSLocalizedString(@"Get",NULL)]
                             delegate:nil
                             cancelButtonTitle:nil
-                            otherButtonTitles:NSLocalizedString(@"Yes",NULL), nil];
+                            otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
                 [alert show];
             }
         }
@@ -443,26 +443,46 @@ CCLabelTTF* label05_Traveling;
 
 -(void)onSetBtn01_Clicked:(id)sender
 {
-    [self showMessageAlert:1];
+    if([ObjectManager load_Object_Ability_Level:@"player01"]<[GameManager load_Aggregate_Stage]){
+        [self showLevelUpMessageAlert:1];
+    }else{
+        [self showNotLevelUpAlert];
+    }
 }
 -(void)onSetBtn02_Clicked:(id)sender
 {
-    [self showMessageAlert:2];
+    if([ObjectManager load_Object_Ability_Level:@"player02"]<[GameManager load_Aggregate_Stage]){
+        [self showLevelUpMessageAlert:2];
+    }else{
+        [self showNotLevelUpAlert];
+    }
 }
 -(void)onSetBtn03_Clicked:(id)sender
 {
-    [self showMessageAlert:3];
+    if([ObjectManager load_Object_Ability_Level:@"player03"]<[GameManager load_Aggregate_Stage]){
+        [self showLevelUpMessageAlert:3];
+    }else{
+        [self showNotLevelUpAlert];
+    }
 }
 -(void)onSetBtn04_Clicked:(id)sender
 {
-    [self showMessageAlert:4];
+    if([ObjectManager load_Object_Ability_Level:@"player04"]<[GameManager load_Aggregate_Stage]){
+        [self showLevelUpMessageAlert:4];
+    }else{
+        [self showNotLevelUpAlert];
+    }
 }
 -(void)onSetBtn05_Clicked:(id)sender
 {
-    [self showMessageAlert:5];
+    if([ObjectManager load_Object_Ability_Level:@"player05"]<[GameManager load_Aggregate_Stage]){
+        [self showLevelUpMessageAlert:5];
+    }else{
+        [self showNotLevelUpAlert];
+    }
 }
 
--(void)showMessageAlert:(int)type
+-(void)showLevelUpMessageAlert:(int)type
 {
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.tag=type;
@@ -491,6 +511,16 @@ CCLabelTTF* label05_Traveling;
     [alert addButtonWithTitle:NSLocalizedString(@"Yes",NULL)];
     [alert show];
 
+}
+
+-(void)showNotLevelUpAlert
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Experience",NULL)
+                                                    message:NSLocalizedString(@"Experience",NULL)
+                                                    delegate:nil
+                                                    cancelButtonTitle:nil
+                                                    otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
+    [alert show];
 }
 
 -(float)levelUp_Quantity:(int)type key:(int)key //0:攻撃 1:防御 2:移動
@@ -616,7 +646,7 @@ CCLabelTTF* label05_Traveling;
                                                     message:NSLocalizedString(@"BuyShop",NULL)
                                                     delegate:nil
                                                     cancelButtonTitle:nil
-                                                    otherButtonTitles:NSLocalizedString(@"Yes",NULL), nil];
+                                                    otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
     [alert show];
 }
 

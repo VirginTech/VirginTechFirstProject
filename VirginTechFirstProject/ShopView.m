@@ -76,11 +76,11 @@ SKProduct* product05;
     if(netStatus == NotReachable)
     {
         //NSLog(@"ネットワーク接続がありません。");
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
-                                                        message:@"ネットワーク接続がありません。"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",NULL)
+                                                        message:NSLocalizedString(@"Notnetwork",NULL)
                                                         delegate:nil
                                                         cancelButtonTitle:nil
-                                                        otherButtonTitles:@"OK", nil];
+                                                        otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
         [alert show];
 
         return;
@@ -130,12 +130,12 @@ SKProduct* product05;
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
-
+    // 無効なアイテムがないかチェック
     if ([response.invalidProductIdentifiers count] > 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
-                                                        message:@"アイテムが無効です。"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",NULL)
+                                                        message:NSLocalizedString(@"ItemIdIsInvalid",NULL)
                                                         delegate:nil
-                                                        cancelButtonTitle:@"OK"
+                                                        cancelButtonTitle:NSLocalizedString(@"Ok",NULL)
                                                         otherButtonTitles:nil, nil];
         [alert show];
         return;
@@ -184,23 +184,23 @@ SKProduct* product05;
 
     //ラベル
     CCLabelTTF* label01=[CCLabelTTF labelWithString:product01.localizedTitle fontName:@"Verdana-Bold" fontSize:18.0f];
-    label01.position = ccp(dia01.position.x+100, dia01.position.y);
+    label01.position = ccp(dia01.position.x+110, dia01.position.y);
     [self addChild:label01];
     
     CCLabelTTF* label02=[CCLabelTTF labelWithString:product02.localizedTitle fontName:@"Verdana-Bold" fontSize:18.0f];
-    label02.position = ccp(dia02.position.x+100, dia02.position.y);
+    label02.position = ccp(dia02.position.x+110, dia02.position.y);
     [self addChild:label02];
     
     CCLabelTTF* label03=[CCLabelTTF labelWithString:product03.localizedTitle fontName:@"Verdana-Bold" fontSize:18.0f];
-    label03.position = ccp(dia03.position.x+100, dia03.position.y);
+    label03.position = ccp(dia03.position.x+110, dia03.position.y);
     [self addChild:label03];
 
     CCLabelTTF* label04=[CCLabelTTF labelWithString:product04.localizedTitle fontName:@"Verdana-Bold" fontSize:18.0f];
-    label04.position = ccp(dia04.position.x+100, dia04.position.y);
+    label04.position = ccp(dia04.position.x+110, dia04.position.y);
     [self addChild:label04];
 
     CCLabelTTF* label05=[CCLabelTTF labelWithString:product05.localizedTitle fontName:@"Verdana-Bold" fontSize:18.0f];
-    label05.position = ccp(dia05.position.x+100, dia05.position.y);
+    label05.position = ccp(dia05.position.x+110, dia05.position.y);
     [self addChild:label05];
     
     //購入ボタン
@@ -261,8 +261,9 @@ SKProduct* product05;
     coin01.scale=0.2;
     [self addChild:coin01];
     
-    CCLabelTTF* label06=[CCLabelTTF labelWithString:@"コイン　５０パック" fontName:@"Verdana-Bold" fontSize:18.0f];
-    label06.position = ccp(coin01.position.x+100, coin01.position.y);
+    CCLabelTTF* label06=[CCLabelTTF labelWithString:NSLocalizedString(@"Coin50Pack",NULL)
+                                                            fontName:@"Verdana-Bold" fontSize:18.0f];
+    label06.position = ccp(coin01.position.x+110, coin01.position.y);
     [self addChild:label06];
     
     CCButton *barterCoinButton01 = [CCButton buttonWithTitle:@""
@@ -289,8 +290,9 @@ SKProduct* product05;
     coin02.scale=0.2;
     [self addChild:coin02];
     
-    CCLabelTTF* label07=[CCLabelTTF labelWithString:@"コイン１００パック" fontName:@"Verdana-Bold" fontSize:18.0f];
-    label07.position = ccp(coin02.position.x+100, coin02.position.y);
+    CCLabelTTF* label07=[CCLabelTTF labelWithString:NSLocalizedString(@"Coin100Pack",NULL)
+                                                            fontName:@"Verdana-Bold" fontSize:18.0f];
+    label07.position = ccp(coin02.position.x+110, coin02.position.y);
     [self addChild:label07];
     
     CCButton *barterCoinButton02 = [CCButton buttonWithTitle:@""
@@ -358,10 +360,10 @@ SKProduct* product05;
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.tag=1;
     alert.delegate = self;
-    alert.title = @"コイン５０パック";
-    alert.message=@"ダイア１をコイン５０パックと交換します。";
-    [alert addButtonWithTitle:@"いいえ"];
-    [alert addButtonWithTitle:@"はい"];
+    alert.title = NSLocalizedString(@"Coin50Pack",NULL);
+    alert.message=NSLocalizedString(@"BarterCoin50",NULL);
+    [alert addButtonWithTitle:NSLocalizedString(@"No",NULL)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Yes",NULL)];
     [alert show];
 }
 
@@ -370,10 +372,10 @@ SKProduct* product05;
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.tag=2;
     alert.delegate = self;
-    alert.title = @"コイン１００パック";
-    alert.message=@"ダイア２をコイン１００パックと交換します。";
-    [alert addButtonWithTitle:@"いいえ"];
-    [alert addButtonWithTitle:@"はい"];
+    alert.title = NSLocalizedString(@"Coin100Pack",NULL);
+    alert.message=NSLocalizedString(@"BarterCoin100",NULL);
+    [alert addButtonWithTitle:NSLocalizedString(@"No",NULL)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Yes",NULL)];
     [alert show];
 }
 
@@ -408,11 +410,11 @@ SKProduct* product05;
 }
 
 -(void)showLackMassage{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ダイアが足りません"
-                                                    message:@"ダイアはショップで購入できます。"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"DiamondShortage",NULL)
+                                                    message:NSLocalizedString(@"BuyShop",NULL)
                                                     delegate:nil
                                                     cancelButtonTitle:nil
-                                                    otherButtonTitles:@"O K", nil];
+                                                    otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
     [alert show];
 }
 

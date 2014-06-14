@@ -332,11 +332,12 @@ CCLabelTTF* label05;
 }
 
 -(void)showMassage{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"コインが足りません"
-                                                    message:@"コインはダイアと交換できます。"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CoinShortage",NULL)
+                                                    message:NSLocalizedString(@"BarterCoin",NULL)
                                                     delegate:nil
                                                     cancelButtonTitle:nil
-                                                    otherButtonTitles:@"O K", nil];
+                                                    otherButtonTitles:NSLocalizedString(@"OK",NULL),
+                                                    nil];
     [alert show];
 }
 

@@ -40,7 +40,7 @@ SKProduct* product_;
             /*
              * 基本何もしなくてよい。処理中であることがわかるようにインジケータをだすなど。
              */
-            mAlert = [[UIAlertView alloc] initWithTitle:@"購入処理中..."
+            mAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Processing",NULL)
                                                 message:nil
                                                 delegate:nil
                                                 cancelButtonTitle:nil
@@ -55,12 +55,12 @@ SKProduct* product_;
             
         } else if (transaction.transactionState == SKPaymentTransactionStatePurchased) {
             // 購入処理成功
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"完了しました。"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Completed",NULL)
                                                 message:[NSString stringWithFormat:
-                                                         @"%@%@",product_.localizedTitle,@"を購入しました。"]
+                                                    @"%@%@",product_.localizedTitle,NSLocalizedString(@"Purchase",NULL)]
                                                 delegate:nil
                                                 cancelButtonTitle:nil
-                                                otherButtonTitles:@"OK", nil];
+                                                otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
             [alert show];
             /*
              * ここでレシートの確認やアイテムの付与を行う。
@@ -74,22 +74,22 @@ SKProduct* product_;
             [queue finishTransaction:transaction];
             // エラーが発生したことをユーザに知らせる
             if (transaction.error.code == SKErrorUnknown) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",NULL)
                                                 message:[transaction.error localizedDescription]
                                                 delegate:self
                                                 cancelButtonTitle:nil
-                                                otherButtonTitles:@"OK", nil];
+                                                otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
                 [alert show];
             }
             
         } else if (transaction.transactionState == SKPaymentTransactionStateRestored) {
             // リストア処理完了
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"リストア完了。"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Restored",NULL)
                                                     message:[NSString stringWithFormat:
-                                                             @"%@%@",product_.localizedTitle,@"を購入しました。"]
+                                                        @"%@%@",product_.localizedTitle,NSLocalizedString(@"Get",NULL)]
                                                     delegate:nil
                                                     cancelButtonTitle:nil
-                                                    otherButtonTitles:@"OK", nil];
+                                                    otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
             [alert show];
             /*
              * アイテムの再付与を行う

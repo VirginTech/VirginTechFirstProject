@@ -632,14 +632,15 @@ NSMutableArray* removeEnemyMissileArray;
             alert.tag=1;
             alert.delegate = self;
             if([GameManager getStageLevel]==80){
-                alert.title = @"おめでとうございます！";
-                alert.message=@"最後まで遊んで頂き大変ありがとうございました。\nこれからも楽しいゲームを作り続けて行きたいと思っておりますので、これからもよろしくお願いします。\n宜しければ最後に感想をお聞かせ下さい。";
+                alert.title = NSLocalizedString(@"Final",NULL);
+                alert.message=NSLocalizedString(@"FinalMessage",NULL);
             }else{
-                alert.title = @"評価をお願いします";
-                alert.message=@"ゲームを遊んで頂きありがとうございます。宜しければレビューをお願いします。";
+                alert.title = NSLocalizedString(@"Rate",NULL);
+                alert.message=NSLocalizedString(@"Message",NULL);
             }
-            [alert addButtonWithTitle:@"後で評価する"];
-            [alert addButtonWithTitle:@"今すぐ評価する"];
+            [alert addButtonWithTitle:NSLocalizedString(@"NoThanks",NULL)];
+            [alert addButtonWithTitle:NSLocalizedString(@"RemindMeLater",NULL)];
+            [alert addButtonWithTitle:NSLocalizedString(@"RateItNow",NULL)];
             [alert show];
         }
     }
@@ -652,6 +653,8 @@ NSMutableArray* removeEnemyMissileArray;
     case 0:
         break;
     case 1:
+        break;
+    case 2:
         url = [NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=869207877&mt=8&type=Purple+Software"];
         [[UIApplication sharedApplication]openURL:url];
         break;
@@ -686,21 +689,31 @@ NSMutableArray* removeEnemyMissileArray;
                 //メッセージボックス
                 NSString* messageTitle;
                 if([forKey isEqualToString:@"Achievement_Tank"]){
-                    messageTitle = [NSString stringWithFormat:@"敵タンク %d 撃破達成！",
-                                                [AchievementManeger load_Achievement_Value:i forKey:forKey]];
+                    messageTitle = [NSString stringWithFormat:@"%@ %d %@",
+                                                NSLocalizedString(@"Tank",NULL),
+                                                [AchievementManeger load_Achievement_Value:i forKey:forKey],
+                                                NSLocalizedString(@"Achievement",NULL)];
+                    
                 }else if([forKey isEqualToString:@"Achievement_Fortress"]){
-                    messageTitle = [NSString stringWithFormat:@"敵要塞 %d 撃破達成！",
-                                                [AchievementManeger load_Achievement_Value:i forKey:forKey]];
+                    messageTitle = [NSString stringWithFormat:@"%@ %d %@",
+                                                NSLocalizedString(@"Fortress",NULL),
+                                                [AchievementManeger load_Achievement_Value:i forKey:forKey],
+                                                NSLocalizedString(@"Achievement",NULL)];
+                    
                 }else if([forKey isEqualToString:@"Achievement_Stage"]){
-                    messageTitle = [NSString stringWithFormat:@"ステージレヴェル %d 達成！",
-                                                [AchievementManeger load_Achievement_Value:i forKey:forKey]];
+                    messageTitle = [NSString stringWithFormat:@"%@ %d %@",
+                                                NSLocalizedString(@"Stage",NULL),
+                                                [AchievementManeger load_Achievement_Value:i forKey:forKey],
+                                                NSLocalizedString(@"Achievement",NULL)];
                 }
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:messageTitle
-                        message:[NSString stringWithFormat:@"ダイヤモンドを %d 入手しました！",
-                                            [AchievementManeger load_Achievement_Point:i forKey:forKey]]
+                        message:[NSString stringWithFormat:@"%@ %d %@",
+                                            NSLocalizedString(@"Diamond",NULL),
+                                            [AchievementManeger load_Achievement_Point:i forKey:forKey],
+                                            NSLocalizedString(@"Get",NULL)]
                         delegate:nil
                         cancelButtonTitle:nil
-                        otherButtonTitles:@"O K", nil];
+                        otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
                 [alert show];
             }
         }

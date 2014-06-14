@@ -206,11 +206,11 @@ CGSize winSize;
     if([GameManager getActive]){
         //アプリ内購入の設定チェック
         if (![SKPaymentQueue canMakePayments]){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー！"
-                                                            message:@"アプリ内課金が使用制限されています。"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",NULL)
+                                                            message:NSLocalizedString(@"InAppBillingIslimited",NULL)
                                                             delegate:nil
                                                             cancelButtonTitle:nil
-                                                            otherButtonTitles:@"OK", nil];
+                                                            otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
             [alert show];
             return;
             

@@ -10,9 +10,22 @@
 "Locale" = "Locale";
 "Title" = "Strategy!\nAnimals\nWars ";
 
-//アイテムセットアップ
+//ボタン
 "Yes"="Yes";
 "No"="No";
+"OK"="OK";
+
+//アプリ内課金
+"Notnetwork" = "No network connection.";
+"Error" = "Error";
+"Completed" = "Completed";
+"InAppBillingIslimited" = "In-App Purchase is limited.";
+"ItemIdIsInvalid" = "Item ID is invalid.";
+"Purchase" = " Get!";
+"Restored" = "Restored ";
+"Processing" = "Purchase processing... ";
+
+//アイテムセットアップ
 "LevelUp"="LevelUp!!";
 "levelUpItem"="Level up the item.";
 "Attack"="Attack";
@@ -20,19 +33,38 @@
 "Move"="Move";
 "Up"="Up";
 "IsItOk"="Is it ok ?";
+"Experience"="Experience is not enough.";
 
 //ショップ
 "Coin50Pack"="50 Coin pack";
 "Coin100Pack"="100 Coin pack";
-"BarterCoin50"="Replace the coin 50, the jewel 1";
-"BarterCoin100"="Replace the coin 100, the jewel 2";
+"BarterCoin50"="Exchange the coin 50, the jewel 1.";
+"BarterCoin100"="Exchange the coin 100, the jewel 2.";
 "DiamondShortage"="Jewelry is not enough.";
-"BuyShop"="Jewelry, I can buy in the shop.";
+"BuyShop"="Jewelry, can buy in the shop.";
+"CoinShortage"="Coin is not enough.";
+"BarterCoin"="Coins can be exchanged for jewels.";
 
 //アチーブメント
-"Diamond"="Diamond";
+"Diamond"="Jewelry";
 "Get"="Get!";
 "Level"="Level";
 "Achievement"="Achievement";
-""="";
-""="";
+"Tank"="Enemy tanks destroyed";
+"Fortress"="Enemy Fortress destroyed";
+"Stage"="Stage Level";
+
+//勝敗判定
+"Failed"="Stage Failed";
+"Success"="Stage Success!";
+
+//レビュー誘導
+"Rate" = "Rate";
+"RateItNow" = "Rate It Now";
+"RemindMeLater" = "Remind Me Later";
+"NoThanks" = "No,Thanks";
+"Message"="Thank you for playing the game. Would you mind taking a moment to rate it? Thanks for your support!";
+"Final"="Congratulations!";
+"FinalMessage"="I have you playing to the end, thank you very much. Please let us know what you think at the end.";
+
+

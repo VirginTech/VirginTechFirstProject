@@ -112,7 +112,7 @@ NSMutableArray* starG_Array;
     label = [CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:36.0f];
     label.color = [CCColor whiteColor];
     label.positionType = CCPositionTypeNormalized;
-    label.position = ccp(0.50f, 0.65f); // Top Right of screen
+    label.position = ccp(0.50f, 0.55f); // Top Right of screen
     [self addChild:label z:2];
     
     //星
@@ -163,9 +163,9 @@ NSMutableArray* starG_Array;
         i++;
     }
     if(clearFlg){
-        label.string = @"あなたの勝利です！";
+        label.string = NSLocalizedString(@"Success",NULL);
     }else{
-        label.string = @"あなたの負けです";
+        label.string = NSLocalizedString(@"Failed",NULL);
     }
     pauseButton.visible=false;
     resumeButton.visible=false;
