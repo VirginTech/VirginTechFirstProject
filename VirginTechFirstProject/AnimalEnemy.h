@@ -25,6 +25,7 @@
     NSMutableArray* vFrameArray;
     NSMutableArray* gFrameArray;
     CCSprite *gSprite;
+    CCSprite* waveSprite;
     CCSprite* lifeGauge1;
     CCSprite* lifeGauge2;
     float maxLife;
@@ -49,6 +50,7 @@
     EnemyMissile* eMissile;
     bool destCollectFlg;
     bool fortressFlg;
+    bool waterFlg;
     
     CCParticleSystem* damageParticle;
 }
@@ -61,6 +63,7 @@
 @property bool stopFlg;
 @property bool destCollectFlg;
 @property bool fortressFlg;
+@property bool waterFlg;
 
 +(id)createEnemy;
 -(id)initWithEnemy;

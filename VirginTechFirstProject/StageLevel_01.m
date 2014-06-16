@@ -55,6 +55,8 @@ NSMutableArray* removeEnemyArray;
 NSMutableArray* enemyMissileArray;
 NSMutableArray* removeEnemyMissileArray;
 
+NSMutableArray* swampArray;
+
 + (StageLevel_01 *)scene
 {
     return [[self alloc] init];
@@ -75,6 +77,7 @@ NSMutableArray* removeEnemyMissileArray;
     enemyArray =[[NSMutableArray alloc]init];
     playerMissileArray=[[NSMutableArray alloc]init];
     enemyMissileArray=[[NSMutableArray alloc]init];
+    swampArray=[[NSMutableArray alloc]init];
     playerParticle=nil;
     enemyParticle=nil;
     finishCount=0;
@@ -148,6 +151,10 @@ NSMutableArray* removeEnemyMissileArray;
     [self createEnemyFortress];
     //植樹
     [self setTreePlanting];
+    //沼
+    if([GameManager getStageLevel]%3==0){
+        [self setSwamp];
+    }
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
@@ -213,6 +220,23 @@ NSMutableArray* removeEnemyMissileArray;
     }
 }
 
+-(void)setSwamp
+{
+    CGPoint swampPos;
+    
+    for(int i=[GameManager getWorldSize].height/5.0+200;i<[GameManager getWorldSize].height-200;i+=500)
+    {
+        swampPos.x = arc4random() % (int)winSize.width;
+        swampPos.y = i;
+        
+        CCSprite* swamp=[CCSprite spriteWithImageNamed:@"swamp.png"];
+        swamp.position=swampPos;
+        swamp.scale=((arc4random()%7)+7)/10.0f;
+        [bgSpLayer addChild:swamp];
+        [swampArray addObject:swamp];
+    }
+}
+
 -(void)createEnemy_Schedule:(CCTime)dt
 {
     if(enemyCount<=[GameManager getStageLevel]*2){
@@ -272,6 +296,62 @@ NSMutableArray* removeEnemyMissileArray;
             }
         }
     }*/
+    
+    //プレイヤー水中判定
+    for(AnimalPlayer* player in animalArray){
+        for(CCSprite* _swamp in swampArray){
+            if([BasicMath RadiusIntersectsRadius:player.position pointB:_swamp.position
+                                radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
+                player.waterFlg=true;
+                if(player.groupNum==1){
+                    player.velocityAdjustRate=1;
+                    player.ability_Defense -= 0.1;
+                    if(player.ability_Defense<=0){
+                        [removePlayerArray addObject:player];
+                        //パーティクル
+                        [StageLevel_01 setPlayerParticle:0 pos:player.position fileName:@"playerDead.plist"];
+                    }
+                }else if(player.groupNum==2){
+                    player.velocityAdjustRate=1;
+                }else if(player.groupNum==3){
+                    player.velocityAdjustRate=2;
+                }else if(player.groupNum==4){
+                    player.velocityAdjustRate=3;
+                }else if(player.groupNum==5){
+                    player.velocityAdjustRate=5;
+                }
+                break;
+            }else{
+                player.waterFlg=false;
+                if(player.groupNum==1){
+                    player.velocityAdjustRate=1;
+                }else if(player.groupNum==2){
+                    player.velocityAdjustRate=5;
+                }else if(player.groupNum==3){
+                    player.velocityAdjustRate=5;
+                }else if(player.groupNum==4){
+                    player.velocityAdjustRate=1;
+                }else if(player.groupNum==5){
+                    player.velocityAdjustRate=1;
+                }
+            }
+        }
+    }
+    //不要アイテム削除
+    [self garbageDeletion];
+    
+    //敵水中判定
+    for(AnimalEnemy* enemy in enemyArray){
+        for(CCSprite* _swamp in swampArray){
+            if([BasicMath RadiusIntersectsRadius:enemy.position pointB:_swamp.position
+                                radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
+                enemy.waterFlg=true;
+                break;
+            }else{
+                enemy.waterFlg=false;
+            }
+        }
+    }
     
     //プレイヤー　対　敵要塞基地
     for(AnimalPlayer* player in animalArray){

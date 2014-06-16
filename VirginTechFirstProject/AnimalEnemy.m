@@ -21,6 +21,7 @@
 @synthesize stopFlg;
 @synthesize destCollectFlg;
 @synthesize fortressFlg;
+@synthesize waterFlg;
 
 CGSize winSize;
 
@@ -52,7 +53,11 @@ CGSize winSize;
         targetDistance = sqrtf(powf(self.position.x - targetPlayer.position.x,2) +
                                                         powf(self.position.y - targetPlayer.position.y,2));
         //次位置セット
-        nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+        if(waterFlg){
+            nextPos=CGPointMake(velocity*0.3*cosf(targetAngle),velocity*0.3*sinf(targetAngle));
+        }else{
+            nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+        }
         self.position=CGPointMake(self.position.x+nextPos.x, self.position.y+nextPos.y);
         //画像角度セット
         self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:self.position];
@@ -100,7 +105,11 @@ CGSize winSize;
         targetDistance = sqrtf(powf(self.position.x - targetPlayer.position.x,2) +
                                                             powf(self.position.y - targetPlayer.position.y,2));
         //次位置セット
-        nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+        if(waterFlg){
+            nextPos=CGPointMake(velocity*0.3*cosf(targetAngle),velocity*0.3*sinf(targetAngle));
+        }else{
+            nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+        }
         self.position=CGPointMake(self.position.x+nextPos.x, self.position.y+nextPos.y);
         //画像角度セット
         self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:self.position];
@@ -155,7 +164,11 @@ CGSize winSize;
         //総距離セット
         targetDistance = sqrtf(powf(self.position.x - targetPoint.x,2) + powf(self.position.y - targetPoint.y,2));
         //次位置セット
-        nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+        if(waterFlg){
+            nextPos=CGPointMake(velocity*0.3*cosf(targetAngle),velocity*0.3*sinf(targetAngle));
+        }else{
+            nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+        }
         self.position=CGPointMake(self.position.x+nextPos.x, self.position.y+nextPos.y);
         //画像角度セット
         self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:self.position];
@@ -295,6 +308,12 @@ CGSize winSize;
     //ライフゲージ
     if(self.rotationalSkewX==self.rotationalSkewY){
         lifeGauge1.rotation=-self.rotation;//常に０度を維持
+    }
+    //水中
+    if(waterFlg){
+        waveSprite.visible=true;
+    }else{
+        waveSprite.visible=false;
     }
     nowRatio=(100/maxLife)*ability_Defense;
     lifeGauge2.scaleX=nowRatio*0.01;
@@ -479,6 +498,13 @@ CGSize winSize;
         //int actualX =(arc4random()% rangeX) + minX;
         //self.position = CGPointMake(actualX, 550);
         self.position=(CGPointMake(winSize.width/2,[GameManager getWorldSize].height-50));
+        
+        //波しぶき描画
+        waveSprite=[CCSprite spriteWithSpriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"wave.png"]];
+        waveSprite.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
+        waveSprite.visible=false;
+        [self addChild:waveSprite];
         
         //砲塔の描画
         gSprite=[CCSprite spriteWithSpriteFrame:[gFrameArray objectAtIndex:4]];

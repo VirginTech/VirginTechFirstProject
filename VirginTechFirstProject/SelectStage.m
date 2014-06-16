@@ -109,7 +109,7 @@ CCSprite* bgSpLayer;
             //lock.scale=0.7;
             //lock.position=CGPointMake(levelBtn.contentSize.width/2, levelBtn.contentSize.height/2);
             //[levelBtn addChild:lock z:1];
-            levelBtn.enabled=false;
+            //levelBtn.enabled=false;
         }
     }
     // done

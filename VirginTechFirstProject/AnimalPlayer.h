@@ -33,6 +33,7 @@
     NSMutableArray* vFrameArray;
     NSMutableArray* gFrameArray;
     CCSprite *gSprite;
+    CCSprite* waveSprite;
     CCSprite* lifeGauge1;
     CCSprite* lifeGauge2;
     float maxLife;
@@ -40,12 +41,14 @@
     
     int t;
     float velocity;
+    int velocityAdjustRate;
     NSMutableArray* inpolPosArray;
     CGPoint oldPt;
     
     bool stopFlg;
     bool enemySearchFlg;
     bool state_PathMake_flg;
+    bool waterFlg;
     
     float enemyAngle;
     CCSprite* arrow;
@@ -59,6 +62,9 @@
     bool leaderFlg;
     CGPoint leaderOldPos;
     int groupNum;
+    
+    float flockAngle;
+    CGPoint flockNextPos;
     
     CCParticleSystem* damageParticle;
 }
@@ -75,6 +81,8 @@
 @property bool state_PathMake_flg;
 @property bool destCollectFlg;
 @property bool fortressFlg;
+@property bool waterFlg;
+@property int velocityAdjustRate;;
 
 @property AnimalPlayer* leaderPlayer;
 @property bool leaderFlg;
