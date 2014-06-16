@@ -316,7 +316,7 @@ NSMutableArray* swampArray;
                 }else if(player.groupNum==3){
                     player.velocityAdjustRate=2;
                 }else if(player.groupNum==4){
-                    player.velocityAdjustRate=3;
+                    player.velocityAdjustRate=2;
                 }else if(player.groupNum==5){
                     player.velocityAdjustRate=5;
                 }

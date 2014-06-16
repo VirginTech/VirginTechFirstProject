@@ -29,22 +29,27 @@ CCLabelTTF* label05;
 CCLabelTTF* label01_Attack;
 CCLabelTTF* label01_Defense;
 CCLabelTTF* label01_Traveling;
+CCLabelTTF* label01_UnderWater;
 
 CCLabelTTF* label02_Attack;
 CCLabelTTF* label02_Defense;
 CCLabelTTF* label02_Traveling;
+CCLabelTTF* label02_UnderWater;
 
 CCLabelTTF* label03_Attack;
 CCLabelTTF* label03_Defense;
 CCLabelTTF* label03_Traveling;
+CCLabelTTF* label03_UnderWater;
 
 CCLabelTTF* label04_Attack;
 CCLabelTTF* label04_Defense;
 CCLabelTTF* label04_Traveling;
+CCLabelTTF* label04_UnderWater;
 
 CCLabelTTF* label05_Attack;
 CCLabelTTF* label05_Defense;
 CCLabelTTF* label05_Traveling;
+CCLabelTTF* label05_UnderWater;
 
 + (ItemSetupLayer *)scene
 {
@@ -189,13 +194,18 @@ CCLabelTTF* label05_Traveling;
     
     label01_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label01_Defense.color=[CCColor blackColor];
-    label01_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
+    label01_Defense.position=CGPointMake(animal01.contentSize.width/2, -20);
     [animal01 addChild:label01_Defense];
     
     label01_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label01_Traveling.color=[CCColor blackColor];
-    label01_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
+    label01_Traveling.position=CGPointMake(animal01.contentSize.width/2, -30);
     [animal01 addChild:label01_Traveling];
+    
+    label01_UnderWater=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Underwater",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
+    label01_UnderWater.color=[CCColor blackColor];
+    label01_UnderWater.position=CGPointMake(animal01.contentSize.width/2, -40);
+    [animal01 addChild:label01_UnderWater];
     
     label02_Attack=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Attack",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label02_Attack.color=[CCColor blackColor];
@@ -204,14 +214,19 @@ CCLabelTTF* label05_Traveling;
     
     label02_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label02_Defense.color=[CCColor blackColor];
-    label02_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
+    label02_Defense.position=CGPointMake(animal01.contentSize.width/2, -20);
     [animal02 addChild:label02_Defense];
     
     label02_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label02_Traveling.color=[CCColor blackColor];
-    label02_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
+    label02_Traveling.position=CGPointMake(animal01.contentSize.width/2, -30);
     [animal02 addChild:label02_Traveling];
 
+    label02_UnderWater=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Underwater",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
+    label02_UnderWater.color=[CCColor blackColor];
+    label02_UnderWater.position=CGPointMake(animal01.contentSize.width/2, -40);
+    [animal02 addChild:label02_UnderWater];
+    
     label03_Attack=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Attack",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label03_Attack.color=[CCColor blackColor];
     label03_Attack.position=CGPointMake(animal01.contentSize.width/2, -10);
@@ -219,14 +234,19 @@ CCLabelTTF* label05_Traveling;
     
     label03_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label03_Defense.color=[CCColor blackColor];
-    label03_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
+    label03_Defense.position=CGPointMake(animal01.contentSize.width/2, -20);
     [animal03 addChild:label03_Defense];
     
     label03_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label03_Traveling.color=[CCColor blackColor];
-    label03_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
+    label03_Traveling.position=CGPointMake(animal01.contentSize.width/2, -30);
     [animal03 addChild:label03_Traveling];
 
+    label03_UnderWater=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Underwater",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
+    label03_UnderWater.color=[CCColor blackColor];
+    label03_UnderWater.position=CGPointMake(animal01.contentSize.width/2, -40);
+    [animal03 addChild:label03_UnderWater];
+    
     label04_Attack=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Attack",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label04_Attack.color=[CCColor blackColor];
     label04_Attack.position=CGPointMake(animal01.contentSize.width/2, -10);
@@ -234,14 +254,19 @@ CCLabelTTF* label05_Traveling;
     
     label04_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label04_Defense.color=[CCColor blackColor];
-    label04_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
+    label04_Defense.position=CGPointMake(animal01.contentSize.width/2, -20);
     [animal04 addChild:label04_Defense];
     
     label04_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label04_Traveling.color=[CCColor blackColor];
-    label04_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
+    label04_Traveling.position=CGPointMake(animal01.contentSize.width/2, -30);
     [animal04 addChild:label04_Traveling];
 
+    label04_UnderWater=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Underwater",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
+    label04_UnderWater.color=[CCColor blackColor];
+    label04_UnderWater.position=CGPointMake(animal01.contentSize.width/2, -40);
+    [animal04 addChild:label04_UnderWater];
+    
     label05_Attack=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Attack",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label05_Attack.color=[CCColor blackColor];
     label05_Attack.position=CGPointMake(animal01.contentSize.width/2, -10);
@@ -249,14 +274,19 @@ CCLabelTTF* label05_Traveling;
     
     label05_Defense=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Defense",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label05_Defense.color=[CCColor blackColor];
-    label05_Defense.position=CGPointMake(animal01.contentSize.width/2, -25);
+    label05_Defense.position=CGPointMake(animal01.contentSize.width/2, -20);
     [animal05 addChild:label05_Defense];
     
     label05_Traveling=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Move",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
     label05_Traveling.color=[CCColor blackColor];
-    label05_Traveling.position=CGPointMake(animal01.contentSize.width/2, -40);
+    label05_Traveling.position=CGPointMake(animal01.contentSize.width/2, -30);
     [animal05 addChild:label05_Traveling];
-    
+
+    label05_UnderWater=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@:0000",NSLocalizedString(@"Underwater",NULL)] fontName:@"Verdana-Bold" fontSize:10.0f];
+    label05_UnderWater.color=[CCColor blackColor];
+    label05_UnderWater.position=CGPointMake(animal01.contentSize.width/2, -40);
+    [animal05 addChild:label05_UnderWater];
+
     [self setAbility];
     
     //スクロールビュー
@@ -354,6 +384,7 @@ CCLabelTTF* label05_Traveling;
                             (int)roundf([ObjectManager load_Object_Ability_Defense:@"player01"]*100.0)];
     label01_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
                               (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player01"]*100.0)];
+    label01_UnderWater.string=[NSString stringWithFormat:@"%@: ×",NSLocalizedString(@"Underwater",NULL)];
     
     label02_Attack.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Attack",NULL),
                            (int)roundf([ObjectManager load_Object_Ability_Attack:@"player02"]*100.0)];
@@ -361,13 +392,17 @@ CCLabelTTF* label05_Traveling;
                             (int)roundf([ObjectManager load_Object_Ability_Defense:@"player02"]*100.0)];
     label02_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
                               (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player02"]*100.0)];
-    
+    label02_UnderWater.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Underwater",NULL),
+                               (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player02"]*100.0*0.2)];
+
     label03_Attack.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Attack",NULL),
                            (int)roundf([ObjectManager load_Object_Ability_Attack:@"player03"]*100.0)];
     label03_Defense.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Defense",NULL),
                             (int)roundf([ObjectManager load_Object_Ability_Defense:@"player03"]*100.0)];
     label03_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
                               (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player03"]*100.0)];
+    label03_UnderWater.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Underwater",NULL),
+                               (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player03"]*100.0*0.4)];
     
     label04_Attack.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Attack",NULL),
                            (int)roundf([ObjectManager load_Object_Ability_Attack:@"player04"]*100.0)];
@@ -375,6 +410,8 @@ CCLabelTTF* label05_Traveling;
                             (int)roundf([ObjectManager load_Object_Ability_Defense:@"player04"]*100.0)];
     label04_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
                               (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player04"]*100.0)];
+    label04_UnderWater.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Underwater",NULL),
+                               (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player04"]*100.0*2.0)];
     
     label05_Attack.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Attack",NULL),
                            (int)roundf([ObjectManager load_Object_Ability_Attack:@"player05"]*100.0)];
@@ -382,7 +419,8 @@ CCLabelTTF* label05_Traveling;
                             (int)roundf([ObjectManager load_Object_Ability_Defense:@"player05"]*100.0)];
     label05_Traveling.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Move",NULL),
                               (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player05"]*100.0)];
-    
+    label05_UnderWater.string=[NSString stringWithFormat:@"%@:%04d",NSLocalizedString(@"Underwater",NULL),
+                               (int)roundf([ObjectManager load_Object_Ability_Traveling:@"player05"]*100.0*5.0)];
     
 }
 
@@ -489,7 +527,7 @@ CCLabelTTF* label05_Traveling;
     alert.delegate = self;
     alert.title = NSLocalizedString(@"LevelUp",NULL);
     alert.message= [NSString stringWithFormat:
-                    @"\n%@ \n\n%@:%.2f%@ \n%@:%.2f%@ \n%@:%.2f%@ \n\n%@",
+                    @"\n%@ \n\n%@:%.2f%@ \n%@:%.2f%@ \n%@:%.2f%@ \n%@:%.2f%@ \n\n%@",
                     NSLocalizedString(@"levelUpItem",NULL),
                     
                     NSLocalizedString(@"Attack",NULL),
@@ -502,6 +540,10 @@ CCLabelTTF* label05_Traveling;
                     
                     NSLocalizedString(@"Move",NULL),
                     [self levelUp_Quantity:type key:2],
+                    NSLocalizedString(@"Up",NULL),
+
+                    NSLocalizedString(@"Underwater",NULL),
+                    [self levelUp_Quantity:type key:3],
                     NSLocalizedString(@"Up",NULL),
                     
                     NSLocalizedString(@"IsItOk",NULL)
@@ -523,7 +565,7 @@ CCLabelTTF* label05_Traveling;
     [alert show];
 }
 
--(float)levelUp_Quantity:(int)type key:(int)key //0:攻撃 1:防御 2:移動
+-(float)levelUp_Quantity:(int)type key:(int)key //0:攻撃 1:防御 2:移動 3:水泳
 {
     float quantity;
     if(type==1){
@@ -533,6 +575,8 @@ CCLabelTTF* label05_Traveling;
             quantity=0.5*100;
         }else if(key==2){
             quantity=0.03*100;
+        }else if(key==3){
+            quantity=0.0;
         }
     }else if(type==2){
         if(key==0){
@@ -541,6 +585,8 @@ CCLabelTTF* label05_Traveling;
             quantity=0.25*100;
         }else if(key==2){
             quantity=0.05*100;
+        }else if(key==3){
+            quantity=0.05*100*0.2;
         }
     }else if(type==3){
         if(key==0){
@@ -549,6 +595,8 @@ CCLabelTTF* label05_Traveling;
             quantity=0.5*100;
         }else if(key==2){
             quantity=0.01*100;
+        }else if(key==3){
+            quantity=0.01*100*0.4;
         }
     }else if(type==4){
         if(key==0){
@@ -557,6 +605,8 @@ CCLabelTTF* label05_Traveling;
             quantity=1.0*100;
         }else if(key==2){
             quantity=0.003*100;
+        }else if(key==3){
+            quantity=0.003*100*2.0;
         }
     }else if(type==5){
         if(key==0){
@@ -565,6 +615,8 @@ CCLabelTTF* label05_Traveling;
             quantity=1.5*100;
         }else if(key==2){
             quantity=0.001*100;
+        }else if(key==3){
+            quantity=0.001*100*5;
         }
     }
     return quantity;

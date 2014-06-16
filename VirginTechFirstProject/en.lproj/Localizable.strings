@@ -31,6 +31,7 @@
 "Attack"="Attack";
 "Defense"="Defense";
 "Move"="Move";
+"Underwater"="Swim";
 "Up"="Up";
 "IsItOk"="Is it ok ?";
 "Experience"="Experience is not enough.";

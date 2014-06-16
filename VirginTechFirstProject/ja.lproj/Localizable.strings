@@ -31,6 +31,7 @@
 "Attack"="攻撃";
 "Defense"="防御";
 "Move"="移動";
+"Underwater"="水中";
 "Up"="アップ";
 "IsItOk"="よろしいですか？";
 "Experience"="経験値が足りません。";

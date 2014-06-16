@@ -157,7 +157,7 @@ CGSize winSize;
                    }else if(groupNum==3){
                        velocityAdjustRate=2;
                    }else if(groupNum==4){
-                       velocityAdjustRate=3;
+                       velocityAdjustRate=2;
                    }else if(groupNum==5){
                        velocityAdjustRate=5;
                    }

@@ -57,7 +57,7 @@ NSDictionary *dict;
 {
     //なければ(初回)とりあえず初期値をセーブ
     if([dict valueForKey:@"Currency"]==nil){
-        [GameManager save_Currency_All:300 dia:3];
+        [GameManager save_Currency_All:1000 dia:5];
     }
 }
 

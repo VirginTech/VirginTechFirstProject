@@ -66,11 +66,11 @@ CCLabelTTF* label05;
     [animal04 setTarget:self selector:@selector(onAnimal04_Clicked:)];
     [animal05 setTarget:self selector:@selector(onAnimal05_Clicked:)];
     
-    animal01.position=CGPointMake(80,                               120);
-    animal02.position=CGPointMake(bgSprite.contentSize.width/2-150, 120);
-    animal03.position=CGPointMake(bgSprite.contentSize.width/2,     120);
-    animal04.position=CGPointMake(bgSprite.contentSize.width/2+150, 120);
-    animal05.position=CGPointMake(bgSprite.contentSize.width/2+300, 120);
+    animal01.position=CGPointMake(80,                               140);
+    animal02.position=CGPointMake(bgSprite.contentSize.width/2-150, 140);
+    animal03.position=CGPointMake(bgSprite.contentSize.width/2,     140);
+    animal04.position=CGPointMake(bgSprite.contentSize.width/2+150, 140);
+    animal05.position=CGPointMake(bgSprite.contentSize.width/2+300, 140);
 
     [bgSprite addChild:animal01];
     [bgSprite addChild:animal02];
@@ -81,28 +81,80 @@ CCLabelTTF* label05;
     //レベルラベル
     label01=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label01.color = [CCColor blueColor];
-    label01.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height+20);
+    label01.position=CGPointMake(animal01.contentSize.width/2,animal01.contentSize.height+10);
     [animal01 addChild:label01];
     
     label02=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label02.color = [CCColor blueColor];
-    label02.position=CGPointMake(animal02.contentSize.width/2,animal02.contentSize.height+20);
+    label02.position=CGPointMake(animal02.contentSize.width/2,animal02.contentSize.height+10);
     [animal02 addChild:label02];
 
     label03=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label03.color = [CCColor blueColor];
-    label03.position=CGPointMake(animal03.contentSize.width/2,animal03.contentSize.height+20);
+    label03.position=CGPointMake(animal03.contentSize.width/2,animal03.contentSize.height+10);
     [animal03 addChild:label03];
 
     label04=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label04.color = [CCColor blueColor];
-    label04.position=CGPointMake(animal04.contentSize.width/2,animal04.contentSize.height+20);
+    label04.position=CGPointMake(animal04.contentSize.width/2,animal04.contentSize.height+10);
     [animal04 addChild:label04];
 
     label05=[CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:30.0f];
     label05.color = [CCColor blueColor];
-    label05.position=CGPointMake(animal05.contentSize.width/2,animal05.contentSize.height+20);
+    label05.position=CGPointMake(animal05.contentSize.width/2,animal05.contentSize.height+10);
     [animal05 addChild:label05];
+
+    //コイン
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"info_default.plist"];
+    CCSprite* coin01=[CCSprite spriteWithSpriteFrame:
+                            [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
+    coin01.position=ccp(animal01.contentSize.width/2 - 20, animal01.contentSize.height/2 - 80);
+    coin01.scale=0.2;
+    [animal01 addChild:coin01];
+    CCLabelTTF* coin01label=[CCLabelTTF labelWithString:@" × 1" fontName:@"Verdana-Italic" fontSize:20];
+    coin01label.position=ccp(animal01.contentSize.width/2 + 10, animal01.contentSize.height/2 - 80);
+    coin01label.color=[CCColor blackColor];
+    [animal01 addChild:coin01label];
+    
+    CCSprite* coin02=[CCSprite spriteWithSpriteFrame:
+                      [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
+    coin02.position=ccp(animal02.contentSize.width/2 - 20, animal01.contentSize.height/2 - 80);
+    coin02.scale=0.2;
+    [animal02 addChild:coin02];
+    CCLabelTTF* coin02label=[CCLabelTTF labelWithString:@" × 2" fontName:@"Verdana-Italic" fontSize:20];
+    coin02label.position=ccp(animal02.contentSize.width/2 + 10, animal02.contentSize.height/2 - 80);
+    coin02label.color=[CCColor blackColor];
+    [animal02 addChild:coin02label];
+
+    CCSprite* coin03=[CCSprite spriteWithSpriteFrame:
+                      [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
+    coin03.position=ccp(animal03.contentSize.width/2 - 20, animal01.contentSize.height/2 - 80);
+    coin03.scale=0.2;
+    [animal03 addChild:coin03];
+    CCLabelTTF* coin03label=[CCLabelTTF labelWithString:@" × 3" fontName:@"Verdana-Italic" fontSize:20];
+    coin03label.position=ccp(animal03.contentSize.width/2 + 10, animal03.contentSize.height/2 - 80);
+    coin03label.color=[CCColor blackColor];
+    [animal03 addChild:coin03label];
+
+    CCSprite* coin04=[CCSprite spriteWithSpriteFrame:
+                      [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
+    coin04.position=ccp(animal04.contentSize.width/2 - 20, animal01.contentSize.height/2 - 80);
+    coin04.scale=0.2;
+    [animal04 addChild:coin04];
+    CCLabelTTF* coin04label=[CCLabelTTF labelWithString:@" × 4" fontName:@"Verdana-Italic" fontSize:20];
+    coin04label.position=ccp(animal04.contentSize.width/2 + 10, animal04.contentSize.height/2 - 80);
+    coin04label.color=[CCColor blackColor];
+    [animal04 addChild:coin04label];
+
+    CCSprite* coin05=[CCSprite spriteWithSpriteFrame:
+                      [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
+    coin05.position=ccp(animal05.contentSize.width/2 - 20, animal01.contentSize.height/2 - 80);
+    coin05.scale=0.2;
+    [animal05 addChild:coin05];
+    CCLabelTTF* coin05label=[CCLabelTTF labelWithString:@" × 5" fontName:@"Verdana-Italic" fontSize:20];
+    coin05label.position=ccp(animal05.contentSize.width/2 + 10, animal05.contentSize.height/2 - 80);
+    coin05label.color=[CCColor blackColor];
+    [animal05 addChild:coin05label];
 
     //スクロールビュー
     scrollView=[[CCScrollView alloc]initWithContentNode:bgSprite];
