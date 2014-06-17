@@ -98,28 +98,28 @@ CCLabelTTF* achieveLabel;
     achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Tank"];
     for(int i=0;i<achiveArray.count;i++){
         if([[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
-            achievCount++;
+            achievCount+=[[[achiveArray objectAtIndex:i]objectAtIndex:3]intValue];
         }
     }
     achiveArray=[[NSMutableArray alloc]init];
     achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Level"];
     for(int i=0;i<achiveArray.count;i++){
         if([[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
-            achievCount++;
+            achievCount+=[[[achiveArray objectAtIndex:i]objectAtIndex:3]intValue];
         }
     }
     achiveArray=[[NSMutableArray alloc]init];
     achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Fortress"];
     for(int i=0;i<achiveArray.count;i++){
         if([[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
-            achievCount++;
+            achievCount+=[[[achiveArray objectAtIndex:i]objectAtIndex:3]intValue];
         }
     }
     achiveArray=[[NSMutableArray alloc]init];
     achiveArray=[AchievementManeger load_Achievement_All:@"Achievement_Stage"];
     for(int i=0;i<achiveArray.count;i++){
         if([[[achiveArray objectAtIndex:i]objectAtIndex:4]boolValue]){
-            achievCount++;
+            achievCount+=[[[achiveArray objectAtIndex:i]objectAtIndex:3]intValue];
         }
     }
     achieveLabel.string=[NSString stringWithFormat:@"%02d",achievCount];

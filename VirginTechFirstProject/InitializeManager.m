@@ -146,42 +146,42 @@ NSDictionary *dict;
         tankArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Tank_150",
                    [NSNumber numberWithInt:150],
                    [NSNumber numberWithFloat:0.0],
-                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithInt:2],
                    [NSNumber numberWithBool:false],nil];
         [array addObject:tankArray];
 
         tankArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Tank_200",
                    [NSNumber numberWithInt:200],
                    [NSNumber numberWithFloat:0.0],
-                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithInt:2],
                    [NSNumber numberWithBool:false],nil];
         [array addObject:tankArray];
 
         tankArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Tank_250",
                    [NSNumber numberWithInt:250],
                    [NSNumber numberWithFloat:0.0],
-                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithInt:2],
                    [NSNumber numberWithBool:false],nil];
         [array addObject:tankArray];
 
         tankArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Tank_300",
                    [NSNumber numberWithInt:300],
                    [NSNumber numberWithFloat:0.0],
-                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithInt:2],
                    [NSNumber numberWithBool:false],nil];
         [array addObject:tankArray];
         
         tankArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Tank_400",
                    [NSNumber numberWithInt:400],
                    [NSNumber numberWithFloat:0.0],
-                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithInt:2],
                    [NSNumber numberWithBool:false],nil];
         [array addObject:tankArray];
         
         tankArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Tank_500",
                    [NSNumber numberWithInt:500],
                    [NSNumber numberWithFloat:0.0],
-                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithInt:3],
                    [NSNumber numberWithBool:false],nil];
         [array addObject:tankArray];
 
@@ -230,21 +230,21 @@ NSDictionary *dict;
         tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_030",
                    [NSNumber numberWithInt:29],
                    [NSNumber numberWithFloat:0.0],
-                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithInt:2],
                    [NSNumber numberWithBool:false],nil];
         [array addObject:tmpArray];
         
         tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_040",
                    [NSNumber numberWithInt:39],
                    [NSNumber numberWithFloat:0.0],
-                   [NSNumber numberWithInt:1],
+                   [NSNumber numberWithInt:2],
                    [NSNumber numberWithBool:false],nil];
         [array addObject:tmpArray];
 
         tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Level_050",
                   [NSNumber numberWithInt:49],
                   [NSNumber numberWithFloat:0.0],
-                  [NSNumber numberWithInt:1],
+                  [NSNumber numberWithInt:2],
                   [NSNumber numberWithBool:false],nil];
         [array addObject:tmpArray];
 
@@ -299,14 +299,14 @@ NSDictionary *dict;
         tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Fortress_030",
                   [NSNumber numberWithInt:30],
                   [NSNumber numberWithFloat:0.0],
-                  [NSNumber numberWithInt:1],
+                  [NSNumber numberWithInt:2],
                   [NSNumber numberWithBool:false],nil];
         [array addObject:tmpArray];
         
         tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Fortress_050",
                   [NSNumber numberWithInt:50],
                   [NSNumber numberWithFloat:0.0],
-                  [NSNumber numberWithInt:1],
+                  [NSNumber numberWithInt:2],
                   [NSNumber numberWithBool:false],nil];
         [array addObject:tmpArray];
         
@@ -368,21 +368,21 @@ NSDictionary *dict;
         tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Stage_030",
                   [NSNumber numberWithInt:30],
                   [NSNumber numberWithFloat:0.0],
-                  [NSNumber numberWithInt:1],
+                  [NSNumber numberWithInt:2],
                   [NSNumber numberWithBool:false],nil];
         [array addObject:tmpArray];
 
         tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Stage_040",
                   [NSNumber numberWithInt:40],
                   [NSNumber numberWithFloat:0.0],
-                  [NSNumber numberWithInt:1],
+                  [NSNumber numberWithInt:2],
                   [NSNumber numberWithBool:false],nil];
         [array addObject:tmpArray];
         
         tmpArray=[NSArray arrayWithObjects:@"FirstProject_Achievement_Stage_050",
                   [NSNumber numberWithInt:50],
                   [NSNumber numberWithFloat:0.0],
-                  [NSNumber numberWithInt:1],
+                  [NSNumber numberWithInt:2],
                   [NSNumber numberWithBool:false],nil];
         [array addObject:tmpArray];
 
