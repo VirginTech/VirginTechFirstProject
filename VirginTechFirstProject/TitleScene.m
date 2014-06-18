@@ -113,7 +113,7 @@ CGSize winSize;
     twitterButton.positionType = CCPositionTypeNormalized;
     twitterButton.position = ccp(0.95f, 0.22f);
     twitterButton.scale=0.5;
-    //[twitterButton setTarget:self selector:@selector(onTwitterClicked:)];
+    [twitterButton setTarget:self selector:@selector(onTwitterClicked:)];
     [self addChild:twitterButton];
     
     //Facebook
@@ -122,7 +122,7 @@ CGSize winSize;
     facebookButton.positionType = CCPositionTypeNormalized;
     facebookButton.position = ccp(0.95f, 0.29f);
     facebookButton.scale=0.5;
-    //[facebookButton setTarget:self selector:@selector(onFacebookClicked:)];
+    [facebookButton setTarget:self selector:@selector(onFacebookClicked:)];
     [self addChild:facebookButton];
 
     //In-AppPurchaseボタン
@@ -220,6 +220,18 @@ CGSize winSize;
 
         }
     }
+}
+
+-(void)onTwitterClicked:(id)sender
+{
+    NSURL* url = [NSURL URLWithString:@"https://twitter.com/VirginTechLLC"];
+    [[UIApplication sharedApplication]openURL:url];
+}
+
+-(void)onFacebookClicked:(id)sender
+{
+    NSURL* url = [NSURL URLWithString:@"https://www.facebook.com/pages/VirginTech-LLC/516907375075432"];
+    [[UIApplication sharedApplication]openURL:url];
 }
 
 -(void)onPreferencesButtonClicked:(id)sender

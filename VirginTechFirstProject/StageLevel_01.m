@@ -481,6 +481,9 @@ NSMutableArray* swampArray;
                         if(enemy.ability_Defense<=0){//敵撃破！
                             //パーティクル
                             [StageLevel_01 setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
+                            //効果音
+                            [[OALSimpleAudio sharedInstance]playEffect:@"enemyDestruct.mp3"];
+
                             //コイン報酬
                             [GameManager in_Out_Coin:1 addFlg:true];
                             [InformationLayer update_CurrencyLabel];
@@ -673,7 +676,7 @@ NSMutableArray* swampArray;
         [bgSpLayer removeChild:playerFortress cleanup:YES];
         [NaviLayer setStageEndingScreen:false rate:0];
         //アチーブメント送信（まだ）
-        //[AchievementManeger reportAchievement_All];
+        [AchievementManeger reportAchievement_All];
     }
 }
 
@@ -704,7 +707,7 @@ NSMutableArray* swampArray;
             }
         }
         //アチーブメント送信（まだ）
-        //[AchievementManeger reportAchievement_All];
+        [AchievementManeger reportAchievement_All];
         
         //レビュー誘導
         if([GameManager getStageLevel]%10==0){
@@ -881,7 +884,9 @@ NSMutableArray* swampArray;
 {
     //パーティクル
     [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
-
+    //効果音
+    [[OALSimpleAudio sharedInstance]playEffect:@"itemSet.mp3"];
+    
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
     [bgSpLayer addChild:creatPlayer z:1];
@@ -904,6 +909,9 @@ NSMutableArray* swampArray;
 //============================
 +(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder
 {
+    //効果音
+    [[OALSimpleAudio sharedInstance]playEffect:@"playerFire.mp3"];
+
     [bgSpLayer addChild:missile z:zOrder];
     [playerMissileArray addObject:missile];
 }

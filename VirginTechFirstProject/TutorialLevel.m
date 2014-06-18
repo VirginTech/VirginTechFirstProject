@@ -463,6 +463,8 @@ float velocity;
                         if(enemy.ability_Defense<=0){//敵撃破！
                             //パーティクル
                             [TutorialLevel setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
+                            //効果音
+                            [[OALSimpleAudio sharedInstance]playEffect:@"enemyDestruct.mp3"];
                             //敵削除配列へ
                             [removeEnemyArray addObject:enemy];
                         }
@@ -729,7 +731,9 @@ float velocity;
 {
     //パーティクル
     [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
-
+    //効果音
+    [[OALSimpleAudio sharedInstance]playEffect:@"itemSet.mp3"];
+    
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
     [bgSpLayer addChild:creatPlayer z:1];
@@ -750,6 +754,9 @@ float velocity;
 //============================
 +(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder
 {
+    //効果音
+    [[OALSimpleAudio sharedInstance]playEffect:@"playerFire.mp3"];
+
     [bgSpLayer addChild:missile z:zOrder];
     [playerMissileArray addObject:missile];
 }
