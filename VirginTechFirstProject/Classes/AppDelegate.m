@@ -12,6 +12,7 @@
 //#import "HelloWorldScene.h"
 #import "TitleScene.h"
 #import "GameManager.h"
+#import "SoundManager.h"
 
 @implementation AppDelegate
 
@@ -55,6 +56,33 @@
 {
 	// This method should return the very first scene to be run when your app starts.
 	//return [IntroScene scene];
+
+    //サウンド・プリロード
+    [SoundManager soundPreload];
+
+    //デバイス登録
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    if(screenBounds.size.height==568){ //iPhone5 (4インチスクリーン)用のレイアウト
+        [GameManager setDevice:1];
+    }else if(screenBounds.size.height==480){ //iPhone4 (3.5インチスクリーン)用のレイアウト
+        [GameManager setDevice:2];
+    }else if(screenBounds.size.height==1024){ //iPad2 (1024px)
+        [GameManager setDevice:3];
+    }else{
+        [GameManager setDevice:0];
+    }
+    
+    //ロケール登録
+    NSString* locale = NSLocalizedString(@"Locale",NULL);
+    if([locale isEqualToString:@"Locale"]){
+        [GameManager setLocale:1];//英語
+    }else{
+        [GameManager setLocale:2];//日本語
+    }
+
+    //オープニングBGM
+    [SoundManager playOpeningBGM];
+    
     return [TitleScene scene];
 }
 

@@ -17,6 +17,7 @@
 #import "ItemSetupLayer.h"
 #import "CreditLayer.h"
 #import "TutorialLevel.h"
+#import "SoundManager.h"
 
 @implementation TitleScene
 
@@ -34,27 +35,7 @@ CGSize winSize;
     if (!self) return(nil);
 
     winSize=[[CCDirector sharedDirector]viewSize];
-    
-    //デバイス登録
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    if(screenBounds.size.height==568){ //iPhone5 (4インチスクリーン)用のレイアウト
-        [GameManager setDevice:1];
-    }else if(screenBounds.size.height==480){ //iPhone4 (3.5インチスクリーン)用のレイアウト
-        [GameManager setDevice:2];
-    }else if(screenBounds.size.height==1024){ //iPad2 (1024px)
-        [GameManager setDevice:3];
-    }else{
-        [GameManager setDevice:0];
-    }
-    
-    //ロケール登録
-    NSString* locale = NSLocalizedString(@"Locale",NULL);
-    if([locale isEqualToString:@"Locale"]){
-        [GameManager setLocale:1];//英語
-    }else{
-        [GameManager setLocale:2];//日本語
-    }
-    
+        
     //ゲーム状態セット
     [GameManager setPlaying:false];
     [GameManager setPauseing:false];
@@ -177,6 +158,7 @@ CGSize winSize;
 - (void)onTutorialButtonClicked:(id)sender
 {
     if([GameManager getActive]){
+        [SoundManager button_Click];
         [GameManager setStageLevel:0];
         [[CCDirector sharedDirector] replaceScene:
                         [TutorialLevel scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
@@ -187,6 +169,7 @@ CGSize winSize;
 {
     if([GameManager getActive]){
         // start spinning scene with transition
+        [SoundManager button_Click];
         [[CCDirector sharedDirector] replaceScene:
                         [SelectStage scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
         //[[CCDirector sharedDirector] replaceScene:[Level_00 scene]withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
@@ -196,6 +179,7 @@ CGSize winSize;
 -(void)onGameCenterClicked:(id)sender
 {
     if([GameManager getActive]){
+        [SoundManager button_Click];
         lbv=[[LeaderboardView alloc]init];
         [lbv showLeaderboard];
     }
@@ -204,6 +188,7 @@ CGSize winSize;
 -(void)onInAppPurchaseClicked:(id)sender
 {
     if([GameManager getActive]){
+        [SoundManager button_Click];
         //アプリ内購入の設定チェック
         if (![SKPaymentQueue canMakePayments]){
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",NULL)
@@ -224,12 +209,14 @@ CGSize winSize;
 
 -(void)onTwitterClicked:(id)sender
 {
+    [SoundManager button_Click];
     NSURL* url = [NSURL URLWithString:@"https://twitter.com/VirginTechLLC"];
     [[UIApplication sharedApplication]openURL:url];
 }
 
 -(void)onFacebookClicked:(id)sender
 {
+    [SoundManager button_Click];
     NSURL* url = [NSURL URLWithString:@"https://www.facebook.com/pages/VirginTech-LLC/516907375075432"];
     [[UIApplication sharedApplication]openURL:url];
 }
@@ -237,6 +224,7 @@ CGSize winSize;
 -(void)onPreferencesButtonClicked:(id)sender
 {
     if([GameManager getActive]){
+        [SoundManager button_Click];
         [GameManager setActive:false];
         PreferencesLayer* prefence=[[PreferencesLayer alloc]init];
         [self addChild:prefence];
@@ -246,6 +234,7 @@ CGSize winSize;
 -(void)onItemSetupButtonClicked:(id)sender
 {
     if([GameManager getActive]){
+        [SoundManager button_Click];
         [GameManager setActive:false];
         ItemSetupLayer* itemSetup=[[ItemSetupLayer alloc]init];
         [self addChild:itemSetup];
@@ -255,6 +244,7 @@ CGSize winSize;
 -(void)onCreditButtonClicked:(id)sender
 {
     if([GameManager getActive]){
+        [SoundManager button_Click];
         [GameManager setActive:false];
         [[CCDirector sharedDirector] replaceScene:[CreditLayer scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
     }

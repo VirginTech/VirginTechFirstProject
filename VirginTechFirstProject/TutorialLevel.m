@@ -22,6 +22,7 @@
 #import "Fortress.h"
 #import "CCParticleSystem.h"
 #import "CCDrawingPrimitives.h"
+#import "SoundManager.h"
 
 @implementation TutorialLevel
 
@@ -92,6 +93,9 @@ float velocity;
     
     //ステージレベル取得
     int stageLevel=[GameManager getStageLevel];
+    
+    //BGM
+    [SoundManager playStageBGM:stageLevel];
     
     //レベルに応じた画面の大きさ
     [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*30))];
@@ -182,6 +186,7 @@ float velocity;
 {
     // always call super onExit last
     [super onExit];
+    [SoundManager stopBGM];
 }
 
 -(void)setGround
@@ -464,7 +469,7 @@ float velocity;
                             //パーティクル
                             [TutorialLevel setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
                             //効果音
-                            [[OALSimpleAudio sharedInstance]playEffect:@"enemyDestruct.mp3"];
+                            [SoundManager enemyDestruct];
                             //敵削除配列へ
                             [removeEnemyArray addObject:enemy];
                         }
@@ -732,7 +737,7 @@ float velocity;
     //パーティクル
     [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     //効果音
-    [[OALSimpleAudio sharedInstance]playEffect:@"itemSet.mp3"];
+    [SoundManager playerSet:playerNum];
     
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
@@ -752,10 +757,10 @@ float velocity;
 //============================
 // プレイヤーミサイルセット
 //============================
-+(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder
++(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder type:(int)type
 {
     //効果音
-    [[OALSimpleAudio sharedInstance]playEffect:@"playerFire.mp3"];
+    [SoundManager playerFireMissile:type];
 
     [bgSpLayer addChild:missile z:zOrder];
     [playerMissileArray addObject:missile];

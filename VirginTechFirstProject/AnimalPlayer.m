@@ -12,6 +12,7 @@
 #import "AnimalEnemy.h"
 #import "ObjectManager.h"
 #import "Fortress.h"
+#import "SoundManager.h"
 
 @implementation AnimalPlayer
 
@@ -43,7 +44,8 @@ CGSize winSize;
     stopFlg=false;
     inpolPosArray=[[NSMutableArray alloc]init];
     leaderFlg=true;
-    
+    //効果音
+    [SoundManager playerSet:groupNum];
     //補間座標を作成(取得)
     inpolPosArray=[self lineInterpolation:posArray];
     
@@ -341,7 +343,7 @@ CGSize winSize;
         }else{
             zOrder=3;
         }
-        [StageLevel_01 setPlayerMissile:pMissile zOrder:zOrder];
+        [StageLevel_01 setPlayerMissile:pMissile zOrder:zOrder type:groupNum];
         
         //タンクアニメーション
         [self schedule:@selector(animalDance_Schedule:)interval:0.01];

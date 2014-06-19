@@ -21,6 +21,7 @@
 #import "AchievementManeger.h"
 #import "Fortress.h"
 #import "CCParticleSystem.h"
+#import "SoundManager.h"
 
 @implementation StageLevel_01
 
@@ -89,6 +90,10 @@ NSMutableArray* swampArray;
     
     //ステージレベル取得
     int stageLevel=[GameManager getStageLevel];
+    
+    //BGM
+    [SoundManager stageStart];
+    [SoundManager playStageBGM:stageLevel];
     
     //レベルに応じた画面の大きさ
     [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*30))];
@@ -170,6 +175,7 @@ NSMutableArray* swampArray;
 {
     // always call super onExit last
     [super onExit];
+    [SoundManager stopBGM];
 }
 
 -(void)setGround
@@ -482,8 +488,7 @@ NSMutableArray* swampArray;
                             //パーティクル
                             [StageLevel_01 setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
                             //効果音
-                            [[OALSimpleAudio sharedInstance]playEffect:@"enemyDestruct.mp3"];
-
+                            [SoundManager enemyDestruct];
                             //コイン報酬
                             [GameManager in_Out_Coin:1 addFlg:true];
                             [InformationLayer update_CurrencyLabel];
@@ -885,7 +890,7 @@ NSMutableArray* swampArray;
     //パーティクル
     [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     //効果音
-    [[OALSimpleAudio sharedInstance]playEffect:@"itemSet.mp3"];
+    [SoundManager playerSet:playerNum];
     
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
@@ -907,10 +912,10 @@ NSMutableArray* swampArray;
 //============================
 // プレイヤーミサイルセット
 //============================
-+(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder
++(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder type:(int)type;
 {
     //効果音
-    [[OALSimpleAudio sharedInstance]playEffect:@"playerFire.mp3"];
+    [SoundManager playerFireMissile:type];
 
     [bgSpLayer addChild:missile z:zOrder];
     [playerMissileArray addObject:missile];

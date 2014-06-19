@@ -22,7 +22,7 @@
 
 +(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 +(void)createEnemy;
-+(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder;
++(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder type:(int)type;
 +(void)setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder;
 
 +(void)setFinger;
