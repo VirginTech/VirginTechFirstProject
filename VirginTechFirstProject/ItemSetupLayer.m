@@ -12,6 +12,7 @@
 #import "ObjectManager.h"
 #import "InformationLayer.h"
 #import "AchievementManeger.h"
+#import "SoundManager.h"
 
 @implementation ItemSetupLayer
 
@@ -616,7 +617,7 @@ CCLabelTTF* label05_UnderWater;
         }else if(key==2){
             quantity=0.001*100;
         }else if(key==3){
-            quantity=0.001*100*5;
+            quantity=0.001*100*5.0;
         }
     }
     return quantity;
@@ -689,6 +690,7 @@ CCLabelTTF* label05_UnderWater;
 
 -(void)onCloseClicked:(id)sender
 {
+    [SoundManager button_Click];
     [GameManager setActive:true];
     [self removeFromParentAndCleanup:YES];
 }

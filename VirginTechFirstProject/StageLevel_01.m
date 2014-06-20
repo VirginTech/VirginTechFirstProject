@@ -92,8 +92,7 @@ NSMutableArray* swampArray;
     int stageLevel=[GameManager getStageLevel];
     
     //BGM
-    [SoundManager stageStart];
-    [SoundManager playStageBGM:stageLevel];
+    [SoundManager playBGM];
     
     //レベルに応じた画面の大きさ
     [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*30))];
@@ -175,7 +174,7 @@ NSMutableArray* swampArray;
 {
     // always call super onExit last
     [super onExit];
-    [SoundManager stopBGM];
+    //[SoundManager stopBGM];
 }
 
 -(void)setGround
@@ -485,10 +484,10 @@ NSMutableArray* swampArray;
                         //敵ダメージ
                         enemy.ability_Defense -= missile.ability_Attack;
                         if(enemy.ability_Defense<=0){//敵撃破！
-                            //パーティクル
-                            [StageLevel_01 setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
                             //効果音
                             [SoundManager enemyDestruct];
+                            //パーティクル
+                            [StageLevel_01 setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
                             //コイン報酬
                             [GameManager in_Out_Coin:1 addFlg:true];
                             [InformationLayer update_CurrencyLabel];
@@ -527,6 +526,8 @@ NSMutableArray* swampArray;
                         player.ability_Defense -= missile.ability_Attack;
                         if(player.ability_Defense<=0){
                             [removePlayerArray addObject:player];
+                            //効果音
+                            [SoundManager playerDestruct];
                             //パーティクル
                             [StageLevel_01 setPlayerParticle:0 pos:player.position fileName:@"playerDead.plist"];
                         }
@@ -887,10 +888,10 @@ NSMutableArray* swampArray;
 //============================
 +(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum
 {
-    //パーティクル
-    [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     //効果音
     [SoundManager playerSet:playerNum];
+    //パーティクル
+    [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
@@ -907,12 +908,15 @@ NSMutableArray* swampArray;
     creatEnemy=[AnimalEnemy createEnemy];
     [enemyArray addObject:creatEnemy];
     [bgSpLayer addChild:creatEnemy z:0];
+    
+    //効果音
+    [SoundManager enemySet:creatEnemy.enemyNum];
 }
 
 //============================
 // プレイヤーミサイルセット
 //============================
-+(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder type:(int)type;
++(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder type:(int)type
 {
     //効果音
     [SoundManager playerFireMissile:type];
@@ -924,8 +928,11 @@ NSMutableArray* swampArray;
 //============================
 // 敵ミサイルセット
 //============================
-+(void)setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder
++(void)setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder type:(int)type
 {
+    //効果音
+    [SoundManager enemyFireMissile:type];
+    
     [bgSpLayer addChild:missile z:zOrder];
     [enemyMissileArray addObject:missile];
 }

@@ -55,6 +55,7 @@
     CCParticleSystem* damageParticle;
 }
 
+@property int enemyNum;
 @property float ability_Defense ;
 @property float ability_Attack;
 @property float ability_Traveling;

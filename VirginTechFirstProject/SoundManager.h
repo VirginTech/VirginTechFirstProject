@@ -13,14 +13,16 @@
 
 +(void)soundPreload;
 
-+(void)playOpeningBGM;
-+(void)playStageBGM:(int)stageNum;
-+(void)stageStart;
++(void)playBGM;
++(void)stopBGM;
 
 +(void)playerSet:(int)type;
 +(void)playerFireMissile:(int)type;
++(void)playerDestruct;
+
++(void)enemySet:(int)type;
++(void)enemyFireMissile:(int)type;
 +(void)enemyDestruct;
-+(void)stopBGM;
 
 +(void)button_Click;
 

@@ -8,6 +8,7 @@
 
 #import "PreferencesLayer.h"
 #import "GameManager.h"
+#import "SoundManager.h"
 
 @implementation PreferencesLayer
 
@@ -45,6 +46,7 @@ CGSize winSize;
 
 -(void)onCloseClicked:(id)sender
 {
+    [SoundManager button_Click];
     [GameManager setActive:true];
     [self removeFromParentAndCleanup:YES];
 }

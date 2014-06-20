@@ -9,6 +9,7 @@
 #import "CreditLayer.h"
 #import "GameManager.h"
 #import "TitleScene.h"
+#import "SoundManager.h"
 
 @implementation CreditLayer
 
@@ -45,6 +46,7 @@ CGSize winSize;
 
 -(void)onCloseClicked:(id)sender
 {
+    [SoundManager button_Click];
     [GameManager setActive:true];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:
                                                     [CCTransition transitionCrossFadeWithDuration:1.0]];

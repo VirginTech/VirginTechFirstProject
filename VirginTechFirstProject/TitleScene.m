@@ -35,7 +35,10 @@ CGSize winSize;
     if (!self) return(nil);
 
     winSize=[[CCDirector sharedDirector]viewSize];
-        
+    
+    //オープニングBGM
+    [SoundManager playBGM];
+    
     //ゲーム状態セット
     [GameManager setPlaying:false];
     [GameManager setPauseing:false];
@@ -153,6 +156,18 @@ CGSize winSize;
 
     // done
 	return self;
+}
+
+- (void)dealloc
+{
+    // clean up code goes here
+}
+
+- (void)onExit
+{
+    // always call super onExit last
+    [super onExit];
+    //[SoundManager stopBGM];
 }
 
 - (void)onTutorialButtonClicked:(id)sender

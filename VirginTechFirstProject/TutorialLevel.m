@@ -95,7 +95,7 @@ float velocity;
     int stageLevel=[GameManager getStageLevel];
     
     //BGM
-    [SoundManager playStageBGM:stageLevel];
+    [SoundManager playBGM];
     
     //レベルに応じた画面の大きさ
     [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*30))];
@@ -186,7 +186,7 @@ float velocity;
 {
     // always call super onExit last
     [super onExit];
-    [SoundManager stopBGM];
+    //[SoundManager stopBGM];
 }
 
 -(void)setGround
@@ -466,10 +466,10 @@ float velocity;
                         //敵ダメージ
                         enemy.ability_Defense -= missile.ability_Attack;
                         if(enemy.ability_Defense<=0){//敵撃破！
-                            //パーティクル
-                            [TutorialLevel setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
                             //効果音
                             [SoundManager enemyDestruct];
+                            //パーティクル
+                            [TutorialLevel setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
                             //敵削除配列へ
                             [removeEnemyArray addObject:enemy];
                         }
@@ -494,6 +494,8 @@ float velocity;
                         player.ability_Defense -= missile.ability_Attack;
                         if(player.ability_Defense<=0){
                             [removePlayerArray addObject:player];
+                            //効果音
+                            [SoundManager playerDestruct];
                             //パーティクル
                             [TutorialLevel setPlayerParticle:0 pos:player.position fileName:@"playerDead.plist"];
                         }
@@ -734,10 +736,10 @@ float velocity;
 //============================
 +(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum
 {
-    //パーティクル
-    [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     //効果音
     [SoundManager playerSet:playerNum];
+    //パーティクル
+    [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
@@ -752,6 +754,9 @@ float velocity;
     creatEnemy=[AnimalEnemy createEnemy];
     [enemyArray addObject:creatEnemy];
     [bgSpLayer addChild:creatEnemy z:0];
+    
+    //効果音
+    [SoundManager enemySet:creatEnemy.enemyNum];
 }
 
 //============================
@@ -769,8 +774,11 @@ float velocity;
 //============================
 // 敵ミサイルセット
 //============================
-+(void)setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder
++(void)setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder type:(int)type
 {
+    //効果音
+    [SoundManager enemyFireMissile:type];
+    
     [bgSpLayer addChild:missile z:zOrder];
     [enemyMissileArray addObject:missile];
 }

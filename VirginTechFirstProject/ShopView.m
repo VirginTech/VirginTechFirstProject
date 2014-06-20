@@ -10,6 +10,7 @@
 #import "TitleScene.h"
 #import "GameManager.h"
 #import "InformationLayer.h"
+#import "SoundManager.h"
 
 @implementation ShopView
 
@@ -323,6 +324,7 @@ SKProduct* product05;
 
 - (void)onCloseClicked:(id)sender
 {
+    [SoundManager button_Click];
     //プロダクトリクエストをキャンセル
     [productsRequest cancel];
     // インジケータを非表示にする

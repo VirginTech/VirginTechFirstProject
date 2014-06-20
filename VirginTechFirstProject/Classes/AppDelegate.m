@@ -79,9 +79,6 @@
     }else{
         [GameManager setLocale:2];//日本語
     }
-
-    //オープニングBGM
-    [SoundManager playOpeningBGM];
     
     return [TitleScene scene];
 }

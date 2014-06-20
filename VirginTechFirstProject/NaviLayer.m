@@ -12,6 +12,7 @@
 #import "PreferencesLayer.h"
 #import "GameManager.h"
 #import "ItemSetupLayer.h"
+#import "SoundManager.h"
 
 @implementation NaviLayer
 
@@ -201,6 +202,7 @@ NSMutableArray* starG_Array;
 
 - (void)onPauseClicked:(id)sender
 {
+    [SoundManager button_Click];
     if([GameManager getPauseing]){//再開する
         [GameManager setPauseStateChange:true];
         [GameManager setPauseing:false];
@@ -213,22 +215,26 @@ NSMutableArray* starG_Array;
 
 - (void)onTitleClicked:(id)sender
 {
+    [SoundManager button_Click];
     //[[CCDirector sharedDirector]resume];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
 - (void)onSelectStageClicked:(id)sender
 {
+    [SoundManager button_Click];
     //[[CCDirector sharedDirector]resume];
     [[CCDirector sharedDirector] replaceScene:[SelectStage scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
 - (void)onPreferencesButtonClicked:(id)sender
 {
+    [SoundManager button_Click];
     PreferencesLayer* prefence=[[PreferencesLayer alloc]init];
     [self addChild:prefence z:3];
 }
 -(void)onItemSetupButtonClicked:(id)sender
 {
     if([GameManager getActive]){
+        [SoundManager button_Click];
         //[GameManager setActive:false];
         ItemSetupLayer* itemSetup=[[ItemSetupLayer alloc]init];
         [self addChild:itemSetup z:3];

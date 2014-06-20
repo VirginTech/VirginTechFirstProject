@@ -13,6 +13,7 @@
 
 @implementation AnimalEnemy
 
+@synthesize enemyNum;
 @synthesize ability_Attack;
 @synthesize ability_Defense;
 @synthesize ability_Traveling;
@@ -299,7 +300,7 @@ CGSize winSize;
         }else{
             zOrder=3;
         }
-        [StageLevel_01 setEnemyMissile:eMissile zOrder:zOrder];
+        [StageLevel_01 setEnemyMissile:eMissile zOrder:zOrder type:enemyNum];
     }
 }
 

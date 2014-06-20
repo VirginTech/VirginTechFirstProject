@@ -12,6 +12,7 @@
 #import "GameManager.h"
 #import "TitleScene.h"
 #import "IAdLayer.h"
+#import "SoundManager.h"
 
 @implementation SelectStage
 
@@ -132,6 +133,7 @@ CCSprite* bgSpLayer;
 - (void)onBackClicked:(id)sender
 {
     // back to intro scene with transition
+    [SoundManager button_Click];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
 }
 
