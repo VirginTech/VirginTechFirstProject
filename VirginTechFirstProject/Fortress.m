@@ -24,7 +24,7 @@ NSString* fileName;
     lifeGauge2.scaleX=nowRatio*0.01;
     lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
     
-    if(nowRatio<50){
+    if(nowRatio<30){
         damageParticle.visible=true;
     }
 }

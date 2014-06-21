@@ -40,8 +40,19 @@
     [[OALSimpleAudio sharedInstance]preloadEffect:@"enemyFire.mp3"];
     [[OALSimpleAudio sharedInstance]preloadEffect:@"enemyDestruct.mp3"];
     
-    //ボタン
+    //要塞
+    [[OALSimpleAudio sharedInstance]preloadEffect:@"fortDestruct01.mp3"];
+    
+    //UI
     [[OALSimpleAudio sharedInstance]preloadEffect:@"button01_Click.mp3"];
+    [[OALSimpleAudio sharedInstance]preloadEffect:@"playerSelect.mp3"];
+    
+    //着水
+    [[OALSimpleAudio sharedInstance]preloadEffect:@"water01.mp3"];
+    
+    //エンディング
+    [[OALSimpleAudio sharedInstance]preloadEffect:@"end_Success.mp3"];
+    [[OALSimpleAudio sharedInstance]preloadEffect:@"end_Failed.mp3"];
 }
 
 //===================
@@ -51,8 +62,8 @@
 {
     int num=arc4random()%9+1;
     NSString* name=[NSString stringWithFormat:@"toys%02d.mp3",num];
-    [[OALSimpleAudio sharedInstance]playBg:name loop:YES];
     [[OALSimpleAudio sharedInstance]setBgVolume:0.2];
+    [[OALSimpleAudio sharedInstance]playBg:name loop:YES];
 }
 
 +(void)stopBGM
@@ -66,21 +77,21 @@
 +(void)playerSet:(int)type
 {
     NSString* name=[NSString stringWithFormat:@"player%02dset.mp3",type];
-    [[OALSimpleAudio sharedInstance]playEffect:name];
     [[OALSimpleAudio sharedInstance]setEffectsVolume:0.5];
+    [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
 +(void)playerFireMissile:(int)type
 {
     NSString* name=@"playerFire.mp3";
-    [[OALSimpleAudio sharedInstance]playEffect:name];
     [[OALSimpleAudio sharedInstance]setEffectsVolume:0.5];
+    [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
 +(void)playerDestruct
 {
-    [[OALSimpleAudio sharedInstance]playEffect:@"playerDestruct.mp3"];
     [[OALSimpleAudio sharedInstance]setEffectsVolume:1.0];
+    [[OALSimpleAudio sharedInstance]playEffect:@"playerDestruct.mp3"];
 }
 
 //===================
@@ -89,30 +100,64 @@
 +(void)enemySet:(int)type
 {
     NSString* name=@"enemySet.mp3";
-    [[OALSimpleAudio sharedInstance]playEffect:name];
     [[OALSimpleAudio sharedInstance]setEffectsVolume:0.5];
+    [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
 +(void)enemyFireMissile:(int)type
 {
     NSString* name=@"enemyFire.mp3";
-    [[OALSimpleAudio sharedInstance]playEffect:name];
     [[OALSimpleAudio sharedInstance]setEffectsVolume:0.5];
+    [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
 +(void)enemyDestruct
 {
-    [[OALSimpleAudio sharedInstance]playEffect:@"enemyDestruct.mp3"];
     [[OALSimpleAudio sharedInstance]setEffectsVolume:1.0];
+    [[OALSimpleAudio sharedInstance]playEffect:@"enemyDestruct.mp3"];
 }
-
+//===================
+// 要塞
+//===================
++(void)fortressDestruct
+{
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:0.3];
+    [[OALSimpleAudio sharedInstance]playEffect:@"fortDestruct01.mp3"];
+}
+//===================
+// エンディング
+//===================
++(void)endingEffect:(bool)flg //true:勝ち false:負け
+{
+    if(flg){
+        [[OALSimpleAudio sharedInstance]setEffectsVolume:0.3];
+        [[OALSimpleAudio sharedInstance]playEffect:@"end_Success.mp3"];
+    }else{
+        [[OALSimpleAudio sharedInstance]setEffectsVolume:0.3];
+        [[OALSimpleAudio sharedInstance]playEffect:@"end_Failed.mp3"];
+    }
+}
+//===================
+// 着水
+//===================
++(void)splashdown
+{
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:3.0];
+    [[OALSimpleAudio sharedInstance]playEffect:@"water01.mp3"];
+}
 //===================
 // UI
 //===================
 +(void)button_Click
 {
-    [[OALSimpleAudio sharedInstance]playEffect:@"button01_Click.mp3"];
     [[OALSimpleAudio sharedInstance]setEffectsVolume:0.3];
+    [[OALSimpleAudio sharedInstance]playEffect:@"button01_Click.mp3"];
+}
++(void)playerSelect
+{
+    NSString* name=@"playerSelect.mp3";
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:1.0];
+    [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
 @end

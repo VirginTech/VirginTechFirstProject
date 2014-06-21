@@ -49,6 +49,7 @@
     bool enemySearchFlg;
     bool state_PathMake_flg;
     bool waterFlg;
+    bool splashDownFlg;
     
     float enemyAngle;
     CCSprite* arrow;

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CF0412A51949ACB0007767C4 /* info_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF0412A31949ACB0007767C4 /* info_default.plist */; };
 		CF0412A61949ACB0007767C4 /* info_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF0412A41949ACB0007767C4 /* info_default.png */; };
+		CF044769195502B700EBF561 /* fortDestruct01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF044767195502B700EBF561 /* fortDestruct01.mp3 */; };
+		CF04476A195502B700EBF561 /* fortDestruct02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF044768195502B700EBF561 /* fortDestruct02.mp3 */; };
 		CF0687451920D5C200AB3CD7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0687441920D5C200AB3CD7 /* StoreKit.framework */; };
 		CF0687481920D97E00AB3CD7 /* ShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0687471920D97E00AB3CD7 /* ShopView.m */; };
 		CF06874D1920DDAE00AB3CD7 /* PaymentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF06874A1920DDAE00AB3CD7 /* PaymentManager.m */; };
@@ -94,8 +96,12 @@
 		CF8DD37119445762004C26EB /* fortress_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD36F19445762004C26EB /* fortress_default.png */; };
 		CF99E38419515B9100D59EE6 /* enemyDestruct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF99E38319515B9100D59EE6 /* enemyDestruct.mp3 */; };
 		CF99E38619515E3800D59EE6 /* playerFire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF99E38519515E3800D59EE6 /* playerFire.mp3 */; };
+		CFA379E41955177400938BC4 /* playerSelect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E31955177400938BC4 /* playerSelect.mp3 */; };
+		CFA379E819551AD700938BC4 /* end_Failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E619551AD700938BC4 /* end_Failed.mp3 */; };
+		CFA379E919551AD700938BC4 /* end_Success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E719551AD700938BC4 /* end_Success.mp3 */; };
 		CFAB6D8E1930A97B000FA153 /* AchievementManeger.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */; };
 		CFAB7C2D191505AF0084D0F8 /* RouteGenerationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */; };
+		CFCB338C1955872400416DB1 /* water01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFCB338B1955872400416DB1 /* water01.mp3 */; };
 		CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD5A32C1911F29D004E2B58 /* GameManager.m */; };
 		CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */; };
 		CFDFDECA190A2D6E0021FBF9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */; };
@@ -321,6 +327,8 @@
 /* Begin PBXFileReference section */
 		CF0412A31949ACB0007767C4 /* info_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info_default.plist; sourceTree = "<group>"; };
 		CF0412A41949ACB0007767C4 /* info_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_default.png; sourceTree = "<group>"; };
+		CF044767195502B700EBF561 /* fortDestruct01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fortDestruct01.mp3; sourceTree = "<group>"; };
+		CF044768195502B700EBF561 /* fortDestruct02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fortDestruct02.mp3; sourceTree = "<group>"; };
 		CF0687441920D5C200AB3CD7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CF0687461920D97E00AB3CD7 /* ShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopView.h; sourceTree = "<group>"; };
 		CF0687471920D97E00AB3CD7 /* ShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopView.m; sourceTree = "<group>"; };
@@ -432,10 +440,14 @@
 		CF8DD36F19445762004C26EB /* fortress_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fortress_default.png; sourceTree = "<group>"; };
 		CF99E38319515B9100D59EE6 /* enemyDestruct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemyDestruct.mp3; sourceTree = "<group>"; };
 		CF99E38519515E3800D59EE6 /* playerFire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerFire.mp3; sourceTree = "<group>"; };
+		CFA379E31955177400938BC4 /* playerSelect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerSelect.mp3; sourceTree = "<group>"; };
+		CFA379E619551AD700938BC4 /* end_Failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = end_Failed.mp3; sourceTree = "<group>"; };
+		CFA379E719551AD700938BC4 /* end_Success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = end_Success.mp3; sourceTree = "<group>"; };
 		CFAB6D8C1930A97B000FA153 /* AchievementManeger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementManeger.h; sourceTree = "<group>"; };
 		CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementManeger.m; sourceTree = "<group>"; };
 		CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteGenerationLayer.h; sourceTree = "<group>"; };
 		CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteGenerationLayer.m; sourceTree = "<group>"; };
+		CFCB338B1955872400416DB1 /* water01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = water01.mp3; sourceTree = "<group>"; };
 		CFD5A32B1911F29D004E2B58 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		CFD5A32C1911F29D004E2B58 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		CFDFDEC4190A2D6E0021FBF9 /* VirginTechFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirginTechFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1066,12 +1078,26 @@
 		CF99E3801951431000D59EE6 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				CFA379E519551A9900938BC4 /* UI */,
 				CF74C8231953CF220027C995 /* BGM */,
 				CF5430AD1952F1390017BEE9 /* Enemy */,
 				CF5430AC1952F1180017BEE9 /* Player */,
-				CF74C8361953D99A0027C995 /* button01_Click.mp3 */,
+				CF044767195502B700EBF561 /* fortDestruct01.mp3 */,
+				CF044768195502B700EBF561 /* fortDestruct02.mp3 */,
+				CFA379E619551AD700938BC4 /* end_Failed.mp3 */,
+				CFA379E719551AD700938BC4 /* end_Success.mp3 */,
+				CFCB338B1955872400416DB1 /* water01.mp3 */,
 			);
 			name = Sound;
+			sourceTree = "<group>";
+		};
+		CFA379E519551A9900938BC4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CF74C8361953D99A0027C995 /* button01_Click.mp3 */,
+				CFA379E31955177400938BC4 /* playerSelect.mp3 */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		CFD5A32A1911F258004E2B58 /* manager */ = {
@@ -2085,9 +2111,11 @@
 				CF5430971952DEAC0017BEE9 /* player05set.mp3 in Resources */,
 				CF4FD010194EA47900D6D4DF /* enemy02_default.plist in Resources */,
 				CF4FD00D194EA46A00D6D4DF /* enemy01_default.png in Resources */,
+				CF04476A195502B700EBF561 /* fortDestruct02.mp3 in Resources */,
 				CF5E12FF1952D50400264915 /* player02set.mp3 in Resources */,
 				CFDFDEFF190A2D6F0021FBF9 /* Icon-Small@2x.png in Resources */,
 				CF74C83B195404570027C995 /* playerDestruct.mp3 in Resources */,
+				CFCB338C1955872400416DB1 /* water01.mp3 in Resources */,
 				CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */,
 				CFDFDEF1190A2D6F0021FBF9 /* Icon-72@2x.png in Resources */,
 				CF8DD37119445762004C26EB /* fortress_default.png in Resources */,
@@ -2098,6 +2126,7 @@
 				CFDFDEF9190A2D6F0021FBF9 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
 				CF74C82E1953CF380027C995 /* toys02.mp3 in Resources */,
 				CF1BF75C193C47F400EEA664 /* leaf_default.png in Resources */,
+				CFA379E819551AD700938BC4 /* end_Failed.mp3 in Resources */,
 				CF99E38419515B9100D59EE6 /* enemyDestruct.mp3 in Resources */,
 				CF6A727319175B240027F654 /* position_line.png in Resources */,
 				CFDFDEE8190A2D6F0021FBF9 /* Default-Landscape~ipad.png in Resources */,
@@ -2120,6 +2149,7 @@
 				CF4FD00C194EA46A00D6D4DF /* enemy01_default.plist in Resources */,
 				CF4A7BFE1942D644005C3C17 /* playerDead.plist in Resources */,
 				CF4FCFF1194E8BA300D6D4DF /* swamp.png in Resources */,
+				CF044769195502B700EBF561 /* fortDestruct01.mp3 in Resources */,
 				CF0412A61949ACB0007767C4 /* info_default.png in Resources */,
 				CF0412A51949ACB0007767C4 /* info_default.plist in Resources */,
 				CFDFDEE6190A2D6F0021FBF9 /* Default-568h@2x.png in Resources */,
@@ -2150,10 +2180,12 @@
 				CF99E38619515E3800D59EE6 /* playerFire.mp3 in Resources */,
 				CF4FD011194EA47900D6D4DF /* enemy02_default.png in Resources */,
 				CF74C82F1953CF380027C995 /* toys03.mp3 in Resources */,
+				CFA379E41955177400938BC4 /* playerSelect.mp3 in Resources */,
 				CFDFDF08190A2D6F0021FBF9 /* iTunesArtwork@2x in Resources */,
 				CF2F5009193D5A65005E5BF6 /* ground_default.plist in Resources */,
 				CF4FCFF7194EA2E000D6D4DF /* player05_default.png in Resources */,
 				CF804092194AA0AA008C5EA9 /* button_default.plist in Resources */,
+				CFA379E919551AD700938BC4 /* end_Success.mp3 in Resources */,
 				CF2AEA6B1954261400E3B219 /* player04_default.plist in Resources */,
 				CF4FCFFF194EA30500D6D4DF /* player03_default.png in Resources */,
 				CF74C8341953CF380027C995 /* toys08.mp3 in Resources */,

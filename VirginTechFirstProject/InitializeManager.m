@@ -46,7 +46,7 @@ NSDictionary *dict;
         [ObjectManager save_Object_Ability_All:@"player03" level:1 attack:0.75 defense:7.5 traveling:0.15 build:3];
     }
     if([dict valueForKey:@"player04"]==nil){
-        [ObjectManager save_Object_Ability_All:@"player04" level:1 attack:1.0 defense:10.0 traveling:0.10 build:4];
+        [ObjectManager save_Object_Ability_All:@"player04" level:1 attack:0.75 defense:10.0 traveling:0.10 build:4];
     }
     if([dict valueForKey:@"player05"]==nil){
         [ObjectManager save_Object_Ability_All:@"player05" level:1 attack:1.5 defense:12.5 traveling:0.05 build:5];

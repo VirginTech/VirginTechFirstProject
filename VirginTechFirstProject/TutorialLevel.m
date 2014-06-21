@@ -519,7 +519,7 @@ float velocity;
                 enemyFortress.ability_Defense -= missile.ability_Attack;
                 if(enemyFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Success_Schedule:)interval:0.1 repeat:10 delay:0.1];
+                    [self schedule:@selector(finish_Success_Schedule:)interval:0.2 repeat:10 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     
@@ -539,7 +539,7 @@ float velocity;
                 playerFortress.ability_Defense -= missile.ability_Attack;
                 if(playerFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.1 repeat:10 delay:0.1];
+                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.2 repeat:10 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     break;
@@ -623,9 +623,18 @@ float velocity;
 -(void)finish_Failure_Schedule:(CCTime)dt
 {
     finishCount++;
+    [SoundManager stopBGM];
+    
+    //エフェクト
     [TutorialLevel setPlayerParticle:1 pos:playerFortress.position fileName:@"playerDead.plist"];
     bgSpLayer.position = CGPointMake(bgSpLayer.position.x+10, bgSpLayer.position.y-10);
+    if(finishCount%2==0){
+        [SoundManager fortressDestruct];
+    }
     if(finishCount==10){
+        //エンディングサウンド
+        [SoundManager endingEffect:false];
+        
         [self unscheduleAllSelectors];
         [bgSpLayer removeChild:playerFortress cleanup:YES];
         [NaviLayer setStageEndingScreen:false rate:0];
@@ -635,9 +644,18 @@ float velocity;
 -(void)finish_Success_Schedule:(CCTime)dt
 {
     finishCount++;
+    [SoundManager stopBGM];
+    
+    //エフェクト
     [TutorialLevel setEnemyParticle:1 pos:enemyFortress.position fileName:@"enemyDead.plist"];
     bgSpLayer.position = CGPointMake(bgSpLayer.position.x-10, bgSpLayer.position.y+10);
+    if(finishCount%2==0){
+        [SoundManager fortressDestruct];
+    }
     if(finishCount==10){
+        //エンディングサウンド
+        [SoundManager endingEffect:true];
+
         [self unscheduleAllSelectors];
         [bgSpLayer removeChild:enemyFortress cleanup:YES];
         //ステージクリア状態のセーブ
@@ -870,7 +888,9 @@ float velocity;
         
     }else if(![TutorialLevel isAnimal:worldLocation type:1]){//プレイヤー追加
         if(worldLocation.y < [GameManager getWorldSize].height / 5.0f){
-            
+            //効果音
+            [SoundManager playerSelect];
+
             finger.visible=false;
             
             playSelect=[[PlayerSelection alloc]init];

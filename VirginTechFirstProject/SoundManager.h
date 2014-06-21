@@ -24,6 +24,12 @@
 +(void)enemyFireMissile:(int)type;
 +(void)enemyDestruct;
 
++(void)fortressDestruct;
++(void)endingEffect:(bool)flg;
+
++(void)splashdown;
+
 +(void)button_Click;
++(void)playerSelect;
 
 @end

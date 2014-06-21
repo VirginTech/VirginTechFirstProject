@@ -551,7 +551,7 @@ NSMutableArray* swampArray;
                 enemyFortress.ability_Defense -= missile.ability_Attack;
                 if(enemyFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Success_Schedule:)interval:0.1 repeat:10 delay:0.1];
+                    [self schedule:@selector(finish_Success_Schedule:)interval:0.2 repeat:10 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     //ハイスコア更新
@@ -591,7 +591,7 @@ NSMutableArray* swampArray;
                 playerFortress.ability_Defense -= missile.ability_Attack;
                 if(playerFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.1 repeat:10 delay:0.1];
+                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.2 repeat:10 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     break;
@@ -675,9 +675,18 @@ NSMutableArray* swampArray;
 -(void)finish_Failure_Schedule:(CCTime)dt
 {
     finishCount++;
+    [SoundManager stopBGM];
+    
+    //エフェクト
     [StageLevel_01 setPlayerParticle:1 pos:playerFortress.position fileName:@"playerDead.plist"];
     bgSpLayer.position = CGPointMake(bgSpLayer.position.x+10, bgSpLayer.position.y-10);
+    if(finishCount%2==0){
+        [SoundManager fortressDestruct];
+    }
     if(finishCount==10){
+        //エンディングサウンド
+        [SoundManager endingEffect:false];
+        
         [self unscheduleAllSelectors];
         [bgSpLayer removeChild:playerFortress cleanup:YES];
         [NaviLayer setStageEndingScreen:false rate:0];
@@ -689,9 +698,18 @@ NSMutableArray* swampArray;
 -(void)finish_Success_Schedule:(CCTime)dt
 {
     finishCount++;
+    [SoundManager stopBGM];
+    
+    //エフェクト
     [StageLevel_01 setEnemyParticle:1 pos:enemyFortress.position fileName:@"enemyDead.plist"];
     bgSpLayer.position = CGPointMake(bgSpLayer.position.x-10, bgSpLayer.position.y+10);
+    if(finishCount%2==0){
+        [SoundManager fortressDestruct];
+    }
     if(finishCount==10){
+        //エンディングサウンド
+        [SoundManager endingEffect:true];
+        
         [self unscheduleAllSelectors];
         [bgSpLayer removeChild:enemyFortress cleanup:YES];
         //ステージクリア状態のセーブ
@@ -1018,6 +1036,9 @@ NSMutableArray* swampArray;
         
     }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
         if(worldLocation.y < [GameManager getWorldSize].height / 5.0f){
+            //効果音
+            [SoundManager playerSelect];
+            
             playSelect=[[PlayerSelection alloc]init];
             [self addChild:playSelect z:1];
             playSelect.createPlayerPos=worldLocation;

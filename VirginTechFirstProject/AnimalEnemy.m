@@ -10,6 +10,7 @@
 #import "BasicMath.h"
 #import "StageLevel_01.h"
 #import "GameManager.h"
+#import "SoundManager.h"
 
 @implementation AnimalEnemy
 
@@ -313,15 +314,20 @@ CGSize winSize;
     //水中
     if(waterFlg){
         waveSprite.visible=true;
+        if(splashDownFlg){
+            [SoundManager splashdown];
+        }
+        splashDownFlg=false;
     }else{
         waveSprite.visible=false;
+        splashDownFlg=true;
     }
     nowRatio=(100/maxLife)*ability_Defense;
     lifeGauge2.scaleX=nowRatio*0.01;
     //lifeGauge2.position=CGPointMake(nowRatio*0.25, lifeGauge2.contentSize.height/2);
     lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);
     
-    if(nowRatio<50){
+    if(nowRatio<30){
         damageParticle.visible=true;
     }
 }

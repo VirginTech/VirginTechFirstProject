@@ -51,6 +51,7 @@
     bool destCollectFlg;
     bool fortressFlg;
     bool waterFlg;
+    bool splashDownFlg;
     
     CCParticleSystem* damageParticle;
 }
