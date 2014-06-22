@@ -15,6 +15,11 @@
 
 +(void)playBGM;
 +(void)stopBGM;
++(void)setBgmVolume:(float)value;
++(float)getBgmVolume;
+
++(void)setEffectVolume:(float)value;
++(float)getEffectVolume;
 
 +(void)playerSet:(int)type;
 +(void)playerFireMissile:(int)type;
@@ -27,7 +32,7 @@
 +(void)fortressDestruct;
 +(void)endingEffect:(bool)flg;
 
-+(void)splashdown;
++(void)splashDown;
 
 +(void)button_Click;
 +(void)playerSelect;

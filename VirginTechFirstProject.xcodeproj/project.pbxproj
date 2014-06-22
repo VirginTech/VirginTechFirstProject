@@ -85,8 +85,6 @@
 		CF74C8371953D99A0027C995 /* button01_Click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF74C8361953D99A0027C995 /* button01_Click.mp3 */; };
 		CF74C839195404460027C995 /* enemyFire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF74C838195404460027C995 /* enemyFire.mp3 */; };
 		CF74C83B195404570027C995 /* playerDestruct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF74C83A195404570027C995 /* playerDestruct.mp3 */; };
-		CF804092194AA0AA008C5EA9 /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF804090194AA0AA008C5EA9 /* button_default.plist */; };
-		CF804093194AA0AA008C5EA9 /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF804091194AA0AA008C5EA9 /* button_default.png */; };
 		CF8C16C319134618002BBC13 /* AnimalEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C219134618002BBC13 /* AnimalEnemy.m */; };
 		CF8C16C81913B26D002BBC13 /* StageLevel_01.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C71913B26D002BBC13 /* StageLevel_01.m */; };
 		CF8C16CB1913B2EC002BBC13 /* SelectStage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16CA1913B2EC002BBC13 /* SelectStage.m */; };
@@ -309,6 +307,8 @@
 		CFDFE174190A2D710021FBF9 /* HelloWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE173190A2D710021FBF9 /* HelloWorldScene.m */; };
 		CFDFE177190A2D710021FBF9 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE176190A2D710021FBF9 /* IntroScene.m */; };
 		CFE0C35719468D09008E83B4 /* TutorialLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE0C35619468D09008E83B4 /* TutorialLevel.m */; };
+		CFEB4E7C1956E24E0067D862 /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4E7A1956E24E0067D862 /* button_default.plist */; };
+		CFEB4E7D1956E24E0067D862 /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4E7B1956E24E0067D862 /* button_default.png */; };
 		CFF39635191092F90052608E /* InformationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39634191092F90052608E /* InformationLayer.m */; };
 		CFF39638191104510052608E /* PlayerSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39637191104510052608E /* PlayerSelection.m */; };
 		CFFDB93E192C386400979A14 /* ItemSetupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFDB93D192C386400979A14 /* ItemSetupLayer.m */; };
@@ -424,8 +424,6 @@
 		CF74C8361953D99A0027C995 /* button01_Click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button01_Click.mp3; sourceTree = "<group>"; };
 		CF74C838195404460027C995 /* enemyFire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemyFire.mp3; sourceTree = "<group>"; };
 		CF74C83A195404570027C995 /* playerDestruct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerDestruct.mp3; sourceTree = "<group>"; };
-		CF804090194AA0AA008C5EA9 /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
-		CF804091194AA0AA008C5EA9 /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
 		CF8C16C119134618002BBC13 /* AnimalEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalEnemy.h; sourceTree = "<group>"; };
 		CF8C16C219134618002BBC13 /* AnimalEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalEnemy.m; sourceTree = "<group>"; };
 		CF8C16C61913B26D002BBC13 /* StageLevel_01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageLevel_01.h; sourceTree = "<group>"; };
@@ -880,6 +878,8 @@
 		CFDFE176190A2D710021FBF9 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
 		CFE0C35519468D09008E83B4 /* TutorialLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialLevel.h; sourceTree = "<group>"; };
 		CFE0C35619468D09008E83B4 /* TutorialLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialLevel.m; sourceTree = "<group>"; };
+		CFEB4E7A1956E24E0067D862 /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
+		CFEB4E7B1956E24E0067D862 /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
 		CFF39633191092F90052608E /* InformationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationLayer.h; sourceTree = "<group>"; };
 		CFF39634191092F90052608E /* InformationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationLayer.m; sourceTree = "<group>"; };
 		CFF39636191104510052608E /* PlayerSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSelection.h; sourceTree = "<group>"; };
@@ -1171,12 +1171,12 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFEB4E7A1956E24E0067D862 /* button_default.plist */,
+				CFEB4E7B1956E24E0067D862 /* button_default.png */,
 				CF2AEA6D195426AD00E3B219 /* interface_default.plist */,
 				CF2AEA6E195426AD00E3B219 /* interface_default.png */,
 				CF99E3801951431000D59EE6 /* Sound */,
 				CF4FCFF0194E8BA300D6D4DF /* swamp.png */,
-				CF804090194AA0AA008C5EA9 /* button_default.plist */,
-				CF804091194AA0AA008C5EA9 /* button_default.png */,
 				CF0412A31949ACB0007767C4 /* info_default.plist */,
 				CF0412A41949ACB0007767C4 /* info_default.png */,
 				CF8DD36E19445762004C26EB /* fortress_default.plist */,
@@ -2169,9 +2169,9 @@
 				CF4A7C001942E872005C3C17 /* enemyDead.plist in Resources */,
 				CF5E12FD1952D1BB00264915 /* player03set.mp3 in Resources */,
 				CF2AEA64195405C500E3B219 /* enemySet.mp3 in Resources */,
-				CF804093194AA0AA008C5EA9 /* button_default.png in Resources */,
 				CF74C8331953CF380027C995 /* toys07.mp3 in Resources */,
 				CFDFE0C9190A2D700021FBF9 /* ChangeLog in Resources */,
+				CFEB4E7D1956E24E0067D862 /* button_default.png in Resources */,
 				CF4FCFFE194EA30500D6D4DF /* player03_default.plist in Resources */,
 				CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */,
 				CF4FD014194EA48800D6D4DF /* enemy03_default.plist in Resources */,
@@ -2179,12 +2179,12 @@
 				CF4FD007194EA32A00D6D4DF /* player01_default.png in Resources */,
 				CF99E38619515E3800D59EE6 /* playerFire.mp3 in Resources */,
 				CF4FD011194EA47900D6D4DF /* enemy02_default.png in Resources */,
+				CFEB4E7C1956E24E0067D862 /* button_default.plist in Resources */,
 				CF74C82F1953CF380027C995 /* toys03.mp3 in Resources */,
 				CFA379E41955177400938BC4 /* playerSelect.mp3 in Resources */,
 				CFDFDF08190A2D6F0021FBF9 /* iTunesArtwork@2x in Resources */,
 				CF2F5009193D5A65005E5BF6 /* ground_default.plist in Resources */,
 				CF4FCFF7194EA2E000D6D4DF /* player05_default.png in Resources */,
-				CF804092194AA0AA008C5EA9 /* button_default.plist in Resources */,
 				CFA379E919551AD700938BC4 /* end_Success.mp3 in Resources */,
 				CF2AEA6B1954261400E3B219 /* player04_default.plist in Resources */,
 				CF4FCFFF194EA30500D6D4DF /* player03_default.png in Resources */,

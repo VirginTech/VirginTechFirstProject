@@ -315,7 +315,7 @@ CGSize winSize;
     if(waterFlg){
         waveSprite.visible=true;
         if(splashDownFlg){
-            [SoundManager splashdown];
+            [SoundManager splashDown];
         }
         splashDownFlg=false;
     }else{

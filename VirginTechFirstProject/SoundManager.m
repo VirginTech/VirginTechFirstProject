@@ -10,6 +10,25 @@
 
 @implementation SoundManager
 
+float bgmValue;
+float bgmMaxVolume;
+
+float effectValue;
+float playerSetVolume;
+float playerFireMissileVolume;
+float playerDestructVolume;
+
+float enemySetVolume;
+float enemyFireMissileVolume;
+float enemyDestructVolume;
+
+float fortressDestructVolume;
+float endingEffectVolume;
+float splashDownVolume;
+
+float buttonClickVolume;
+float playerSelectVolume;
+
 //===================
 //BGM・効果音プリロード
 //===================
@@ -53,6 +72,31 @@
     //エンディング
     [[OALSimpleAudio sharedInstance]preloadEffect:@"end_Success.mp3"];
     [[OALSimpleAudio sharedInstance]preloadEffect:@"end_Failed.mp3"];
+    
+    //BGM音量初期値セット
+    bgmValue=0.5;
+    
+    //BGM音量最大値セット
+    bgmMaxVolume=0.4;
+    
+    //エフェクト音量初期値セット
+    effectValue=0.5;
+    
+    //各種エフェクト最大値
+    playerSetVolume=0.3;
+    playerFireMissileVolume=0.5;
+    playerDestructVolume=1.0;
+    
+    enemySetVolume=0.5;
+    enemyFireMissileVolume=0.5;
+    enemyDestructVolume=1.0;
+    
+    fortressDestructVolume=0.3;
+    endingEffectVolume=0.3;
+    splashDownVolume=3.0;
+    
+    buttonClickVolume=0.3;
+    playerSelectVolume=1.0;
 }
 
 //===================
@@ -62,13 +106,37 @@
 {
     int num=arc4random()%9+1;
     NSString* name=[NSString stringWithFormat:@"toys%02d.mp3",num];
-    [[OALSimpleAudio sharedInstance]setBgVolume:0.2];
+    [[OALSimpleAudio sharedInstance]setBgVolume:bgmMaxVolume*bgmValue];
     [[OALSimpleAudio sharedInstance]playBg:name loop:YES];
 }
-
 +(void)stopBGM
 {
     [[OALSimpleAudio sharedInstance]stopBg];
+}
++(void)setBgmVolume:(float)value
+{
+    bgmValue=value;
+    [[OALSimpleAudio sharedInstance]setBgVolume:bgmMaxVolume*bgmValue];
+}
++(float)getBgmVolume
+{
+    return bgmValue;
+}
+
+//===================
+// エフェクト音量セット
+//===================
++(void)setEffectVolume:(float)value
+{
+    effectValue=value;
+}
+
+//===================
+// エフェクト音量セット
+//===================
++(float)getEffectVolume
+{
+    return effectValue;
 }
 
 //===================
@@ -77,20 +145,20 @@
 +(void)playerSet:(int)type
 {
     NSString* name=[NSString stringWithFormat:@"player%02dset.mp3",type];
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:0.5];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:playerSetVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
 +(void)playerFireMissile:(int)type
 {
     NSString* name=@"playerFire.mp3";
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:0.5];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:playerFireMissileVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
 +(void)playerDestruct
 {
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:1.0];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:playerDestructVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:@"playerDestruct.mp3"];
 }
 
@@ -100,20 +168,20 @@
 +(void)enemySet:(int)type
 {
     NSString* name=@"enemySet.mp3";
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:0.5];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:enemySetVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
 +(void)enemyFireMissile:(int)type
 {
     NSString* name=@"enemyFire.mp3";
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:0.5];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:enemyFireMissileVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
 +(void)enemyDestruct
 {
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:1.0];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:enemyDestructVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:@"enemyDestruct.mp3"];
 }
 //===================
@@ -121,7 +189,7 @@
 //===================
 +(void)fortressDestruct
 {
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:0.3];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:fortressDestructVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:@"fortDestruct01.mp3"];
 }
 //===================
@@ -129,20 +197,19 @@
 //===================
 +(void)endingEffect:(bool)flg //true:勝ち false:負け
 {
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:endingEffectVolume*effectValue];
     if(flg){
-        [[OALSimpleAudio sharedInstance]setEffectsVolume:0.3];
         [[OALSimpleAudio sharedInstance]playEffect:@"end_Success.mp3"];
     }else{
-        [[OALSimpleAudio sharedInstance]setEffectsVolume:0.3];
         [[OALSimpleAudio sharedInstance]playEffect:@"end_Failed.mp3"];
     }
 }
 //===================
 // 着水
 //===================
-+(void)splashdown
++(void)splashDown
 {
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:3.0];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:splashDownVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:@"water01.mp3"];
 }
 //===================
@@ -150,13 +217,13 @@
 //===================
 +(void)button_Click
 {
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:0.3];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:buttonClickVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:@"button01_Click.mp3"];
 }
 +(void)playerSelect
 {
     NSString* name=@"playerSelect.mp3";
-    [[OALSimpleAudio sharedInstance]setEffectsVolume:1.0];
+    [[OALSimpleAudio sharedInstance]setEffectsVolume:playerSelectVolume*effectValue];
     [[OALSimpleAudio sharedInstance]playEffect:name];
 }
 
