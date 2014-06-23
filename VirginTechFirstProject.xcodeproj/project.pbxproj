@@ -94,6 +94,8 @@
 		CF8DD37119445762004C26EB /* fortress_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8DD36F19445762004C26EB /* fortress_default.png */; };
 		CF99E38419515B9100D59EE6 /* enemyDestruct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF99E38319515B9100D59EE6 /* enemyDestruct.mp3 */; };
 		CF99E38619515E3800D59EE6 /* playerFire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF99E38519515E3800D59EE6 /* playerFire.mp3 */; };
+		CFA097EB1957C1010042F368 /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFA097E91957C1010042F368 /* button_default.plist */; };
+		CFA097EC1957C1010042F368 /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFA097EA1957C1010042F368 /* button_default.png */; };
 		CFA379E41955177400938BC4 /* playerSelect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E31955177400938BC4 /* playerSelect.mp3 */; };
 		CFA379E819551AD700938BC4 /* end_Failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E619551AD700938BC4 /* end_Failed.mp3 */; };
 		CFA379E919551AD700938BC4 /* end_Success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E719551AD700938BC4 /* end_Success.mp3 */; };
@@ -307,8 +309,6 @@
 		CFDFE174190A2D710021FBF9 /* HelloWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE173190A2D710021FBF9 /* HelloWorldScene.m */; };
 		CFDFE177190A2D710021FBF9 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDFE176190A2D710021FBF9 /* IntroScene.m */; };
 		CFE0C35719468D09008E83B4 /* TutorialLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE0C35619468D09008E83B4 /* TutorialLevel.m */; };
-		CFEB4E7C1956E24E0067D862 /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4E7A1956E24E0067D862 /* button_default.plist */; };
-		CFEB4E7D1956E24E0067D862 /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4E7B1956E24E0067D862 /* button_default.png */; };
 		CFF39635191092F90052608E /* InformationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39634191092F90052608E /* InformationLayer.m */; };
 		CFF39638191104510052608E /* PlayerSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF39637191104510052608E /* PlayerSelection.m */; };
 		CFFDB93E192C386400979A14 /* ItemSetupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFDB93D192C386400979A14 /* ItemSetupLayer.m */; };
@@ -438,6 +438,8 @@
 		CF8DD36F19445762004C26EB /* fortress_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fortress_default.png; sourceTree = "<group>"; };
 		CF99E38319515B9100D59EE6 /* enemyDestruct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemyDestruct.mp3; sourceTree = "<group>"; };
 		CF99E38519515E3800D59EE6 /* playerFire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerFire.mp3; sourceTree = "<group>"; };
+		CFA097E91957C1010042F368 /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
+		CFA097EA1957C1010042F368 /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
 		CFA379E31955177400938BC4 /* playerSelect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerSelect.mp3; sourceTree = "<group>"; };
 		CFA379E619551AD700938BC4 /* end_Failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = end_Failed.mp3; sourceTree = "<group>"; };
 		CFA379E719551AD700938BC4 /* end_Success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = end_Success.mp3; sourceTree = "<group>"; };
@@ -878,8 +880,6 @@
 		CFDFE176190A2D710021FBF9 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
 		CFE0C35519468D09008E83B4 /* TutorialLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialLevel.h; sourceTree = "<group>"; };
 		CFE0C35619468D09008E83B4 /* TutorialLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialLevel.m; sourceTree = "<group>"; };
-		CFEB4E7A1956E24E0067D862 /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
-		CFEB4E7B1956E24E0067D862 /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
 		CFF39633191092F90052608E /* InformationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationLayer.h; sourceTree = "<group>"; };
 		CFF39634191092F90052608E /* InformationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationLayer.m; sourceTree = "<group>"; };
 		CFF39636191104510052608E /* PlayerSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSelection.h; sourceTree = "<group>"; };
@@ -1171,8 +1171,8 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CFEB4E7A1956E24E0067D862 /* button_default.plist */,
-				CFEB4E7B1956E24E0067D862 /* button_default.png */,
+				CFA097E91957C1010042F368 /* button_default.plist */,
+				CFA097EA1957C1010042F368 /* button_default.png */,
 				CF2AEA6D195426AD00E3B219 /* interface_default.plist */,
 				CF2AEA6E195426AD00E3B219 /* interface_default.png */,
 				CF99E3801951431000D59EE6 /* Sound */,
@@ -2171,7 +2171,7 @@
 				CF2AEA64195405C500E3B219 /* enemySet.mp3 in Resources */,
 				CF74C8331953CF380027C995 /* toys07.mp3 in Resources */,
 				CFDFE0C9190A2D700021FBF9 /* ChangeLog in Resources */,
-				CFEB4E7D1956E24E0067D862 /* button_default.png in Resources */,
+				CFA097EC1957C1010042F368 /* button_default.png in Resources */,
 				CF4FCFFE194EA30500D6D4DF /* player03_default.plist in Resources */,
 				CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */,
 				CF4FD014194EA48800D6D4DF /* enemy03_default.plist in Resources */,
@@ -2179,7 +2179,7 @@
 				CF4FD007194EA32A00D6D4DF /* player01_default.png in Resources */,
 				CF99E38619515E3800D59EE6 /* playerFire.mp3 in Resources */,
 				CF4FD011194EA47900D6D4DF /* enemy02_default.png in Resources */,
-				CFEB4E7C1956E24E0067D862 /* button_default.plist in Resources */,
+				CFA097EB1957C1010042F368 /* button_default.plist in Resources */,
 				CF74C82F1953CF380027C995 /* toys03.mp3 in Resources */,
 				CFA379E41955177400938BC4 /* playerSelect.mp3 in Resources */,
 				CFDFDF08190A2D6F0021FBF9 /* iTunesArtwork@2x in Resources */,
@@ -2460,6 +2460,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "F7A5921B-765E-43C6-8780-B2BF1F050AA8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2470,7 +2471,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -2480,6 +2481,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "D0CD8562-63E4-4340-A223-CD601DAC0406";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2540,6 +2542,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F7A5921B-765E-43C6-8780-B2BF1F050AA8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2549,6 +2552,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VirginTechFirstProject/Supporting Files/Prefix.pch";
@@ -2564,6 +2568,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "D0CD8562-63E4-4340-A223-CD601DAC0406";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

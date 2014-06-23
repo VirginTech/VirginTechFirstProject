@@ -15,7 +15,10 @@
 CGSize winSize;
 CCSlider* bgmSlider;
 CCSlider* effectSlider;
-
+CCButton* onBgmSwitch;
+CCButton* offBgmSwitch;
+CCButton* onEffectSwitch;
+CCButton* offEffectSwitch;
 
 +(PreferencesLayer *)scene
 {
@@ -44,11 +47,37 @@ CCSlider* effectSlider;
     [closeButton setTarget:self selector:@selector(onCloseClicked:)];
     [self addChild:closeButton];
     
-    //BGM音量スライダー
+    //BGM音量
     CCLabelTTF* bgmLabel=[CCLabelTTF labelWithString:@"BGM:" fontName:@"Verdana-Bold" fontSize:20.0];
     bgmLabel.position=ccp(winSize.width/2-100,winSize.height/2+100);
     [self addChild:bgmLabel];
     
+    //BGMスイッチ
+    onBgmSwitch=[CCButton buttonWithTitle:@""
+                        spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"on.png"]];
+    onBgmSwitch.position=ccp(bgmLabel.position.x+100,bgmLabel.position.y);
+    [onBgmSwitch setTarget:self selector:@selector(bgmSwitchClicked:)];
+    onBgmSwitch.name=@"1";
+    
+    offBgmSwitch=[CCButton buttonWithTitle:@""
+                        spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"off.png"]];
+    offBgmSwitch.position=ccp(bgmLabel.position.x+100,bgmLabel.position.y);
+    [offBgmSwitch setTarget:self selector:@selector(bgmSwitchClicked:)];
+    offBgmSwitch.name=@"0";
+
+    if([SoundManager getBgmSwitch]){
+        onBgmSwitch.visible=true;
+        offBgmSwitch.visible=false;
+    }else{
+        onBgmSwitch.visible=false;
+        offBgmSwitch.visible=true;
+    }
+    
+    [self addChild:onBgmSwitch];
+    [self addChild:offBgmSwitch];
+    
+    
+    //BGM音量スライダー
     bgmSlider=[[CCSlider alloc]initWithBackground:
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"bgm_line.png"]
                         andHandleImage:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"handle_bgm.png"]];
@@ -58,11 +87,36 @@ CCSlider* effectSlider;
     bgmSlider.handle.scale=0.7;
     [self addChild:bgmSlider];
     
-    //エフェクト音量スライダー
+    //エフェクト音量
     CCLabelTTF* effectLabel=[CCLabelTTF labelWithString:@"Effect:" fontName:@"Verdana-Bold" fontSize:20.0];
     effectLabel.position=ccp(winSize.width/2-100,bgmLabel.position.y-100);
     [self addChild:effectLabel];
 
+    //Effectスイッチ
+    onEffectSwitch=[CCButton buttonWithTitle:@""
+                              spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"on.png"]];
+    onEffectSwitch.position=ccp(effectLabel.position.x+100,effectLabel.position.y);
+    [onEffectSwitch setTarget:self selector:@selector(effectSwitchClicked:)];
+    onEffectSwitch.name=@"1";
+    
+    offEffectSwitch=[CCButton buttonWithTitle:@""
+                               spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"off.png"]];
+    offEffectSwitch.position=ccp(effectLabel.position.x+100,effectLabel.position.y);
+    [offEffectSwitch setTarget:self selector:@selector(effectSwitchClicked:)];
+    offEffectSwitch.name=@"0";
+    
+    if([SoundManager getEffectSwitch]){
+        onEffectSwitch.visible=true;
+        offEffectSwitch.visible=false;
+    }else{
+        onEffectSwitch.visible=false;
+        offEffectSwitch.visible=true;
+    }
+    
+    [self addChild:onEffectSwitch];
+    [self addChild:offEffectSwitch];
+
+    //エフェクト音量スライダー
     effectSlider=[[CCSlider alloc]initWithBackground:
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"effect_line.png"]
                         andHandleImage:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"handle_effect.png"]];
@@ -73,6 +127,35 @@ CCSlider* effectSlider;
     [self addChild:effectSlider];
     
     return self;
+}
+
+- (void)bgmSwitchClicked:(id)sender
+{
+    CCButton* button=(CCButton*)sender;
+    if([button.name intValue]==0){//停止中〜開始
+        onBgmSwitch.visible=true;
+        offBgmSwitch.visible=false;
+        [SoundManager setBgmSwitch:true];
+        [SoundManager playBGM];
+    }else{
+        onBgmSwitch.visible=false;
+        offBgmSwitch.visible=true;
+        [SoundManager setBgmSwitch:false];
+        [SoundManager stopBGM];
+    }
+}
+- (void)effectSwitchClicked:(id)sender
+{
+    CCButton* button=(CCButton*)sender;
+    if([button.name intValue]==0){//停止中〜開始
+        onEffectSwitch.visible=true;
+        offEffectSwitch.visible=false;
+        [SoundManager setEffectSwitch:true];
+    }else{
+        onEffectSwitch.visible=false;
+        offEffectSwitch.visible=true;
+        [SoundManager setEffectSwitch:false];
+    }
 }
 
 -(void)onCloseClicked:(id)sender

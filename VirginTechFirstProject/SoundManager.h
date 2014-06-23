@@ -13,6 +13,11 @@
 
 +(void)soundPreload;
 
++(void)setBgmSwitch:(bool)flg;
++(bool)getBgmSwitch;
++(void)setEffectSwitch:(bool)flg;
++(bool)getEffectSwitch;
+
 +(void)playBGM;
 +(void)stopBGM;
 +(void)setBgmVolume:(float)value;
