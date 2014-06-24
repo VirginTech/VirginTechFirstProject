@@ -29,14 +29,17 @@
 +(void)playerSet:(int)type;
 +(void)playerFireMissile:(int)type;
 +(void)playerDestruct;
++(void)playerDamage;
 
 +(void)enemySet:(int)type;
 +(void)enemyFireMissile:(int)type;
 +(void)enemyDestruct;
++(void)enemyDamage;
 
 +(void)fortressDestruct;
-+(void)endingEffect:(bool)flg;
++(void)fortressDamage;
 
++(void)endingEffect:(bool)flg;
 +(void)splashDown;
 
 +(void)button_Click;

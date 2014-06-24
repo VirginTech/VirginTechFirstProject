@@ -9,10 +9,12 @@
 #import "AnimalPlayer.h"
 #import "BasicMath.h"
 #import "StageLevel_01.h"
+#import "TutorialLevel.h"
 #import "AnimalEnemy.h"
 #import "ObjectManager.h"
 #import "Fortress.h"
 #import "SoundManager.h"
+#import "GameManager.h"
 
 @implementation AnimalPlayer
 
@@ -348,8 +350,11 @@ CGSize winSize;
         }else{
             zOrder=3;
         }
-        [StageLevel_01 setPlayerMissile:pMissile zOrder:zOrder type:groupNum];
-        
+        if([GameManager getStageLevel]==0){
+            [TutorialLevel setPlayerMissile:pMissile zOrder:zOrder type:groupNum];
+        }else{
+            [StageLevel_01 setPlayerMissile:pMissile zOrder:zOrder type:groupNum];
+        }
         //タンクアニメーション
         [self schedule:@selector(animalDance_Schedule:)interval:0.01];
     }

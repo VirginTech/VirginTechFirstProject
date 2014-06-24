@@ -27,6 +27,9 @@ CCButton *stageButton;
 CCButton *preferencesButton;
 CCButton *itemSetupButton;
 
+CCSprite* victoryImg;
+CCSprite* defeatImg;
+
 NSMutableArray* starB_Array;
 NSMutableArray* starG_Array;
 
@@ -148,6 +151,21 @@ NSMutableArray* starG_Array;
         starB.visible=false;
         starG.visible=false;
     }
+    
+    victoryImg=[CCSprite spriteWithSpriteFrame:
+                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"victory_jp.png"]];
+    victoryImg.positionType = CCPositionTypeNormalized;
+    victoryImg.position=ccp(0.50f, 0.55f);
+    victoryImg.visible=false;
+    [self addChild:victoryImg z:2];
+    
+    defeatImg=[CCSprite spriteWithSpriteFrame:
+                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"defeat_jp.png"]];
+    defeatImg.positionType = CCPositionTypeNormalized;
+    defeatImg.position=ccp(0.50f, 0.55f);
+    defeatImg.visible=false;
+    [self addChild:defeatImg z:2];
+    
     return self;
 }
 
@@ -164,9 +182,17 @@ NSMutableArray* starG_Array;
         i++;
     }
     if(clearFlg){
-        label.string = NSLocalizedString(@"Success",NULL);
+        if([GameManager getLocale]==1){
+            label.string = NSLocalizedString(@"Success",NULL);
+        }else{
+            victoryImg.visible=true;
+        }
     }else{
-        label.string = NSLocalizedString(@"Failed",NULL);
+        if([GameManager getLocale]==1){
+            label.string = NSLocalizedString(@"Failed",NULL);
+        }else{
+            defeatImg.visible=true;
+        }
     }
     pauseButton.visible=false;
     resumeButton.visible=false;

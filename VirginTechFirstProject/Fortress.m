@@ -16,6 +16,7 @@
 
 CGSize winSize;
 NSString* fileName;
+NSString* fileName2;
 
 -(void)status_Schedule:(CCTime)dt
 {
@@ -37,8 +38,10 @@ NSString* fileName;
 
     if(type==0){//我
         fileName=@"fortress02.png";
+        fileName2=@"lifegauge2.png";
     }else{//敵
         fileName=@"fortress01.png";
+        fileName2=@"lifegauge3.png";
     }
     
     if(self=[super initWithSpriteFrame:
@@ -54,7 +57,7 @@ NSString* fileName;
         [self addChild:lifeGauge1];
         
         lifeGauge2=[CCSprite spriteWithSpriteFrame:
-                            [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"lifegauge2.png"]];
+                            [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:fileName2]];
         nowRatio=(100/maxLife)*ability_Defense;
         lifeGauge2.scaleX=nowRatio*0.01;
         lifeGauge2.position=CGPointMake((nowRatio*0.01)*(lifeGauge2.contentSize.width/2), lifeGauge2.contentSize.height/2);

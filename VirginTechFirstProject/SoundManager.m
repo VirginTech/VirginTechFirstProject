@@ -17,15 +17,20 @@ float bgmValue;
 float bgmMaxVolume;
 
 float effectValue;
+
 float playerSetVolume;
 float playerFireMissileVolume;
 float playerDestructVolume;
+float playerDamageVolume;
 
 float enemySetVolume;
 float enemyFireMissileVolume;
 float enemyDestructVolume;
+float enemyDamageVolume;
 
 float fortressDestructVolume;
+float fortressDamageVolume;
+
 float endingEffectVolume;
 float splashDownVolume;
 
@@ -56,6 +61,7 @@ float playerSelectVolume;
     [[OALSimpleAudio sharedInstance]preloadEffect:@"player05set.mp3"];
     [[OALSimpleAudio sharedInstance]preloadEffect:@"playerFire.mp3"];
     [[OALSimpleAudio sharedInstance]preloadEffect:@"playerDestruct.mp3"];
+    [[OALSimpleAudio sharedInstance]preloadEffect:@"playerDamage.mp3"];
     
     //敵
     [[OALSimpleAudio sharedInstance]preloadEffect:@"enemySet.mp3"];
@@ -93,12 +99,16 @@ float playerSelectVolume;
     playerSetVolume=0.3;
     playerFireMissileVolume=0.5;
     playerDestructVolume=1.0;
+    playerDamageVolume=0.5;
     
     enemySetVolume=0.5;
     enemyFireMissileVolume=0.5;
     enemyDestructVolume=1.0;
+    enemyDamageVolume=0.5;
     
-    fortressDestructVolume=0.3;
+    fortressDestructVolume=0.1;
+    fortressDamageVolume=0.5;
+    
     endingEffectVolume=0.3;
     splashDownVolume=3.0;
     
@@ -196,6 +206,14 @@ float playerSelectVolume;
     }
 }
 
++(void)playerDamage
+{
+    if(effectSwitch){
+        [[OALSimpleAudio sharedInstance]setEffectsVolume:playerDamageVolume*effectValue];
+        [[OALSimpleAudio sharedInstance]playEffect:@"playerDamage.mp3"];
+    }
+}
+
 //===================
 // 敵
 //===================
@@ -224,6 +242,15 @@ float playerSelectVolume;
         [[OALSimpleAudio sharedInstance]playEffect:@"enemyDestruct.mp3"];
     }
 }
+
++(void)enemyDamage
+{
+    if(effectSwitch){
+        [[OALSimpleAudio sharedInstance]setEffectsVolume:enemyDamageVolume*effectValue];
+        [[OALSimpleAudio sharedInstance]playEffect:@"playerDamage.mp3"];
+    }
+}
+
 //===================
 // 要塞
 //===================
@@ -234,6 +261,14 @@ float playerSelectVolume;
         [[OALSimpleAudio sharedInstance]playEffect:@"fortDestruct01.mp3"];
     }
 }
++(void)fortressDamage
+{
+    if(effectSwitch){
+        [[OALSimpleAudio sharedInstance]setEffectsVolume:fortressDamageVolume*effectValue];
+        [[OALSimpleAudio sharedInstance]playEffect:@"playerDamage.mp3"];
+    }
+}
+
 //===================
 // エンディング
 //===================

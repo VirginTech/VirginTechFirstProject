@@ -515,11 +515,14 @@ float velocity;
             [removePlayerMissileArray addObject:missile];
         }else{
             if([BasicMath RadiusIntersectsRadius:missile.position pointB:enemyFortress.position radius1:10 radius2:30]){
+                //効果音
+                [SoundManager fortressDamage];
+                
                 [removePlayerMissileArray addObject:missile];
                 enemyFortress.ability_Defense -= missile.ability_Attack;
                 if(enemyFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Success_Schedule:)interval:0.2 repeat:10 delay:0.5];
+                    [self schedule:@selector(finish_Success_Schedule:)interval:0.2 repeat:7 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     
@@ -535,11 +538,14 @@ float velocity;
             [removeEnemyMissileArray addObject:missile];
         }else{
             if([BasicMath RadiusIntersectsRadius:missile.position pointB:playerFortress.position radius1:10 radius2:30]){
+                //効果音
+                [SoundManager fortressDamage];
+                
                 [removeEnemyMissileArray addObject:missile];
                 playerFortress.ability_Defense -= missile.ability_Attack;
                 if(playerFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.2 repeat:10 delay:0.5];
+                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.2 repeat:7 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     break;
@@ -631,7 +637,7 @@ float velocity;
     if(finishCount%2==0){
         [SoundManager fortressDestruct];
     }
-    if(finishCount==10){
+    if(finishCount>=7){
         //エンディングサウンド
         [SoundManager endingEffect:false];
         
@@ -652,7 +658,7 @@ float velocity;
     if(finishCount%2==0){
         [SoundManager fortressDestruct];
     }
-    if(finishCount==10){
+    if(finishCount>=7){
         //エンディングサウンド
         [SoundManager endingEffect:true];
 
@@ -690,7 +696,7 @@ float velocity;
                 flg=true;
             }
         }else if(type==1){//プレイヤー追加
-            if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:50]){
+            if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:10]){
                 touchPlayer=_player;
                 routeGeneLyer.player=_player;
                 flg=true;
@@ -829,7 +835,7 @@ float velocity;
     if(type==0){//タンク
         playerParticle.scale=0.3;
     }else if(type==1){//要塞
-        playerParticle.scale=5.0;
+        playerParticle.scale=1.0;
     }
     [bgSpLayer addChild:playerParticle z:2];
 }
@@ -846,7 +852,7 @@ float velocity;
     if(type==0){//タンク
         enemyParticle.scale=0.3;
     }else if(type==1){//要塞
-        enemyParticle.scale=5.0;
+        enemyParticle.scale=1.0;
     }
     [bgSpLayer addChild:enemyParticle z:2];
 }

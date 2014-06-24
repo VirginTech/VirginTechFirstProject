@@ -601,7 +601,7 @@ CCLabelTTF* label05_UnderWater;
         }
     }else if(type==4){
         if(key==0){
-            quantity=0.1*100;
+            quantity=0.05*100;
         }else if(key==1){
             quantity=1.0*100;
         }else if(key==2){

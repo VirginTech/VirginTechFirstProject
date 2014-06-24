@@ -483,6 +483,8 @@ NSMutableArray* swampArray;
                         [removePlayerMissileArray addObject:missile];
                         //敵ダメージ
                         enemy.ability_Defense -= missile.ability_Attack;
+                        //効果音
+                        //[SoundManager enemyDamage];
                         if(enemy.ability_Defense<=0){//敵撃破！
                             //効果音
                             [SoundManager enemyDestruct];
@@ -524,6 +526,8 @@ NSMutableArray* swampArray;
                         [removeEnemyMissileArray addObject:missile];
                         //プレイヤーダメージ
                         player.ability_Defense -= missile.ability_Attack;
+                        //効果音
+                        //[SoundManager playerDamage];
                         if(player.ability_Defense<=0){
                             [removePlayerArray addObject:player];
                             //効果音
@@ -547,11 +551,14 @@ NSMutableArray* swampArray;
             [removePlayerMissileArray addObject:missile];
         }else{
             if([BasicMath RadiusIntersectsRadius:missile.position pointB:enemyFortress.position radius1:10 radius2:30]){
+                //効果音
+                [SoundManager fortressDamage];
+                
                 [removePlayerMissileArray addObject:missile];
                 enemyFortress.ability_Defense -= missile.ability_Attack;
                 if(enemyFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Success_Schedule:)interval:0.2 repeat:10 delay:0.5];
+                    [self schedule:@selector(finish_Success_Schedule:)interval:0.2 repeat:7 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     //ハイスコア更新
@@ -587,11 +594,14 @@ NSMutableArray* swampArray;
             [removeEnemyMissileArray addObject:missile];
         }else{
             if([BasicMath RadiusIntersectsRadius:missile.position pointB:playerFortress.position radius1:10 radius2:30]){
+                //効果音
+                [SoundManager fortressDamage];
+                
                 [removeEnemyMissileArray addObject:missile];
                 playerFortress.ability_Defense -= missile.ability_Attack;
                 if(playerFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.2 repeat:10 delay:0.5];
+                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.2 repeat:7 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     break;
@@ -683,7 +693,7 @@ NSMutableArray* swampArray;
     if(finishCount%2==0){
         [SoundManager fortressDestruct];
     }
-    if(finishCount==10){
+    if(finishCount>=7){
         //エンディングサウンド
         [SoundManager endingEffect:false];
         
@@ -706,7 +716,7 @@ NSMutableArray* swampArray;
     if(finishCount%2==0){
         [SoundManager fortressDestruct];
     }
-    if(finishCount==10){
+    if(finishCount>=7){
         //エンディングサウンド
         [SoundManager endingEffect:true];
         
@@ -842,7 +852,7 @@ NSMutableArray* swampArray;
                 flg=true;
             }
         }else if(type==1){//プレイヤー追加
-            if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:50]){
+            if([BasicMath RadiusContainsPoint:_player.position pointB:touchLocation radius:10]){
                 touchPlayer=_player;
                 routeGeneLyer.player=_player;
                 flg=true;
@@ -983,7 +993,7 @@ NSMutableArray* swampArray;
     if(type==0){//タンク
         playerParticle.scale=0.3;
     }else if(type==1){//要塞
-        playerParticle.scale=5.0;
+        playerParticle.scale=1.0;
     }
     [bgSpLayer addChild:playerParticle z:2];
 }
@@ -1000,7 +1010,7 @@ NSMutableArray* swampArray;
     if(type==0){//タンク
         enemyParticle.scale=0.3;
     }else if(type==1){//要塞
-        enemyParticle.scale=5.0;
+        enemyParticle.scale=1.0;
     }
     [bgSpLayer addChild:enemyParticle z:2];
 }

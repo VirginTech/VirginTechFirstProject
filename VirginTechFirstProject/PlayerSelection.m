@@ -170,7 +170,7 @@ CCLabelTTF* label05;
     {
         velocity = 1.5;
         touchCount=0;
-        targetPos=CGPointMake(150, 150);
+        targetPos=CGPointMake(100, 100);
         
         finger=[CCSprite spriteWithSpriteFrame:
                             [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"finger.png"]];

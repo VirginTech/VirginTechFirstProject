@@ -211,7 +211,7 @@
         [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
     }else if([objName isEqualToString:@"player04"]){
         [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
-        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.10f];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.05f];
         [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+1.0f];
         [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.003f];
         [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];

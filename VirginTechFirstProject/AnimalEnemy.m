@@ -11,6 +11,7 @@
 #import "StageLevel_01.h"
 #import "GameManager.h"
 #import "SoundManager.h"
+#import "TutorialLevel.h"
 
 @implementation AnimalEnemy
 
@@ -301,7 +302,11 @@ CGSize winSize;
         }else{
             zOrder=3;
         }
-        [StageLevel_01 setEnemyMissile:eMissile zOrder:zOrder type:enemyNum];
+        if([GameManager getStageLevel]==0){
+            [TutorialLevel setEnemyMissile:eMissile zOrder:zOrder type:enemyNum];
+        }else{
+            [StageLevel_01 setEnemyMissile:eMissile zOrder:zOrder type:enemyNum];
+        }
     }
 }
 
