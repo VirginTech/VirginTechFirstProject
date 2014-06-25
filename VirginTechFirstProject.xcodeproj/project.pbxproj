@@ -92,6 +92,7 @@
 		CFAB6D8E1930A97B000FA153 /* AchievementManeger.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */; };
 		CFAB7C2D191505AF0084D0F8 /* RouteGenerationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */; };
 		CFCB338C1955872400416DB1 /* water01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFCB338B1955872400416DB1 /* water01.mp3 */; };
+		CFCBDD62195ABBFA0061E552 /* virgintech.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCBDD61195ABBFA0061E552 /* virgintech.png */; };
 		CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD5A32C1911F29D004E2B58 /* GameManager.m */; };
 		CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */; };
 		CFDFDECA190A2D6E0021FBF9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */; };
@@ -439,6 +440,7 @@
 		CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteGenerationLayer.h; sourceTree = "<group>"; };
 		CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteGenerationLayer.m; sourceTree = "<group>"; };
 		CFCB338B1955872400416DB1 /* water01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = water01.mp3; sourceTree = "<group>"; };
+		CFCBDD61195ABBFA0061E552 /* virgintech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virgintech.png; sourceTree = "<group>"; };
 		CFD5A32B1911F29D004E2B58 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		CFD5A32C1911F29D004E2B58 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		CFDFDEC4190A2D6E0021FBF9 /* VirginTechFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirginTechFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1194,6 +1196,7 @@
 				CF2F5013193D734B005E5BF6 /* stageSelect2.png */,
 				CF6A727219175B240027F654 /* position_line.png */,
 				CF1BF75D193CADDE00EEA664 /* bgLayer.png */,
+				CFCBDD61195ABBFA0061E552 /* virgintech.png */,
 				CFDFDEE1190A2D6F0021FBF9 /* Default.png */,
 				CFDFDEE3190A2D6F0021FBF9 /* Default@2x.png */,
 				CFDFDEE5190A2D6F0021FBF9 /* Default-568h@2x.png */,
@@ -2182,6 +2185,7 @@
 				CF74C8351953CF380027C995 /* toys09.mp3 in Resources */,
 				CFE20510195936230004E4E5 /* interface_default.plist in Resources */,
 				CF4FD007194EA32A00D6D4DF /* player01_default.png in Resources */,
+				CFCBDD62195ABBFA0061E552 /* virgintech.png in Resources */,
 				CF99E38619515E3800D59EE6 /* playerFire.mp3 in Resources */,
 				CFA097EB1957C1010042F368 /* button_default.plist in Resources */,
 				CF74C82F1953CF380027C995 /* toys03.mp3 in Resources */,
