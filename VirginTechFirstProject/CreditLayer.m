@@ -80,10 +80,13 @@ CCScrollView* scrollView;
     label.position=ccp(winSize.width/2,600);
     [bgSpLayer addChild:label];
     
-    label=[CCLabelTTF labelWithString:@"yoon" fontName:@"Verdana-Bold" fontSize:15];
+    label=[CCLabelTTF labelWithString:@"FUKUDA,Makiko" fontName:@"Verdana-Bold" fontSize:15];
     label.position=ccp(winSize.width/2,580);
     [bgSpLayer addChild:label];
     
+    label=[CCLabelTTF labelWithString:@"y･omochi" fontName:@"Verdana-Bold" fontSize:15];
+    label.position=ccp(winSize.width/2,560);
+    [bgSpLayer addChild:label];
     
     [self setList];
     
