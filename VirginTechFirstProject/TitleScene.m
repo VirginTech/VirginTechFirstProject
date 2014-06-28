@@ -22,6 +22,7 @@
 @implementation TitleScene
 
 CGSize winSize;
+CCSprite* finger;
 
 + (TitleScene *)scene
 {
@@ -154,6 +155,19 @@ CGSize winSize;
     [tutorialButton setTarget:self selector:@selector(onTutorialButtonClicked:)];
     [self addChild:tutorialButton];
 
+    //画像読込み
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
+    //チュートリアルが実行されていなければ「指」を表示
+    if([GameManager load_Aggregate_Stage]<0){
+        finger=[CCSprite spriteWithSpriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"finger.png"]];
+        finger.positionType = CCPositionTypeNormalized;
+        finger.position=ccp(tutorialButton.position.x+0.1,tutorialButton.position.y);
+        finger.scale=0.5;
+        [self addChild:finger];
+        [self schedule:@selector(finger_Rotation_Schedule:)interval:0.01];
+    }
+    
     //バージョン
     CCLabelTTF* versionLabel=[CCLabelTTF labelWithString:@"Version 1.0.0" fontName:@"Verdana" fontSize:13];
     versionLabel.position=ccp(winSize.width-versionLabel.contentSize.width/2,winSize.height-versionLabel.contentSize.height/2);
@@ -173,6 +187,15 @@ CGSize winSize;
     // always call super onExit last
     [super onExit];
     //[SoundManager stopBGM];
+}
+
+-(void)finger_Rotation_Schedule:(CCTime)dt
+{
+    if(finger.rotation<15){
+        finger.rotation=finger.rotation+0.3;
+    }else{
+        finger.rotation=0;
+    }
 }
 
 - (void)onTutorialButtonClicked:(id)sender

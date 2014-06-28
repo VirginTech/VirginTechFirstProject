@@ -94,6 +94,11 @@ float velocity;
     //ステージレベル取得
     int stageLevel=[GameManager getStageLevel];
     
+    //基礎集計（ステージレヴェル達成率）セーブ：0ステージ(チュートリアル)を実行すればクリアとする
+    if([GameManager load_Aggregate_Stage]<[GameManager getStageLevel]){
+        [GameManager save_Aggregate_Stage:[GameManager getStageLevel]];
+    }
+
     //BGM
     [SoundManager playBGM];
     
@@ -522,7 +527,7 @@ float velocity;
                 enemyFortress.ability_Defense -= missile.ability_Attack;
                 if(enemyFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Success_Schedule:)interval:0.2 repeat:7 delay:0.5];
+                    [self schedule:@selector(finish_Success_Schedule_t:)interval:0.2 repeat:7 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     
@@ -545,7 +550,7 @@ float velocity;
                 playerFortress.ability_Defense -= missile.ability_Attack;
                 if(playerFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Failure_Schedule:)interval:0.2 repeat:7 delay:0.5];
+                    [self schedule:@selector(finish_Failure_Schedule_t:)interval:0.2 repeat:7 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     break;
@@ -626,7 +631,7 @@ float velocity;
     removeEnemyMissileArray=[[NSMutableArray alloc]init];
 }
 
--(void)finish_Failure_Schedule:(CCTime)dt
+-(void)finish_Failure_Schedule_t:(CCTime)dt
 {
     finishCount++;
     [SoundManager stopBGM];
@@ -647,7 +652,7 @@ float velocity;
     }
 }
 
--(void)finish_Success_Schedule:(CCTime)dt
+-(void)finish_Success_Schedule_t:(CCTime)dt
 {
     finishCount++;
     [SoundManager stopBGM];

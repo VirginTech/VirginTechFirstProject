@@ -73,7 +73,7 @@ NSDictionary *dict;
 {
     //なければ(初回)とりあえず初期値をセーブ
     if([dict valueForKey:@"Aggregate"]==nil){
-        [GameManager save_Aggregate_All:0 fortress:0 level:0 stage:0];
+        [GameManager save_Aggregate_All:0 fortress:0 level:0 stage:-1];
     }
 }
 

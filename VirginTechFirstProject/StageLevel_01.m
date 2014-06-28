@@ -575,7 +575,8 @@ NSMutableArray* swampArray;
                     [self setAchievement:@"Achievement_Fortress"];
                     //基礎集計（ステージレヴェル達成率）セーブ
                     if([GameManager load_Aggregate_Stage]<[GameManager getStageLevel]){
-                        [GameManager save_Aggregate_Stage:[GameManager load_Aggregate_Stage]+1];
+                        //[GameManager save_Aggregate_Stage:[GameManager load_Aggregate_Stage]+1];
+                        [GameManager save_Aggregate_Stage:[GameManager getStageLevel]];
                     }
                     //アチーブメント保存
                     [self setAchievement:@"Achievement_Stage"];

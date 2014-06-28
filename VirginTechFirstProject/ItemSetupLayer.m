@@ -575,7 +575,7 @@ CCLabelTTF* label05_UnderWater;
         }else if(key==1){
             quantity=0.5*100;
         }else if(key==2){
-            quantity=0.03*100;
+            quantity=0.02*100;
         }else if(key==3){
             quantity=0.0;
         }
@@ -585,7 +585,7 @@ CCLabelTTF* label05_UnderWater;
         }else if(key==1){
             quantity=0.25*100;
         }else if(key==2){
-            quantity=0.05*100;
+            quantity=0.03*100;
         }else if(key==3){
             quantity=0.05*100*0.2;
         }

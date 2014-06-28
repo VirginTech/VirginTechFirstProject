@@ -112,6 +112,10 @@ CCSprite* bgSpLayer;
             //[levelBtn addChild:lock z:1];
             levelBtn.enabled=false;
         }
+        //1ステージは強制的にtrue
+        if(i==0){
+            levelBtn.enabled=true;
+        }
     }
     // done
 	return self;
