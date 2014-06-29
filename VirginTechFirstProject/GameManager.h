@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GameManager : NSObject{
+extern const int STAGE_LEVEL_MAX;
+extern const int COIN_VAL;
+extern const int DIA_VAL;
+
+@interface GameManager : NSObject
+{
+    
 }
 
 +(void)setLocale:(int)value;//1:英語 2:日本語

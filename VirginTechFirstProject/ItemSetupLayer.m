@@ -571,53 +571,53 @@ CCLabelTTF* label05_UnderWater;
     float quantity;
     if(type==1){
         if(key==0){
-            quantity=0.05*100;
+            quantity=PLAYER01_ATTACK_RATIO*100;
         }else if(key==1){
-            quantity=0.5*100;
+            quantity=PLAYER01_DEFENSE_RATIO*100;
         }else if(key==2){
-            quantity=0.02*100;
+            quantity=PLAYER01_TRAVELING_RATIO*100;
         }else if(key==3){
             quantity=0.0;
         }
     }else if(type==2){
         if(key==0){
-            quantity=0.05*100;
+            quantity=PLAYER02_ATTACK_RATIO*100;
         }else if(key==1){
-            quantity=0.25*100;
+            quantity=PLAYER02_DEFENSE_RATIO*100;
         }else if(key==2){
-            quantity=0.03*100;
+            quantity=PLAYER02_TRAVELING_RATIO*100;
         }else if(key==3){
-            quantity=0.05*100*0.2;
+            quantity=PLAYER02_TRAVELING_RATIO*100*0.2;
         }
     }else if(type==3){
         if(key==0){
-            quantity=0.1*100;
+            quantity=PLAYER03_ATTACK_RATIO*100;
         }else if(key==1){
-            quantity=0.5*100;
+            quantity=PLAYER03_DEFENSE_RATIO*100;
         }else if(key==2){
-            quantity=0.01*100;
+            quantity=PLAYER03_TRAVELING_RATIO*100;
         }else if(key==3){
-            quantity=0.01*100*0.4;
+            quantity=PLAYER03_TRAVELING_RATIO*100*0.4;
         }
     }else if(type==4){
         if(key==0){
-            quantity=0.05*100;
+            quantity=PLAYER04_ATTACK_RATIO*100;
         }else if(key==1){
-            quantity=1.0*100;
+            quantity=PLAYER04_DEFENSE_RATIO*100;
         }else if(key==2){
-            quantity=0.003*100;
+            quantity=PLAYER04_TRAVELING_RATIO*100;
         }else if(key==3){
-            quantity=0.003*100*2.0;
+            quantity=PLAYER04_TRAVELING_RATIO*100*2.0;
         }
     }else if(type==5){
         if(key==0){
-            quantity=0.25*100;
+            quantity=PLAYER05_ATTACK_RATIO*100;
         }else if(key==1){
-            quantity=1.5*100;
+            quantity=PLAYER05_DEFENSE_RATIO*100;
         }else if(key==2){
-            quantity=0.001*100;
+            quantity=PLAYER05_TRAVELING_RATIO*100;
         }else if(key==3){
-            quantity=0.001*100*5.0;
+            quantity=PLAYER05_TRAVELING_RATIO*100*5.0;
         }
     }
     return quantity;

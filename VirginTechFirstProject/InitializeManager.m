@@ -57,7 +57,7 @@ NSDictionary *dict;
 {
     //なければ(初回)とりあえず初期値をセーブ
     if([dict valueForKey:@"Currency"]==nil){
-        [GameManager save_Currency_All:1000 dia:5];
+        [GameManager save_Currency_All:COIN_VAL dia:DIA_VAL];
     }
 }
 
@@ -83,7 +83,7 @@ NSDictionary *dict;
     if([dict valueForKey:@"StageClearState"]==nil){
         NSUserDefaults  *userDefault=[NSUserDefaults standardUserDefaults];
         NSMutableArray* array=[[NSMutableArray alloc]init];
-        for(int i=0;i<80;i++){
+        for(int i=0;i<STAGE_LEVEL_MAX;i++){
             [array addObject:[NSNumber numberWithInt:0]];
         }
         [userDefault setObject:array forKey:@"StageClearState"];

@@ -95,7 +95,7 @@ NSMutableArray* swampArray;
     [SoundManager playBGM];
     
     //レベルに応じた画面の大きさ
-    [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*30))];
+    [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*10))];
 
     UIImage *image = [UIImage imageNamed:@"bgLayer.png"];
     UIGraphicsBeginImageContext(CGSizeMake(winSize.width,[GameManager getWorldSize].height));
@@ -229,7 +229,7 @@ NSMutableArray* swampArray;
 {
     CGPoint swampPos;
     
-    for(int i=[GameManager getWorldSize].height/5.0+200;i<[GameManager getWorldSize].height-200;i+=500)
+    for(int i=[GameManager getWorldSize].height/5.0+130;i<[GameManager getWorldSize].height-270;i+=350)
     {
         swampPos.x = arc4random() % (int)winSize.width;
         swampPos.y = i;
@@ -1045,7 +1045,8 @@ NSMutableArray* swampArray;
             touchPlayer.state_PathMake_flg=true;
         }
         
-    }else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
+    //}else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加
+    }else{
         if(worldLocation.y < [GameManager getWorldSize].height / 5.0f){
             //効果音
             [SoundManager playerSelect];

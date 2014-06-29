@@ -11,6 +11,13 @@
 
 @implementation GameManager
 
+//==============
+// グローバル定数
+//==============
+const int STAGE_LEVEL_MAX=100;//ステージレヴェル数
+const int COIN_VAL=3000;//コイン初期値
+const int DIA_VAL=5;//ダイア初期値
+
 //===========
 // メモリ内
 //===========

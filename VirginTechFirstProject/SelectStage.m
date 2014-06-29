@@ -41,8 +41,8 @@ CCSprite* bgSpLayer;
 
     //背景画像セット
     UIImage *image = [UIImage imageNamed:@"stageSelect2.png"];
-    UIGraphicsBeginImageContext(CGSizeMake(winSize.width+50,1200));
-    [image drawInRect:CGRectMake(0, 0, winSize.width+50,1200)];
+    UIGraphicsBeginImageContext(CGSizeMake(winSize.width+50,1400));
+    [image drawInRect:CGRectMake(0, 0, winSize.width+50,1400)];
     image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -77,7 +77,7 @@ CCSprite* bgSpLayer;
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
     CGPoint btnPos=CGPointMake(70, bgSpLayer.contentSize.height-100);
 
-    for(int i=0;i<80;i++){
+    for(int i=0;i<STAGE_LEVEL_MAX;i++){
         
         int stageNum=i+1;
         CCButton* levelBtn=[CCButton buttonWithTitle:

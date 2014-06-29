@@ -8,6 +8,26 @@
 
 #import "ObjectManager.h"
 
+const float PLAYER01_ATTACK_RATIO=0.05f;
+const float PLAYER01_DEFENSE_RATIO=0.5f;
+const float PLAYER01_TRAVELING_RATIO=0.02f;
+
+const float PLAYER02_ATTACK_RATIO=0.05f;
+const float PLAYER02_DEFENSE_RATIO=0.25f;
+const float PLAYER02_TRAVELING_RATIO=0.03f;
+
+const float PLAYER03_ATTACK_RATIO=0.10f;
+const float PLAYER03_DEFENSE_RATIO=0.5f;
+const float PLAYER03_TRAVELING_RATIO=0.01f;
+
+const float PLAYER04_ATTACK_RATIO=0.05f;
+const float PLAYER04_DEFENSE_RATIO=1.0f;
+const float PLAYER04_TRAVELING_RATIO=0.003f;
+
+const float PLAYER05_ATTACK_RATIO=0.25f;
+const float PLAYER05_DEFENSE_RATIO=1.5f;
+const float PLAYER05_TRAVELING_RATIO=0.001f;
+
 @implementation ObjectManager
 
 //=========================================
@@ -193,33 +213,33 @@
 {
     if([objName isEqualToString:@"player01"]){
         [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
-        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.05f];
-        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+0.5f];
-        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.02f];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+PLAYER01_ATTACK_RATIO];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+PLAYER01_DEFENSE_RATIO];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+PLAYER01_TRAVELING_RATIO];
         [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
     }else if([objName isEqualToString:@"player02"]){
         [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
-        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.05f];
-        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+0.25f];
-        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.03f];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+PLAYER02_ATTACK_RATIO];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+PLAYER02_DEFENSE_RATIO];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+PLAYER02_TRAVELING_RATIO];
         [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
     }else if([objName isEqualToString:@"player03"]){
         [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
-        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.10f];
-        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+0.5f];
-        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.01f];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+PLAYER03_ATTACK_RATIO];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+PLAYER03_DEFENSE_RATIO];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+PLAYER03_TRAVELING_RATIO];
         [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
     }else if([objName isEqualToString:@"player04"]){
         [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
-        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.05f];
-        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+1.0f];
-        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.003f];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+PLAYER04_ATTACK_RATIO];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+PLAYER04_DEFENSE_RATIO];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+PLAYER04_TRAVELING_RATIO];
         [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
     }else if([objName isEqualToString:@"player05"]){
         [self save_Object_Ability_Level:objName level:[self load_Object_Ability_Level:objName]+1];
-        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+0.25f];
-        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+1.5f];
-        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+0.001f];
+        [self save_Object_Ability_Attack:objName attack:[self load_Object_Ability_Attack:objName]+PLAYER05_ATTACK_RATIO];
+        [self save_Object_Ability_Defense:objName defense:[self load_Object_Ability_Defense:objName]+PLAYER05_DEFENSE_RATIO];
+        [self save_Object_Ability_Traveling:objName traveling:[self load_Object_Ability_Traveling:objName]+PLAYER05_TRAVELING_RATIO];
         [self save_Object_Ability_Build:objName build:[self load_Object_Ability_Build:objName]];
     }
 }

@@ -92,7 +92,7 @@ float velocity;
     [GameManager setPauseStateChange:false];
     
     //ステージレベル取得
-    int stageLevel=[GameManager getStageLevel];
+    //int stageLevel=[GameManager getStageLevel];
     
     //基礎集計（ステージレヴェル達成率）セーブ：0ステージ(チュートリアル)を実行すればクリアとする
     if([GameManager load_Aggregate_Stage]<[GameManager getStageLevel]){
@@ -103,7 +103,7 @@ float velocity;
     [SoundManager playBGM];
     
     //レベルに応じた画面の大きさ
-    [GameManager setWorldSize:CGSizeMake(winSize.width, 600+((stageLevel-1)*30))];
+    [GameManager setWorldSize:CGSizeMake(winSize.width, 570)];
 
     UIImage *image = [UIImage imageNamed:@"bgLayer.png"];
     UIGraphicsBeginImageContext(CGSizeMake(winSize.width,[GameManager getWorldSize].height));
