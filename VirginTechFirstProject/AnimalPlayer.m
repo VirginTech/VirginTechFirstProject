@@ -155,15 +155,15 @@ CGSize winSize;
                }
                if(waterFlg){
                    if(groupNum==1){
-                       velocityAdjustRate=1;
+                       velocityAdjustRate=1;//1
                    }else if(groupNum==2){
-                       velocityAdjustRate=1;
+                       velocityAdjustRate=1;//1
                    }else if(groupNum==3){
-                       velocityAdjustRate=2;
+                       velocityAdjustRate=2;//2
                    }else if(groupNum==4){
-                       velocityAdjustRate=2;
+                       velocityAdjustRate=2;//2
                    }else if(groupNum==5){
-                       velocityAdjustRate=5;
+                       velocityAdjustRate=5;//5
                    }
                }else{
                    if(groupNum==1){

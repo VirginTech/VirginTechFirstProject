@@ -497,15 +497,27 @@ CGSize winSize;
         if(enemyNum==1){//ノーマル
             ability_Attack=0.75+((float)((float)([GameManager getStageLevel]-1)*0.125f));
             ability_Defense=7.5+((float)((float)([GameManager getStageLevel]-1)*0.5f));
-            ability_Traveling=0.12+((float)((float)([GameManager getStageLevel]-1)*0.01f));
+            if([GameManager getStageLevel]>50){
+                ability_Traveling=0.12+(float)50.0f*0.01f;
+            }else{
+                ability_Traveling=0.12+((float)((float)([GameManager getStageLevel]-1)*0.01f));
+            }
         }else if(enemyNum==2){//移動大：攻撃弱い
             ability_Attack=0.5+((float)((float)([GameManager getStageLevel]-1)*0.1f));
             ability_Defense=5.5+((float)((float)([GameManager getStageLevel]-1)*0.7f));
-            ability_Traveling=0.15+((float)((float)([GameManager getStageLevel]-1)*0.02f));
+            if([GameManager getStageLevel]>50){
+                ability_Traveling=0.15+(float)50.0f*0.02f;
+            }else{
+                ability_Traveling=0.15+((float)((float)([GameManager getStageLevel]-1)*0.02f));
+            }
         }else if(enemyNum==3){//移動小：攻撃強い
-            ability_Attack=0.95+((float)((float)([GameManager getStageLevel]-1)*0.15f));
+            ability_Attack=0.95+((float)((float)([GameManager getStageLevel]-1)*0.2f));
             ability_Defense=6.5+((float)((float)([GameManager getStageLevel]-1)*0.6f));
-            ability_Traveling=0.1+((float)((float)([GameManager getStageLevel]-1)*0.005f));
+            if([GameManager getStageLevel]>50){
+                ability_Traveling=0.1+(float)50.0f*0.005f;
+            }else{
+                ability_Traveling=0.1+((float)((float)([GameManager getStageLevel]-1)*0.005f));
+            }
         }
         
         //ライフ初期値

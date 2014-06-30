@@ -156,8 +156,10 @@ NSMutableArray* swampArray;
     //植樹
     [self setTreePlanting];
     //沼
-    if([GameManager getStageLevel]%3==0){
-        [self setSwamp];
+    if([GameManager getStageLevel]>10){
+        if([GameManager getStageLevel]%3==0){
+            [self setSwamp];
+        }
     }
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
@@ -245,21 +247,7 @@ NSMutableArray* swampArray;
 -(void)createEnemy_Schedule:(CCTime)dt
 {
     if(enemyCount<=[GameManager getStageLevel]*2){
-        if(enemyCount%5==0){
-            [StageLevel_01 createEnemy];
-            [StageLevel_01 createEnemy];
-        }else if(enemyCount%11==0){
-            [StageLevel_01 createEnemy];
-            [StageLevel_01 createEnemy];
-            [StageLevel_01 createEnemy];
-        }else if(enemyCount%23==0){
-            [StageLevel_01 createEnemy];
-            [StageLevel_01 createEnemy];
-            [StageLevel_01 createEnemy];
-            [StageLevel_01 createEnemy];
-        }else if(enemyCount%31==0){
-            [StageLevel_01 createEnemy];
-            [StageLevel_01 createEnemy];
+        if(enemyCount%10==0){
             [StageLevel_01 createEnemy];
             [StageLevel_01 createEnemy];
             [StageLevel_01 createEnemy];
@@ -309,7 +297,7 @@ NSMutableArray* swampArray;
                                 radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
                 player.waterFlg=true;
                 if(player.groupNum==1){
-                    player.velocityAdjustRate=1;
+                    player.velocityAdjustRate=1;//1
                     player.ability_Defense -= 0.1;
                     if(player.ability_Defense<=0){
                         [removePlayerArray addObject:player];
@@ -317,13 +305,13 @@ NSMutableArray* swampArray;
                         [StageLevel_01 setPlayerParticle:0 pos:player.position fileName:@"playerDead.plist"];
                     }
                 }else if(player.groupNum==2){
-                    player.velocityAdjustRate=1;
+                    player.velocityAdjustRate=1;//1
                 }else if(player.groupNum==3){
-                    player.velocityAdjustRate=2;
+                    player.velocityAdjustRate=2;//2
                 }else if(player.groupNum==4){
-                    player.velocityAdjustRate=2;
+                    player.velocityAdjustRate=2;//2
                 }else if(player.groupNum==5){
-                    player.velocityAdjustRate=5;
+                    player.velocityAdjustRate=5;//5
                 }
                 break;
             }else{
@@ -749,7 +737,7 @@ NSMutableArray* swampArray;
             UIAlertView *alert = [[UIAlertView alloc] init];
             alert.tag=1;
             alert.delegate = self;
-            if([GameManager getStageLevel]==80){
+            if([GameManager getStageLevel]==STAGE_LEVEL_MAX){
                 alert.title = NSLocalizedString(@"Final",NULL);
                 alert.message=NSLocalizedString(@"FinalMessage",NULL);
             }else{
