@@ -19,6 +19,7 @@
 CGSize winSize;
 int afterDia;
 
+CCSprite* bgSprite;
 CCScrollView* scrollView;
 
 CCLabelTTF* label01;
@@ -71,7 +72,7 @@ CCLabelTTF* label05_UnderWater;
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
     
-    CCSprite* bgSprite=[CCSprite spriteWithSpriteFrame:
+    bgSprite=[CCSprite spriteWithSpriteFrame:
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"playerselect.png"]];
     
     CCSprite* animal01=[CCSprite spriteWithSpriteFrame:
@@ -632,6 +633,23 @@ CCLabelTTF* label05_UnderWater;
         if(alertView.tag>=1 && alertView.tag<=5){
             afterDia = [GameManager load_Currency_Dia] - 1;
             if(afterDia >= 0){
+                //パーティクル
+                CCParticleSystem* levelUpParticle=[[CCParticleSystem alloc]initWithFile:@"levelUp.plist"];
+                if(alertView.tag==1){
+                    levelUpParticle.position=CGPointMake(80,                               170);
+                }else if(alertView.tag==2){
+                    levelUpParticle.position=CGPointMake(bgSprite.contentSize.width/2-150, 170);
+                }else if(alertView.tag==3){
+                    levelUpParticle.position=CGPointMake(bgSprite.contentSize.width/2,     170);
+                }else if(alertView.tag==4){
+                    levelUpParticle.position=CGPointMake(bgSprite.contentSize.width/2+150, 170);
+                }else if(alertView.tag==5){
+                    levelUpParticle.position=CGPointMake(bgSprite.contentSize.width/2+300, 170);
+                }
+                [bgSprite addChild:levelUpParticle];
+                //効果音
+                [SoundManager button_Click];
+                
                 [ObjectManager levelUp_Object_Ability:[NSString stringWithFormat:@"player%02d",(int)alertView.tag]];
                 [self setButtonLevel];
                 [self setAbility];

@@ -120,7 +120,7 @@ float velocity;
     [self addChild:scrollView z:0];
     
     //地面
-    [self setGround];
+    [self t_setGround];
     
     //陣地ライン
     CCSprite* line=[CCSprite spriteWithImageNamed:@"position_line.png"];
@@ -170,12 +170,12 @@ float velocity;
     // always call super onEnter first
     [super onEnter];
     //要塞陣地
-    [self createPlayerFortress];
-    [self createEnemyFortress];
+    [self t_createPlayerFortress];
+    [self t_createEnemyFortress];
     //植樹
-    [self setTreePlanting];
+    [self t_setTreePlanting];
     //審判スケジュール開始
-    [self schedule:@selector(judgement_Schedule:)interval:0.1];
+    [self schedule:@selector(t_judgement_Schedule:)interval:0.1];
     //チュートリアル開始
     [self schedule:@selector(finger_Move_Schedule:)interval:0.01 repeat:CCTimerRepeatForever delay:1.0];
     //敵アニマル戦車登場
@@ -194,7 +194,7 @@ float velocity;
     //[SoundManager stopBGM];
 }
 
--(void)setGround
+-(void)t_setGround
 {
     float offsetX;
     float offsetY;
@@ -222,7 +222,7 @@ float velocity;
     }
 }
 
--(void)setTreePlanting
+-(void)t_setTreePlanting
 {
     CGPoint plantPos;
     NSString* leafName;
@@ -242,10 +242,10 @@ float velocity;
     }
 }
 
--(void)createEnemy_Schedule:(CCTime)dt
+-(void)t_createEnemy_Schedule:(CCTime)dt
 {
     if(enemyCount<=2){
-        [TutorialLevel createEnemy];
+        [TutorialLevel t_createEnemy];
     }
     enemyCount++;
 }
@@ -313,7 +313,7 @@ float velocity;
     finger.visible=true;
 }
 
--(void)judgement_Schedule:(CCTime)dt
+-(void)t_judgement_Schedule:(CCTime)dt
 {
     removePlayerArray=[[NSMutableArray alloc]init];
     removeEnemyArray=[[NSMutableArray alloc]init];
@@ -374,7 +374,7 @@ float velocity;
     //プレイヤー再稼働
     for(AnimalPlayer* player in animalArray){
         if(player.stopFlg){//停止中であって
-            if(![TutorialLevel isPlayerCollision:player]){//誰とも接触していなければ
+            if(![TutorialLevel t_isPlayerCollision:player]){//誰とも接触していなければ
                 player.stopFlg=false;
                 [player resumeRunning];//再稼働する
             }
@@ -383,7 +383,7 @@ float velocity;
     //敵アニマル再稼働
     for(AnimalEnemy* enemy in enemyArray){
         if(enemy.stopFlg){//停止中であって
-            if(![TutorialLevel isEnemyCollision:enemy]){//誰とも接触していなければ
+            if(![TutorialLevel t_isEnemyCollision:enemy]){//誰とも接触していなければ
                 enemy.stopFlg=false;
                 [enemy resumeRunning];//再稼働する
             }
@@ -474,7 +474,7 @@ float velocity;
                             //効果音
                             [SoundManager enemyDestruct];
                             //パーティクル
-                            [TutorialLevel setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
+                            [TutorialLevel t_setEnemyParticle:0 pos:enemy.position fileName:@"enemyDead.plist"];
                             //敵削除配列へ
                             [removeEnemyArray addObject:enemy];
                         }
@@ -502,7 +502,7 @@ float velocity;
                             //効果音
                             [SoundManager playerDestruct];
                             //パーティクル
-                            [TutorialLevel setPlayerParticle:0 pos:player.position fileName:@"playerDead.plist"];
+                            [TutorialLevel t_setPlayerParticle:0 pos:player.position fileName:@"playerDead.plist"];
                         }
                         break;//二重判定防止
                     }
@@ -527,7 +527,7 @@ float velocity;
                 enemyFortress.ability_Defense -= missile.ability_Attack;
                 if(enemyFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Success_Schedule_t:)interval:0.2 repeat:7 delay:0.5];
+                    [self schedule:@selector(t_finish_Success_Schedule_t:)interval:0.2 repeat:7 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     
@@ -550,13 +550,13 @@ float velocity;
                 playerFortress.ability_Defense -= missile.ability_Attack;
                 if(playerFortress.ability_Defense<=0){
                     //フィニッシュ
-                    [self schedule:@selector(finish_Failure_Schedule_t:)interval:0.2 repeat:7 delay:0.5];
+                    [self schedule:@selector(t_finish_Failure_Schedule_t:)interval:0.2 repeat:7 delay:0.5];
                     [GameManager setPauseStateChange:true];
                     [GameManager setPauseing:true];
                     break;
                 }else{
                     //画面を揺する
-                    [self schedule:@selector(crisis_Schedule:)interval:0.1 repeat:3 delay:0.0];
+                    [self schedule:@selector(t_crisis_Schedule:)interval:0.1 repeat:3 delay:0.0];
                 }
             }
         }
@@ -631,13 +631,13 @@ float velocity;
     removeEnemyMissileArray=[[NSMutableArray alloc]init];
 }
 
--(void)finish_Failure_Schedule_t:(CCTime)dt
+-(void)t_finish_Failure_Schedule_t:(CCTime)dt
 {
     finishCount++;
     [SoundManager stopBGM];
     
     //エフェクト
-    [TutorialLevel setPlayerParticle:1 pos:playerFortress.position fileName:@"playerDead.plist"];
+    [TutorialLevel t_setPlayerParticle:1 pos:playerFortress.position fileName:@"playerDead.plist"];
     bgSpLayer.position = CGPointMake(bgSpLayer.position.x+10, bgSpLayer.position.y-10);
     if(finishCount%2==0){
         [SoundManager fortressDestruct];
@@ -652,13 +652,13 @@ float velocity;
     }
 }
 
--(void)finish_Success_Schedule_t:(CCTime)dt
+-(void)t_finish_Success_Schedule_t:(CCTime)dt
 {
     finishCount++;
     [SoundManager stopBGM];
     
     //エフェクト
-    [TutorialLevel setEnemyParticle:1 pos:enemyFortress.position fileName:@"enemyDead.plist"];
+    [TutorialLevel t_setEnemyParticle:1 pos:enemyFortress.position fileName:@"enemyDead.plist"];
     bgSpLayer.position = CGPointMake(bgSpLayer.position.x-10, bgSpLayer.position.y+10);
     if(finishCount%2==0){
         [SoundManager fortressDestruct];
@@ -681,7 +681,7 @@ float velocity;
     }
 }
 
--(void)crisis_Schedule:(CCTime)dt
+-(void)t_crisis_Schedule:(CCTime)dt
 {
     bgSpLayer.position = CGPointMake(bgSpLayer.position.x+10, bgSpLayer.position.y-10);
 }
@@ -689,7 +689,7 @@ float velocity;
 //============================
 // タッチしたアニマル戦車を特定する
 //============================
-+(BOOL)isAnimal:(CGPoint)touchLocation type:(int)type{
++(BOOL)t_isAnimal:(CGPoint)touchLocation type:(int)type{
     
     BOOL flg=false;
     
@@ -714,7 +714,7 @@ float velocity;
 //===================================
 // 選択したプレイヤーが衝突継続中かどうか
 //===================================
-+(BOOL)isPlayerCollision:(AnimalPlayer*)player
++(BOOL)t_isPlayerCollision:(AnimalPlayer*)player
 {
     bool flg=false;
     /*
@@ -738,7 +738,7 @@ float velocity;
 //===================================
 // 選択した敵が衝突継続中かどうか
 //===================================
-+(BOOL)isEnemyCollision:(AnimalEnemy*)enemy
++(BOOL)t_isEnemyCollision:(AnimalEnemy*)enemy
 {    
     bool flg=false;
     /*
@@ -763,12 +763,12 @@ float velocity;
 //============================
 // プレイヤーアニマルセット
 //============================
-+(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum
++(void)t_createPlayer:(CGPoint)playerPos playerNum:(int)playerNum
 {
     //効果音
     [SoundManager playerSet:playerNum];
     //パーティクル
-    [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
+    [self t_setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
@@ -778,7 +778,7 @@ float velocity;
 //============================
 // 敵アニマルセット
 //============================
-+(void)createEnemy
++(void)t_createEnemy
 {
     creatEnemy=[AnimalEnemy createEnemy];
     [enemyArray addObject:creatEnemy];
@@ -791,7 +791,7 @@ float velocity;
 //============================
 // プレイヤーミサイルセット
 //============================
-+(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder type:(int)type
++(void)t_setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder type:(int)type
 {
     //効果音
     [SoundManager playerFireMissile:type];
@@ -803,7 +803,7 @@ float velocity;
 //============================
 // 敵ミサイルセット
 //============================
-+(void)setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder type:(int)type
++(void)t_setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder type:(int)type
 {
     //効果音
     [SoundManager enemyFireMissile:type];
@@ -814,7 +814,7 @@ float velocity;
 //============================
 // プレイヤー要塞セット
 //============================
--(void)createPlayerFortress
+-(void)t_createPlayerFortress
 {
     playerFortress=[Fortress createFortress:ccp(winSize.width/2, 30) type:0];
     [bgSpLayer addChild:playerFortress z:0];
@@ -822,7 +822,7 @@ float velocity;
 //============================
 // 敵要塞セット
 //============================
--(void)createEnemyFortress
+-(void)t_createEnemyFortress
 {
     enemyFortress=[Fortress createFortress:ccp(winSize.width/2,[GameManager getWorldSize].height-30) type:1];
     [bgSpLayer addChild:enemyFortress z:0];
@@ -830,7 +830,7 @@ float velocity;
 //============================
 // パーティクルセット(プレイヤー)
 //============================
-+(void)setPlayerParticle:(int)type pos:(CGPoint)pos fileName:(NSString*)fileName
++(void)t_setPlayerParticle:(int)type pos:(CGPoint)pos fileName:(NSString*)fileName
 {
     if(playerParticle!=nil){//その都度削除
         [bgSpLayer removeChild:playerParticle cleanup:YES];
@@ -847,7 +847,7 @@ float velocity;
 //============================
 // パーティクルセット(敵)
 //============================
-+(void)setEnemyParticle:(int)type pos:(CGPoint)pos fileName:(NSString*)fileName
++(void)t_setEnemyParticle:(int)type pos:(CGPoint)pos fileName:(NSString*)fileName
 {
     if(enemyParticle!=nil){//その都度削除
         [bgSpLayer removeChild:enemyParticle cleanup:YES];
@@ -884,8 +884,8 @@ float velocity;
     worldLocation.x = touchLocation.x + scrollView.scrollPosition.x;
     worldLocation.y = touchLocation.y + offsetY;
     
-    if([TutorialLevel isAnimal:worldLocation type:0]){//経路作成レイヤー表示
-        if(![TutorialLevel isPlayerCollision:touchPlayer]){//タッチした戦車が衝突継続中でなければ経路作成可能
+    if([TutorialLevel t_isAnimal:worldLocation type:0]){//経路作成レイヤー表示
+        if(![TutorialLevel t_isPlayerCollision:touchPlayer]){//タッチした戦車が衝突継続中でなければ経路作成可能
             routeGeneLyer.offsetY=offsetY;
             [self addChild:routeGeneLyer z:2];
             touchPlayer.state_PathMake_flg=true;
@@ -893,11 +893,11 @@ float velocity;
             [self unschedule:@selector(finger_Rotation_Schedule:)];
             targetPos=CGPointMake(enemyFortress.position.x+finger.contentSize.width/2, enemyFortress.position.y-50);
             [self schedule:@selector(finger_Drag_Schedule:)interval:0.01 repeat:CCTimerRepeatForever delay:1.0];
-            [self schedule:@selector(createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
+            [self schedule:@selector(t_createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
             
         }
         
-    }else if(![TutorialLevel isAnimal:worldLocation type:1]){//プレイヤー追加
+    }else if(![TutorialLevel t_isAnimal:worldLocation type:1]){//プレイヤー追加
         if(worldLocation.y < [GameManager getWorldSize].height / 5.0f){
             //効果音
             [SoundManager playerSelect];

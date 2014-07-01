@@ -351,7 +351,7 @@ CGSize winSize;
             zOrder=3;
         }
         if([GameManager getStageLevel]==0){
-            [TutorialLevel setPlayerMissile:pMissile zOrder:zOrder type:groupNum];
+            [TutorialLevel t_setPlayerMissile:pMissile zOrder:zOrder type:groupNum];
         }else{
             [StageLevel_01 setPlayerMissile:pMissile zOrder:zOrder type:groupNum];
         }

@@ -20,10 +20,10 @@
 +(TutorialLevel *)scene;
 -(id)init;
 
-+(void)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
-+(void)createEnemy;
-+(void)setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder type:(int)type;
-+(void)setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder type:(int)type;
++(void)t_createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
++(void)t_createEnemy;
++(void)t_setPlayerMissile:(PlayerMissile*)missile zOrder:(int)zOrder type:(int)type;
++(void)t_setEnemyMissile:(EnemyMissile*)missile zOrder:(int)zOrder type:(int)type;
 
 +(void)setFinger;
 

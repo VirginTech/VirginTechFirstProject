@@ -261,7 +261,7 @@ CCLabelTTF* label05;
     CGPoint tmpPos=createPlayerPos;
     if(serialCount1==0){
         if([GameManager getStageLevel]==0){
-            [TutorialLevel createPlayer:tmpPos playerNum:type];
+            [TutorialLevel t_createPlayer:tmpPos playerNum:type];
         }else{
             [StageLevel_01 createPlayer:tmpPos playerNum:type];
         }
@@ -269,7 +269,7 @@ CCLabelTTF* label05;
         tmpPos.x=createPlayerPos.x - (serialCount2*50);
         if(tmpPos.x > 30.0f){
             if([GameManager getStageLevel]==0){
-                [TutorialLevel createPlayer:tmpPos playerNum:type];
+                [TutorialLevel t_createPlayer:tmpPos playerNum:type];
             }else{
                 [StageLevel_01 createPlayer:tmpPos playerNum:type];
             }
@@ -281,7 +281,7 @@ CCLabelTTF* label05;
         tmpPos.x=createPlayerPos.x + (serialCount2*50);
         if(tmpPos.x < winSize.width-30){
             if([GameManager getStageLevel]==0){
-                [TutorialLevel createPlayer:tmpPos playerNum:type];
+                [TutorialLevel t_createPlayer:tmpPos playerNum:type];
             }else{
                 [StageLevel_01 createPlayer:tmpPos playerNum:type];
             }

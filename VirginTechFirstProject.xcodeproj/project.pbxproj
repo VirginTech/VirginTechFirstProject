@@ -21,6 +21,9 @@
 		CF1BF75B193C47F400EEA664 /* leaf_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF1BF759193C47F400EEA664 /* leaf_default.plist */; };
 		CF1BF75C193C47F400EEA664 /* leaf_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1BF75A193C47F400EEA664 /* leaf_default.png */; };
 		CF1BF75E193CADDE00EEA664 /* bgLayer.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1BF75D193CADDE00EEA664 /* bgLayer.png */; };
+		CF1FE82119627B8C005FAB3F /* levelUp.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF1FE82019627B8C005FAB3F /* levelUp.plist */; };
+		CF1FE82319628487005FAB3F /* particleTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1FE82219628487005FAB3F /* particleTexture.png */; };
+		CF1FE82519628659005FAB3F /* particleTextureStar.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1FE82419628659005FAB3F /* particleTextureStar.png */; };
 		CF208CD819283AAF009A00D9 /* EnemyMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF208CD719283AAF009A00D9 /* EnemyMissile.m */; };
 		CF27C7E0190B2C48004FAEBE /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7DF190B2C48004FAEBE /* TitleScene.m */; };
 		CF27C7E3190B3A5F004FAEBE /* AnimalPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF27C7E2190B3A5F004FAEBE /* AnimalPlayer.m */; };
@@ -345,6 +348,9 @@
 		CF1BF759193C47F400EEA664 /* leaf_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = leaf_default.plist; sourceTree = "<group>"; };
 		CF1BF75A193C47F400EEA664 /* leaf_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf_default.png; sourceTree = "<group>"; };
 		CF1BF75D193CADDE00EEA664 /* bgLayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgLayer.png; sourceTree = "<group>"; };
+		CF1FE82019627B8C005FAB3F /* levelUp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levelUp.plist; sourceTree = "<group>"; };
+		CF1FE82219628487005FAB3F /* particleTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleTexture.png; sourceTree = "<group>"; };
+		CF1FE82419628659005FAB3F /* particleTextureStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleTextureStar.png; sourceTree = "<group>"; };
 		CF208CD619283AAF009A00D9 /* EnemyMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyMissile.h; sourceTree = "<group>"; };
 		CF208CD719283AAF009A00D9 /* EnemyMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyMissile.m; sourceTree = "<group>"; };
 		CF27C7DE190B2C48004FAEBE /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
@@ -939,6 +945,9 @@
 		CF4A7C0319431989005C3C17 /* Particle */ = {
 			isa = PBXGroup;
 			children = (
+				CF1FE82419628659005FAB3F /* particleTextureStar.png */,
+				CF1FE82219628487005FAB3F /* particleTexture.png */,
+				CF1FE82019627B8C005FAB3F /* levelUp.plist */,
 				CF4A7C0119431978005C3C17 /* damage.plist */,
 				CF4A7BFF1942E872005C3C17 /* enemyDead.plist */,
 				CF4A7BFD1942D644005C3C17 /* playerDead.plist */,
@@ -2107,6 +2116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFDFDEE4190A2D6F0021FBF9 /* Default@2x.png in Resources */,
+				CF1FE82519628659005FAB3F /* particleTextureStar.png in Resources */,
 				CF4FCFF6194EA2E000D6D4DF /* player05_default.plist in Resources */,
 				CFDFDEF7190A2D6F0021FBF9 /* Icon-120.png in Resources */,
 				CF1BF75B193C47F400EEA664 /* leaf_default.plist in Resources */,
@@ -2142,6 +2152,7 @@
 				CFDFDEFB190A2D6F0021FBF9 /* Icon-Small-50.png in Resources */,
 				CF2AEA671954239F00E3B219 /* player02_default.plist in Resources */,
 				CFE2051919594B090004E4E5 /* enemy02_default.png in Resources */,
+				CF1FE82119627B8C005FAB3F /* levelUp.plist in Resources */,
 				CF6A727619176C160027F654 /* Localizable.strings in Resources */,
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
 				CF1BF75E193CADDE00EEA664 /* bgLayer.png in Resources */,
@@ -2183,6 +2194,7 @@
 				CF4FCFFE194EA30500D6D4DF /* player03_default.plist in Resources */,
 				CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */,
 				CF74C8351953CF380027C995 /* toys09.mp3 in Resources */,
+				CF1FE82319628487005FAB3F /* particleTexture.png in Resources */,
 				CFE20510195936230004E4E5 /* interface_default.plist in Resources */,
 				CF4FD007194EA32A00D6D4DF /* player01_default.png in Resources */,
 				CFCBDD62195ABBFA0061E552 /* virgintech.png in Resources */,
