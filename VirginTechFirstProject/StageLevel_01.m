@@ -150,12 +150,12 @@ NSMutableArray* swampArray;
 {
     // always call super onEnter first
     [super onEnter];
-    //要塞陣地
+    //要塞陣地 z:2
     [self createPlayerFortress];
     [self createEnemyFortress];
-    //植樹
+    //植樹 z:3
     [self setTreePlanting];
-    //沼
+    //沼 z:1
     if([GameManager getStageLevel]>10){
         if([GameManager getStageLevel]%3==0){
             [self setSwamp];
@@ -239,7 +239,7 @@ NSMutableArray* swampArray;
         CCSprite* swamp=[CCSprite spriteWithImageNamed:@"swamp.png"];
         swamp.position=swampPos;
         swamp.scale=((arc4random()%7)+7)/10.0f;
-        [bgSpLayer addChild:swamp];
+        [bgSpLayer addChild:swamp z:1];
         [swampArray addObject:swamp];
     }
 }
@@ -907,13 +907,13 @@ NSMutableArray* swampArray;
 {
     //効果音
     [SoundManager playerSet:playerNum];
+
+    creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
+    [animalArray addObject:creatPlayer];
+    [bgSpLayer addChild:creatPlayer z:2];
     //パーティクル
     [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     
-    creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
-    [animalArray addObject:creatPlayer];
-    [bgSpLayer addChild:creatPlayer z:1];
-
     [GameManager in_Out_Coin:playerNum addFlg:false];//コイン減
     [InformationLayer update_CurrencyLabel];
 }
@@ -924,7 +924,7 @@ NSMutableArray* swampArray;
 {
     creatEnemy=[AnimalEnemy createEnemy];
     [enemyArray addObject:creatEnemy];
-    [bgSpLayer addChild:creatEnemy z:0];
+    [bgSpLayer addChild:creatEnemy z:2];
     
     //効果音
     [SoundManager enemySet:creatEnemy.enemyNum];
@@ -959,7 +959,7 @@ NSMutableArray* swampArray;
 -(void)createPlayerFortress
 {
     playerFortress=[Fortress createFortress:ccp(winSize.width/2, 30) type:0];
-    [bgSpLayer addChild:playerFortress z:0];
+    [bgSpLayer addChild:playerFortress z:2];
 }
 //============================
 // 敵要塞セット
@@ -967,7 +967,7 @@ NSMutableArray* swampArray;
 -(void)createEnemyFortress
 {
     enemyFortress=[Fortress createFortress:ccp(winSize.width/2,[GameManager getWorldSize].height-30) type:1];
-    [bgSpLayer addChild:enemyFortress z:0];
+    [bgSpLayer addChild:enemyFortress z:2];
 }
 //============================
 // パーティクルセット(プレイヤー)

@@ -297,11 +297,14 @@ CGSize winSize;
         int zOrder;
         eMissile = [EnemyMissile createMissile:self.position playerPos:targetPlayerPos enemyNum:enemyNum];
         eMissile.ability_Attack = ability_Attack;//攻撃力を付与
+        /*
         if(targetPlayerPos.y < self.position.y){
-            zOrder=1;
+            zOrder=2;
         }else{
             zOrder=3;
         }
+        */
+        zOrder=2;
         if([GameManager getStageLevel]==0){
             [TutorialLevel t_setEnemyMissile:eMissile zOrder:zOrder type:enemyNum];
         }else{

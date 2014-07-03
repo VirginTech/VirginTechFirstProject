@@ -147,7 +147,7 @@ float velocity;
             [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"finger.png"]];
     finger.position=CGPointMake(winSize.width, winSize.height/2);
     finger.visible=false;
-    [bgSpLayer addChild:finger z:2];
+    [bgSpLayer addChild:finger z:3];
     
     targetPos=CGPointMake(winSize.width/2+finger.contentSize.width/2, 120);
     velocity = 1.5;
@@ -169,10 +169,10 @@ float velocity;
 {
     // always call super onEnter first
     [super onEnter];
-    //要塞陣地
+    //要塞陣地 z:2
     [self t_createPlayerFortress];
     [self t_createEnemyFortress];
-    //植樹
+    //植樹 z:3
     [self t_setTreePlanting];
     //審判スケジュール開始
     [self schedule:@selector(t_judgement_Schedule:)interval:0.1];
@@ -772,7 +772,7 @@ float velocity;
     
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
-    [bgSpLayer addChild:creatPlayer z:1];
+    [bgSpLayer addChild:creatPlayer z:2];
 
 }
 //============================
@@ -782,7 +782,7 @@ float velocity;
 {
     creatEnemy=[AnimalEnemy createEnemy];
     [enemyArray addObject:creatEnemy];
-    [bgSpLayer addChild:creatEnemy z:0];
+    [bgSpLayer addChild:creatEnemy z:2];
     
     //効果音
     [SoundManager enemySet:creatEnemy.enemyNum];
@@ -817,7 +817,7 @@ float velocity;
 -(void)t_createPlayerFortress
 {
     playerFortress=[Fortress createFortress:ccp(winSize.width/2, 30) type:0];
-    [bgSpLayer addChild:playerFortress z:0];
+    [bgSpLayer addChild:playerFortress z:2];
 }
 //============================
 // 敵要塞セット
@@ -825,7 +825,7 @@ float velocity;
 -(void)t_createEnemyFortress
 {
     enemyFortress=[Fortress createFortress:ccp(winSize.width/2,[GameManager getWorldSize].height-30) type:1];
-    [bgSpLayer addChild:enemyFortress z:0];
+    [bgSpLayer addChild:enemyFortress z:2];
 }
 //============================
 // パーティクルセット(プレイヤー)
