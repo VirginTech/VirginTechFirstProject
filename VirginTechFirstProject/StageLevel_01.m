@@ -153,7 +153,7 @@ NSMutableArray* swampArray;
     //要塞陣地 z:2
     [self createPlayerFortress];
     [self createEnemyFortress];
-    //植樹 z:3
+    //植樹 z:4
     [self setTreePlanting];
     //沼 z:1
     if([GameManager getStageLevel]>10){
@@ -223,7 +223,7 @@ NSMutableArray* swampArray;
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:leafName]];
         leaf.scale=((arc4random()%3)+3)/10.0f;
         leaf.position=plantPos;
-        [bgSpLayer addChild:leaf z:3];
+        [bgSpLayer addChild:leaf z:4];
     }
 }
 
@@ -297,14 +297,14 @@ NSMutableArray* swampArray;
                                 radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
                 player.waterFlg=true;
                 if(player.groupNum==1){
-                    player.velocityAdjustRate=1;//1
+                    //player.velocityAdjustRate=1;//1
                     player.ability_Defense -= 0.1;
                     if(player.ability_Defense<=0){
                         [removePlayerArray addObject:player];
                         //パーティクル
                         [StageLevel_01 setPlayerParticle:0 pos:player.position fileName:@"playerDead.plist"];
                     }
-                }else if(player.groupNum==2){
+                }/*else if(player.groupNum==2){
                     player.velocityAdjustRate=1;//1
                 }else if(player.groupNum==3){
                     player.velocityAdjustRate=2;//2
@@ -312,10 +312,11 @@ NSMutableArray* swampArray;
                     player.velocityAdjustRate=2;//2
                 }else if(player.groupNum==5){
                     player.velocityAdjustRate=5;//5
-                }
+                }*/
                 break;
             }else{
                 player.waterFlg=false;
+                /*
                 if(player.groupNum==1){
                     player.velocityAdjustRate=1;
                 }else if(player.groupNum==2){
@@ -326,7 +327,7 @@ NSMutableArray* swampArray;
                     player.velocityAdjustRate=1;
                 }else if(player.groupNum==5){
                     player.velocityAdjustRate=1;
-                }
+                }*/
             }
         }
     }
@@ -910,7 +911,7 @@ NSMutableArray* swampArray;
 
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
-    [bgSpLayer addChild:creatPlayer z:2];
+    [bgSpLayer addChild:creatPlayer z:3];
     //パーティクル
     [self setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     
@@ -984,7 +985,7 @@ NSMutableArray* swampArray;
     }else if(type==1){//要塞
         playerParticle.scale=1.0;
     }
-    [bgSpLayer addChild:playerParticle z:2];
+    [bgSpLayer addChild:playerParticle z:3];
 }
 //============================
 // パーティクルセット(敵)
@@ -1001,7 +1002,7 @@ NSMutableArray* swampArray;
     }else if(type==1){//要塞
         enemyParticle.scale=1.0;
     }
-    [bgSpLayer addChild:enemyParticle z:2];
+    [bgSpLayer addChild:enemyParticle z:3];
 }
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event

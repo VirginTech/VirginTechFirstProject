@@ -304,7 +304,7 @@ CGSize winSize;
             zOrder=3;
         }
         */
-        zOrder=2;
+        zOrder=3;
         if([GameManager getStageLevel]==0){
             [TutorialLevel t_setEnemyMissile:eMissile zOrder:zOrder type:enemyNum];
         }else{

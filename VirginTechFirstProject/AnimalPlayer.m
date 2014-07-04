@@ -266,9 +266,34 @@ CGSize winSize;
             [SoundManager splashDown];
         }
         splashDownFlg=false;
-    }else{
+        
+        if(groupNum==1){
+            velocityAdjustRate=1;//1
+        }else if(groupNum==2){
+            velocityAdjustRate=1;//1
+        }else if(groupNum==3){
+            velocityAdjustRate=2;//2
+        }else if(groupNum==4){
+            velocityAdjustRate=2;//2
+        }else if(groupNum==5){
+            velocityAdjustRate=5;//5
+        }
+
+    }else{//地上
         waveSprite.visible=false;
         splashDownFlg=true;
+        
+        if(groupNum==1){
+            velocityAdjustRate=1;
+        }else if(groupNum==2){
+            velocityAdjustRate=5;
+        }else if(groupNum==3){
+            velocityAdjustRate=5;
+        }else if(groupNum==4){
+            velocityAdjustRate=1;
+        }else if(groupNum==5){
+            velocityAdjustRate=1;
+        }
     }
     //ライフゲージ
     if(self.rotationalSkewX==self.rotationalSkewY){
@@ -352,7 +377,7 @@ CGSize winSize;
             zOrder=3;
         }
         */
-        zOrder=2;
+        zOrder=3;
         if([GameManager getStageLevel]==0){
             [TutorialLevel t_setPlayerMissile:pMissile zOrder:zOrder type:groupNum];
         }else{
