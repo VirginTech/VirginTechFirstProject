@@ -27,7 +27,8 @@
     leaderboardController.leaderboardDelegate = viewController;
     
     // Leaderboardを表示する
-    [viewController presentModalViewController:leaderboardController animated:YES];
+    //[viewController presentModalViewController:leaderboardController animated:YES];
+    [viewController presentViewController:leaderboardController animated:YES completion:^(void){}];
 }
 
 /*- (BOOL)shouldAutorotate
@@ -42,7 +43,8 @@
 
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
-    [self dismissModalViewControllerAnimated:YES];
+    //[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
 @end

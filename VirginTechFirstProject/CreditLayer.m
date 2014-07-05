@@ -30,8 +30,14 @@ CCScrollView* scrollView;
     winSize=[[CCDirector sharedDirector]viewSize];
     self.userInteractionEnabled = YES;
     
+    //タイトル画像
+    CCSprite* title=[CCSprite spriteWithImageNamed:@"title.png"];
+    title.position=ccp(winSize.width/2,winSize.height/2);
+    title.scale=0.5;
+    [self addChild:title];
+
     //BGカラー
-    CCNodeColor* background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
+    CCNodeColor* background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:0.8f]];
     [self addChild:background];
     
     //背景画像拡大

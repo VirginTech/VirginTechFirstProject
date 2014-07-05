@@ -39,8 +39,14 @@ SKProduct* product05;
     winSize = [[CCDirector sharedDirector] viewSize];
     paymane = [[PaymentManager alloc]init];
 
+    //タイトル画像
+    CCSprite* title=[CCSprite spriteWithImageNamed:@"title.png"];
+    title.position=ccp(winSize.width/2,winSize.height/2);
+    title.scale=0.5;
+    [self addChild:title];
+    
     // Create a colored background (Dark Grey)
-    CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
+    CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:0.8f]];
     [self addChild:background];
     
     //インフォメーション z:1

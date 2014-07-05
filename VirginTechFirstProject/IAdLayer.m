@@ -29,7 +29,7 @@ CGSize winSize;
     
     // iAd設定
     iAdView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-    iAdView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+    //iAdView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
     [[[CCDirector sharedDirector] view] addSubview:iAdView];
     
     if(bannerType==0){//上部表示

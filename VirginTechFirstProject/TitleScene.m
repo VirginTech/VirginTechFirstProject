@@ -63,13 +63,20 @@ CCSprite* finger;
     InformationLayer* infoLayer=[[InformationLayer alloc]init];
     [self addChild:infoLayer z:1];
 
-    // タイトル
+    /*/ タイトル
     CCLabelTTF *label = [CCLabelTTF labelWithString:
                                 NSLocalizedString(@"Title",NULL) fontName:@"Chalkduster" fontSize:36.0f];
     label.positionType = CCPositionTypeNormalized;
     label.color = [CCColor redColor];
     label.position = ccp(0.5f, 0.6f); // Middle of screen
     [self addChild:label];
+    */
+    
+    //タイトル画像
+    CCSprite* title=[CCSprite spriteWithImageNamed:@"title.png"];
+    title.position=ccp(winSize.width/2,winSize.height/2);
+    title.scale=0.5;
+    [self addChild:title];
     
     //画像読込み
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];

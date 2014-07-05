@@ -68,6 +68,7 @@
 		CF6A727619176C160027F654 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727819176C160027F654 /* Localizable.strings */; };
 		CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF6A727F19176CC50027F654 /* InfoPlist.strings */; };
 		CF6C57DB190F67F700FCF978 /* BasicMath.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6C57DA190F67F700FCF978 /* BasicMath.m */; };
+		CF6F95651967ECE800D30C0E /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6F95641967ECE800D30C0E /* title.png */; };
 		CF74C82D1953CF380027C995 /* toys01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF74C8241953CF380027C995 /* toys01.mp3 */; };
 		CF74C82E1953CF380027C995 /* toys02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF74C8251953CF380027C995 /* toys02.mp3 */; };
 		CF74C82F1953CF380027C995 /* toys03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF74C8261953CF380027C995 /* toys03.mp3 */; };
@@ -412,6 +413,7 @@
 		CF6A728019176CC70027F654 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CF6C57D9190F67F700FCF978 /* BasicMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMath.h; sourceTree = "<group>"; };
 		CF6C57DA190F67F700FCF978 /* BasicMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMath.m; sourceTree = "<group>"; };
+		CF6F95641967ECE800D30C0E /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		CF74C8241953CF380027C995 /* toys01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = toys01.mp3; sourceTree = "<group>"; };
 		CF74C8251953CF380027C995 /* toys02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = toys02.mp3; sourceTree = "<group>"; };
 		CF74C8261953CF380027C995 /* toys03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = toys03.mp3; sourceTree = "<group>"; };
@@ -1185,6 +1187,7 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF6F95641967ECE800D30C0E /* title.png */,
 				CFE2051E19594B550004E4E5 /* fortress_default.plist */,
 				CFE2051F19594B550004E4E5 /* fortress_default.png */,
 				CFE2050E195936230004E4E5 /* interface_default.plist */,
@@ -2194,6 +2197,7 @@
 				CF4FCFFE194EA30500D6D4DF /* player03_default.plist in Resources */,
 				CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */,
 				CF74C8351953CF380027C995 /* toys09.mp3 in Resources */,
+				CF6F95651967ECE800D30C0E /* title.png in Resources */,
 				CF1FE82319628487005FAB3F /* particleTexture.png in Resources */,
 				CFE20510195936230004E4E5 /* interface_default.plist in Resources */,
 				CF4FD007194EA32A00D6D4DF /* player01_default.png in Resources */,
@@ -2479,7 +2483,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PROVISIONING_PROFILE = "F7A5921B-765E-43C6-8780-B2BF1F050AA8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2500,7 +2504,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PROVISIONING_PROFILE = "D0CD8562-63E4-4340-A223-CD601DAC0406";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2556,6 +2560,7 @@
 					"\"$(SRCROOT)/$(PROJECT_NAME)/Libraries/Chipmunk/objectivec/include\"",
 				);
 				INFOPLIST_FILE = VirginTechFirstProject/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
@@ -2582,6 +2587,7 @@
 					"\"$(SRCROOT)/$(PROJECT_NAME)/Libraries/Chipmunk/objectivec/include\"",
 				);
 				INFOPLIST_FILE = VirginTechFirstProject/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",

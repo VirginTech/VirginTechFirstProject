@@ -147,7 +147,7 @@ float velocity;
             [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"finger.png"]];
     finger.position=CGPointMake(winSize.width, winSize.height/2);
     finger.visible=false;
-    [bgSpLayer addChild:finger z:3];
+    [bgSpLayer addChild:finger z:4];
     
     targetPos=CGPointMake(winSize.width/2+finger.contentSize.width/2, 120);
     velocity = 1.5;
@@ -172,7 +172,7 @@ float velocity;
     //要塞陣地 z:2
     [self t_createPlayerFortress];
     [self t_createEnemyFortress];
-    //植樹 z:3
+    //植樹 z:4
     [self t_setTreePlanting];
     //審判スケジュール開始
     [self schedule:@selector(t_judgement_Schedule:)interval:0.1];
@@ -238,7 +238,7 @@ float velocity;
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:leafName]];
         leaf.scale=((arc4random()%3)+3)/10.0f;
         leaf.position=plantPos;
-        [bgSpLayer addChild:leaf z:3];
+        [bgSpLayer addChild:leaf z:4];
     }
 }
 
@@ -767,13 +767,12 @@ float velocity;
 {
     //効果音
     [SoundManager playerSet:playerNum];
-    //パーティクル
-    [self t_setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
     
     creatPlayer=[AnimalPlayer createPlayer:playerPos playerNum:playerNum];
     [animalArray addObject:creatPlayer];
-    [bgSpLayer addChild:creatPlayer z:2];
-
+    [bgSpLayer addChild:creatPlayer z:3];
+    //パーティクル
+    [self t_setPlayerParticle:0 pos:playerPos fileName:@"playerAdding.plist"];
 }
 //============================
 // 敵アニマルセット
@@ -842,7 +841,7 @@ float velocity;
     }else if(type==1){//要塞
         playerParticle.scale=1.0;
     }
-    [bgSpLayer addChild:playerParticle z:2];
+    [bgSpLayer addChild:playerParticle z:3];
 }
 //============================
 // パーティクルセット(敵)
@@ -859,7 +858,7 @@ float velocity;
     }else if(type==1){//要塞
         enemyParticle.scale=1.0;
     }
-    [bgSpLayer addChild:enemyParticle z:2];
+    [bgSpLayer addChild:enemyParticle z:3];
 }
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
