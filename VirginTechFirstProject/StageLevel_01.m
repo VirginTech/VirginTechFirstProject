@@ -294,7 +294,7 @@ NSMutableArray* swampArray;
     for(AnimalPlayer* player in animalArray){
         for(CCSprite* _swamp in swampArray){
             if([BasicMath RadiusIntersectsRadius:player.position pointB:_swamp.position
-                                radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
+                                         radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
                 player.waterFlg=true;
                 if(player.groupNum==1){
                     //player.velocityAdjustRate=1;//1
@@ -304,30 +304,10 @@ NSMutableArray* swampArray;
                         //パーティクル
                         [StageLevel_01 setPlayerParticle:0 pos:player.position fileName:@"playerDead.plist"];
                     }
-                }/*else if(player.groupNum==2){
-                    player.velocityAdjustRate=1;//1
-                }else if(player.groupNum==3){
-                    player.velocityAdjustRate=2;//2
-                }else if(player.groupNum==4){
-                    player.velocityAdjustRate=2;//2
-                }else if(player.groupNum==5){
-                    player.velocityAdjustRate=5;//5
-                }*/
+                }
                 break;
             }else{
                 player.waterFlg=false;
-                /*
-                if(player.groupNum==1){
-                    player.velocityAdjustRate=1;
-                }else if(player.groupNum==2){
-                    player.velocityAdjustRate=5;
-                }else if(player.groupNum==3){
-                    player.velocityAdjustRate=5;
-                }else if(player.groupNum==4){
-                    player.velocityAdjustRate=1;
-                }else if(player.groupNum==5){
-                    player.velocityAdjustRate=1;
-                }*/
             }
         }
     }
@@ -338,7 +318,7 @@ NSMutableArray* swampArray;
     for(AnimalEnemy* enemy in enemyArray){
         for(CCSprite* _swamp in swampArray){
             if([BasicMath RadiusIntersectsRadius:enemy.position pointB:_swamp.position
-                                radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
+                                         radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
                 enemy.waterFlg=true;
                 break;
             }else{
@@ -451,6 +431,8 @@ NSMutableArray* swampArray;
                                              radius1:80 radius2:20]){
                             player1.leaderPlayer=player2;
                             player1.leaderOldPos=player2.position;
+                            player1.inpolPosArray=[[NSMutableArray alloc]init];
+                            player1.t=0;
                             break;
                         }
                     }

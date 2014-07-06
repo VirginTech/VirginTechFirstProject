@@ -309,19 +309,21 @@ CGSize winSize;
 
 -(void)flocking_Schedule:(CCTime)dt {
     
-    if(leaderPlayer!=nil){
-        if(leaderOldPos.x!=leaderPlayer.position.x || leaderOldPos.y!=leaderPlayer.position.y){
-            flockAngle=[BasicMath getAngle_To_Radian:leaderOldPos ePos:leaderPlayer.position];
-            flockNextPos=CGPointMake(velocity*velocityAdjustRate*cosf(flockAngle),
-                                             velocity*velocityAdjustRate*sin(flockAngle));
-            self.position=CGPointMake(self.position.x+flockNextPos.x,self.position.y+flockNextPos.y);
-            //方向設定(度)・差替画像設定
-            if(leaderPlayer.rotationalSkewX==leaderPlayer.rotationalSkewY){
-                self.rotation=leaderPlayer.rotation;
-                [self getVehicleFrame:leaderPlayer.rotation];
+    if(!leaderFlg){
+        if(leaderPlayer!=nil){
+            if(leaderOldPos.x!=leaderPlayer.position.x || leaderOldPos.y!=leaderPlayer.position.y){
+                flockAngle=[BasicMath getAngle_To_Radian:leaderOldPos ePos:leaderPlayer.position];
+                flockNextPos=CGPointMake(velocity*velocityAdjustRate*cosf(flockAngle),
+                                                 velocity*velocityAdjustRate*sin(flockAngle));
+                self.position=CGPointMake(self.position.x+flockNextPos.x,self.position.y+flockNextPos.y);
+                //方向設定(度)・差替画像設定
+                if(leaderPlayer.rotationalSkewX==leaderPlayer.rotationalSkewY){
+                    self.rotation=leaderPlayer.rotation;
+                    [self getVehicleFrame:leaderPlayer.rotation];
+                }
             }
+            leaderOldPos=leaderPlayer.position;
         }
-        leaderOldPos=leaderPlayer.position;
     }
 }
 
