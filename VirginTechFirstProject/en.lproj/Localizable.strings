@@ -19,7 +19,7 @@
 "Notnetwork" = "No network connection.";
 "Error" = "Error";
 "Completed" = "Completed";
-"InAppBillingIslimited" = "In-App Purchase is limited.";
+"InAppBillingIslimited" = "In-App Purchase is restrictions.";
 "ItemIdIsInvalid" = "Item ID is invalid.";
 "Purchase" = " Get!";
 "Restored" = "Restored ";

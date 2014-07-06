@@ -60,7 +60,7 @@ SKProduct* product_;
                                                     @"%@%@",product_.localizedTitle,NSLocalizedString(@"Purchase",NULL)]
                                                 delegate:nil
                                                 cancelButtonTitle:nil
-                                                otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
+                                                otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
             [alert show];
             /*
              * ここでレシートの確認やアイテムの付与を行う。
@@ -78,7 +78,7 @@ SKProduct* product_;
                                                 message:[transaction.error localizedDescription]
                                                 delegate:self
                                                 cancelButtonTitle:nil
-                                                otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
+                                                otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
                 [alert show];
             }
             
@@ -89,7 +89,7 @@ SKProduct* product_;
                                                         @"%@%@",product_.localizedTitle,NSLocalizedString(@"Get",NULL)]
                                                     delegate:nil
                                                     cancelButtonTitle:nil
-                                                    otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
+                                                    otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
             [alert show];
             /*
              * アイテムの再付与を行う
@@ -137,10 +137,12 @@ SKProduct* product_;
     }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel30Pack"])
     {
         [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+30];
-    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel50Pack"])
+    }
+    else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel50Pack"])
     {
         [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+50];
-    }else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel100Pack"])
+    }
+    else if([productIds isEqualToString:@"VirginTechFirstProject_Jewel100Pack"])
     {
         [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+100];
     }

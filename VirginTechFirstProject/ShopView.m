@@ -87,7 +87,7 @@ SKProduct* product05;
                                                         message:NSLocalizedString(@"Notnetwork",NULL)
                                                         delegate:nil
                                                         cancelButtonTitle:nil
-                                                        otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
+                                                        otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
         [alert show];
 
         return;
@@ -142,7 +142,7 @@ SKProduct* product05;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",NULL)
                                                         message:NSLocalizedString(@"ItemIdIsInvalid",NULL)
                                                         delegate:nil
-                                                        cancelButtonTitle:NSLocalizedString(@"Ok",NULL)
+                                                        cancelButtonTitle:NSLocalizedString(@"OK",NULL)
                                                         otherButtonTitles:nil, nil];
         [alert show];
         return;

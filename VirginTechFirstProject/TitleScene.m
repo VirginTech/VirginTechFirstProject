@@ -245,7 +245,7 @@ CCSprite* finger;
                                                             message:NSLocalizedString(@"InAppBillingIslimited",NULL)
                                                             delegate:nil
                                                             cancelButtonTitle:nil
-                                                            otherButtonTitles:NSLocalizedString(@"Ok",NULL), nil];
+                                                            otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
             [alert show];
             return;
             

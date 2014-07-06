@@ -48,8 +48,15 @@
 	
     //GameCenterへ認証
     //[[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error){}];
+    //LeaderboardView *viewController;
     GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
-    localPlayer.authenticateHandler = ^(UIViewController* ui, NSError* error ){};
+    localPlayer.authenticateHandler = ^(UIViewController* ui, NSError* error ){
+        /*
+        if( nil != ui )
+        {
+            [viewController presentViewController:ui animated:YES completion:nil];
+        }*/
+    };
     
 	return YES;
 }

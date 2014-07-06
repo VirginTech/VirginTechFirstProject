@@ -368,7 +368,7 @@ bool isActive;//アクティブ状態か？
     scoreReporter.value = scoreR;
     [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
         if (error != nil){
-            NSLog(@"error %@",error);
+            NSLog(@"Error in reporting score %@",error);
         }
     }];
 }
