@@ -74,24 +74,24 @@ CCScrollView* scrollView;
     CCLabelTTF* label;
     
     label=[CCLabelTTF labelWithString:@"Developer" fontName:@"Verdana-Italic" fontSize:12];
-    label.position=ccp(winSize.width/2,700);
+    label.position=ccp(winSize.width/2,720);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"OOTANI,Kenji" fontName:@"Verdana-Bold" fontSize:15];
-    label.position=ccp(winSize.width/2,680);
+    label.position=ccp(winSize.width/2,700);
     [bgSpLayer addChild:label];
     
     //イラストデザイン
     label=[CCLabelTTF labelWithString:@"Illust-Designer" fontName:@"Verdana-Italic" fontSize:12];
-    label.position=ccp(winSize.width/2,600);
+    label.position=ccp(winSize.width/2,620);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"FUKUDA,Makiko" fontName:@"Verdana-Bold" fontSize:15];
-    label.position=ccp(winSize.width/2,580);
+    label.position=ccp(winSize.width/2,600);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"y･omochi" fontName:@"Verdana-Bold" fontSize:15];
-    label.position=ccp(winSize.width/2,560);
+    label.position=ccp(winSize.width/2,580);
     [bgSpLayer addChild:label];
     
     [self setList];
@@ -104,62 +104,66 @@ CCScrollView* scrollView;
     CCLabelTTF* label;
 
     label=[CCLabelTTF labelWithString:@"Material by" fontName:@"Verdana-Italic" fontSize:12];
-    label.position=ccp(winSize.width/2,510);
+    label.position=ccp(winSize.width/2,530);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"ドット絵世界 - yms.main.jp" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,480);
+    label.position=ccp(winSize.width/2,500);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"PSD Graphics - www.psdgraphics.com" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,460);
+    label.position=ccp(winSize.width/2,480);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"やじるし素材天国 - yajidesign.com" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,440);
+    label.position=ccp(winSize.width/2,460);
     [bgSpLayer addChild:label];
 
     label=[CCLabelTTF labelWithString:@"ストックマテリアル - stockmaterial.geo.jp" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,420);
+    label.position=ccp(winSize.width/2,440);
     [bgSpLayer addChild:label];
 
     label=[CCLabelTTF labelWithString:@"PHOTO CHIPS - photo-chips.com" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,400);
+    label.position=ccp(winSize.width/2,420);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"Frame Design - frames-design.com" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,380);
+    label.position=ccp(winSize.width/2,400);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"ジルとチッチの素材ボックス - ocplanning.biz" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,360);
+    label.position=ccp(winSize.width/2,380);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"IconEden - www.iconeden.com" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,340);
+    label.position=ccp(winSize.width/2,360);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"ARCHIGRAPHS - archigraphs.com" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,320);
+    label.position=ccp(winSize.width/2,340);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"DeviantART - www.deviantart.com" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,300);
+    label.position=ccp(winSize.width/2,320);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"PhotoshopVIP - photoshopvip.net" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,280);
+    label.position=ccp(winSize.width/2,300);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"～ゲームのゆりかご～ - www.gamecradle.net" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,260);
+    label.position=ccp(winSize.width/2,280);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"いらすとや - www.irasutoya.com" fontName:@"Verdana-Bold" fontSize:10];
-    label.position=ccp(winSize.width/2,240);
+    label.position=ccp(winSize.width/2,260);
     [bgSpLayer addChild:label];
     
     label=[CCLabelTTF labelWithString:@"PremiumPixels - www.premiumpixels.com" fontName:@"Verdana-Bold" fontSize:10];
+    label.position=ccp(winSize.width/2,240);
+    [bgSpLayer addChild:label];
+    
+    label=[CCLabelTTF labelWithString:@"フリー素材 POMO - pomo.vis.ne.jp" fontName:@"Verdana-Bold" fontSize:10];
     label.position=ccp(winSize.width/2,220);
     [bgSpLayer addChild:label];
     

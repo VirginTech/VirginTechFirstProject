@@ -153,31 +153,6 @@ CGSize winSize;
                if(self.rotationalSkewX==self.rotationalSkewY){
                    [self getVehicleFrame:self.rotation];
                }
-               if(waterFlg){
-                   if(groupNum==1){
-                       velocityAdjustRate=1;//1
-                   }else if(groupNum==2){
-                       velocityAdjustRate=1;//1
-                   }else if(groupNum==3){
-                       velocityAdjustRate=2;//2
-                   }else if(groupNum==4){
-                       velocityAdjustRate=2;//2
-                   }else if(groupNum==5){
-                       velocityAdjustRate=5;//5
-                   }
-               }else{
-                   if(groupNum==1){
-                       velocityAdjustRate=1;
-                   }else if(groupNum==2){
-                       velocityAdjustRate=5;
-                   }else if(groupNum==3){
-                       velocityAdjustRate=5;
-                   }else if(groupNum==4){
-                       velocityAdjustRate=1;
-                   }else if(groupNum==5){
-                       velocityAdjustRate=1;
-                   }
-               }
                t = t + velocityAdjustRate;
                oldPt=pt;
            }else{
@@ -273,6 +248,7 @@ CGSize winSize;
             velocityAdjustRate=1;//1
         }else if(groupNum==3){
             velocityAdjustRate=2;//2
+            ability_Attack=[ObjectManager load_Object_Ability_Attack:objName]*0.5f;
         }else if(groupNum==4){
             velocityAdjustRate=2;//2
         }else if(groupNum==5){
@@ -289,6 +265,7 @@ CGSize winSize;
             velocityAdjustRate=5;
         }else if(groupNum==3){
             velocityAdjustRate=5;
+            ability_Attack=[ObjectManager load_Object_Ability_Attack:objName];
         }else if(groupNum==4){
             velocityAdjustRate=1;
         }else if(groupNum==5){

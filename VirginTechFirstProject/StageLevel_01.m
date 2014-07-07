@@ -297,7 +297,6 @@ NSMutableArray* swampArray;
                                          radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
                 player.waterFlg=true;
                 if(player.groupNum==1){
-                    //player.velocityAdjustRate=1;//1
                     player.ability_Defense -= 0.1;
                     if(player.ability_Defense<=0){
                         [removePlayerArray addObject:player];

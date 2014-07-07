@@ -92,11 +92,11 @@ CCLabelTTF* label05_UnderWater;
     CCSprite* animal05=[CCSprite spriteWithSpriteFrame:
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"animal05.png"]];;
     
-    animal01.position=CGPointMake(80,                               170);
-    animal02.position=CGPointMake(bgSprite.contentSize.width/2-150, 170);
-    animal03.position=CGPointMake(bgSprite.contentSize.width/2,     170);
-    animal04.position=CGPointMake(bgSprite.contentSize.width/2+150, 170);
-    animal05.position=CGPointMake(bgSprite.contentSize.width/2+300, 170);
+    animal01.position=CGPointMake(80,                               200);
+    animal02.position=CGPointMake(bgSprite.contentSize.width/2-150, 200);
+    animal03.position=CGPointMake(bgSprite.contentSize.width/2,     200);
+    animal04.position=CGPointMake(bgSprite.contentSize.width/2+150, 200);
+    animal05.position=CGPointMake(bgSprite.contentSize.width/2+300, 200);
     
     //パワーアップボタン
     CCButton* setBtn01=[CCButton buttonWithTitle:[NSString stringWithFormat:@" ×1%@",NSLocalizedString(@"LevelUp",NULL)]
@@ -317,7 +317,7 @@ CCLabelTTF* label05_UnderWater;
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"info_default.plist"];
     CCSprite* coin01=[CCSprite spriteWithSpriteFrame:
                       [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
-    coin01.position=ccp(40, winSize.height -380);
+    coin01.position=ccp(40, winSize.height -390);
     coin01.scale=0.2;
     [self addChild:coin01];
     
@@ -346,7 +346,7 @@ CCLabelTTF* label05_UnderWater;
     //ダイア2をコイン100と交換
     CCSprite* coin02=[CCSprite spriteWithSpriteFrame:
                       [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"coin.png"]];
-    coin02.position=ccp(40, coin01.position.y -40);
+    coin02.position=ccp(40, coin01.position.y -30);
     coin02.scale=0.2;
     [self addChild:coin02];
     
