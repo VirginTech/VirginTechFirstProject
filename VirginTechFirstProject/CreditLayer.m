@@ -67,7 +67,7 @@ CCScrollView* scrollView;
     //ロゴ
     CCSprite* logo=[CCSprite spriteWithImageNamed:@"virgintech.png"];
     logo.position=ccp(winSize.width/2,850);
-    logo.scale=0.5;
+    logo.scale=0.3;
     [bgSpLayer addChild:logo];
     
     //開発者

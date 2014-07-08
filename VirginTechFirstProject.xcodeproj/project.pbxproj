@@ -1013,6 +1013,34 @@
 			name = Enemy;
 			sourceTree = "<group>";
 		};
+		CF5E70E4196BACC800E22254 /* BackGround */ = {
+			isa = PBXGroup;
+			children = (
+				CF4FCFF0194E8BA300D6D4DF /* swamp.png */,
+				CF6A727219175B240027F654 /* position_line.png */,
+				CF2F5013193D734B005E5BF6 /* stageSelect2.png */,
+				CF1BF75D193CADDE00EEA664 /* bgLayer.png */,
+				CF1BF759193C47F400EEA664 /* leaf_default.plist */,
+				CF1BF75A193C47F400EEA664 /* leaf_default.png */,
+				CF2F5007193D5A65005E5BF6 /* ground_default.plist */,
+				CF2F5008193D5A65005E5BF6 /* ground_default.png */,
+			);
+			name = BackGround;
+			sourceTree = "<group>";
+		};
+		CF5E70E5196BAD2200E22254 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CFA097E91957C1010042F368 /* button_default.plist */,
+				CFA097EA1957C1010042F368 /* button_default.png */,
+				CF0412A31949ACB0007767C4 /* info_default.plist */,
+				CF0412A41949ACB0007767C4 /* info_default.png */,
+				CF197D5B196A419D0065CF04 /* interface_default.plist */,
+				CF197D5C196A419D0065CF04 /* interface_default.png */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		CF6C57DC190F68BA00FCF978 /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,28 +1215,16 @@
 		CFDFDEE0190A2D6F0021FBF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CF197D5B196A419D0065CF04 /* interface_default.plist */,
-				CF197D5C196A419D0065CF04 /* interface_default.png */,
 				CF6F95641967ECE800D30C0E /* title.png */,
+				CFCBDD61195ABBFA0061E552 /* virgintech.png */,
 				CFE2051E19594B550004E4E5 /* fortress_default.plist */,
 				CFE2051F19594B550004E4E5 /* fortress_default.png */,
-				CFA097E91957C1010042F368 /* button_default.plist */,
-				CFA097EA1957C1010042F368 /* button_default.png */,
+				CF5E70E5196BAD2200E22254 /* UI */,
 				CF99E3801951431000D59EE6 /* Sound */,
-				CF4FCFF0194E8BA300D6D4DF /* swamp.png */,
-				CF0412A31949ACB0007767C4 /* info_default.plist */,
-				CF0412A41949ACB0007767C4 /* info_default.png */,
 				CF4FD009194EA45000D6D4DF /* Enemy */,
 				CF4FD008194EA40F00D6D4DF /* Player */,
 				CF4A7C0319431989005C3C17 /* Particle */,
-				CF2F5007193D5A65005E5BF6 /* ground_default.plist */,
-				CF2F5008193D5A65005E5BF6 /* ground_default.png */,
-				CF1BF759193C47F400EEA664 /* leaf_default.plist */,
-				CF1BF75A193C47F400EEA664 /* leaf_default.png */,
-				CF2F5013193D734B005E5BF6 /* stageSelect2.png */,
-				CF6A727219175B240027F654 /* position_line.png */,
-				CF1BF75D193CADDE00EEA664 /* bgLayer.png */,
-				CFCBDD61195ABBFA0061E552 /* virgintech.png */,
+				CF5E70E4196BACC800E22254 /* BackGround */,
 				CFDFDEE1190A2D6F0021FBF9 /* Default.png */,
 				CFDFDEE3190A2D6F0021FBF9 /* Default@2x.png */,
 				CFDFDEE5190A2D6F0021FBF9 /* Default-568h@2x.png */,

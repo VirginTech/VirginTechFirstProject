@@ -21,6 +21,8 @@ extern const int DIA_VAL;
 +(int)getLocale;
 +(void)setDevice:(int)type;// 1:iPhone5 2:iPhone4 3:iPad2
 +(int)getDevice;
++(void)setOsVersion:(float)version;
++(float)getOsVersion;
 +(void)setStageLevel:(int)level;
 +(int)getStageLevel;
 +(void)setWorldSize:(CGSize)size;

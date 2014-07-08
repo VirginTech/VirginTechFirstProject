@@ -23,6 +23,7 @@ const int DIA_VAL=5;//ダイア初期値
 //===========
 int locale;//1:英語 2:日本語
 int deviceType;// 1:iPhone5 2:iPhone4 3:iPad2
+float osVersion;//OSバージョン
 int stageLevel;//ステージレベル
 CGSize worldSize;//ワールドサイズ
 
@@ -44,6 +45,13 @@ bool isActive;//アクティブ状態か？
 }
 +(int)getLocale{
     return locale;
+}
+//OSバージョン
++(void)setOsVersion:(float)version{
+    osVersion=version;
+}
++(float)getOsVersion{
+    return osVersion;
 }
 
 //ステージレベル取得／登録

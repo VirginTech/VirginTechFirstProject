@@ -47,16 +47,22 @@
 	}];
 	
     //GameCenterへ認証
-    //[[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error){}];
-    //LeaderboardView *viewController;
-    GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
-    localPlayer.authenticateHandler = ^(UIViewController* ui, NSError* error ){
-        /*
-        if( nil != ui )
+    if ([GameManager getOsVersion]>=6.0f)
+    {
+        //NSLog(@"Version1=%f",[GameManager getOsVersion]);
+        LeaderboardView *lbView = (LeaderboardView *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
+        localPlayer.authenticateHandler = ^(UIViewController* viewController, NSError* error)
         {
-            [viewController presentViewController:ui animated:YES completion:nil];
-        }*/
-    };
+            if(viewController!=nil){
+                [lbView presentViewController:viewController animated:YES completion:nil];
+            }
+        };
+    }else
+    {
+        //NSLog(@"Version2=%f",[GameManager getOsVersion]);
+        [[GKLocalPlayer localPlayer]authenticateWithCompletionHandler:^(NSError *error){}];
+    }
     
 	return YES;
 }
@@ -88,6 +94,9 @@
     }else{
         [GameManager setLocale:2];//日本語
     }
+    
+    //OSバージョン登録
+    [GameManager setOsVersion:[[[UIDevice currentDevice]systemVersion]floatValue]];
     
     return [TitleScene scene];
 }
