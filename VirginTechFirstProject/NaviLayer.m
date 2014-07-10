@@ -115,6 +115,8 @@ NSMutableArray* starG_Array;
     //ラベル
     label = [CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:36.0f];
     label.color = [CCColor whiteColor];
+    //label.outlineWidth=5.0;
+    //label.outlineColor=[CCColor redColor];
     label.positionType = CCPositionTypeNormalized;
     label.position = ccp(0.50f, 0.55f); // Top Right of screen
     [self addChild:label z:2];

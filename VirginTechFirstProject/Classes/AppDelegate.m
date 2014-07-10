@@ -13,6 +13,7 @@
 #import "TitleScene.h"
 #import "GameManager.h"
 #import "SoundManager.h"
+#import "InitializeManager.h"
 
 @implementation AppDelegate
 
@@ -49,7 +50,6 @@
     //GameCenterへ認証
     if ([GameManager getOsVersion]>=6.0f)
     {
-        //NSLog(@"Version1=%f",[GameManager getOsVersion]);
         LeaderboardView *lbView = (LeaderboardView *)[UIApplication sharedApplication].keyWindow.rootViewController;
         GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
         localPlayer.authenticateHandler = ^(UIViewController* viewController, NSError* error)
@@ -60,7 +60,6 @@
         };
     }else
     {
-        //NSLog(@"Version2=%f",[GameManager getOsVersion]);
         [[GKLocalPlayer localPlayer]authenticateWithCompletionHandler:^(NSError *error){}];
     }
     
@@ -97,6 +96,9 @@
     
     //OSバージョン登録
     [GameManager setOsVersion:[[[UIDevice currentDevice]systemVersion]floatValue]];
+    
+    //初回データ初期値設定
+    [InitializeManager initialize_All];
     
     return [TitleScene scene];
 }

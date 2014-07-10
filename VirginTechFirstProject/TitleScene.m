@@ -13,7 +13,6 @@
 #import "ShopView.h"
 #import "IAdLayer.h"
 #import "PreferencesLayer.h"
-#import "InitializeManager.h"
 #import "ItemSetupLayer.h"
 #import "CreditLayer.h"
 #import "TutorialLevel.h"
@@ -47,9 +46,6 @@ CCSprite* finger;
     
     //画面状態
     [GameManager setActive:true];
-    
-    //初回データ初期値設定
-    [InitializeManager initialize_All];
     
     // Create a colored background (Dark Grey)
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];

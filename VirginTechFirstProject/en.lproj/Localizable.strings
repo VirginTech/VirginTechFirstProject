@@ -56,8 +56,8 @@
 "Stage"="Stage Level";
 
 //勝敗判定
-"Failed"="Stage Failed";
-"Success"="Stage Success!";
+"Failed"="You Lose...";
+"Success"="You Win! ";
 
 //レビュー誘導
 "Rate" = "Rate";
