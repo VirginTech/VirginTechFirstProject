@@ -18,7 +18,7 @@
 
 CGSize winSize;
 
-CCLabelTTF *label;
+//CCLabelTTF *label;
 CCNodeColor *background;
 CCButton *pauseButton;
 CCButton *resumeButton;
@@ -112,7 +112,7 @@ NSMutableArray* starG_Array;
     [self addChild:itemSetupButton];
     itemSetupButton.visible=false;
     
-    //ラベル
+    /*/ラベル
     label = [CCLabelTTF labelWithString:@"" fontName:@"Chalkduster" fontSize:36.0f];
     label.color = [CCColor whiteColor];
     //label.outlineWidth=5.0;
@@ -120,6 +120,7 @@ NSMutableArray* starG_Array;
     label.positionType = CCPositionTypeNormalized;
     label.position = ccp(0.50f, 0.55f); // Top Right of screen
     [self addChild:label z:2];
+     */
     
     //星
     CCSprite* starG;
@@ -154,15 +155,26 @@ NSMutableArray* starG_Array;
         starG.visible=false;
     }
     
-    victoryImg=[CCSprite spriteWithSpriteFrame:
+    //ヴィクトリー画像
+    if([GameManager getLocale]==1){//英語
+        victoryImg=[CCSprite spriteWithSpriteFrame:
+                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"victory_en.png"]];
+    }else{
+        victoryImg=[CCSprite spriteWithSpriteFrame:
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"victory_jp.png"]];
+    }
     victoryImg.positionType = CCPositionTypeNormalized;
     victoryImg.position=ccp(0.50f, 0.55f);
     victoryImg.visible=false;
     [self addChild:victoryImg z:2];
     
-    defeatImg=[CCSprite spriteWithSpriteFrame:
+    if([GameManager getLocale]==1){//英語
+        defeatImg=[CCSprite spriteWithSpriteFrame:
+                        [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"defeat_en.png"]];
+    }else{
+        defeatImg=[CCSprite spriteWithSpriteFrame:
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"defeat_jp.png"]];
+    }
     defeatImg.positionType = CCPositionTypeNormalized;
     defeatImg.position=ccp(0.50f, 0.55f);
     defeatImg.visible=false;
@@ -184,17 +196,9 @@ NSMutableArray* starG_Array;
         i++;
     }
     if(clearFlg){
-        if([GameManager getLocale]==1){
-            label.string = NSLocalizedString(@"Success",NULL);
-        }else{
-            victoryImg.visible=true;
-        }
+        victoryImg.visible=true;
     }else{
-        if([GameManager getLocale]==1){
-            label.string = NSLocalizedString(@"Failed",NULL);
-        }else{
-            defeatImg.visible=true;
-        }
+        defeatImg.visible=true;
     }
     pauseButton.visible=false;
     resumeButton.visible=false;

@@ -497,7 +497,7 @@ CGSize winSize;
         
         winSize = [[CCDirector sharedDirector]viewSize];
         
-        if(enemyNum==1){//ノーマル
+        if(enemyNum==1){//ノーマル（サソリ）
             ability_Attack=0.75+((float)((float)([GameManager getStageLevel]-1)*0.125f));
             ability_Defense=7.5+((float)((float)([GameManager getStageLevel]-1)*0.5f));
             if([GameManager getStageLevel]>50){
@@ -505,7 +505,7 @@ CGSize winSize;
             }else{
                 ability_Traveling=0.12+((float)((float)([GameManager getStageLevel]-1)*0.01f));
             }
-        }else if(enemyNum==2){//移動大：攻撃弱い
+        }else if(enemyNum==2){//移動大：攻撃弱い（カエル）
             ability_Attack=0.5+((float)((float)([GameManager getStageLevel]-1)*0.1f));
             ability_Defense=5.5+((float)((float)([GameManager getStageLevel]-1)*0.7f));
             if([GameManager getStageLevel]>50){
@@ -513,7 +513,7 @@ CGSize winSize;
             }else{
                 ability_Traveling=0.15+((float)((float)([GameManager getStageLevel]-1)*0.02f));
             }
-        }else if(enemyNum==3){//移動小：攻撃強い
+        }else if(enemyNum==3){//移動小：攻撃強い（ワニ）
             ability_Attack=0.95+((float)((float)([GameManager getStageLevel]-1)*0.2f));
             ability_Defense=6.5+((float)((float)([GameManager getStageLevel]-1)*0.6f));
             if([GameManager getStageLevel]>50){
