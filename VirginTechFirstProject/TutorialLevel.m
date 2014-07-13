@@ -568,7 +568,7 @@ float velocity;
     if([GameManager getPauseStateChange]){
         if([GameManager getPauseing]){
             
-            [self unschedule:@selector(createEnemy_Schedule:)];
+            [self unschedule:@selector(t_createEnemy_Schedule:)];
             
             for(AnimalPlayer* player in animalArray){
                 [player onPause_To_Resume:true];
@@ -584,7 +584,7 @@ float velocity;
             }
         }else{
             
-            [self schedule:@selector(createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
+            [self schedule:@selector(t_createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
             
             for(AnimalPlayer* player in animalArray){
                 [player onPause_To_Resume:false];
