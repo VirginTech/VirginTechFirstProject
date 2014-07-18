@@ -48,8 +48,25 @@ CCSprite* finger;
     [GameManager setActive:true];
     
     // Create a colored background (Dark Grey)
-    CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
-    [self addChild:background z:0];
+    //CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
+    //[self addChild:background z:0];
+    
+    //タイトル画像
+    CCSprite* title=[CCSprite spriteWithImageNamed:@"title.png"];
+    title.position=ccp(winSize.width/2,winSize.height/2);
+    title.scale=0.5;
+    [self addChild:title];
+    
+    //タイトルロゴ
+    CCSprite* logo;
+    if([GameManager getLocale]==1){//英語
+        logo=[CCSprite spriteWithImageNamed:@"title_logo_en.png"];
+    }else{//日本語
+        logo=[CCSprite spriteWithImageNamed:@"title_logo_jp.png"];
+    }
+    logo.position=ccp(winSize.width/2,winSize.height-(logo.contentSize.height*0.4)/2+20);
+    logo.scale=0.4;
+    [self addChild:logo];
     
     //iAdバナー表示
     IAdLayer* iAd=[[IAdLayer alloc]init:1];
@@ -67,12 +84,6 @@ CCSprite* finger;
     label.position = ccp(0.5f, 0.6f); // Middle of screen
     [self addChild:label];
     */
-    
-    //タイトル画像
-    CCSprite* title=[CCSprite spriteWithImageNamed:@"title.png"];
-    title.position=ccp(winSize.width/2,winSize.height/2);
-    title.scale=0.5;
-    [self addChild:title];
     
     //画像読込み
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
