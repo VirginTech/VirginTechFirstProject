@@ -22,6 +22,7 @@
 #import "Fortress.h"
 #import "CCParticleSystem.h"
 #import "SoundManager.h"
+#import "NendAdLayer.h"
 
 @implementation StageLevel_01
 
@@ -133,9 +134,15 @@ NSMutableArray* swampArray;
     infoLayer=[[InformationLayer alloc]init];
     [self addChild:infoLayer z:4];
     
-    //iAdバナー表示 z:5
-    IAdLayer* iAd=[[IAdLayer alloc]init:1];
-    [self addChild:iAd z:5];
+    if([GameManager getDevice]==3){//iPad
+        //iAdバナー表示 z:5
+        IAdLayer* iAd=[[IAdLayer alloc]init:1];
+        [self addChild:iAd z:5];
+    }else{
+        //NendAdバナー表示
+        NendAdLayer* nAd=[[NendAdLayer alloc]init];
+        [self addChild:nAd];
+    }
     
     // done
 	return self;
@@ -370,55 +377,68 @@ NSMutableArray* swampArray;
             }
         }
     }
-    //敵アニマル戦車の我要塞基地捕捉用レーダー
-    for(AnimalEnemy* enemy in enemyArray){
-        searchTarget=[[NSMutableArray alloc]init];
-        if([BasicMath RadiusIntersectsRadius:enemy.position pointB:playerFortress.position
-                                     radius1:120 radius2:30]){
-            [searchTarget addObject:playerFortress];
-            enemy.fortressFlg=true;//要塞攻撃モード
+    
+    if([GameManager getPauseing]){//ポーズ中
+        searchTarget=[[NSMutableArray alloc]init];//ポーズ中であれば空
+        for(AnimalPlayer* player in animalArray){
+            [player setTarget:searchTarget];
         }
-        [enemy setTarget:searchTarget];
-    }
-    //敵アニマル戦車の我タンク捕捉用レーダー
-    for(AnimalEnemy* enemy in enemyArray){
-        if(!enemy.fortressFlg){
+        for(AnimalEnemy* enemy in enemyArray){
+            [enemy setTarget:searchTarget];
+        }
+        
+    }else{
+        //敵アニマル戦車の我要塞基地捕捉用レーダー
+        for(AnimalEnemy* enemy in enemyArray){
             searchTarget=[[NSMutableArray alloc]init];
-            for(AnimalPlayer* player in animalArray){
-                if([BasicMath RadiusIntersectsRadius:enemy.position pointB:player.position
-                                             radius1:120 radius2:20]){
-                    [searchTarget addObject:player];
-                }
+            if([BasicMath RadiusIntersectsRadius:enemy.position pointB:playerFortress.position
+                                         radius1:120 radius2:30]){
+                [searchTarget addObject:playerFortress];
+                enemy.fortressFlg=true;//要塞攻撃モード
             }
             [enemy setTarget:searchTarget];
         }
-    }
-    
-    //我アニマル戦車の敵要塞基地捕捉用レーダー
-    for(AnimalPlayer* player in animalArray){
-        searchTarget=[[NSMutableArray alloc]init];
-        if([BasicMath RadiusIntersectsRadius:player.position pointB:enemyFortress.position
-                                     radius1:120 radius2:30]){
-            [searchTarget addObject:enemyFortress];
-            player.fortressFlg=true;//要塞攻撃モード
-        }else{
-            player.fortressFlg=false;//通常攻撃モード
-        }
-        [player setTarget:searchTarget];
-    }
-    //我アニマル戦車の敵タンク捕捉用レーダー
-    for(AnimalPlayer* player in animalArray){
-        if(!player.fortressFlg){
-            searchTarget=[[NSMutableArray alloc]init];
-            for(AnimalEnemy* enemy in enemyArray){
-                if([BasicMath RadiusIntersectsRadius:player.position pointB:enemy.position
-                                             radius1:120 radius2:20]){
-                    [searchTarget addObject:enemy];
+        //敵アニマル戦車の我タンク捕捉用レーダー
+        for(AnimalEnemy* enemy in enemyArray){
+            if(!enemy.fortressFlg){
+                searchTarget=[[NSMutableArray alloc]init];
+                for(AnimalPlayer* player in animalArray){
+                    if([BasicMath RadiusIntersectsRadius:enemy.position pointB:player.position
+                                                 radius1:120 radius2:20]){
+                        [searchTarget addObject:player];
+                    }
                 }
+                [enemy setTarget:searchTarget];
+            }
+        }
+        
+        //我アニマル戦車の敵要塞基地捕捉用レーダー
+        for(AnimalPlayer* player in animalArray){
+            searchTarget=[[NSMutableArray alloc]init];
+            if([BasicMath RadiusIntersectsRadius:player.position pointB:enemyFortress.position
+                                         radius1:120 radius2:30]){
+                [searchTarget addObject:enemyFortress];
+                player.fortressFlg=true;//要塞攻撃モード
+            }else{
+                player.fortressFlg=false;//通常攻撃モード
             }
             [player setTarget:searchTarget];
         }
+        //我アニマル戦車の敵タンク捕捉用レーダー
+        for(AnimalPlayer* player in animalArray){
+            if(!player.fortressFlg){
+                searchTarget=[[NSMutableArray alloc]init];
+                for(AnimalEnemy* enemy in enemyArray){
+                    if([BasicMath RadiusIntersectsRadius:player.position pointB:enemy.position
+                                                 radius1:120 radius2:20]){
+                        [searchTarget addObject:enemy];
+                    }
+                }
+                [player setTarget:searchTarget];
+            }
+        }
     }
+    
     //フロッキング用リーダー監視
     for(AnimalPlayer* player1 in animalArray){
         player1.leaderPlayer=nil;

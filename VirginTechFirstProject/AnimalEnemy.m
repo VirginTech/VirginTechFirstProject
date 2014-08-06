@@ -452,7 +452,7 @@ CGSize winSize;
             [self unschedule:@selector(escape_Schedule:)];
         }
         [self unschedule:@selector(moveGun_Schedule:)];
-        [self unschedule:@selector(eFireMissile_Schedule:)];
+        //[self unschedule:@selector(eFireMissile_Schedule:)];
         
     }else{
         
@@ -464,7 +464,7 @@ CGSize winSize;
             [self schedule:@selector(escape_Schedule:)interval:0.01];//回避スケジュール
         }
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];//砲塔制御スケジュール
-        [self schedule:@selector(eFireMissile_Schedule:)interval:1.5];//ミサイル発射スケジュール
+        //[self schedule:@selector(eFireMissile_Schedule:)interval:1.5];//ミサイル発射スケジュール
     }
 }
 

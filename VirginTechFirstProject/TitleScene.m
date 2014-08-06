@@ -17,6 +17,7 @@
 #import "CreditLayer.h"
 #import "TutorialLevel.h"
 #import "SoundManager.h"
+#import "NendAdLayer.h"
 
 @implementation TitleScene
 
@@ -68,9 +69,15 @@ CCSprite* finger;
     logo.scale=0.4;
     [self addChild:logo];
     
-    //iAdバナー表示
-    IAdLayer* iAd=[[IAdLayer alloc]init:1];
-    [self addChild:iAd];
+    if([GameManager getDevice]==3){//iPad
+        //iAdバナー表示
+        IAdLayer* iAd=[[IAdLayer alloc]init:1];
+        [self addChild:iAd];
+    }else{
+        //NendAdバナー表示
+        NendAdLayer* nAd=[[NendAdLayer alloc]init];
+        [self addChild:nAd];
+    }
     
     //インフォメーション z:1
     InformationLayer* infoLayer=[[InformationLayer alloc]init];
@@ -183,7 +190,7 @@ CCSprite* finger;
     }
     
     //バージョン
-    CCLabelTTF* versionLabel=[CCLabelTTF labelWithString:@"Version 1.0.0" fontName:@"Verdana" fontSize:13];
+    CCLabelTTF* versionLabel=[CCLabelTTF labelWithString:@"Version 1.0.4" fontName:@"Verdana" fontSize:13];
     versionLabel.position=ccp(winSize.width-versionLabel.contentSize.width/2,winSize.height-versionLabel.contentSize.height/2);
     [self addChild:versionLabel];
 

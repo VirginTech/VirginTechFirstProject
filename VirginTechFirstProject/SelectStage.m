@@ -13,6 +13,7 @@
 #import "TitleScene.h"
 #import "IAdLayer.h"
 #import "SoundManager.h"
+#import "NendAdLayer.h"
 
 @implementation SelectStage
 
@@ -59,9 +60,15 @@ CCSprite* bgSpLayer;
     [GameManager setPauseing:false];
     [GameManager setPauseStateChange:false];
     
-    //iAdバナー表示
-    IAdLayer* iAd=[[IAdLayer alloc]init:1];
-    [self addChild:iAd];
+    if([GameManager getDevice]==3){//iPad
+        //iAdバナー表示
+        IAdLayer* iAd=[[IAdLayer alloc]init:1];
+        [self addChild:iAd];
+    }else{
+        //NendAdバナー表示
+        NendAdLayer* nAd=[[NendAdLayer alloc]init];
+        [self addChild:nAd];
+    }
     
     //戻るボタン
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];

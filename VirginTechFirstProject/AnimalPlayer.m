@@ -394,13 +394,13 @@ CGSize winSize;
         [self unschedule:@selector(moveVehicle_Schedule:)];//移動スケジュール
         [self unschedule:@selector(moveGun_Schedule:)];//砲塔制御スケジュール開始
         [self unschedule:@selector(status_Schedule:)];//状態スケジュール
-        [self unschedule:@selector(pFireMissile_Schedule:)];//ミサイル発射制御スケジュール
+        //[self unschedule:@selector(pFireMissile_Schedule:)];//ミサイル発射制御スケジュール
         [self unschedule:@selector(animalDance_Schedule:)];//タンクアニメーション
     }else{
         [self schedule:@selector(moveVehicle_Schedule:) interval:0.01];//移動スケジュール
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];//砲塔制御スケジュール開始
         [self schedule:@selector(status_Schedule:)interval:0.1];//状態スケジュール
-        [self schedule:@selector(pFireMissile_Schedule:)interval:1.5];//ミサイル発射制御スケジュール
+        //[self schedule:@selector(pFireMissile_Schedule:)interval:1.5];//ミサイル発射制御スケジュール
     }
 }
 
