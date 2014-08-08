@@ -13,6 +13,8 @@
 #import "GameManager.h"
 #import "ItemSetupLayer.h"
 #import "SoundManager.h"
+#import "InformationLayer.h"
+#import <Social/Social.h>
 
 @implementation NaviLayer
 
@@ -26,6 +28,9 @@ CCButton *titleButton;
 CCButton *stageButton;
 CCButton *preferencesButton;
 CCButton *itemSetupButton;
+
+CCButton* tweetButton;
+CCButton* facebookButton;
 
 CCSprite* victoryImg;
 CCSprite* defeatImg;
@@ -180,6 +185,28 @@ NSMutableArray* starG_Array;
     defeatImg.visible=false;
     [self addChild:defeatImg z:2];
     
+    //ツイートボタン
+    tweetButton = [CCButton buttonWithTitle:NSLocalizedString(@"d_Get",NULL) spriteFrame:
+                   [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"twitter.png"]];
+    //tweetButton = [CCButton buttonWithTitle:@"Tweetする"];
+    tweetButton.positionType = CCPositionTypeNormalized;
+    tweetButton.position = ccp(0.5f, 0.25f); // Top Right of screen
+    tweetButton.scale=0.7;
+    [tweetButton setTarget:self selector:@selector(onTweetClicked:)];
+    [self addChild:tweetButton];
+    tweetButton.visible=false;
+    
+    //Facebookボタン
+    facebookButton = [CCButton buttonWithTitle:NSLocalizedString(@"d_Get",NULL) spriteFrame:
+                   [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"facebook.png"]];
+    //facebookButton = [CCButton buttonWithTitle:@"Facebookへ投稿"];
+    facebookButton.positionType = CCPositionTypeNormalized;
+    facebookButton.position = ccp(0.5f, 0.20f); // Top Right of screen
+    facebookButton.scale=0.7;
+    [facebookButton setTarget:self selector:@selector(onFacebookPostClicked:)];
+    [self addChild:facebookButton];
+    facebookButton.visible=false;
+    
     return self;
 }
 
@@ -197,6 +224,8 @@ NSMutableArray* starG_Array;
     }
     if(clearFlg){
         victoryImg.visible=true;
+        tweetButton.visible=true;
+        facebookButton.visible=true;
     }else{
         defeatImg.visible=true;
     }
@@ -220,6 +249,10 @@ NSMutableArray* starG_Array;
         stageButton.visible=true;
         preferencesButton.visible=true;
         itemSetupButton.visible=true;
+
+        //tweetButton.visible=true;
+        //facebookButton.visible=true;
+
     }else{//再開中
         //pauseButton.title=@"[ポーズ]";
         pauseButton.visible=true;
@@ -271,6 +304,54 @@ NSMutableArray* starG_Array;
         ItemSetupLayer* itemSetup=[[ItemSetupLayer alloc]init];
         [self addChild:itemSetup z:3];
     }
+}
+-(void)onTweetClicked:(id)sender
+{
+    SLComposeViewController *vc = [SLComposeViewController
+                                   composeViewControllerForServiceType:SLServiceTypeTwitter];
+    [vc setInitialText:[NSString stringWithFormat:
+                        @"%@ %ld %@\n",NSLocalizedString(@"PostMessage",NULL),
+                        [GameManager load_HighScore],
+                        NSLocalizedString(@"PostEnd",NULL)]];
+    [vc addURL:[NSURL URLWithString:@"https://itunes.apple.com/jp/app/strategy-animals-war-!/id869207877?l=ja&ls=1&mt=8"]];
+    [vc setCompletionHandler:^(SLComposeViewControllerResult result)
+    {
+        switch (result) {
+        case SLComposeViewControllerResultDone:
+            //ダイヤを付与
+            [GameManager in_Out_Dia:1 addFlg:true];
+            //ダイア表示更新
+            [InformationLayer update_CurrencyLabel];
+            break;
+        case SLComposeViewControllerResultCancelled:
+            break;
+        }
+    }];
+    [[CCDirector sharedDirector]presentViewController:vc animated:YES completion:nil];
+}
+-(void)onFacebookPostClicked:(id)sender
+{
+    SLComposeViewController *vc = [SLComposeViewController
+                                   composeViewControllerForServiceType:SLServiceTypeFacebook];
+    [vc setInitialText:[NSString stringWithFormat:
+                        @"%@ %ld %@\n",NSLocalizedString(@"PostMessage",NULL),
+                        [GameManager load_HighScore],
+                        NSLocalizedString(@"PostEnd",NULL)]];
+    [vc addURL:[NSURL URLWithString:@"https://itunes.apple.com/jp/app/strategy-animals-war-!/id869207877?l=ja&ls=1&mt=8"]];
+    [vc setCompletionHandler:^(SLComposeViewControllerResult result)
+    {
+        switch (result) {
+        case SLComposeViewControllerResultDone:
+            //ダイヤを付与
+            [GameManager in_Out_Dia:1 addFlg:true];
+            //ダイア表示更新
+            [InformationLayer update_CurrencyLabel];
+            break;
+        case SLComposeViewControllerResultCancelled:
+            break;
+        }
+    }];
+    [[CCDirector sharedDirector]presentViewController:vc animated:YES completion:nil];
 }
 
 @end

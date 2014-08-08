@@ -444,13 +444,13 @@ CGSize winSize;
     
     if(flg){
 
-        if(modeFlg==0){
+        //if(modeFlg==0){
             [self unschedule:@selector(straight_Schedule:)];
-        }else if(modeFlg==1){
+        //}else if(modeFlg==1){
             [self unschedule:@selector(chase_Schedule:)];
-        }else if(modeFlg==2){
+       // }else if(modeFlg==2){
             [self unschedule:@selector(escape_Schedule:)];
-        }
+        //}
         [self unschedule:@selector(moveGun_Schedule:)];
         //[self unschedule:@selector(eFireMissile_Schedule:)];
         

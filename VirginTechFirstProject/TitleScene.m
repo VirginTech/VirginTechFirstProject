@@ -65,8 +65,17 @@ CCSprite* finger;
     }else{//日本語
         logo=[CCSprite spriteWithImageNamed:@"title_logo_jp.png"];
     }
-    logo.position=ccp(winSize.width/2,winSize.height-(logo.contentSize.height*0.4)/2+20);
-    logo.scale=0.4;
+    float rate;
+    float offY;
+    if([GameManager getDevice]==3){//iPad
+        rate=0.4;
+        offY=20.0;
+    }else{
+        rate=0.35;
+        offY=0.0;
+    }
+    logo.position=ccp(winSize.width/2,winSize.height-(logo.contentSize.height*rate)/2+offY);
+    logo.scale=rate;
     [self addChild:logo];
     
     if([GameManager getDevice]==3){//iPad

@@ -68,4 +68,8 @@
 "Final"="Congratulations!";
 "FinalMessage"="Thank you very much! playing the game to the end. Please let know what think at the end. Thanks for your support!";
 
+//ソーシャルボタン
+"d_Get"="　　Get！";
+"PostMessage"="~Strategy~ Animals War!\nCongratulations! \nHighScore";
+"PostEnd"="Point achieved.";
 

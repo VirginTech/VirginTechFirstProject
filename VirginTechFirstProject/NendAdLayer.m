@@ -31,13 +31,13 @@ CGSize winSize;
         
         _nadView = [[NADView alloc] initWithFrame:CGRectMake(0, 0, 728, 90)];
         _nadView.frame=CGRectOffset(_nadView.frame, 20,winSize.height*2-_nadView.frame.size.height);//20,940
-        [_nadView setNendID:@"2e0b9e0b3f40d952e6000f1a8c4d455fffc4ca3a" spotID:@"70999"];
+        [_nadView setNendID:@"eb677269310d1106785785de3456b9dfbeeaabdd" spotID:@"213467"];
         
     }else{//iPhone
         
         _nadView = [[NADView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
         _nadView.frame=CGRectOffset(_nadView.frame, 0,winSize.height-_nadView.frame.size.height);
-        [_nadView setNendID:@"a6eca9dd074372c898dd1df549301f277c53f2b9" spotID:@"3172"];
+        [_nadView setNendID:@"aa3ae540353f82776f1e51df58ce2b59a508ea91" spotID:@"213114"];
         
     }
     
