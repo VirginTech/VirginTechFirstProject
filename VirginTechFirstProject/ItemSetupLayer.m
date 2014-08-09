@@ -13,6 +13,7 @@
 #import "InformationLayer.h"
 #import "AchievementManeger.h"
 #import "SoundManager.h"
+#import "MessageLayer.h"
 
 @implementation ItemSetupLayer
 
@@ -463,6 +464,7 @@ CCLabelTTF* label05_UnderWater;
                 //ダイア表示更新
                 [InformationLayer update_CurrencyLabel];
                 //メッセージボックス
+                /*
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
                             [NSString stringWithFormat:@"%@ %d %@",
                                         NSLocalizedString(@"Level",NULL),
@@ -477,6 +479,19 @@ CCLabelTTF* label05_UnderWater;
                             cancelButtonTitle:nil
                             otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
                 [alert show];
+                */
+                NSString* messageTitle=[NSString stringWithFormat:@"%@ %d %@",
+                                        NSLocalizedString(@"Level",NULL),
+                                        [AchievementManeger load_Achievement_Value:i forKey:@"Achievement_Level"]+1,
+                                        NSLocalizedString(@"Achievement",NULL)];
+                NSString* messageText=[NSString stringWithFormat:@"%@ %d %@",
+                                        NSLocalizedString(@"Diamond",NULL),
+                                        [AchievementManeger load_Achievement_Point:i forKey:@"Achievement_Level"],
+                                        NSLocalizedString(@"Get",NULL)];
+                
+                MessageLayer* msgbox=[[MessageLayer alloc]init];
+                [msgbox setMessageBox:messageTitle message:messageText];
+                [self addChild:msgbox z:10];
             }
         }
     }

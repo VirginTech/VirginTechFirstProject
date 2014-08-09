@@ -13,6 +13,7 @@
 @interface Fortress : CCSprite
 {
     float ability_Defense ;
+    bool destCollectFlg;
     
     CCSprite* lifeGauge1;
     CCSprite* lifeGauge2;
@@ -24,6 +25,7 @@
 
 @property float ability_Defense;
 @property float maxLife;
+@property bool destCollectFlg;
 
 -(id)initWithFortress:(CGPoint)pos type:(int)type;
 +(id)createFortress:(CGPoint)pos type:(int)type;

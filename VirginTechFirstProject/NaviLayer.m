@@ -187,7 +187,7 @@ NSMutableArray* starG_Array;
     
     //ツイートボタン
     tweetButton = [CCButton buttonWithTitle:NSLocalizedString(@"d_Get",NULL) spriteFrame:
-                   [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"twitter.png"]];
+                   [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"twitter_p.png"]];
     //tweetButton = [CCButton buttonWithTitle:@"Tweetする"];
     tweetButton.positionType = CCPositionTypeNormalized;
     tweetButton.position = ccp(0.5f, 0.25f); // Top Right of screen
@@ -198,7 +198,7 @@ NSMutableArray* starG_Array;
     
     //Facebookボタン
     facebookButton = [CCButton buttonWithTitle:NSLocalizedString(@"d_Get",NULL) spriteFrame:
-                   [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"facebook.png"]];
+                   [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"facebook_p.png"]];
     //facebookButton = [CCButton buttonWithTitle:@"Facebookへ投稿"];
     facebookButton.positionType = CCPositionTypeNormalized;
     facebookButton.position = ccp(0.5f, 0.20f); // Top Right of screen
@@ -313,7 +313,7 @@ NSMutableArray* starG_Array;
                         @"%@ %ld %@\n",NSLocalizedString(@"PostMessage",NULL),
                         [GameManager load_HighScore],
                         NSLocalizedString(@"PostEnd",NULL)]];
-    [vc addURL:[NSURL URLWithString:@"https://itunes.apple.com/jp/app/strategy-animals-war-!/id869207877?l=ja&ls=1&mt=8"]];
+    [vc addURL:[NSURL URLWithString:NSLocalizedString(@"URL",NULL)]];
     [vc setCompletionHandler:^(SLComposeViewControllerResult result)
     {
         switch (result) {
@@ -337,7 +337,7 @@ NSMutableArray* starG_Array;
                         @"%@ %ld %@\n",NSLocalizedString(@"PostMessage",NULL),
                         [GameManager load_HighScore],
                         NSLocalizedString(@"PostEnd",NULL)]];
-    [vc addURL:[NSURL URLWithString:@"https://itunes.apple.com/jp/app/strategy-animals-war-!/id869207877?l=ja&ls=1&mt=8"]];
+    [vc addURL:[NSURL URLWithString:NSLocalizedString(@"URL",NULL)]];
     [vc setCompletionHandler:^(SLComposeViewControllerResult result)
     {
         switch (result) {

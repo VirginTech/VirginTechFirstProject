@@ -23,6 +23,7 @@
 #import "CCParticleSystem.h"
 #import "SoundManager.h"
 #import "NendAdLayer.h"
+#import "MessageLayer.h"
 
 @implementation StageLevel_01
 
@@ -547,33 +548,37 @@ NSMutableArray* swampArray;
                 [removePlayerMissileArray addObject:missile];
                 enemyFortress.ability_Defense -= missile.ability_Attack;
                 if(enemyFortress.ability_Defense<=0){
-                    //フィニッシュ
-                    [self schedule:@selector(finish_Success_Schedule:)interval:0.2 repeat:7 delay:0.5];
-                    [GameManager setPauseStateChange:true];
-                    [GameManager setPauseing:true];
-                    //ハイスコア更新
-                    [GameManager save_HighScore:[GameManager load_HighScore]+[GameManager getStageLevel]*100];
-                    [InformationLayer update_HighScoreLabel];
-                    //リーダーボードテスト
-                    [GameManager submitScore_GameCenter:[GameManager load_HighScore]];
-                    //コイン報酬
-                    [GameManager in_Out_Coin:10+(([GameManager getStageLevel]-1)*2) addFlg:true];
-                    [InformationLayer update_CurrencyLabel];
-                    //基礎集計（要塞撃破率）セーブ
-                    [GameManager save_Aggregate_Fortress:[GameManager load_Aggregate_Fortress]+1];
-                    //アチーブメント保存
-                    [self setAchievement:@"Achievement_Fortress"];
-                    //基礎集計（ステージレヴェル達成率）セーブ
-                    if([GameManager load_Aggregate_Stage]<[GameManager getStageLevel]){
-                        //[GameManager save_Aggregate_Stage:[GameManager load_Aggregate_Stage]+1];
-                        [GameManager save_Aggregate_Stage:[GameManager getStageLevel]];
-                    }
-                    //アチーブメント保存
-                    [self setAchievement:@"Achievement_Stage"];
-                    //アチーブメントラベル更新
-                    [InformationLayer update_AchievementLabel];
+                    if(!enemyFortress.destCollectFlg){//多重判定防止
+                        
+                        enemyFortress.destCollectFlg=true;
+                        //フィニッシュ
+                        [self schedule:@selector(finish_Success_Schedule:)interval:0.2 repeat:7 delay:0.5];
+                        [GameManager setPauseStateChange:true];
+                        [GameManager setPauseing:true];
+                        //ハイスコア更新
+                        [GameManager save_HighScore:[GameManager load_HighScore]+[GameManager getStageLevel]*100];
+                        [InformationLayer update_HighScoreLabel];
+                        //リーダーボードテスト
+                        [GameManager submitScore_GameCenter:[GameManager load_HighScore]];
+                        //コイン報酬
+                        [GameManager in_Out_Coin:10+(([GameManager getStageLevel]-1)*2) addFlg:true];
+                        [InformationLayer update_CurrencyLabel];
+                        //基礎集計（要塞撃破率）セーブ
+                        [GameManager save_Aggregate_Fortress:[GameManager load_Aggregate_Fortress]+1];
+                        //アチーブメント保存
+                        [self setAchievement:@"Achievement_Fortress"];
+                        //基礎集計（ステージレヴェル達成率）セーブ
+                        if([GameManager load_Aggregate_Stage]<[GameManager getStageLevel]){
+                            //[GameManager save_Aggregate_Stage:[GameManager load_Aggregate_Stage]+1];
+                            [GameManager save_Aggregate_Stage:[GameManager getStageLevel]];
+                        }
+                        //アチーブメント保存
+                        [self setAchievement:@"Achievement_Stage"];
+                        //アチーブメントラベル更新
+                        [InformationLayer update_AchievementLabel];
 
-                    break;
+                        break;
+                    }
                 }
             }
         }
@@ -796,24 +801,31 @@ NSMutableArray* swampArray;
                 [InformationLayer update_CurrencyLabel];
                 //メッセージボックス
                 NSString* messageTitle;
+                NSString* messageText;
                 if([forKey isEqualToString:@"Achievement_Tank"]){
-                    messageTitle = [NSString stringWithFormat:@"%@ %d %@",
+                    messageTitle = [NSString stringWithFormat:@"%@\n %d %@",
                                                 NSLocalizedString(@"Tank",NULL),
                                                 [AchievementManeger load_Achievement_Value:i forKey:forKey],
                                                 NSLocalizedString(@"Achievement",NULL)];
                     
                 }else if([forKey isEqualToString:@"Achievement_Fortress"]){
-                    messageTitle = [NSString stringWithFormat:@"%@ %d %@",
+                    messageTitle = [NSString stringWithFormat:@"%@\n %d %@",
                                                 NSLocalizedString(@"Fortress",NULL),
                                                 [AchievementManeger load_Achievement_Value:i forKey:forKey],
                                                 NSLocalizedString(@"Achievement",NULL)];
                     
                 }else if([forKey isEqualToString:@"Achievement_Stage"]){
-                    messageTitle = [NSString stringWithFormat:@"%@ %d %@",
+                    messageTitle = [NSString stringWithFormat:@"%@\n %d %@",
                                                 NSLocalizedString(@"Stage",NULL),
                                                 [AchievementManeger load_Achievement_Value:i forKey:forKey],
                                                 NSLocalizedString(@"Achievement",NULL)];
                 }
+                
+                messageText=[NSString stringWithFormat:@"%@ %d %@",
+                                                NSLocalizedString(@"Diamond",NULL),
+                                                [AchievementManeger load_Achievement_Point:i forKey:forKey],
+                                                NSLocalizedString(@"Get",NULL)];
+                /*
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:messageTitle
                         message:[NSString stringWithFormat:@"%@ %d %@",
                                             NSLocalizedString(@"Diamond",NULL),
@@ -823,6 +835,10 @@ NSMutableArray* swampArray;
                         cancelButtonTitle:nil
                         otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
                 [alert show];
+                */
+                MessageLayer* msgbox=[[MessageLayer alloc]init];
+                [msgbox setMessageBox:messageTitle message:messageText];
+                [self addChild:msgbox z:10];
             }
         }
     }

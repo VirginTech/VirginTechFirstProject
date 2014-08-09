@@ -13,6 +13,7 @@
 
 @synthesize ability_Defense;
 @synthesize maxLife;
+@synthesize destCollectFlg;
 
 CGSize winSize;
 NSString* fileName;
@@ -69,6 +70,9 @@ NSString* fileName2;
         damageParticle.scale=0.2;
         damageParticle.visible=false;
         [self addChild:damageParticle];
+        
+        //撃破回収フラグ
+        destCollectFlg=false;
         
         //状態スケジュール
         [self schedule:@selector(status_Schedule:)interval:0.1];

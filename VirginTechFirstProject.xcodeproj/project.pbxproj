@@ -18,6 +18,8 @@
 		CF0687501920E3F600AB3CD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF06874F1920E3F600AB3CD7 /* SystemConfiguration.framework */; };
 		CF0687521921AF9400AB3CD7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0687511921AF9400AB3CD7 /* iAd.framework */; };
 		CF0687551921AFFE00AB3CD7 /* IAdLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0687541921AFFE00AB3CD7 /* IAdLayer.m */; };
+		CF0F8C7F1995BEC000FEB1EF /* MessageLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0F8C7E1995BEC000FEB1EF /* MessageLayer.m */; };
+		CF0F8C811995DB9B00FEB1EF /* msgBox.png in Resources */ = {isa = PBXBuildFile; fileRef = CF0F8C801995DB9B00FEB1EF /* msgBox.png */; };
 		CF1BF75B193C47F400EEA664 /* leaf_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF1BF759193C47F400EEA664 /* leaf_default.plist */; };
 		CF1BF75C193C47F400EEA664 /* leaf_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1BF75A193C47F400EEA664 /* leaf_default.png */; };
 		CF1BF75E193CADDE00EEA664 /* bgLayer.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1BF75D193CADDE00EEA664 /* bgLayer.png */; };
@@ -109,8 +111,8 @@
 		CF8DD34D1943F369004C26EB /* CreditLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8DD34C1943F369004C26EB /* CreditLayer.m */; };
 		CF99E38419515B9100D59EE6 /* enemyDestruct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF99E38319515B9100D59EE6 /* enemyDestruct.mp3 */; };
 		CF99E38619515E3800D59EE6 /* playerFire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF99E38519515E3800D59EE6 /* playerFire.mp3 */; };
-		CF9B20AB199463D400322DC1 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF9B20A9199463D400322DC1 /* interface_default.plist */; };
-		CF9B20AC199463D400322DC1 /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9B20AA199463D400322DC1 /* interface_default.png */; };
+		CF9B20AF19948AFB00322DC1 /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF9B20AD19948AFB00322DC1 /* interface_default.plist */; };
+		CF9B20B019948AFB00322DC1 /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9B20AE19948AFB00322DC1 /* interface_default.png */; };
 		CFA379E41955177400938BC4 /* playerSelect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E31955177400938BC4 /* playerSelect.mp3 */; };
 		CFA379E819551AD700938BC4 /* end_Failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E619551AD700938BC4 /* end_Failed.mp3 */; };
 		CFA379E919551AD700938BC4 /* end_Success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E719551AD700938BC4 /* end_Success.mp3 */; };
@@ -355,6 +357,9 @@
 		CF0687511921AF9400AB3CD7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		CF0687531921AFFE00AB3CD7 /* IAdLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAdLayer.h; sourceTree = "<group>"; };
 		CF0687541921AFFE00AB3CD7 /* IAdLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAdLayer.m; sourceTree = "<group>"; };
+		CF0F8C7D1995BEC000FEB1EF /* MessageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageLayer.h; sourceTree = "<group>"; };
+		CF0F8C7E1995BEC000FEB1EF /* MessageLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageLayer.m; sourceTree = "<group>"; };
+		CF0F8C801995DB9B00FEB1EF /* msgBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = msgBox.png; sourceTree = "<group>"; };
 		CF1BF759193C47F400EEA664 /* leaf_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = leaf_default.plist; sourceTree = "<group>"; };
 		CF1BF75A193C47F400EEA664 /* leaf_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf_default.png; sourceTree = "<group>"; };
 		CF1BF75D193CADDE00EEA664 /* bgLayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgLayer.png; sourceTree = "<group>"; };
@@ -468,8 +473,8 @@
 		CF8DD34C1943F369004C26EB /* CreditLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditLayer.m; sourceTree = "<group>"; };
 		CF99E38319515B9100D59EE6 /* enemyDestruct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemyDestruct.mp3; sourceTree = "<group>"; };
 		CF99E38519515E3800D59EE6 /* playerFire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerFire.mp3; sourceTree = "<group>"; };
-		CF9B20A9199463D400322DC1 /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
-		CF9B20AA199463D400322DC1 /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
+		CF9B20AD19948AFB00322DC1 /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
+		CF9B20AE19948AFB00322DC1 /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
 		CFA379E31955177400938BC4 /* playerSelect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerSelect.mp3; sourceTree = "<group>"; };
 		CFA379E619551AD700938BC4 /* end_Failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = end_Failed.mp3; sourceTree = "<group>"; };
 		CFA379E719551AD700938BC4 /* end_Success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = end_Success.mp3; sourceTree = "<group>"; };
@@ -1070,8 +1075,9 @@
 		CF5E70E5196BAD2200E22254 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CF9B20A9199463D400322DC1 /* interface_default.plist */,
-				CF9B20AA199463D400322DC1 /* interface_default.png */,
+				CF0F8C801995DB9B00FEB1EF /* msgBox.png */,
+				CF9B20AD19948AFB00322DC1 /* interface_default.plist */,
+				CF9B20AE19948AFB00322DC1 /* interface_default.png */,
 				CF38277C196D6722001DA775 /* button_default.plist */,
 				CF38277D196D6722001DA775 /* button_default.png */,
 				CF0412A31949ACB0007767C4 /* info_default.plist */,
@@ -1122,6 +1128,8 @@
 		CF6C57DF190F692C00FCF978 /* layer */ = {
 			isa = PBXGroup;
 			children = (
+				CF0F8C7D1995BEC000FEB1EF /* MessageLayer.h */,
+				CF0F8C7E1995BEC000FEB1EF /* MessageLayer.m */,
 				CFFDB93C192C386400979A14 /* ItemSetupLayer.h */,
 				CFFDB93D192C386400979A14 /* ItemSetupLayer.m */,
 				CFF39636191104510052608E /* PlayerSelection.h */,
@@ -2221,7 +2229,7 @@
 				CF54280F1991B5D200007F47 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				CF1BF75C193C47F400EEA664 /* leaf_default.png in Resources */,
 				CF54280B1991B5D200007F47 /* Icon-Small-50.png in Resources */,
-				CF9B20AC199463D400322DC1 /* interface_default.png in Resources */,
+				CF9B20B019948AFB00322DC1 /* interface_default.png in Resources */,
 				CFA379E819551AD700938BC4 /* end_Failed.mp3 in Resources */,
 				CF99E38419515B9100D59EE6 /* enemyDestruct.mp3 in Resources */,
 				CF6A727319175B240027F654 /* position_line.png in Resources */,
@@ -2240,6 +2248,7 @@
 				CF74C8321953CF380027C995 /* toys06.mp3 in Resources */,
 				CF38277E196D6722001DA775 /* button_default.plist in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
+				CF0F8C811995DB9B00FEB1EF /* msgBox.png in Resources */,
 				CF514C211971250F003CE116 /* player01_default.plist in Resources */,
 				CF4A7BFE1942D644005C3C17 /* playerDead.plist in Resources */,
 				CF54280E1991B5D200007F47 /* Icon-Spotlight-iOS7.png in Resources */,
@@ -2283,7 +2292,7 @@
 				CF38277F196D6722001DA775 /* button_default.png in Resources */,
 				CF514C321971259B003CE116 /* player05_default.png in Resources */,
 				CF74C82F1953CF380027C995 /* toys03.mp3 in Resources */,
-				CF9B20AB199463D400322DC1 /* interface_default.plist in Resources */,
+				CF9B20AF19948AFB00322DC1 /* interface_default.plist in Resources */,
 				CFA379E41955177400938BC4 /* playerSelect.mp3 in Resources */,
 				CFDFDF08190A2D6F0021FBF9 /* iTunesArtwork@2x in Resources */,
 				CF2F5009193D5A65005E5BF6 /* ground_default.plist in Resources */,
@@ -2333,6 +2342,7 @@
 				CFDFE015190A2D700021FBF9 /* CCFileUtils.m in Sources */,
 				CFDFE098190A2D700021FBF9 /* OALTools.m in Sources */,
 				CFDFDF4E190A2D6F0021FBF9 /* ccGLStateCache.m in Sources */,
+				CF0F8C7F1995BEC000FEB1EF /* MessageLayer.m in Sources */,
 				CFDFE046190A2D700021FBF9 /* OALActionManager.m in Sources */,
 				CF56B6EB192B494C00FC07DB /* InitializeManager.m in Sources */,
 				CF8C16C319134618002BBC13 /* AnimalEnemy.m in Sources */,
