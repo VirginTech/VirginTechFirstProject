@@ -12,12 +12,13 @@
 @interface MessageLayer : CCScene {
     
     CCSprite* msgBox;
+    int _type;
     CCLabelTTF* title;
     CCLabelTTF* message;
 }
 
 + (MessageLayer *)scene;
-- (id)init;
+- (id)init:(int)type;
 
 -(void)setMessageBox:(NSString*)_title message:(NSString*)_message;
 

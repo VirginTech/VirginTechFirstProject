@@ -18,13 +18,14 @@ CGSize winSize;
     return [[self alloc] init];
 }
 
-- (id)init{
+- (id)init:(int)type{
     
     self = [super init];
     if (!self) return(nil);
     
     winSize=[[CCDirector sharedDirector]viewSize];
     self.userInteractionEnabled = YES;
+    _type=type;
     
     //BGカラー
     //CCNodeColor* background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:0.5f]];
@@ -48,6 +49,17 @@ CGSize winSize;
 
 -(void)setMessageBox:(NSString*)_title message:(NSString*)_message
 {
+    if(_type==0){//アチーブメント通知
+        msgBox.scale=0.4;
+        title.position=ccp(winSize.width/2,winSize.height/2+20);
+        message.position=ccp(winSize.width/2,winSize.height/2-20);
+    }else if(_type==1){//レベルアップ
+        msgBox.scaleX=0.4;
+        msgBox.scaleY=0.65;
+        title.position=ccp(winSize.width/2,winSize.height/2+100);
+        message.position=ccp(winSize.width/2,winSize.height/2+10);
+    }
+    
     title.string=_title;
     message.string=_message;
 }
@@ -59,7 +71,9 @@ CGSize winSize;
 
 -(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    [self removeFromParentAndCleanup:YES];
+    if(_type==0){//アチーブメント通知
+        [self removeFromParentAndCleanup:YES];
+    }
 }
 
 @end

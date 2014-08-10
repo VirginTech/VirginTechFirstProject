@@ -36,8 +36,6 @@
 		CF2F500A193D5A65005E5BF6 /* ground_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5008193D5A65005E5BF6 /* ground_default.png */; };
 		CF2F5014193D734B005E5BF6 /* stageSelect2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2F5013193D734B005E5BF6 /* stageSelect2.png */; };
 		CF36CC5819400BAF007D2293 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CF36CC5719400BAF007D2293 /* Default-Portrait~ipad.png */; };
-		CF38277E196D6722001DA775 /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF38277C196D6722001DA775 /* button_default.plist */; };
-		CF38277F196D6722001DA775 /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF38277D196D6722001DA775 /* button_default.png */; };
 		CF3FD4801977DC1500965C13 /* title_logo_jp.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3FD47F1977DC1500965C13 /* title_logo_jp.png */; };
 		CF418ACA1920947700196E64 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF418AC91920947600196E64 /* GameKit.framework */; };
 		CF418ACD192098FF00196E64 /* LeaderboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF418ACC192098FF00196E64 /* LeaderboardView.m */; };
@@ -121,6 +119,8 @@
 		CFCB338C1955872400416DB1 /* water01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFCB338B1955872400416DB1 /* water01.mp3 */; };
 		CFCBDD62195ABBFA0061E552 /* virgintech.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCBDD61195ABBFA0061E552 /* virgintech.png */; };
 		CFD5A32D1911F29D004E2B58 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD5A32C1911F29D004E2B58 /* GameManager.m */; };
+		CFDA93CA1997630100FFFF45 /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFDA93C81997630100FFFF45 /* button_default.plist */; };
+		CFDA93CB1997630100FFFF45 /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFDA93C91997630100FFFF45 /* button_default.png */; };
 		CFDEF8F01993145D00CACBBB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDEF8EF1993145D00CACBBB /* Social.framework */; };
 		CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */; };
 		CFDFDECA190A2D6E0021FBF9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFDEC9190A2D6E0021FBF9 /* OpenGLES.framework */; };
@@ -381,8 +381,6 @@
 		CF2F5008193D5A65005E5BF6 /* ground_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground_default.png; sourceTree = "<group>"; };
 		CF2F5013193D734B005E5BF6 /* stageSelect2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stageSelect2.png; sourceTree = "<group>"; };
 		CF36CC5719400BAF007D2293 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		CF38277C196D6722001DA775 /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
-		CF38277D196D6722001DA775 /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
 		CF3FD47F1977DC1500965C13 /* title_logo_jp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_logo_jp.png; sourceTree = "<group>"; };
 		CF418AC91920947600196E64 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CF418ACB192098FF00196E64 /* LeaderboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardView.h; sourceTree = "<group>"; };
@@ -486,6 +484,8 @@
 		CFCBDD61195ABBFA0061E552 /* virgintech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virgintech.png; sourceTree = "<group>"; };
 		CFD5A32B1911F29D004E2B58 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		CFD5A32C1911F29D004E2B58 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		CFDA93C81997630100FFFF45 /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
+		CFDA93C91997630100FFFF45 /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
 		CFDEF8EF1993145D00CACBBB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		CFDFDEC4190A2D6E0021FBF9 /* VirginTechFirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirginTechFirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDFDEC7190A2D6E0021FBF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1075,11 +1075,11 @@
 		CF5E70E5196BAD2200E22254 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CFDA93C81997630100FFFF45 /* button_default.plist */,
+				CFDA93C91997630100FFFF45 /* button_default.png */,
 				CF0F8C801995DB9B00FEB1EF /* msgBox.png */,
 				CF9B20AD19948AFB00322DC1 /* interface_default.plist */,
 				CF9B20AE19948AFB00322DC1 /* interface_default.png */,
-				CF38277C196D6722001DA775 /* button_default.plist */,
-				CF38277D196D6722001DA775 /* button_default.png */,
 				CF0412A31949ACB0007767C4 /* info_default.plist */,
 				CF0412A41949ACB0007767C4 /* info_default.png */,
 			);
@@ -2210,6 +2210,7 @@
 				CF514C2A1971253B003CE116 /* player03_default.png in Resources */,
 				CF5428111991B5D200007F47 /* Icon@2x.png in Resources */,
 				CFDFE0FB190A2D700021FBF9 /* LICENSE_CCBReader.txt in Resources */,
+				CFDA93CA1997630100FFFF45 /* button_default.plist in Resources */,
 				CF74C8371953D99A0027C995 /* button01_Click.mp3 in Resources */,
 				CF514C311971259B003CE116 /* player05_default.plist in Resources */,
 				CF5430971952DEAC0017BEE9 /* player05set.mp3 in Resources */,
@@ -2221,6 +2222,7 @@
 				CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */,
 				CF5428081991B5D200007F47 /* Icon-76@2x.png in Resources */,
 				CF5428071991B5D200007F47 /* Icon-76.png in Resources */,
+				CFDA93CB1997630100FFFF45 /* button_default.png in Resources */,
 				CFDFDEE2190A2D6F0021FBF9 /* Default.png in Resources */,
 				CF74C82D1953CF380027C995 /* toys01.mp3 in Resources */,
 				CFE2052119594B550004E4E5 /* fortress_default.png in Resources */,
@@ -2246,7 +2248,6 @@
 				CF1BF75E193CADDE00EEA664 /* bgLayer.png in Resources */,
 				CF5430951952DDA20017BEE9 /* player04set.mp3 in Resources */,
 				CF74C8321953CF380027C995 /* toys06.mp3 in Resources */,
-				CF38277E196D6722001DA775 /* button_default.plist in Resources */,
 				CFDFE03D190A2D700021FBF9 /* LICENSE_cocos2d.txt in Resources */,
 				CF0F8C811995DB9B00FEB1EF /* msgBox.png in Resources */,
 				CF514C211971250F003CE116 /* player01_default.plist in Resources */,
@@ -2289,7 +2290,6 @@
 				CFCBDD62195ABBFA0061E552 /* virgintech.png in Resources */,
 				CF5428061991B5D200007F47 /* Icon-72@2x.png in Resources */,
 				CF99E38619515E3800D59EE6 /* playerFire.mp3 in Resources */,
-				CF38277F196D6722001DA775 /* button_default.png in Resources */,
 				CF514C321971259B003CE116 /* player05_default.png in Resources */,
 				CF74C82F1953CF380027C995 /* toys03.mp3 in Resources */,
 				CF9B20AF19948AFB00322DC1 /* interface_default.plist in Resources */,

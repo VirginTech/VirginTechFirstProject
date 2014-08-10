@@ -836,7 +836,7 @@ NSMutableArray* swampArray;
                         otherButtonTitles:NSLocalizedString(@"OK",NULL), nil];
                 [alert show];
                 */
-                MessageLayer* msgbox=[[MessageLayer alloc]init];
+                MessageLayer* msgbox=[[MessageLayer alloc]init:0];
                 [msgbox setMessageBox:messageTitle message:messageText];
                 [self addChild:msgbox z:10];
             }

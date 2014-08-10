@@ -54,6 +54,8 @@ CCLabelTTF* label05_Defense;
 CCLabelTTF* label05_Traveling;
 CCLabelTTF* label05_UnderWater;
 
+MessageLayer* msgbox;
+
 + (ItemSetupLayer *)scene
 {
     return [[self alloc] init];
@@ -489,7 +491,7 @@ CCLabelTTF* label05_UnderWater;
                                         [AchievementManeger load_Achievement_Point:i forKey:@"Achievement_Level"],
                                         NSLocalizedString(@"Get",NULL)];
                 
-                MessageLayer* msgbox=[[MessageLayer alloc]init];
+                MessageLayer* msgbox=[[MessageLayer alloc]init:0];
                 [msgbox setMessageBox:messageTitle message:messageText];
                 [self addChild:msgbox z:10];
             }
@@ -545,6 +547,7 @@ CCLabelTTF* label05_UnderWater;
 
 -(void)showLevelUpMessageAlert:(int)type
 {
+    /*
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.tag=type;
     alert.delegate = self;
@@ -575,6 +578,63 @@ CCLabelTTF* label05_UnderWater;
     [alert addButtonWithTitle:NSLocalizedString(@"No",NULL)];
     [alert addButtonWithTitle:NSLocalizedString(@"Yes",NULL)];
     [alert show];
+    */
+    
+    NSString* messageTitle;
+    NSString* messageText;
+    
+    messageTitle = NSLocalizedString(@"LevelUp",NULL);
+    messageText  = [NSString stringWithFormat:
+                    @"\n%@ \n\n    %@:%.2f%@ \n    %@:%.2f%@ \n    %@:%.2f%@ \n    %@:%.2f%@ \n\n    %@",
+                    NSLocalizedString(@"levelUpItem",NULL),
+                    
+                    NSLocalizedString(@"Attack",NULL),
+                    [self levelUp_Quantity:type key:0],
+                    NSLocalizedString(@"Up",NULL),
+                    
+                    NSLocalizedString(@"Defense",NULL),
+                    [self levelUp_Quantity:type key:1],
+                    NSLocalizedString(@"Up",NULL),
+                    
+                    NSLocalizedString(@"Move",NULL),
+                    [self levelUp_Quantity:type key:2],
+                    NSLocalizedString(@"Up",NULL),
+                    
+                    NSLocalizedString(@"Underwater",NULL),
+                    [self levelUp_Quantity:type key:3],
+                    NSLocalizedString(@"Up",NULL),
+                    
+                    NSLocalizedString(@"IsItOk",NULL)
+                    ];
+    
+    msgbox=[[MessageLayer alloc]init:1];
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
+    CCSprite* animal=[CCSprite spriteWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:
+                                                                    [NSString stringWithFormat:@"animal%02d.png",type]]];;
+    animal.scale=0.4;
+    animal.position=ccp(msgbox.contentSize.width/2,msgbox.contentSize.height/2+100);
+    [msgbox addChild:animal];
+    
+    [msgbox setMessageBox:@"" message:messageText];
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
+    CCButton* yesBtn=[CCButton buttonWithTitle:NSLocalizedString(@"Yes",NULL)
+                                    spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"yesBtn.png"]];
+    yesBtn.scale=0.6;
+    yesBtn.position=ccp(msgbox.contentSize.width/2+40,msgbox.contentSize.height/2-100);
+    [yesBtn setTarget:self selector:@selector(onLevelUp_Yes_Clicked:)];
+    yesBtn.name=[NSString stringWithFormat:@"%d",type];
+    [msgbox addChild:yesBtn];
+    
+    CCButton* noBtn=[CCButton buttonWithTitle:NSLocalizedString(@"No",NULL)
+                                   spriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"noBtn.png"]];
+    noBtn.scale=0.6;
+    noBtn.position=ccp(msgbox.contentSize.width/2-40,msgbox.contentSize.height/2-100);
+    [noBtn setTarget:self selector:@selector(onLevelUp_No_Clicked:)];
+    [msgbox addChild:noBtn];
+    
+    [self addChild:msgbox z:10];
 
 }
 
@@ -651,6 +711,7 @@ CCLabelTTF* label05_UnderWater;
     case 0:
         break;
     case 1:
+        /*
         if(alertView.tag>=1 && alertView.tag<=5){
             afterDia = [GameManager load_Currency_Dia] - 1;
             if(afterDia >= 0){
@@ -680,7 +741,8 @@ CCLabelTTF* label05_UnderWater;
             }else{
                 [self showLackMassage];
             }
-        }else if(alertView.tag==6){
+        }else */
+        if(alertView.tag==6){
             afterDia = [GameManager load_Currency_Dia] - 1;
             if(afterDia >= 0){
                 [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
@@ -701,6 +763,47 @@ CCLabelTTF* label05_UnderWater;
         }
         break;
     }
+}
+
+-(void)onLevelUp_Yes_Clicked:(id)sender
+{
+    CCButton* button =(CCButton*)sender;
+    //NSLog(@"選択プレイヤー=%d",[[button name]intValue]);
+
+    afterDia = [GameManager load_Currency_Dia] - 1;
+    if(afterDia >= 0){
+        //パーティクル
+        CCParticleSystem* levelUpParticle=[[CCParticleSystem alloc]initWithFile:@"levelUp.plist"];
+        if([[button name]intValue]==1){
+            levelUpParticle.position=CGPointMake(80,                               170);
+        }else if([[button name]intValue]==2){
+            levelUpParticle.position=CGPointMake(bgSprite.contentSize.width/2-150, 170);
+        }else if([[button name]intValue]==3){
+            levelUpParticle.position=CGPointMake(bgSprite.contentSize.width/2,     170);
+        }else if([[button name]intValue]==4){
+            levelUpParticle.position=CGPointMake(bgSprite.contentSize.width/2+150, 170);
+        }else if([[button name]intValue]==5){
+            levelUpParticle.position=CGPointMake(bgSprite.contentSize.width/2+300, 170);
+        }
+        [bgSprite addChild:levelUpParticle];
+        //効果音
+        [SoundManager button_Click];
+        
+        [ObjectManager levelUp_Object_Ability:[NSString stringWithFormat:@"player%02d",[[button name]intValue]]];
+        [self setButtonLevel];
+        [self setAbility];
+        [GameManager in_Out_Dia:1 addFlg:false];//ダイア1減
+        [InformationLayer update_CurrencyLabel];
+        [self setAchievement];
+    }else{
+        [self showLackMassage];
+    }
+    
+    [self removeChild:msgbox cleanup:YES];
+}
+-(void)onLevelUp_No_Clicked:(id)sender
+{
+    [self removeChild:msgbox cleanup:YES];
 }
 
 -(void)onBarterCoin01Clicked:(id)sender
