@@ -35,6 +35,7 @@ NSMutableArray* animalArray;
 NSMutableArray* enemyArray;
 RouteGenerationLayer* routeGeneLyer;
 AnimalPlayer* touchPlayer;
+AnimalEnemy* touchEnemy;
 
 PlayerSelection* playSelect;
 AnimalPlayer* creatPlayer;
@@ -868,7 +869,20 @@ NSMutableArray* swampArray;
     }
     return flg;
 }
-
+//============================
+// タッチした敵タンクを特定する
+//============================
++(BOOL)isEnemy:(CGPoint)touchLocation
+{
+    BOOL flg=false;
+    for(AnimalEnemy* _enemy in enemyArray){
+        if([BasicMath RadiusContainsPoint:_enemy.position pointB:touchLocation radius:30]){
+            touchEnemy=_enemy;
+            flg=true;
+        }
+    }
+    return flg;
+}
 //===================================
 // 選択したプレイヤーが衝突継続中かどうか
 //===================================
@@ -1025,6 +1039,61 @@ NSMutableArray* swampArray;
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     scrollView.scrollViewDeacceleration=0.3;
+    
+    CGPoint worldLocation;
+    CGPoint touchLocation = [touch locationInNode:self];
+    
+    float offsetY = bgSpLayer.contentSize.height - winSize.height - scrollView.scrollPosition.y;
+    worldLocation.x = touchLocation.x + scrollView.scrollPosition.x;
+    worldLocation.y = touchLocation.y + offsetY;
+
+    if(worldLocation.y > [GameManager getWorldSize].height / 5.0f){
+        
+        if([StageLevel_01 isEnemy:worldLocation]){
+
+            CCSprite* enemyImg;
+            NSString* messageTitle;
+            NSString* messageText;
+            
+            [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
+
+            if(touchEnemy.enemyNum==1){//ノーマル（サソリ）
+                messageTitle = NSLocalizedString(@"Scorpion",NULL);
+                enemyImg=[CCSprite spriteWithSpriteFrame:
+                                 [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"enemy01.png"]];
+            }else if(touchEnemy.enemyNum==2){//移動大：攻撃弱い（カエル）
+                messageTitle = NSLocalizedString(@"Frog",NULL);
+                enemyImg=[CCSprite spriteWithSpriteFrame:
+                                 [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"enemy02.png"]];
+            }else if(touchEnemy.enemyNum==3){//移動小：攻撃強い（ワニ）
+                messageTitle = NSLocalizedString(@"Crocodile",NULL);
+                enemyImg=[CCSprite spriteWithSpriteFrame:
+                                 [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"enemy03.png"]];
+            }
+            
+            messageText  = [NSString stringWithFormat:
+                            @"\n    %@:%.2f \n    %@:%.2f \n    %@:%.2f \n    %@:%.2f",
+                            
+                            NSLocalizedString(@"Attack",NULL),
+                            touchEnemy.ability_Attack*100,
+                            
+                            NSLocalizedString(@"Defense",NULL),
+                            touchEnemy.ability_Defense*100,
+                            
+                            NSLocalizedString(@"Move",NULL),
+                            touchEnemy.ability_Traveling*100,
+                            
+                            NSLocalizedString(@"Underwater",NULL),
+                            touchEnemy.ability_Traveling*100*0.3];
+            
+            MessageLayer* msgbox=[[MessageLayer alloc]init:0];
+            enemyImg.scale=0.4;
+            enemyImg.position=ccp(msgbox.contentSize.width/2,msgbox.contentSize.height/2+60);
+            [msgbox addChild:enemyImg];
+            [msgbox setMessageBox:messageTitle message:messageText];
+            [self addChild:msgbox z:10];
+        }
+    }
 }
 
 //-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
