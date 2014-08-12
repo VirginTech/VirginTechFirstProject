@@ -14,6 +14,7 @@
 #import "GameManager.h"
 #import "SoundManager.h"
 #import "InitializeManager.h"
+#import "NADInterstitial.h"
 
 @implementation AppDelegate
 
@@ -63,6 +64,9 @@
         [[GKLocalPlayer localPlayer]authenticateWithCompletionHandler:^(NSError *error){}];
     }
     
+    //インタースティシャル読込み
+    [[NADInterstitial sharedInstance] loadAdWithApiKey:@"308c2499c75c4a192f03c02b2fcebd16dcb45cc9"
+                                                spotId:@"213208"];//テスト用
 	return YES;
 }
 

@@ -117,7 +117,7 @@ float velocity;
     scrollView=[[CCScrollView alloc]initWithContentNode:bgSpLayer];
     scrollView.horizontalScrollEnabled=NO;
     scrollView.mode=0;
-    bgSpLayer.position=CGPointMake(0, -bgSpLayer.contentSize.height);
+    bgSpLayer.position=CGPointMake(0, winSize.height-bgSpLayer.contentSize.height);
     [self addChild:scrollView z:0];
     
     //地面

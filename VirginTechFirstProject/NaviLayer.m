@@ -15,6 +15,7 @@
 #import "SoundManager.h"
 #import "InformationLayer.h"
 #import <Social/Social.h>
+#import "NADInterstitial.h"
 
 @implementation NaviLayer
 
@@ -283,6 +284,7 @@ NSMutableArray* starG_Array;
     [SoundManager button_Click];
     //[[CCDirector sharedDirector]resume];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+    [[NADInterstitial sharedInstance] showAd];
 }
 - (void)onSelectStageClicked:(id)sender
 {

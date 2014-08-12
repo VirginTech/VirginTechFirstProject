@@ -32,6 +32,8 @@ CCLabelTTF* label03;
 CCLabelTTF* label04;
 CCLabelTTF* label05;
 
+float itemScrollPosX;//アイテム選択位置
+
 + (PlayerSelection *)scene{
     
     return [[self alloc] init];
@@ -158,6 +160,7 @@ CCLabelTTF* label05;
 
     //スクロールビュー
     scrollView=[[CCScrollView alloc]initWithContentNode:bgSprite];
+    scrollView.scrollPosition=ccp(itemScrollPosX,0);
     scrollView.verticalScrollEnabled=NO;
     scrollView.mode=1;
     [self addChild:scrollView];
@@ -254,6 +257,7 @@ CCLabelTTF* label05;
             [TutorialLevel setFinger];
         }
     }
+    itemScrollPosX=scrollView.scrollPosition.x;
 }
 
 -(void)playerSet:(int)type
@@ -290,6 +294,7 @@ CCLabelTTF* label05;
         }
     }
     serialCount1++;
+    itemScrollPosX=scrollView.scrollPosition.x;
 }
 
 -(void)onAnimal01_Clicked:(id)sender

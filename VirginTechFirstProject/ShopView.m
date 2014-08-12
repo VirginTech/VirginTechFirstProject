@@ -11,6 +11,7 @@
 #import "GameManager.h"
 #import "InformationLayer.h"
 #import "SoundManager.h"
+#import "NADInterstitial.h"
 
 @implementation ShopView
 
@@ -340,6 +341,7 @@ SKProduct* product05;
     }
     
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+    [[NADInterstitial sharedInstance] showAd];
 }
 
 - (void)button01_Clicked:(id)sender

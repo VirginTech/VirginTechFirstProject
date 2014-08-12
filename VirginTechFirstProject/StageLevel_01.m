@@ -29,6 +29,7 @@
 
 CGSize winSize;
 CCSprite* bgSpLayer;
+float offSetbgSpLayerY=0;
 InformationLayer* infoLayer;
 
 NSMutableArray* animalArray;
@@ -85,6 +86,7 @@ NSMutableArray* swampArray;
     playerParticle=nil;
     enemyParticle=nil;
     finishCount=0;
+    offSetbgSpLayerY=0.0;
     
     //ゲーム状態セット
     [GameManager setPlaying:true];//プレイ中
@@ -111,7 +113,8 @@ NSMutableArray* swampArray;
     scrollView=[[CCScrollView alloc]initWithContentNode:bgSpLayer];
     scrollView.horizontalScrollEnabled=NO;
     scrollView.mode=0;
-    bgSpLayer.position=CGPointMake(0, -bgSpLayer.contentSize.height);
+    bgSpLayer.position=CGPointMake(0, offSetbgSpLayerY);
+    //bgSpLayer.position=CGPointMake(0, winSize.height-bgSpLayer.contentSize.height);
     [self addChild:scrollView z:0];
     
     //地面
@@ -170,6 +173,8 @@ NSMutableArray* swampArray;
             [self setSwamp];
         }
     }
+    //オープニングスケジュール
+    [self schedule:@selector(opening_Schedule:)interval:0.001 repeat:CCTimerRepeatForever delay:1.0];
     //審判スケジュール開始
     [self schedule:@selector(judgement_Schedule:)interval:0.1];
     //敵アニマル戦車登場
@@ -186,6 +191,15 @@ NSMutableArray* swampArray;
     // always call super onExit last
     [super onExit];
     //[SoundManager stopBGM];
+}
+
+-(void)opening_Schedule:(CCTime)dt
+{
+    offSetbgSpLayerY -= 1.0;
+    bgSpLayer.position=CGPointMake(0, offSetbgSpLayerY);
+    if(offSetbgSpLayerY <= winSize.height-bgSpLayer.contentSize.height){
+        [self unschedule:@selector(opening_Schedule:)];
+    }
 }
 
 -(void)setGround

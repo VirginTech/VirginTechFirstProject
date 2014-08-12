@@ -14,6 +14,7 @@
 #import "IAdLayer.h"
 #import "SoundManager.h"
 #import "NendAdLayer.h"
+#import "NADInterstitial.h"
 
 @implementation SelectStage
 
@@ -146,6 +147,7 @@ CCSprite* bgSpLayer;
     // back to intro scene with transition
     [SoundManager button_Click];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
+    [[NADInterstitial sharedInstance] showAd];
 }
 
 @end

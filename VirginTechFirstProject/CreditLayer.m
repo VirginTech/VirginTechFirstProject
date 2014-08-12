@@ -10,6 +10,7 @@
 #import "GameManager.h"
 #import "TitleScene.h"
 #import "SoundManager.h"
+#import "NADInterstitial.h"
 
 @implementation CreditLayer
 
@@ -204,6 +205,7 @@ CCScrollView* scrollView;
     [GameManager setActive:true];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:
                                                     [CCTransition transitionCrossFadeWithDuration:1.0]];
+    [[NADInterstitial sharedInstance] showAd];
 }
     
 @end
