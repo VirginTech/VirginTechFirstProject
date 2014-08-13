@@ -37,7 +37,7 @@ CGSize winSize;
         
         _nadView = [[NADView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
         _nadView.frame=CGRectOffset(_nadView.frame, 0,winSize.height-_nadView.frame.size.height);
-        [_nadView setNendID:@"a6eca9dd074372c898dd1df549301f277c53f2b9" spotID:@"3172"];//テスト用
+        [_nadView setNendID:@"aa3ae540353f82776f1e51df58ce2b59a508ea91" spotID:@"213114"];
         
     }
     
