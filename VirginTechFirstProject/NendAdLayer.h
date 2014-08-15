@@ -10,11 +10,11 @@
 #import "cocos2d.h"
 #import "NADView.h"
 
-@interface NendAdLayer : CCScene <NADViewDelegate>  {
-    
-    NADView* _nadView;
+@interface NendAdLayer : CCScene <NADViewDelegate>
+{
+    //NADView* nadView;
 }
 
-@property (nonatomic, retain) NADView * _nadView;
+@property (nonatomic, retain) NADView * nadView;
 
 @end

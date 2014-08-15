@@ -269,7 +269,7 @@ NSMutableArray* swampArray;
 
 -(void)createEnemy_Schedule:(CCTime)dt
 {
-    if(enemyCount<=[GameManager getStageLevel]*2){
+    if(enemyCount<=[GameManager getStageLevel]*1){
         if(enemyCount%10==0){
             [StageLevel_01 createEnemy];
             [StageLevel_01 createEnemy];

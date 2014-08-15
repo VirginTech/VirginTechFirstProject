@@ -251,7 +251,7 @@ float velocity;
 
 -(void)t_createEnemy_Schedule:(CCTime)dt
 {
-    if(enemyCount<=2){
+    if(enemyCount<=1){
         [TutorialLevel t_createEnemy];
     }
     enemyCount++;
