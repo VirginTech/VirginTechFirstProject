@@ -39,6 +39,7 @@
 
 #import "GameManager.h"
 #import "NaviLayer.h"
+#import <GameFeatKit/GFController.h>
 
 NSString* const CCSetupPixelFormat = @"CCSetupPixelFormat";
 NSString* const CCSetupScreenMode = @"CCSetupScreenMode";
@@ -283,27 +284,46 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 -(void) applicationDidBecomeActive:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
-	if( [navController_ visibleViewController] == [CCDirector sharedDirector] )
+	if( [navController_ visibleViewController] == [CCDirector sharedDirector] ){
 		[[CCDirector sharedDirector] resume];
-
-    //プレイ中だったらポーズにする
-    if([GameManager getPlaying]){
-        [GameManager setPauseStateChange:true];
-        [GameManager setPauseing:true];
-        [NaviLayer setPauseScreen];
+        
+        //ゲームフィートSDK有効化
+        [GFController activateGF:@"7627" useCustom:NO useIcon:YES usePopup:NO];
+        
+        //プレイ中だったらポーズにする
+        if([GameManager getPlaying]){
+            [GameManager setPauseStateChange:true];
+            [GameManager setPauseing:true];
+            [NaviLayer setPauseScreen];
+        }
     }
 }
 
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
-	if( [navController_ visibleViewController] == [CCDirector sharedDirector] )
+	if( [navController_ visibleViewController] == [CCDirector sharedDirector] ){
 		[[CCDirector sharedDirector] stopAnimation];
+        
+        //ゲームフィートコンバージョン確認タスクの起動
+        UIDevice *device = [UIDevice currentDevice];
+        BOOL backgroundSupported = NO;
+        if ([device respondsToSelector:@selector(isMultitaskingSupported)]) {
+            backgroundSupported = device.multitaskingSupported;
+        }
+        if (backgroundSupported) {
+            [GFController backgroundTask];
+        }
+    }
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application
 {
-	if( [navController_ visibleViewController] == [CCDirector sharedDirector] )
+	if( [navController_ visibleViewController] == [CCDirector sharedDirector] ){
 		[[CCDirector sharedDirector] startAnimation];
+        
+        //ゲームフィートコンバージョン確認タスクの停止
+        [GFController conversionCheckStop];
+    }
 }
 
 // application will be killed

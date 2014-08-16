@@ -31,8 +31,8 @@ CGSize winSize;
         
         nadView = [[NADView alloc] initWithFrame:CGRectMake(0, 0, 728, 90)];
         nadView.frame=CGRectOffset(nadView.frame, 20,winSize.height*2-nadView.frame.size.height);//20,940
-        [nadView setNendID:@"eb677269310d1106785785de3456b9dfbeeaabdd" spotID:@"213467"];//本番
-        //[nadView setNendID:@"2e0b9e0b3f40d952e6000f1a8c4d455fffc4ca3a" spotID:@"70999"];//テスト
+        //[nadView setNendID:@"eb677269310d1106785785de3456b9dfbeeaabdd" spotID:@"213467"];//本番
+        [nadView setNendID:@"2e0b9e0b3f40d952e6000f1a8c4d455fffc4ca3a" spotID:@"70999"];//テスト
         
     }else{//iPhone
         

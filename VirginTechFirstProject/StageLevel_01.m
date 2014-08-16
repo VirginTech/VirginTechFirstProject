@@ -139,15 +139,15 @@ NSMutableArray* swampArray;
     infoLayer=[[InformationLayer alloc]init];
     [self addChild:infoLayer z:4];
     
-    if([GameManager getDevice]==3){//iPad
+    //if([GameManager getDevice]==3){//iPad
         //iAdバナー表示 z:5
-        IAdLayer* iAd=[[IAdLayer alloc]init:1];
-        [self addChild:iAd z:5];
-    }else{
+        //IAdLayer* iAd=[[IAdLayer alloc]init:1];
+        //[self addChild:iAd z:5];
+    //}else{
         //NendAdバナー表示
         NendAdLayer* nAd=[[NendAdLayer alloc]init];
-        [self addChild:nAd];
-    }
+        [self addChild:nAd z:5];
+    //}
     
     // done
 	return self;

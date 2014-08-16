@@ -78,14 +78,40 @@ CCSprite* finger;
     logo.scale=rate;
     [self addChild:logo];
     
-    if([GameManager getDevice]==3){//iPad
+    //バナー広告
+    //if([GameManager getDevice]==3){//iPad
         //iAdバナー表示
-        IAdLayer* iAd=[[IAdLayer alloc]init:1];
-        [self addChild:iAd];
-    }else{
+        //IAdLayer* iAd=[[IAdLayer alloc]init:1];
+        //[self addChild:iAd];
+    //}else{
         //NendAdバナー表示
         NendAdLayer* nAd=[[NendAdLayer alloc]init];
         [self addChild:nAd];
+    //}
+    
+    //ゲームフィートアイコン広告
+    gfIconController = [[GFIconController alloc] init];
+    [gfIconController setRefreshTiming:30];
+    
+    {
+        GFIconView *iconView = [[GFIconView alloc] initWithFrame:CGRectMake(18, 320, 60, 60)];
+        [gfIconController addIconView:iconView];
+        [[[CCDirector sharedDirector]view]addSubview:iconView];
+    }
+    {
+        GFIconView *iconView = [[GFIconView alloc] initWithFrame:CGRectMake(90, 320, 60, 60)];
+        [gfIconController addIconView:iconView];
+        [[[CCDirector sharedDirector]view]addSubview:iconView];
+    }
+    {
+        GFIconView *iconView = [[GFIconView alloc] initWithFrame:CGRectMake(162, 320, 60, 60)];
+        [gfIconController addIconView:iconView];
+        [[[CCDirector sharedDirector]view]addSubview:iconView];
+    }
+    {
+        GFIconView *iconView = [[GFIconView alloc] initWithFrame:CGRectMake(234, 320, 60, 60)];
+        [gfIconController addIconView:iconView];
+        [[[CCDirector sharedDirector]view]addSubview:iconView];
     }
     
     //インフォメーション z:1
@@ -185,6 +211,15 @@ CCSprite* finger;
     [tutorialButton setTarget:self selector:@selector(onTutorialButtonClicked:)];
     [self addChild:tutorialButton];
 
+    //ゲームフィート
+    CCButton* moreAppBtn=[CCButton buttonWithTitle:@"" spriteFrame:
+                                [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"gfBtn.png"]];
+    moreAppBtn.positionType = CCPositionTypeNormalized;
+    moreAppBtn.position = ccp(0.5f, 0.15f);
+    moreAppBtn.scale=0.3;
+    [moreAppBtn setTarget:self selector:@selector(onMoreAppBtnClicked:)];
+    [self addChild:moreAppBtn];
+
     //画像読込み
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"interface_default.plist"];
     //チュートリアルが実行されていなければ「指」を表示
@@ -202,7 +237,7 @@ CCSprite* finger;
     CCLabelTTF* versionLabel=[CCLabelTTF labelWithString:@"Version 1.0.4" fontName:@"Verdana" fontSize:13];
     versionLabel.position=ccp(winSize.width-versionLabel.contentSize.width/2,winSize.height-versionLabel.contentSize.height/2);
     [self addChild:versionLabel];
-
+    
     // done
 	return self;
 }
@@ -210,6 +245,13 @@ CCSprite* finger;
 - (void)dealloc
 {
     // clean up code goes here
+}
+
+-(void)onEnter
+{
+    [super onEnter];
+    [gfIconController loadAd:@"7627"];
+    [gfIconController visibleIconAd];
 }
 
 - (void)onExit
@@ -321,6 +363,23 @@ CCSprite* finger;
         [GameManager setActive:false];
         [[CCDirector sharedDirector] replaceScene:[CreditLayer scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
     }
+}
+
+-(void)onMoreAppBtnClicked:(id)sender
+{
+    //CCAppDelegate *delegate = (CCAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [GFController showGF:[CCDirector sharedDirector] site_id:@"7627" delegate:self];
+}
+//=======================================================
+// GFViewDelegate
+//=======================================================
+- (void)didShowGameFeat{
+    // GameFeatが表示されたタイミングで呼び出されるdelegateメソッド
+    //NSLog(@"didShowGameFeat");
+}
+- (void)didCloseGameFeat{
+    // GameFeatが閉じられたタイミングで呼び出されるdelegateメソッド
+    //NSLog(@"didCloseGameFeat");
 }
 
 @end
