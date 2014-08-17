@@ -79,3 +79,6 @@
 "Frog"="Frog Tank";
 "Crocodile"="Gyaos";
 
+//ローカル通知
+"LocalNotification"="Animals is want to play!";
+

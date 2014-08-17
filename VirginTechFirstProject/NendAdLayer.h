@@ -17,4 +17,7 @@
 
 @property (nonatomic, retain) NADView * nadView;
 
++ (NendAdLayer *)scene;
+- (id)init;
+
 @end

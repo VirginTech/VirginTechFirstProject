@@ -39,6 +39,9 @@
 		CF3FD4801977DC1500965C13 /* title_logo_jp.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3FD47F1977DC1500965C13 /* title_logo_jp.png */; };
 		CF418ACA1920947700196E64 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF418AC91920947600196E64 /* GameKit.framework */; };
 		CF418ACD192098FF00196E64 /* LeaderboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF418ACC192098FF00196E64 /* LeaderboardView.m */; };
+		CF42909819A08DF1007CE446 /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF42909619A08DF1007CE446 /* button_default.plist */; };
+		CF42909919A08DF1007CE446 /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF42909719A08DF1007CE446 /* button_default.png */; };
+		CF49D1A7199FA8B700F8DB19 /* GameFeatLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF49D1A6199FA8B700F8DB19 /* GameFeatLayer.m */; };
 		CF4A7BFC1942C364005C3C17 /* playerAdding.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF4A7BFB1942C364005C3C17 /* playerAdding.plist */; };
 		CF4A7BFE1942D644005C3C17 /* playerDead.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF4A7BFD1942D644005C3C17 /* playerDead.plist */; };
 		CF4A7C001942E872005C3C17 /* enemyDead.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF4A7BFF1942E872005C3C17 /* enemyDead.plist */; };
@@ -146,8 +149,6 @@
 		CF83E5C9199F05F20079A84B /* gamefeat_popup_dl_D.png in Resources */ = {isa = PBXBuildFile; fileRef = CF83E593199F05F20079A84B /* gamefeat_popup_dl_D.png */; };
 		CF83E5CA199F05F20079A84B /* gamefeat_popup_dl_E.png in Resources */ = {isa = PBXBuildFile; fileRef = CF83E594199F05F20079A84B /* gamefeat_popup_dl_E.png */; };
 		CF83E5CB199F05F20079A84B /* gamefeat_popup_dl_F.png in Resources */ = {isa = PBXBuildFile; fileRef = CF83E595199F05F20079A84B /* gamefeat_popup_dl_F.png */; };
-		CF83E5CE199F304E0079A84B /* button_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF83E5CC199F304E0079A84B /* button_default.plist */; };
-		CF83E5CF199F304E0079A84B /* button_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF83E5CD199F304E0079A84B /* button_default.png */; };
 		CF8C16C319134618002BBC13 /* AnimalEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C219134618002BBC13 /* AnimalEnemy.m */; };
 		CF8C16C81913B26D002BBC13 /* StageLevel_01.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C71913B26D002BBC13 /* StageLevel_01.m */; };
 		CF8C16CB1913B2EC002BBC13 /* SelectStage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16CA1913B2EC002BBC13 /* SelectStage.m */; };
@@ -442,6 +443,10 @@
 		CF418AC91920947600196E64 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CF418ACB192098FF00196E64 /* LeaderboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardView.h; sourceTree = "<group>"; };
 		CF418ACC192098FF00196E64 /* LeaderboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardView.m; sourceTree = "<group>"; };
+		CF42909619A08DF1007CE446 /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
+		CF42909719A08DF1007CE446 /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
+		CF49D1A5199FA8B700F8DB19 /* GameFeatLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameFeatLayer.h; sourceTree = "<group>"; };
+		CF49D1A6199FA8B700F8DB19 /* GameFeatLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameFeatLayer.m; sourceTree = "<group>"; };
 		CF4A7BFB1942C364005C3C17 /* playerAdding.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = playerAdding.plist; sourceTree = "<group>"; };
 		CF4A7BFD1942D644005C3C17 /* playerDead.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = playerDead.plist; sourceTree = "<group>"; };
 		CF4A7BFF1942E872005C3C17 /* enemyDead.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemyDead.plist; sourceTree = "<group>"; };
@@ -561,8 +566,6 @@
 		CF83E593199F05F20079A84B /* gamefeat_popup_dl_D.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamefeat_popup_dl_D.png; sourceTree = "<group>"; };
 		CF83E594199F05F20079A84B /* gamefeat_popup_dl_E.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamefeat_popup_dl_E.png; sourceTree = "<group>"; };
 		CF83E595199F05F20079A84B /* gamefeat_popup_dl_F.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamefeat_popup_dl_F.png; sourceTree = "<group>"; };
-		CF83E5CC199F304E0079A84B /* button_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = button_default.plist; sourceTree = "<group>"; };
-		CF83E5CD199F304E0079A84B /* button_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_default.png; sourceTree = "<group>"; };
 		CF8C16C119134618002BBC13 /* AnimalEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalEnemy.h; sourceTree = "<group>"; };
 		CF8C16C219134618002BBC13 /* AnimalEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalEnemy.m; sourceTree = "<group>"; };
 		CF8C16C61913B26D002BBC13 /* StageLevel_01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageLevel_01.h; sourceTree = "<group>"; };
@@ -1193,8 +1196,8 @@
 		CF5E70E5196BAD2200E22254 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CF83E5CC199F304E0079A84B /* button_default.plist */,
-				CF83E5CD199F304E0079A84B /* button_default.png */,
+				CF42909619A08DF1007CE446 /* button_default.plist */,
+				CF42909719A08DF1007CE446 /* button_default.png */,
 				CFE50FF11998B4D500BC4C9B /* interface_default.plist */,
 				CFE50FF21998B4D500BC4C9B /* interface_default.png */,
 				CF0F8C801995DB9B00FEB1EF /* msgBox.png */,
@@ -1258,6 +1261,8 @@
 				CF0687541921AFFE00AB3CD7 /* IAdLayer.m */,
 				CFED485C1990C5FA000FC975 /* NendAdLayer.h */,
 				CFED485D1990C5FA000FC975 /* NendAdLayer.m */,
+				CF49D1A5199FA8B700F8DB19 /* GameFeatLayer.h */,
+				CF49D1A6199FA8B700F8DB19 /* GameFeatLayer.m */,
 				CF8C16CC1913B71A002BBC13 /* NaviLayer.h */,
 				CF8C16CD1913B71A002BBC13 /* NaviLayer.m */,
 				CF5CB2461922F47B001D9E65 /* PreferencesLayer.h */,
@@ -2407,7 +2412,7 @@
 				CF1FE82519628659005FAB3F /* particleTextureStar.png in Resources */,
 				CF1BF75B193C47F400EEA664 /* leaf_default.plist in Resources */,
 				CF514C2A1971253B003CE116 /* player03_default.png in Resources */,
-				CF83E5CE199F304E0079A84B /* button_default.plist in Resources */,
+				CF42909819A08DF1007CE446 /* button_default.plist in Resources */,
 				CFDFE0FB190A2D700021FBF9 /* LICENSE_CCBReader.txt in Resources */,
 				CF74C8371953D99A0027C995 /* button01_Click.mp3 in Resources */,
 				CF514C311971259B003CE116 /* player05_default.plist in Resources */,
@@ -2477,7 +2482,7 @@
 				CF514C211971250F003CE116 /* player01_default.plist in Resources */,
 				CF83E5A9199F05F20079A84B /* gamefeat_rect_banner.png in Resources */,
 				CFB65DD91999E8080025D225 /* Icon-Spotlight-iOS7.png in Resources */,
-				CF83E5CF199F304E0079A84B /* button_default.png in Resources */,
+				CF42909919A08DF1007CE446 /* button_default.png in Resources */,
 				CF4A7BFE1942D644005C3C17 /* playerDead.plist in Resources */,
 				CF514C2D19712578003CE116 /* player04_default.plist in Resources */,
 				CF4FCFF1194E8BA300D6D4DF /* swamp.png in Resources */,
@@ -2619,6 +2624,7 @@
 				CFDFDF56190A2D6F0021FBF9 /* CCLabelBMFont.m in Sources */,
 				CFDFDF14190A2D6F0021FBF9 /* CCActionEase.m in Sources */,
 				CFDFDF23190A2D6F0021FBF9 /* CCActionTween.m in Sources */,
+				CF49D1A7199FA8B700F8DB19 /* GameFeatLayer.m in Sources */,
 				CFDFE091190A2D700021FBF9 /* NSMutableDictionary+WeakReferences.m in Sources */,
 				CF8C16CE1913B71A002BBC13 /* NaviLayer.m in Sources */,
 				CFAB7C2D191505AF0084D0F8 /* RouteGenerationLayer.m in Sources */,

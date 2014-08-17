@@ -11,15 +11,10 @@
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
 #import "LeaderboardView.h"
-#import <GameFeatKit/GFView.h>
-#import <GameFeatKit/GFController.h>
-#import <GameFeatKit/GFIconController.h>
-#import <GameFeatKit/GFIconView.h>
 
-@interface TitleScene : CCScene <GFViewDelegate> {
-    
+@interface TitleScene : CCScene
+{    
     LeaderboardView* lbv;
-    GFIconController *gfIconController;
 }
 
 + (TitleScene *)scene;

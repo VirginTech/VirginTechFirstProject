@@ -313,6 +313,22 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
         if (backgroundSupported) {
             [GFController backgroundTask];
         }
+        
+        //========================
+        //　ローカル通知設定
+        //========================
+        // インスタンス生成
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        // 12時間後に通知をする（設定は秒単位）
+        notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:(60 * 60 * 12)];
+        // タイムゾーンの設定
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        // 通知時に表示させるメッセージ内容
+        notification.alertBody = NSLocalizedString(@"LocalNotification",NULL);
+        // 通知に鳴る音の設定
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        // 通知の登録
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     }
 }
 
@@ -323,6 +339,9 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
         
         //ゲームフィートコンバージョン確認タスクの停止
         [GFController conversionCheckStop];
+        
+        // アプリに登録されている全ての通知を削除
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
     }
 }
 
