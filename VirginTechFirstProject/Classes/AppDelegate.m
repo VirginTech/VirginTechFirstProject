@@ -65,8 +65,8 @@
     }
     
     //インタースティシャル読込み
-    //[[NADInterstitial sharedInstance] loadAdWithApiKey:@"bceaad0e1d190fd15b74240b7be000075f580213" spotId:@"216691"];//本番
-    [[NADInterstitial sharedInstance] loadAdWithApiKey:@"308c2499c75c4a192f03c02b2fcebd16dcb45cc9" spotId:@"213208"];//テスト
+    [[NADInterstitial sharedInstance] loadAdWithApiKey:@"bceaad0e1d190fd15b74240b7be000075f580213" spotId:@"216691"];//本番
+    //[[NADInterstitial sharedInstance] loadAdWithApiKey:@"308c2499c75c4a192f03c02b2fcebd16dcb45cc9" spotId:@"213208"];//テスト
     
 	return YES;
 }

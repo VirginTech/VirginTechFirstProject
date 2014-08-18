@@ -23,4 +23,6 @@
 + (GameFeatLayer *)scene;
 - (id)init;
 
+-(void)hiddenGfIconAd;
+
 @end

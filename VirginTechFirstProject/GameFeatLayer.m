@@ -12,6 +12,7 @@
 @implementation GameFeatLayer
 
 CGSize winSize;
+GFIconView *iconView;
 
 + (GameFeatLayer*)scene
 {
@@ -27,25 +28,38 @@ CGSize winSize;
     
     //アイコン広告
     gfIconController = [[GFIconController alloc] init];
-    [gfIconController setRefreshTiming:30];
+    [gfIconController setRefreshTiming:60];
     
-    {
-        GFIconView *iconView = [[GFIconView alloc] initWithFrame:CGRectMake(18, 320, 60, 60)];
+    if([GameManager getDevice]==3){//iPad
+        iconView = [[GFIconView alloc] initWithFrame:CGRectMake(0, (winSize.height*2)/2+50, 80, 80)];
         [gfIconController addIconView:iconView];
         [[[CCDirector sharedDirector]view]addSubview:iconView];
-    }
-    {
-        GFIconView *iconView = [[GFIconView alloc] initWithFrame:CGRectMake(90, 320, 60, 60)];
+
+        iconView = [[GFIconView alloc] initWithFrame:CGRectMake(0, (winSize.height*2)/2-50, 80, 80)];
         [gfIconController addIconView:iconView];
         [[[CCDirector sharedDirector]view]addSubview:iconView];
-    }
-    {
-        GFIconView *iconView = [[GFIconView alloc] initWithFrame:CGRectMake(162, 320, 60, 60)];
+
+        iconView = [[GFIconView alloc] initWithFrame:CGRectMake((winSize.width*2)-80, (winSize.height*2)/2+50, 80, 80)];
         [gfIconController addIconView:iconView];
         [[[CCDirector sharedDirector]view]addSubview:iconView];
-    }
-    {
-        GFIconView *iconView = [[GFIconView alloc] initWithFrame:CGRectMake(234, 320, 60, 60)];
+
+        iconView = [[GFIconView alloc] initWithFrame:CGRectMake((winSize.width*2)-80, (winSize.height*2)/2-50, 80, 80)];
+        [gfIconController addIconView:iconView];
+        [[[CCDirector sharedDirector]view]addSubview:iconView];
+    }else{
+        iconView = [[GFIconView alloc] initWithFrame:CGRectMake(0, winSize.height/2+25, 50, 50)];
+        [gfIconController addIconView:iconView];
+        [[[CCDirector sharedDirector]view]addSubview:iconView];
+
+        iconView = [[GFIconView alloc] initWithFrame:CGRectMake(0, winSize.height/2-55, 50, 50)];
+        [gfIconController addIconView:iconView];
+        [[[CCDirector sharedDirector]view]addSubview:iconView];
+
+        iconView = [[GFIconView alloc] initWithFrame:CGRectMake(winSize.width-50, winSize.height/2+25, 50, 50)];
+        [gfIconController addIconView:iconView];
+        [[[CCDirector sharedDirector]view]addSubview:iconView];
+
+        iconView = [[GFIconView alloc] initWithFrame:CGRectMake(winSize.width-50, winSize.height/2-55, 50, 50)];
         [gfIconController addIconView:iconView];
         [[[CCDirector sharedDirector]view]addSubview:iconView];
     }
@@ -67,8 +81,12 @@ CGSize winSize;
     [moreAppBtn setTarget:self selector:@selector(onMoreAppBtnClicked:)];
     [self addChild:moreAppBtn];
 
-    
     return self;
+}
+
+- (void) dealloc
+{
+    
 }
 
 -(void)onEnter
@@ -76,12 +94,21 @@ CGSize winSize;
     [super onEnter];
     [gfIconController loadAd:@"7627"];
     [gfIconController visibleIconAd];
+    [gfIconController stopAd];//更新しない
+
 }
 
 - (void)onExit
 {
     // always call super onExit last
     [super onExit];
+    [self hiddenGfIconAd];
+}
+
+-(void)hiddenGfIconAd
+{
+    //[gfIconController stopAd];//エラーになる！
+    [gfIconController invisibleIconAd];
 }
 
 -(void)onMoreAppBtnClicked:(id)sender

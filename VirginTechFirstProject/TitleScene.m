@@ -24,6 +24,7 @@
 
 CGSize winSize;
 CCSprite* finger;
+GameFeatLayer* gfAd;
 
 + (TitleScene *)scene
 {
@@ -95,7 +96,7 @@ CCSprite* finger;
     [self addChild:nAd];
     
     //GameFeat広告
-    GameFeatLayer* gfAd=[[GameFeatLayer alloc]init];
+    gfAd=[[GameFeatLayer alloc]init];
     [self addChild:gfAd];
     
     //インフォメーション z:1
@@ -316,6 +317,8 @@ CCSprite* finger;
         [GameManager setActive:false];
         PreferencesLayer* prefence=[[PreferencesLayer alloc]init];
         [self addChild:prefence];
+        
+        [gfAd hiddenGfIconAd];
     }
 }
 
@@ -326,6 +329,8 @@ CCSprite* finger;
         [GameManager setActive:false];
         ItemSetupLayer* itemSetup=[[ItemSetupLayer alloc]init];
         [self addChild:itemSetup];
+        
+        [gfAd hiddenGfIconAd];
     }
 }
 
