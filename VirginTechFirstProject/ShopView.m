@@ -12,6 +12,7 @@
 #import "InformationLayer.h"
 #import "SoundManager.h"
 #import "NADInterstitial.h"
+#import "IMobileLayer.h"
 
 @implementation ShopView
 
@@ -341,7 +342,10 @@ SKProduct* product05;
     }
     
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
-    [[NADInterstitial sharedInstance] showAd];
+    
+    //広告表示
+    //[[NADInterstitial sharedInstance] showAd];
+    [ImobileSdkAds showBySpotID:@"276556"];
 }
 
 - (void)button01_Clicked:(id)sender

@@ -380,6 +380,9 @@
 		CFE50FF31998B4D500BC4C9B /* interface_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFE50FF11998B4D500BC4C9B /* interface_default.plist */; };
 		CFE50FF41998B4D500BC4C9B /* interface_default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE50FF21998B4D500BC4C9B /* interface_default.png */; };
 		CFE6B6E9196F8B3500E00EC8 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE6B6E8196F8B3500E00EC8 /* title.png */; };
+		CFEAE40A19A706F800351514 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEAE40919A706F800351514 /* CoreLocation.framework */; };
+		CFEAE40C19A7149500351514 /* ImobileSdkAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEAE40B19A7149500351514 /* ImobileSdkAds.framework */; };
+		CFEAE40F19A71FD700351514 /* IMobileLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEAE40E19A71FD700351514 /* IMobileLayer.m */; };
 		CFED48571990C4B8000FC975 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFED48561990C4B8000FC975 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CFED48591990C4DB000FC975 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFED48581990C4DB000FC975 /* Security.framework */; };
 		CFED485B1990C4ED000FC975 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFED485A1990C4ED000FC975 /* ImageIO.framework */; };
@@ -1034,6 +1037,10 @@
 		CFE50FF11998B4D500BC4C9B /* interface_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface_default.plist; sourceTree = "<group>"; };
 		CFE50FF21998B4D500BC4C9B /* interface_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_default.png; sourceTree = "<group>"; };
 		CFE6B6E8196F8B3500E00EC8 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
+		CFEAE40919A706F800351514 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CFEAE40B19A7149500351514 /* ImobileSdkAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImobileSdkAds.framework; sourceTree = "<group>"; };
+		CFEAE40D19A71FD700351514 /* IMobileLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMobileLayer.h; sourceTree = "<group>"; };
+		CFEAE40E19A71FD700351514 /* IMobileLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMobileLayer.m; sourceTree = "<group>"; };
 		CFED48561990C4B8000FC975 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		CFED48581990C4DB000FC975 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CFED485A1990C4ED000FC975 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -1052,9 +1059,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFEAE40A19A706F800351514 /* CoreLocation.framework in Frameworks */,
 				CF83E559199F04E70079A84B /* CoreTelephony.framework in Frameworks */,
 				CFDEF8F01993145D00CACBBB /* Social.framework in Frameworks */,
 				CFED485B1990C4ED000FC975 /* ImageIO.framework in Frameworks */,
+				CFEAE40C19A7149500351514 /* ImobileSdkAds.framework in Frameworks */,
 				CFED48591990C4DB000FC975 /* Security.framework in Frameworks */,
 				CFED48571990C4B8000FC975 /* AdSupport.framework in Frameworks */,
 				CF0687521921AF9400AB3CD7 /* iAd.framework in Frameworks */,
@@ -1257,12 +1266,6 @@
 				CFFDB93D192C386400979A14 /* ItemSetupLayer.m */,
 				CFF39636191104510052608E /* PlayerSelection.h */,
 				CFF39637191104510052608E /* PlayerSelection.m */,
-				CF0687531921AFFE00AB3CD7 /* IAdLayer.h */,
-				CF0687541921AFFE00AB3CD7 /* IAdLayer.m */,
-				CFED485C1990C5FA000FC975 /* NendAdLayer.h */,
-				CFED485D1990C5FA000FC975 /* NendAdLayer.m */,
-				CF49D1A5199FA8B700F8DB19 /* GameFeatLayer.h */,
-				CF49D1A6199FA8B700F8DB19 /* GameFeatLayer.m */,
 				CF8C16CC1913B71A002BBC13 /* NaviLayer.h */,
 				CF8C16CD1913B71A002BBC13 /* NaviLayer.m */,
 				CF5CB2461922F47B001D9E65 /* PreferencesLayer.h */,
@@ -1436,6 +1439,8 @@
 		CFDFDEC6190A2D6E0021FBF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFEAE40B19A7149500351514 /* ImobileSdkAds.framework */,
+				CFEAE40919A706F800351514 /* CoreLocation.framework */,
 				CF83E558199F04E70079A84B /* CoreTelephony.framework */,
 				CF83E556199F04640079A84B /* GameFeatKit.framework */,
 				CFDEF8EF1993145D00CACBBB /* Social.framework */,
@@ -2317,9 +2322,25 @@
 				CF6C57DC190F68BA00FCF978 /* lib */,
 				CF6C57DE190F68F900FCF978 /* stage */,
 				CF6C57DD190F68D200FCF978 /* object */,
+				CFEAE41019A73DF300351514 /* AdLayer */,
 				CF6C57DF190F692C00FCF978 /* layer */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		CFEAE41019A73DF300351514 /* AdLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CF0687531921AFFE00AB3CD7 /* IAdLayer.h */,
+				CF0687541921AFFE00AB3CD7 /* IAdLayer.m */,
+				CFED485C1990C5FA000FC975 /* NendAdLayer.h */,
+				CFED485D1990C5FA000FC975 /* NendAdLayer.m */,
+				CF49D1A5199FA8B700F8DB19 /* GameFeatLayer.h */,
+				CF49D1A6199FA8B700F8DB19 /* GameFeatLayer.m */,
+				CFEAE40D19A71FD700351514 /* IMobileLayer.h */,
+				CFEAE40E19A71FD700351514 /* IMobileLayer.m */,
+			);
+			name = AdLayer;
 			sourceTree = "<group>";
 		};
 		CFED484D1990C469000FC975 /* NendAd */ = {
@@ -2682,6 +2703,7 @@
 				CF505F2A1932D9E90068A24A /* Fortress.m in Sources */,
 				CFDFDF8F190A2D6F0021FBF9 /* CCPhysicsShape.m in Sources */,
 				CFDFDF97190A2D6F0021FBF9 /* CCRenderTexture.m in Sources */,
+				CFEAE40F19A71FD700351514 /* IMobileLayer.m in Sources */,
 				CFDFDF1D190A2D6F0021FBF9 /* CCActionManager.m in Sources */,
 				CFDFDFC1190A2D6F0021FBF9 /* CCSprite9Slice.m in Sources */,
 				CFDFDFD3190A2D6F0021FBF9 /* CCTextureAtlas.m in Sources */,

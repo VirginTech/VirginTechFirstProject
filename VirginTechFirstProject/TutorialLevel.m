@@ -25,6 +25,7 @@
 #import "SoundManager.h"
 #import "NendAdLayer.h"
 #import "MessageLayer.h"
+#import "IMobileLayer.h"
 
 @implementation TutorialLevel
 
@@ -155,16 +156,20 @@ float velocity;
     targetPos=CGPointMake(winSize.width/2+finger.contentSize.width/2, 120);
     velocity = 1.5;
         
-    //if([GameManager getDevice]==3){//iPad
-        //iAdバナー表示 z:5
-        //IAdLayer* iAd=[[IAdLayer alloc]init:1];
-        //[self addChild:iAd z:5];
-    //}else{
+    //iAdバナー表示 z:5
+    //IAdLayer* iAd=[[IAdLayer alloc]init:1];
+    //[self addChild:iAd z:5];
+
+    if([GameManager getDevice]==3){//iPad
         //NendAdバナー表示
         NendAdLayer* nAd=[[NendAdLayer alloc]init];
-        [self addChild:nAd z:5];
-    //}
-    
+        [self addChild:nAd];
+    }else{
+        //iMobileバナー
+        IMobileLayer* iMAd=[[IMobileLayer alloc]init];
+        [self addChild:iMAd];
+    }
+
     // done
 	return self;
 }

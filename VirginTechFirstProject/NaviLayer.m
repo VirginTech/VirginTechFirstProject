@@ -16,6 +16,7 @@
 #import "InformationLayer.h"
 #import <Social/Social.h>
 #import "NADInterstitial.h"
+#import "IMobileLayer.h"
 
 @implementation NaviLayer
 
@@ -284,7 +285,9 @@ NSMutableArray* starG_Array;
     [SoundManager button_Click];
     //[[CCDirector sharedDirector]resume];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
-    [[NADInterstitial sharedInstance] showAd];
+    //広告表示
+    //[[NADInterstitial sharedInstance] showAd];
+    [ImobileSdkAds showBySpotID:@"276556"];
 }
 - (void)onSelectStageClicked:(id)sender
 {

@@ -11,6 +11,7 @@
 #import "TitleScene.h"
 #import "SoundManager.h"
 #import "NADInterstitial.h"
+#import "IMobileLayer.h"
 
 @implementation CreditLayer
 
@@ -205,7 +206,9 @@ CCScrollView* scrollView;
     [GameManager setActive:true];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:
                                                     [CCTransition transitionCrossFadeWithDuration:1.0]];
-    [[NADInterstitial sharedInstance] showAd];
+    //広告
+    //[[NADInterstitial sharedInstance] showAd];
+    [ImobileSdkAds showBySpotID:@"276556"];
 }
     
 @end

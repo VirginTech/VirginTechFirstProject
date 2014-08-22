@@ -15,6 +15,7 @@
 #import "SoundManager.h"
 #import "NendAdLayer.h"
 #import "NADInterstitial.h"
+#import "IMobileLayer.h"
 
 @implementation SelectStage
 
@@ -61,15 +62,19 @@ CCSprite* bgSpLayer;
     [GameManager setPauseing:false];
     [GameManager setPauseStateChange:false];
     
-    //if([GameManager getDevice]==3){//iPad
-        //iAdバナー表示
-        //IAdLayer* iAd=[[IAdLayer alloc]init:1];
-        //[self addChild:iAd];
-    //}else{
-        //NendAdバナー表示
+    //iAdバナー表示
+    //IAdLayer* iAd=[[IAdLayer alloc]init:1];
+    //[self addChild:iAd];
+    
+    if([GameManager getDevice]==3){//iPad
+    //NendAdバナー表示
         NendAdLayer* nAd=[[NendAdLayer alloc]init];
         [self addChild:nAd];
-    //}
+    }else{
+    //iMobileバナー
+        IMobileLayer* iMAd=[[IMobileLayer alloc]init];
+        [self addChild:iMAd];
+    }
     
     //戻るボタン
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];
@@ -147,7 +152,9 @@ CCSprite* bgSpLayer;
     // back to intro scene with transition
     [SoundManager button_Click];
     [[CCDirector sharedDirector] replaceScene:[TitleScene scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
-    [[NADInterstitial sharedInstance] showAd];
+    //広告表示
+    //[[NADInterstitial sharedInstance] showAd];
+    [ImobileSdkAds showBySpotID:@"276556"];
 }
 
 @end

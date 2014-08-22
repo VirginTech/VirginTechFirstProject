@@ -19,6 +19,7 @@
 #import "SoundManager.h"
 #import "NendAdLayer.h"
 #import "GameFeatLayer.h"
+#import "IMobileLayer.h"
 
 @implementation TitleScene
 
@@ -80,20 +81,17 @@ GameFeatLayer* gfAd;
     logo.scale=rate;
     [self addChild:logo];
     
-    /*/バナー広告
-    if([GameManager getDevice]==3){//iPad
-        //iAdバナー表示
-        IAdLayer* iAd=[[IAdLayer alloc]init:1];
-        [self addChild:iAd];
-    }else{
-        //NendAdバナー表示
-        NendAdLayer* nAd=[[NendAdLayer alloc]init];
-        [self addChild:nAd];
-    }*/
+    //iAdバナー表示
+    //IAdLayer* iAd=[[IAdLayer alloc]init:1];
+    //[self addChild:iAd];
     
     //NendAdバナー
     NendAdLayer* nAd=[[NendAdLayer alloc]init];
     [self addChild:nAd];
+    
+    //iMobileバナー
+    //IMobileLayer* iMAd=[[IMobileLayer alloc]init];
+    //[self addChild:iMAd];
     
     //GameFeat広告
     gfAd=[[GameFeatLayer alloc]init];
@@ -261,7 +259,6 @@ GameFeatLayer* gfAd;
         [SoundManager button_Click];
         [[CCDirector sharedDirector] replaceScene:
                         [SelectStage scene]withTransition:[CCTransition transitionCrossFadeWithDuration:1.0]];
-        //[[CCDirector sharedDirector] replaceScene:[Level_00 scene]withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
     }
 }
 
