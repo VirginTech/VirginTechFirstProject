@@ -149,6 +149,23 @@
 		CF83E5C9199F05F20079A84B /* gamefeat_popup_dl_D.png in Resources */ = {isa = PBXBuildFile; fileRef = CF83E593199F05F20079A84B /* gamefeat_popup_dl_D.png */; };
 		CF83E5CA199F05F20079A84B /* gamefeat_popup_dl_E.png in Resources */ = {isa = PBXBuildFile; fileRef = CF83E594199F05F20079A84B /* gamefeat_popup_dl_E.png */; };
 		CF83E5CB199F05F20079A84B /* gamefeat_popup_dl_F.png in Resources */ = {isa = PBXBuildFile; fileRef = CF83E595199F05F20079A84B /* gamefeat_popup_dl_F.png */; };
+		CF8687D019B2B23400341E62 /* libADG1.4.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8687CE19B2B23400341E62 /* libADG1.4.1.a */; };
+		CF8687D419B2B2E900341E62 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8687D319B2B2E900341E62 /* MediaPlayer.framework */; };
+		CF8687D619B2B30800341E62 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8687D519B2B30800341E62 /* EventKit.framework */; };
+		CF8687D919B2B3EA00341E62 /* AdGenerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8687D819B2B3EA00341E62 /* AdGenerLayer.m */; };
+		CF86880319B30F1E00341E62 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687F619B30F1E00341E62 /* Icon-72.png */; };
+		CF86880419B30F1E00341E62 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687F719B30F1E00341E62 /* Icon-72@2x.png */; };
+		CF86880519B30F1E00341E62 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687F819B30F1E00341E62 /* Icon-76.png */; };
+		CF86880619B30F1E00341E62 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687F919B30F1E00341E62 /* Icon-76@2x.png */; };
+		CF86880719B30F1E00341E62 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687FA19B30F1E00341E62 /* Icon-120.png */; };
+		CF86880819B30F1E00341E62 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687FB19B30F1E00341E62 /* Icon-iPad-Spotlight-iOS7@2x.png */; };
+		CF86880919B30F1E00341E62 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687FC19B30F1E00341E62 /* Icon-Small-50.png */; };
+		CF86880A19B30F1E00341E62 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687FD19B30F1E00341E62 /* Icon-Small.png */; };
+		CF86880B19B30F1E00341E62 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687FE19B30F1E00341E62 /* Icon-Small@2x.png */; };
+		CF86880C19B30F1E00341E62 /* Icon-Spotlight-iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8687FF19B30F1E00341E62 /* Icon-Spotlight-iOS7.png */; };
+		CF86880D19B30F1E00341E62 /* Icon-Spotlight-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF86880019B30F1E00341E62 /* Icon-Spotlight-iOS7@2x.png */; };
+		CF86880E19B30F1E00341E62 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CF86880119B30F1E00341E62 /* Icon.png */; };
+		CF86880F19B30F1E00341E62 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF86880219B30F1E00341E62 /* Icon@2x.png */; };
 		CF8C16C319134618002BBC13 /* AnimalEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C219134618002BBC13 /* AnimalEnemy.m */; };
 		CF8C16C81913B26D002BBC13 /* StageLevel_01.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16C71913B26D002BBC13 /* StageLevel_01.m */; };
 		CF8C16CB1913B2EC002BBC13 /* SelectStage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C16CA1913B2EC002BBC13 /* SelectStage.m */; };
@@ -161,19 +178,6 @@
 		CFA379E919551AD700938BC4 /* end_Success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA379E719551AD700938BC4 /* end_Success.mp3 */; };
 		CFAB6D8E1930A97B000FA153 /* AchievementManeger.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */; };
 		CFAB7C2D191505AF0084D0F8 /* RouteGenerationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */; };
-		CFB65DD01999E8080025D225 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DC31999E8080025D225 /* Icon-72.png */; };
-		CFB65DD11999E8080025D225 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DC41999E8080025D225 /* Icon-72@2x.png */; };
-		CFB65DD21999E8080025D225 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DC51999E8080025D225 /* Icon-76.png */; };
-		CFB65DD31999E8080025D225 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DC61999E8080025D225 /* Icon-76@2x.png */; };
-		CFB65DD41999E8080025D225 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DC71999E8080025D225 /* Icon-120.png */; };
-		CFB65DD51999E8080025D225 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DC81999E8080025D225 /* Icon-iPad-Spotlight-iOS7@2x.png */; };
-		CFB65DD61999E8080025D225 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DC91999E8080025D225 /* Icon-Small-50.png */; };
-		CFB65DD71999E8080025D225 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DCA1999E8080025D225 /* Icon-Small.png */; };
-		CFB65DD81999E8080025D225 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DCB1999E8080025D225 /* Icon-Small@2x.png */; };
-		CFB65DD91999E8080025D225 /* Icon-Spotlight-iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DCC1999E8080025D225 /* Icon-Spotlight-iOS7.png */; };
-		CFB65DDA1999E8080025D225 /* Icon-Spotlight-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DCD1999E8080025D225 /* Icon-Spotlight-iOS7@2x.png */; };
-		CFB65DDB1999E8080025D225 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DCE1999E8080025D225 /* Icon.png */; };
-		CFB65DDC1999E8080025D225 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DCF1999E8080025D225 /* Icon@2x.png */; };
 		CFB65DE4199A14570025D225 /* libNendAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB65DDD199A14570025D225 /* libNendAd.a */; };
 		CFB65DE5199A14570025D225 /* NADView_readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = CFB65DE2199A14570025D225 /* NADView_readme.txt */; };
 		CFCB338C1955872400416DB1 /* water01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFCB338B1955872400416DB1 /* water01.mp3 */; };
@@ -569,6 +573,39 @@
 		CF83E593199F05F20079A84B /* gamefeat_popup_dl_D.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamefeat_popup_dl_D.png; sourceTree = "<group>"; };
 		CF83E594199F05F20079A84B /* gamefeat_popup_dl_E.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamefeat_popup_dl_E.png; sourceTree = "<group>"; };
 		CF83E595199F05F20079A84B /* gamefeat_popup_dl_F.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamefeat_popup_dl_F.png; sourceTree = "<group>"; };
+		CF8687BF19B2B23400341E62 /* ADGAdTruthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGAdTruthManager.h; sourceTree = "<group>"; };
+		CF8687C019B2B23400341E62 /* ADGAdWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGAdWebView.h; sourceTree = "<group>"; };
+		CF8687C119B2B23400341E62 /* ADGBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGBrowserViewController.h; sourceTree = "<group>"; };
+		CF8687C219B2B23400341E62 /* ADGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGConstants.h; sourceTree = "<group>"; };
+		CF8687C319B2B23400341E62 /* ADGCookieUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGCookieUtil.h; sourceTree = "<group>"; };
+		CF8687C419B2B23400341E62 /* ADGInterstitialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGInterstitialManager.h; sourceTree = "<group>"; };
+		CF8687C519B2B23400341E62 /* ADGInterstitialWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGInterstitialWindow.h; sourceTree = "<group>"; };
+		CF8687C619B2B23400341E62 /* ADGLibNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGLibNetwork.h; sourceTree = "<group>"; };
+		CF8687C719B2B23400341E62 /* ADGLibString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGLibString.h; sourceTree = "<group>"; };
+		CF8687C819B2B23400341E62 /* ADGManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGManagerViewController.h; sourceTree = "<group>"; };
+		CF8687C919B2B23400341E62 /* ADGMMWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ADGMMWrapper.framework; sourceTree = "<group>"; };
+		CF8687CA19B2B23400341E62 /* ADGMraidController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGMraidController.h; sourceTree = "<group>"; };
+		CF8687CB19B2B23400341E62 /* ADGReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGReachability.h; sourceTree = "<group>"; };
+		CF8687CC19B2B23400341E62 /* ADGUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGUtil.h; sourceTree = "<group>"; };
+		CF8687CD19B2B23400341E62 /* ADGVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGVideoViewController.h; sourceTree = "<group>"; };
+		CF8687CE19B2B23400341E62 /* libADG1.4.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libADG1.4.1.a; sourceTree = "<group>"; };
+		CF8687D319B2B2E900341E62 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		CF8687D519B2B30800341E62 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		CF8687D719B2B3EA00341E62 /* AdGenerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdGenerLayer.h; sourceTree = "<group>"; };
+		CF8687D819B2B3EA00341E62 /* AdGenerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdGenerLayer.m; sourceTree = "<group>"; };
+		CF8687F619B30F1E00341E62 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		CF8687F719B30F1E00341E62 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		CF8687F819B30F1E00341E62 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		CF8687F919B30F1E00341E62 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		CF8687FA19B30F1E00341E62 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		CF8687FB19B30F1E00341E62 /* Icon-iPad-Spotlight-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad-Spotlight-iOS7@2x.png"; sourceTree = "<group>"; };
+		CF8687FC19B30F1E00341E62 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		CF8687FD19B30F1E00341E62 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		CF8687FE19B30F1E00341E62 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		CF8687FF19B30F1E00341E62 /* Icon-Spotlight-iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-iOS7.png"; sourceTree = "<group>"; };
+		CF86880019B30F1E00341E62 /* Icon-Spotlight-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-iOS7@2x.png"; sourceTree = "<group>"; };
+		CF86880119B30F1E00341E62 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		CF86880219B30F1E00341E62 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		CF8C16C119134618002BBC13 /* AnimalEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalEnemy.h; sourceTree = "<group>"; };
 		CF8C16C219134618002BBC13 /* AnimalEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalEnemy.m; sourceTree = "<group>"; };
 		CF8C16C61913B26D002BBC13 /* StageLevel_01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageLevel_01.h; sourceTree = "<group>"; };
@@ -588,19 +625,6 @@
 		CFAB6D8D1930A97B000FA153 /* AchievementManeger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementManeger.m; sourceTree = "<group>"; };
 		CFAB7C2B191505AF0084D0F8 /* RouteGenerationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteGenerationLayer.h; sourceTree = "<group>"; };
 		CFAB7C2C191505AF0084D0F8 /* RouteGenerationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteGenerationLayer.m; sourceTree = "<group>"; };
-		CFB65DC31999E8080025D225 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		CFB65DC41999E8080025D225 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
-		CFB65DC51999E8080025D225 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
-		CFB65DC61999E8080025D225 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
-		CFB65DC71999E8080025D225 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
-		CFB65DC81999E8080025D225 /* Icon-iPad-Spotlight-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad-Spotlight-iOS7@2x.png"; sourceTree = "<group>"; };
-		CFB65DC91999E8080025D225 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		CFB65DCA1999E8080025D225 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		CFB65DCB1999E8080025D225 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		CFB65DCC1999E8080025D225 /* Icon-Spotlight-iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-iOS7.png"; sourceTree = "<group>"; };
-		CFB65DCD1999E8080025D225 /* Icon-Spotlight-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-iOS7@2x.png"; sourceTree = "<group>"; };
-		CFB65DCE1999E8080025D225 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		CFB65DCF1999E8080025D225 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		CFB65DDD199A14570025D225 /* libNendAd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libNendAd.a; sourceTree = "<group>"; };
 		CFB65DDE199A14570025D225 /* NADIconArrayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NADIconArrayView.h; sourceTree = "<group>"; };
 		CFB65DDF199A14570025D225 /* NADIconLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NADIconLoader.h; sourceTree = "<group>"; };
@@ -1059,6 +1083,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8687D619B2B30800341E62 /* EventKit.framework in Frameworks */,
+				CF8687D419B2B2E900341E62 /* MediaPlayer.framework in Frameworks */,
 				CFEAE40A19A706F800351514 /* CoreLocation.framework in Frameworks */,
 				CF83E559199F04E70079A84B /* CoreTelephony.framework in Frameworks */,
 				CFDEF8F01993145D00CACBBB /* Social.framework in Frameworks */,
@@ -1076,6 +1102,7 @@
 				CF83E557199F04640079A84B /* GameFeatKit.framework in Frameworks */,
 				CFDFDEC8190A2D6E0021FBF9 /* QuartzCore.framework in Frameworks */,
 				CFDFDED0190A2D6E0021FBF9 /* AVFoundation.framework in Frameworks */,
+				CF8687D019B2B23400341E62 /* libADG1.4.1.a in Frameworks */,
 				CFDFDED6190A2D6F0021FBF9 /* CoreGraphics.framework in Frameworks */,
 				CFB65DE4199A14570025D225 /* libNendAd.a in Frameworks */,
 				CFDFDED8190A2D6F0021FBF9 /* CoreText.framework in Frameworks */,
@@ -1373,6 +1400,29 @@
 			path = PortraitPopUp;
 			sourceTree = "<group>";
 		};
+		CF8687BE19B2B23400341E62 /* ADG_iOSSDK */ = {
+			isa = PBXGroup;
+			children = (
+				CF8687BF19B2B23400341E62 /* ADGAdTruthManager.h */,
+				CF8687C019B2B23400341E62 /* ADGAdWebView.h */,
+				CF8687C119B2B23400341E62 /* ADGBrowserViewController.h */,
+				CF8687C219B2B23400341E62 /* ADGConstants.h */,
+				CF8687C319B2B23400341E62 /* ADGCookieUtil.h */,
+				CF8687C419B2B23400341E62 /* ADGInterstitialManager.h */,
+				CF8687C519B2B23400341E62 /* ADGInterstitialWindow.h */,
+				CF8687C619B2B23400341E62 /* ADGLibNetwork.h */,
+				CF8687C719B2B23400341E62 /* ADGLibString.h */,
+				CF8687C819B2B23400341E62 /* ADGManagerViewController.h */,
+				CF8687C919B2B23400341E62 /* ADGMMWrapper.framework */,
+				CF8687CA19B2B23400341E62 /* ADGMraidController.h */,
+				CF8687CB19B2B23400341E62 /* ADGReachability.h */,
+				CF8687CC19B2B23400341E62 /* ADGUtil.h */,
+				CF8687CD19B2B23400341E62 /* ADGVideoViewController.h */,
+				CF8687CE19B2B23400341E62 /* libADG1.4.1.a */,
+			);
+			path = ADG_iOSSDK;
+			sourceTree = "<group>";
+		};
 		CF99E3801951431000D59EE6 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -1420,6 +1470,7 @@
 		CFDFDEBB190A2D6E0021FBF9 = {
 			isa = PBXGroup;
 			children = (
+				CF8687BE19B2B23400341E62 /* ADG_iOSSDK */,
 				CFED484D1990C469000FC975 /* NendAd */,
 				CFDFDEDF190A2D6F0021FBF9 /* VirginTechFirstProject */,
 				CFDFDEC6190A2D6E0021FBF9 /* Frameworks */,
@@ -1439,6 +1490,8 @@
 		CFDFDEC6190A2D6E0021FBF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF8687D519B2B30800341E62 /* EventKit.framework */,
+				CF8687D319B2B2E900341E62 /* MediaPlayer.framework */,
 				CFEAE40B19A7149500351514 /* ImobileSdkAds.framework */,
 				CFEAE40919A706F800351514 /* CoreLocation.framework */,
 				CF83E558199F04E70079A84B /* CoreTelephony.framework */,
@@ -1506,19 +1559,19 @@
 		CFDFDEE9190A2D6F0021FBF9 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				CFB65DC31999E8080025D225 /* Icon-72.png */,
-				CFB65DC41999E8080025D225 /* Icon-72@2x.png */,
-				CFB65DC51999E8080025D225 /* Icon-76.png */,
-				CFB65DC61999E8080025D225 /* Icon-76@2x.png */,
-				CFB65DC71999E8080025D225 /* Icon-120.png */,
-				CFB65DC81999E8080025D225 /* Icon-iPad-Spotlight-iOS7@2x.png */,
-				CFB65DC91999E8080025D225 /* Icon-Small-50.png */,
-				CFB65DCA1999E8080025D225 /* Icon-Small.png */,
-				CFB65DCB1999E8080025D225 /* Icon-Small@2x.png */,
-				CFB65DCC1999E8080025D225 /* Icon-Spotlight-iOS7.png */,
-				CFB65DCD1999E8080025D225 /* Icon-Spotlight-iOS7@2x.png */,
-				CFB65DCE1999E8080025D225 /* Icon.png */,
-				CFB65DCF1999E8080025D225 /* Icon@2x.png */,
+				CF8687F619B30F1E00341E62 /* Icon-72.png */,
+				CF8687F719B30F1E00341E62 /* Icon-72@2x.png */,
+				CF8687F819B30F1E00341E62 /* Icon-76.png */,
+				CF8687F919B30F1E00341E62 /* Icon-76@2x.png */,
+				CF8687FA19B30F1E00341E62 /* Icon-120.png */,
+				CF8687FB19B30F1E00341E62 /* Icon-iPad-Spotlight-iOS7@2x.png */,
+				CF8687FC19B30F1E00341E62 /* Icon-Small-50.png */,
+				CF8687FD19B30F1E00341E62 /* Icon-Small.png */,
+				CF8687FE19B30F1E00341E62 /* Icon-Small@2x.png */,
+				CF8687FF19B30F1E00341E62 /* Icon-Spotlight-iOS7.png */,
+				CF86880019B30F1E00341E62 /* Icon-Spotlight-iOS7@2x.png */,
+				CF86880119B30F1E00341E62 /* Icon.png */,
+				CF86880219B30F1E00341E62 /* Icon@2x.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -2339,6 +2392,8 @@
 				CF49D1A6199FA8B700F8DB19 /* GameFeatLayer.m */,
 				CFEAE40D19A71FD700351514 /* IMobileLayer.h */,
 				CFEAE40E19A71FD700351514 /* IMobileLayer.m */,
+				CF8687D719B2B3EA00341E62 /* AdGenerLayer.h */,
+				CF8687D819B2B3EA00341E62 /* AdGenerLayer.m */,
 			);
 			name = AdLayer;
 			sourceTree = "<group>";
@@ -2430,14 +2485,15 @@
 				CFDFDEE4190A2D6F0021FBF9 /* Default@2x.png in Resources */,
 				CF514C221971250F003CE116 /* player01_default.png in Resources */,
 				CF514C2E19712578003CE116 /* player04_default.png in Resources */,
+				CF86880C19B30F1E00341E62 /* Icon-Spotlight-iOS7.png in Resources */,
 				CF1FE82519628659005FAB3F /* particleTextureStar.png in Resources */,
 				CF1BF75B193C47F400EEA664 /* leaf_default.plist in Resources */,
 				CF514C2A1971253B003CE116 /* player03_default.png in Resources */,
 				CF42909819A08DF1007CE446 /* button_default.plist in Resources */,
 				CFDFE0FB190A2D700021FBF9 /* LICENSE_CCBReader.txt in Resources */,
+				CF86880B19B30F1E00341E62 /* Icon-Small@2x.png in Resources */,
 				CF74C8371953D99A0027C995 /* button01_Click.mp3 in Resources */,
 				CF514C311971259B003CE116 /* player05_default.plist in Resources */,
-				CFB65DD11999E8080025D225 /* Icon-72@2x.png in Resources */,
 				CF5430971952DEAC0017BEE9 /* player05set.mp3 in Resources */,
 				CF83E5AB199F05F20079A84B /* gamefeat_popup_bg_land_A.png in Resources */,
 				CF83E5A5199F05F20079A84B /* gamefeat_popup_close.png in Resources */,
@@ -2452,10 +2508,10 @@
 				CF6A727D19176CC50027F654 /* InfoPlist.strings in Resources */,
 				CF83E5B7199F05F20079A84B /* gamefeat_popup_dl_land_C.png in Resources */,
 				CFDFDEE2190A2D6F0021FBF9 /* Default.png in Resources */,
+				CF86880819B30F1E00341E62 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
 				CF74C82D1953CF380027C995 /* toys01.mp3 in Resources */,
 				CF83E5C3199F05F20079A84B /* gamefeat_popup_close_D.png in Resources */,
 				CF83E5A0199F05F20079A84B /* gamefeat_overlay_close.png in Resources */,
-				CFB65DD41999E8080025D225 /* Icon-120.png in Resources */,
 				CFE2052119594B550004E4E5 /* fortress_default.png in Resources */,
 				CF74C82E1953CF380027C995 /* toys02.mp3 in Resources */,
 				CF1BF75C193C47F400EEA664 /* leaf_default.png in Resources */,
@@ -2471,15 +2527,17 @@
 				CF6A727319175B240027F654 /* position_line.png in Resources */,
 				CFDFDEE8190A2D6F0021FBF9 /* Default-Landscape~ipad.png in Resources */,
 				CF83E5BA199F05F20079A84B /* gamefeat_popup_bg_A.png in Resources */,
-				CFB65DD31999E8080025D225 /* Icon-76@2x.png in Resources */,
 				CF83E599199F05F20079A84B /* gamefeat_btn_cancel.png in Resources */,
 				CF2F500A193D5A65005E5BF6 /* ground_default.png in Resources */,
 				CF4A7BFC1942C364005C3C17 /* playerAdding.plist in Resources */,
 				CF83E5BF199F05F20079A84B /* gamefeat_popup_bg_F.png in Resources */,
+				CF86880619B30F1E00341E62 /* Icon-76@2x.png in Resources */,
 				CF83E59D199F05F20079A84B /* gamefeat_error.html in Resources */,
 				CF83E5C4199F05F20079A84B /* gamefeat_popup_close_E.png in Resources */,
 				CF83E5BC199F05F20079A84B /* gamefeat_popup_bg_C.png in Resources */,
 				CF83E5BB199F05F20079A84B /* gamefeat_popup_bg_B.png in Resources */,
+				CF86880D19B30F1E00341E62 /* Icon-Spotlight-iOS7@2x.png in Resources */,
+				CF86880A19B30F1E00341E62 /* Icon-Small.png in Resources */,
 				CF74C8301953CF380027C995 /* toys04.mp3 in Resources */,
 				CF514C2519712525003CE116 /* player02_default.plist in Resources */,
 				CF1FE82119627B8C005FAB3F /* levelUp.plist in Resources */,
@@ -2488,6 +2546,7 @@
 				CF6A727619176C160027F654 /* Localizable.strings in Resources */,
 				CF83E5A8199F05F20079A84B /* gamefeat_popup_dl_land.png in Resources */,
 				CFDFE0E4190A2D700021FBF9 /* LICENSE_Kazmath.txt in Resources */,
+				CF86880F19B30F1E00341E62 /* Icon@2x.png in Resources */,
 				CF83E5C0199F05F20079A84B /* gamefeat_popup_close_A.png in Resources */,
 				CF1BF75E193CADDE00EEA664 /* bgLayer.png in Resources */,
 				CF5430951952DDA20017BEE9 /* player04set.mp3 in Resources */,
@@ -2502,11 +2561,11 @@
 				CF83E5C6199F05F20079A84B /* gamefeat_popup_dl_A.png in Resources */,
 				CF514C211971250F003CE116 /* player01_default.plist in Resources */,
 				CF83E5A9199F05F20079A84B /* gamefeat_rect_banner.png in Resources */,
-				CFB65DD91999E8080025D225 /* Icon-Spotlight-iOS7.png in Resources */,
 				CF42909919A08DF1007CE446 /* button_default.png in Resources */,
 				CF4A7BFE1942D644005C3C17 /* playerDead.plist in Resources */,
 				CF514C2D19712578003CE116 /* player04_default.plist in Resources */,
 				CF4FCFF1194E8BA300D6D4DF /* swamp.png in Resources */,
+				CF86880419B30F1E00341E62 /* Icon-72@2x.png in Resources */,
 				CF044769195502B700EBF561 /* fortDestruct01.mp3 in Resources */,
 				CF83E5B6199F05F20079A84B /* gamefeat_popup_dl_land_B.png in Resources */,
 				CF0412A61949ACB0007767C4 /* info_default.png in Resources */,
@@ -2528,16 +2587,15 @@
 				CF4A7C0219431978005C3C17 /* damage.plist in Resources */,
 				CF5430931952DBE00017BEE9 /* player01set.mp3 in Resources */,
 				CF83E5B5199F05F20079A84B /* gamefeat_popup_dl_land_A.png in Resources */,
-				CFB65DD51999E8080025D225 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
 				CFDFE169190A2D710021FBF9 /* LICENSE_Chipmunk.txt in Resources */,
 				CF83E5A6199F05F20079A84B /* gamefeat_popup_close_land.png in Resources */,
 				CFE2050919590A7B0004E4E5 /* playerDamage.mp3 in Resources */,
 				CFE50FF41998B4D500BC4C9B /* interface_default.png in Resources */,
+				CF86880719B30F1E00341E62 /* Icon-120.png in Resources */,
 				CFE2052019594B550004E4E5 /* fortress_default.plist in Resources */,
 				CF83E5AA199F05F20079A84B /* gamefeat_style.css in Resources */,
-				CFB65DDB1999E8080025D225 /* Icon.png in Resources */,
 				CF4A7C001942E872005C3C17 /* enemyDead.plist in Resources */,
-				CFB65DD71999E8080025D225 /* Icon-Small.png in Resources */,
+				CF86880519B30F1E00341E62 /* Icon-76.png in Resources */,
 				CF5E12FD1952D1BB00264915 /* player03set.mp3 in Resources */,
 				CFE2363819792EA500AE0246 /* title_logo_en.png in Resources */,
 				CF2AEA64195405C500E3B219 /* enemySet.mp3 in Resources */,
@@ -2549,18 +2607,16 @@
 				CF83E5C1199F05F20079A84B /* gamefeat_popup_close_B.png in Resources */,
 				CF74C8351953CF380027C995 /* toys09.mp3 in Resources */,
 				CF1FE82319628487005FAB3F /* particleTexture.png in Resources */,
+				CF86880E19B30F1E00341E62 /* Icon.png in Resources */,
 				CF3FD4801977DC1500965C13 /* title_logo_jp.png in Resources */,
-				CFB65DD81999E8080025D225 /* Icon-Small@2x.png in Resources */,
 				CF514C4919713BAD003CE116 /* enemy03_default.plist in Resources */,
-				CFB65DDC1999E8080025D225 /* Icon@2x.png in Resources */,
 				CF83E59C199F05F20079A84B /* gamefeat_btn_update.png in Resources */,
 				CF83E5B8199F05F20079A84B /* gamefeat_popup_dl_land_D.png in Resources */,
+				CF86880319B30F1E00341E62 /* Icon-72.png in Resources */,
 				CF83E5BD199F05F20079A84B /* gamefeat_popup_bg_D.png in Resources */,
 				CF83E598199F05F20079A84B /* gamefeat_btn_back.png in Resources */,
-				CFB65DD01999E8080025D225 /* Icon-72.png in Resources */,
 				CF514C4619713B9C003CE116 /* enemy02_default.png in Resources */,
 				CFE6B6E9196F8B3500E00EC8 /* title.png in Resources */,
-				CFB65DDA1999E8080025D225 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				CF83E5B1199F05F20079A84B /* gamefeat_popup_close_land_B.png in Resources */,
 				CF514C291971253B003CE116 /* player03_default.plist in Resources */,
 				CF83E5B3199F05F20079A84B /* gamefeat_popup_close_land_D.png in Resources */,
@@ -2573,13 +2629,12 @@
 				CF74C82F1953CF380027C995 /* toys03.mp3 in Resources */,
 				CFA379E41955177400938BC4 /* playerSelect.mp3 in Resources */,
 				CF83E5AE199F05F20079A84B /* gamefeat_popup_bg_land_D.png in Resources */,
+				CF86880919B30F1E00341E62 /* Icon-Small-50.png in Resources */,
 				CFDFDF08190A2D6F0021FBF9 /* iTunesArtwork@2x in Resources */,
 				CF2F5009193D5A65005E5BF6 /* ground_default.plist in Resources */,
 				CFA379E919551AD700938BC4 /* end_Success.mp3 in Resources */,
-				CFB65DD61999E8080025D225 /* Icon-Small-50.png in Resources */,
 				CF83E5B9199F05F20079A84B /* gamefeat_popup_dl_land_E.png in Resources */,
 				CF74C8341953CF380027C995 /* toys08.mp3 in Resources */,
-				CFB65DD21999E8080025D225 /* Icon-76.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2643,6 +2698,7 @@
 				CFDFE0CC190A2D700021FBF9 /* mat4stack.c in Sources */,
 				CFDFDF6B190A2D6F0021FBF9 /* CCNode.m in Sources */,
 				CFDFDF56190A2D6F0021FBF9 /* CCLabelBMFont.m in Sources */,
+				CF8687D919B2B3EA00341E62 /* AdGenerLayer.m in Sources */,
 				CFDFDF14190A2D6F0021FBF9 /* CCActionEase.m in Sources */,
 				CFDFDF23190A2D6F0021FBF9 /* CCActionTween.m in Sources */,
 				CF49D1A7199FA8B700F8DB19 /* GameFeatLayer.m in Sources */,
@@ -2926,6 +2982,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ADG_iOSSDK",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2940,6 +2997,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/NendAd",
+					"$(PROJECT_DIR)/ADG_iOSSDK",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -2962,6 +3020,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ADG_iOSSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VirginTechFirstProject/Supporting Files/Prefix.pch";
@@ -2975,6 +3034,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/NendAd",
+					"$(PROJECT_DIR)/ADG_iOSSDK",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",

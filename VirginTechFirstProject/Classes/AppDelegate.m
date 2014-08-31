@@ -65,11 +65,11 @@
         [[GKLocalPlayer localPlayer]authenticateWithCompletionHandler:^(NSError *error){}];
     }
     
-    //AppBankNetworkインタースティシャル読込み
+    //AppBankNetworkインタースティシャル読込み (iMobileインタースティシャルと相性悪し)
     //[[NADInterstitial sharedInstance] loadAdWithApiKey:@"bceaad0e1d190fd15b74240b7be000075f580213" spotId:@"216691"];//本番
     //[[NADInterstitial sharedInstance] loadAdWithApiKey:@"308c2499c75c4a192f03c02b2fcebd16dcb45cc9" spotId:@"213208"];//テスト
     
-    //iMobileインタースティシャル読込み
+    //iMobileインタースティシャル読込み (AppBankNetworkインタースティシャルと相性悪し)
     [ImobileSdkAds registerWithPublisherID:@"31967" MediaID:@"115572" SpotID:@"276556"];
     [ImobileSdkAds startBySpotID:@"276556"];
     

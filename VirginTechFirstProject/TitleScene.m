@@ -11,15 +11,17 @@
 #import "SelectStage.h"
 #import "GameManager.h"
 #import "ShopView.h"
-#import "IAdLayer.h"
 #import "PreferencesLayer.h"
 #import "ItemSetupLayer.h"
 #import "CreditLayer.h"
 #import "TutorialLevel.h"
 #import "SoundManager.h"
+
+#import "IAdLayer.h"
 #import "NendAdLayer.h"
 #import "GameFeatLayer.h"
 #import "IMobileLayer.h"
+#import "AdGenerLayer.h"
 
 @implementation TitleScene
 
@@ -85,13 +87,17 @@ GameFeatLayer* gfAd;
     //IAdLayer* iAd=[[IAdLayer alloc]init:1];
     //[self addChild:iAd];
     
-    //NendAdバナー
-    NendAdLayer* nAd=[[NendAdLayer alloc]init];
-    [self addChild:nAd];
-    
+    //NendAdバナー表示
+    //NendAdLayer* nAd=[[NendAdLayer alloc]init];
+    //[self addChild:nAd];
+
     //iMobileバナー
     //IMobileLayer* iMAd=[[IMobileLayer alloc]init];
     //[self addChild:iMAd];
+    
+    //ADG-SSPバナー
+    AdGenerLayer* adgSSP=[[AdGenerLayer alloc]init];
+    [self addChild:adgSSP];
     
     //GameFeat広告
     gfAd=[[GameFeatLayer alloc]init];
@@ -208,7 +214,7 @@ GameFeatLayer* gfAd;
     }
     
     //バージョン
-    CCLabelTTF* versionLabel=[CCLabelTTF labelWithString:@"Version 1.0.4" fontName:@"Verdana" fontSize:13];
+    CCLabelTTF* versionLabel=[CCLabelTTF labelWithString:@"Version 1.0.5" fontName:@"Verdana" fontSize:13];
     versionLabel.position=ccp(winSize.width-versionLabel.contentSize.width/2,winSize.height-versionLabel.contentSize.height/2);
     [self addChild:versionLabel];
     

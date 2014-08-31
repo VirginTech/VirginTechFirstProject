@@ -16,16 +16,18 @@
 #import "RouteGenerationLayer.h"
 #import "BasicMath.h"
 #import "PlayerSelection.h"
-#import "IAdLayer.h"
 #import "InformationLayer.h"
 #import "AchievementManeger.h"
 #import "Fortress.h"
 #import "CCParticleSystem.h"
 #import "CCDrawingPrimitives.h"
 #import "SoundManager.h"
-#import "NendAdLayer.h"
 #import "MessageLayer.h"
+
+#import "IAdLayer.h"
+#import "NendAdLayer.h"
 #import "IMobileLayer.h"
+#import "AdGenerLayer.h"
 
 @implementation TutorialLevel
 
@@ -160,15 +162,17 @@ float velocity;
     //IAdLayer* iAd=[[IAdLayer alloc]init:1];
     //[self addChild:iAd z:5];
 
-    if([GameManager getDevice]==3){//iPad
-        //NendAdバナー表示
-        NendAdLayer* nAd=[[NendAdLayer alloc]init];
-        [self addChild:nAd];
-    }else{
-        //iMobileバナー
-        IMobileLayer* iMAd=[[IMobileLayer alloc]init];
-        [self addChild:iMAd];
-    }
+    //NendAdバナー表示
+    //NendAdLayer* nAd=[[NendAdLayer alloc]init];
+    //[self addChild:nAd];
+    
+    //iMobileバナー
+    //IMobileLayer* iMAd=[[IMobileLayer alloc]init];
+    //[self addChild:iMAd];
+    
+    //ADG-SSPバナー
+    AdGenerLayer* adgSSP=[[AdGenerLayer alloc]init];
+    [self addChild:adgSSP];
 
     // done
 	return self;

@@ -11,11 +11,13 @@
 #import "StageLevel_01.h"
 #import "GameManager.h"
 #import "TitleScene.h"
-#import "IAdLayer.h"
 #import "SoundManager.h"
+
+#import "IAdLayer.h"
 #import "NendAdLayer.h"
 #import "NADInterstitial.h"
 #import "IMobileLayer.h"
+#import "AdGenerLayer.h"
 
 @implementation SelectStage
 
@@ -66,15 +68,17 @@ CCSprite* bgSpLayer;
     //IAdLayer* iAd=[[IAdLayer alloc]init:1];
     //[self addChild:iAd];
     
-    if([GameManager getDevice]==3){//iPad
     //NendAdバナー表示
-        NendAdLayer* nAd=[[NendAdLayer alloc]init];
-        [self addChild:nAd];
-    }else{
+    //NendAdLayer* nAd=[[NendAdLayer alloc]init];
+    //[self addChild:nAd];
+    
     //iMobileバナー
-        IMobileLayer* iMAd=[[IMobileLayer alloc]init];
-        [self addChild:iMAd];
-    }
+    //IMobileLayer* iMAd=[[IMobileLayer alloc]init];
+    //[self addChild:iMAd];
+    
+    //ADG-SSPバナー
+    AdGenerLayer* adgSSP=[[AdGenerLayer alloc]init];
+    [self addChild:adgSSP];
     
     //戻るボタン
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"button_default.plist"];

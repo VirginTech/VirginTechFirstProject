@@ -16,15 +16,17 @@
 #import "RouteGenerationLayer.h"
 #import "BasicMath.h"
 #import "PlayerSelection.h"
-#import "IAdLayer.h"
 #import "InformationLayer.h"
 #import "AchievementManeger.h"
 #import "Fortress.h"
 #import "CCParticleSystem.h"
 #import "SoundManager.h"
-#import "NendAdLayer.h"
 #import "MessageLayer.h"
+
+#import "IAdLayer.h"
+#import "NendAdLayer.h"
 #import "IMobileLayer.h"
+#import "AdGenerLayer.h"
 
 @implementation StageLevel_01
 
@@ -144,15 +146,17 @@ NSMutableArray* swampArray;
     //IAdLayer* iAd=[[IAdLayer alloc]init:1];
     //[self addChild:iAd z:5];
 
-    if([GameManager getDevice]==3){//iPad
-        //NendAdバナー表示
-        NendAdLayer* nAd=[[NendAdLayer alloc]init];
-        [self addChild:nAd];
-    }else{
-        //iMobileバナー
-        IMobileLayer* iMAd=[[IMobileLayer alloc]init];
-        [self addChild:iMAd];
-    }
+    //NendAdバナー表示
+    //NendAdLayer* nAd=[[NendAdLayer alloc]init];
+    //[self addChild:nAd];
+    
+    //iMobileバナー
+    //IMobileLayer* iMAd=[[IMobileLayer alloc]init];
+    //[self addChild:iMAd];
+    
+    //ADG-SSPバナー
+    AdGenerLayer* adgSSP=[[AdGenerLayer alloc]init];
+    [self addChild:adgSSP];
 
     // done
 	return self;
@@ -718,6 +722,10 @@ NSMutableArray* swampArray;
         [NaviLayer setStageEndingScreen:false rate:0];
         //アチーブメント送信（まだ）
         [AchievementManeger reportAchievement_All];
+        
+        //広告表示
+        //[[NADInterstitial sharedInstance] showAd];
+        [ImobileSdkAds showBySpotID:@"276556"];
     }
 }
 
@@ -776,6 +784,9 @@ NSMutableArray* swampArray;
             [alert addButtonWithTitle:NSLocalizedString(@"RateItNow",NULL)];
             [alert show];
         }
+        //広告表示
+        //[[NADInterstitial sharedInstance] showAd];
+        [ImobileSdkAds showBySpotID:@"276556"];
     }
 }
 
