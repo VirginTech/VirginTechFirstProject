@@ -82,3 +82,8 @@
 //ローカル通知
 "LocalNotification"="Animals is want to play!";
 
+//ログインボーナス
+"BonusGet"="Get bonus!";
+"FirstBonus"="Thank you first login! Get 10 ”Jewelry”!";
+"DailyBonus"="”Jewelry” 1 get every day!";
+

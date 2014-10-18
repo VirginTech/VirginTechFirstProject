@@ -214,9 +214,35 @@ GameFeatLayer* gfAd;
     }
     
     //バージョン
-    CCLabelTTF* versionLabel=[CCLabelTTF labelWithString:@"Version 1.0.5" fontName:@"Verdana" fontSize:13];
+    CCLabelTTF* versionLabel=[CCLabelTTF labelWithString:@"Version 1.0.6" fontName:@"Verdana" fontSize:13];
     versionLabel.position=ccp(winSize.width-versionLabel.contentSize.width/2,winSize.height-versionLabel.contentSize.height/2);
     [self addChild:versionLabel];
+    
+    //デイリー・ボーナス
+    NSDate* currentDate=[NSDate date];//現在ログイン日時（GMTで貫く）
+    NSCalendar *calen = [NSCalendar currentCalendar];//日付のみに変換
+    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+    NSDateComponents *comps = [calen components:unitFlags fromDate:currentDate];
+    currentDate = [calen dateFromComponents:comps];
+    
+    NSDate* recentDate=[GameManager load_Login_Date];//前回ログイン日
+    
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];//バンドル取得
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
+    
+    if([dict valueForKey:@"LoginDate"]==nil //初回なら
+       || [currentDate compare:recentDate]==NSOrderedDescending){ //もしくは、日付が変わってるなら
+        
+        [GameManager save_login_Date:currentDate];
+        
+        UIAlertView *alert = [[UIAlertView alloc] init];
+        alert.delegate = self;
+        alert.title = NSLocalizedString(@"BonusGet",NULL);
+        alert.message = NSLocalizedString(@"DailyBonus",NULL);
+        [alert addButtonWithTitle:NSLocalizedString(@"OK",NULL)];
+        [alert show];
+    
+    }
     
     // done
 	return self;
@@ -237,6 +263,13 @@ GameFeatLayer* gfAd;
     // always call super onExit last
     [super onExit];
     //[SoundManager stopBGM];
+}
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //ダイヤ付与
+    [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+ 1];
+    [InformationLayer update_CurrencyLabel];
 }
 
 -(void)finger_Rotation_Schedule:(CCTime)dt

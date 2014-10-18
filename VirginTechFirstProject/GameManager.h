@@ -64,6 +64,9 @@ extern const int DIA_VAL;
 +(void)save_Aggregate_Level:(int)level;
 +(void)save_Aggregate_Stage:(int)stage;
 
++(NSDate*)load_Login_Date;
++(void)save_login_Date:(NSDate*)date;
+
 +(void)save_StageClear_State:(int)stageNum rate:(int)rate;
 +(int)load_StageClear_State:(int)stageNum;
 

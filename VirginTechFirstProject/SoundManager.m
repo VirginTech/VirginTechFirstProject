@@ -13,6 +13,7 @@
 bool bgmSwitch;
 bool effectSwitch;
 
+int bgmNum;
 float bgmValue;
 float bgmMaxVolume;
 
@@ -86,6 +87,9 @@ float playerSelectVolume;
     bgmSwitch=true;
     effectSwitch=true;
     
+    //BGM初期値
+    bgmNum=0;
+    
     //BGM音量初期値セット
     bgmValue=0.5;
     
@@ -141,8 +145,12 @@ float playerSelectVolume;
 +(void)playBGM
 {
     if(bgmSwitch){
-        int num=arc4random()%9+1;
-        NSString* name=[NSString stringWithFormat:@"toys%02d.mp3",num];
+        
+        bgmNum++;
+        if(bgmNum>9)bgmNum=1;
+        
+        //int num=arc4random()%9+1;
+        NSString* name=[NSString stringWithFormat:@"toys%02d.mp3",bgmNum];
         [[OALSimpleAudio sharedInstance]setBgVolume:bgmMaxVolume*bgmValue];
         [[OALSimpleAudio sharedInstance]playBg:name loop:YES];
     }
