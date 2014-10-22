@@ -37,6 +37,7 @@
 
 #import "OALSimpleAudio.h"
 
+#import "InformationLayer.h"
 #import "GameManager.h"
 #import "NaviLayer.h"
 #import <GameFeatKit/GFController.h>
@@ -296,6 +297,31 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
             [GameManager setPauseing:true];
             [NaviLayer setPauseScreen];
         }
+        
+        //デイリー・ボーナス
+        NSDate* currentDate=[NSDate date];//現在ログイン日時（GMTで貫く）
+        NSCalendar *calen = [NSCalendar currentCalendar];//日付のみに変換
+        unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+        NSDateComponents *comps = [calen components:unitFlags fromDate:currentDate];
+        currentDate = [calen dateFromComponents:comps];
+        
+        NSDate* recentDate=[GameManager load_Login_Date];//前回ログイン日
+        
+        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];//バンドル取得
+        NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:appDomain];
+        
+        if([dict valueForKey:@"LoginDate"]==nil //初回なら
+           || [currentDate compare:recentDate]==NSOrderedDescending){ //もしくは、日付が変わってるなら
+            
+            [GameManager save_login_Date:currentDate];
+            
+            UIAlertView *alert = [[UIAlertView alloc] init];
+            alert.delegate = self;
+            alert.title = NSLocalizedString(@"BonusGet",NULL);
+            alert.message = NSLocalizedString(@"DailyBonus",NULL);
+            [alert addButtonWithTitle:NSLocalizedString(@"OK",NULL)];
+            [alert show];
+        }
     }
 }
 
@@ -361,6 +387,13 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 -(void) applicationSignificantTimeChange:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
+}
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //ダイヤ付与
+    [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+ 1];
+    [InformationLayer update_CurrencyLabel];
 }
 
 @end

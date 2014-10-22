@@ -218,7 +218,7 @@ GameFeatLayer* gfAd;
     versionLabel.position=ccp(winSize.width-versionLabel.contentSize.width/2,winSize.height-versionLabel.contentSize.height/2);
     [self addChild:versionLabel];
     
-    //デイリー・ボーナス
+    /*/デイリー・ボーナス
     NSDate* currentDate=[NSDate date];//現在ログイン日時（GMTで貫く）
     NSCalendar *calen = [NSCalendar currentCalendar];//日付のみに変換
     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
@@ -241,8 +241,7 @@ GameFeatLayer* gfAd;
         alert.message = NSLocalizedString(@"DailyBonus",NULL);
         [alert addButtonWithTitle:NSLocalizedString(@"OK",NULL)];
         [alert show];
-    
-    }
+    }*/
     
     // done
 	return self;
@@ -265,12 +264,12 @@ GameFeatLayer* gfAd;
     //[SoundManager stopBGM];
 }
 
--(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+/*-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     //ダイヤ付与
     [GameManager save_Currency_Dia:[GameManager load_Currency_Dia]+ 1];
     [InformationLayer update_CurrencyLabel];
-}
+}*/
 
 -(void)finger_Rotation_Schedule:(CCTime)dt
 {
