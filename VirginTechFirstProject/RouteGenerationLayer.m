@@ -102,7 +102,7 @@ NSMutableArray* disPosArray;
         pt1.y -= offsetY;
         pt2.y -= offsetY;
         
-        glLineWidth(100.0f);
+        glLineWidth(10.0f);
         ccDrawColor4F(0.71f, 0.80f, 0.80f, 0.05f);
         ccDrawLine(pt1,pt2);
         

@@ -155,8 +155,8 @@ NSMutableArray* swampArray;
     //[self addChild:iMAd];
     
     //ADG-SSPバナー
-    AdGenerLayer* adgSSP=[[AdGenerLayer alloc]init];
-    [self addChild:adgSSP];
+    //AdGenerLayer* adgSSP=[[AdGenerLayer alloc]init];
+    //[self addChild:adgSSP];
 
     // done
 	return self;

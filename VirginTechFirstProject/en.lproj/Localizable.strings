@@ -84,6 +84,6 @@
 
 //ログインボーナス
 "BonusGet"="Get bonus!";
-"FirstBonus"="Thank you first login! Get 10 ”Jewelry”!";
+"FirstBonus"="Thank you first login!\nGet 5 ”Jewelry”!\nGet 3000 ”Coin”!";
 "DailyBonus"="”Jewelry” 1 get every day!";
 
