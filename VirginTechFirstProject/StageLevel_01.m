@@ -65,6 +65,8 @@ NSMutableArray* removeEnemyMissileArray;
 
 NSMutableArray* swampArray;
 
+AdGenerLayer* adgSSP;
+
 + (StageLevel_01 *)scene
 {
     return [[self alloc] init];
@@ -164,7 +166,8 @@ NSMutableArray* swampArray;
 
 - (void)dealloc
 {
-    // clean up code goes here
+    //Ad削除
+    [adgSSP removeLayer];
 }
 
 - (void)onEnter
@@ -654,6 +657,10 @@ NSMutableArray* swampArray;
             for(EnemyMissile* missile in enemyMissileArray){
                 [missile onPause_To_Resume:true];
             }
+            //ADG-SSPバナー
+            adgSSP=[[AdGenerLayer alloc]init];
+            [self addChild:adgSSP];
+            
         }else{
             
             [self schedule:@selector(createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
@@ -670,6 +677,8 @@ NSMutableArray* swampArray;
             for(EnemyMissile* missile in enemyMissileArray){
                 [missile onPause_To_Resume:false];
             }
+            //Ad削除
+            [adgSSP removeLayer];
         }
         [GameManager setPauseStateChange:false];
     }
@@ -727,6 +736,10 @@ NSMutableArray* swampArray;
         //広告表示
         //[[NADInterstitial sharedInstance] showAd];
         [ImobileSdkAds showBySpotID:@"276556"];
+        
+        //ADG-SSPバナー
+        adgSSP=[[AdGenerLayer alloc]init];
+        [self addChild:adgSSP];
     }
 }
 
@@ -788,6 +801,10 @@ NSMutableArray* swampArray;
         //広告表示
         //[[NADInterstitial sharedInstance] showAd];
         [ImobileSdkAds showBySpotID:@"276556"];
+        
+        //ADG-SSPバナー
+        adgSSP=[[AdGenerLayer alloc]init];
+        [self addChild:adgSSP];
     }
 }
 

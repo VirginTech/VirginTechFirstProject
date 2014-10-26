@@ -65,6 +65,13 @@ CGSize winSize;
     return self;
 }
 
+-(void)removeLayer
+{
+    adg_.delegate = nil;
+    [adg_.view removeFromSuperview];
+    adg_ = nil;
+}
+
 - (void) dealloc
 {
     adg_.delegate = nil;

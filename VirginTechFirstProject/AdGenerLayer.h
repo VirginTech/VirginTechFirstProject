@@ -21,4 +21,6 @@
 + (AdGenerLayer *)scene;
 - (id)init;
 
+-(void)removeLayer;
+
 @end

@@ -68,6 +68,8 @@ CCSprite* finger;
 CGPoint targetPos;
 float velocity;
 
+AdGenerLayer* adgSSP;
+
 +(TutorialLevel*)scene
 {
     return [[self alloc] init];
@@ -180,7 +182,8 @@ float velocity;
 
 - (void)dealloc
 {
-    // clean up code goes here
+    //Ad削除
+    [adgSSP removeLayer];
 }
 
 - (void)onEnter
@@ -613,6 +616,10 @@ float velocity;
             for(EnemyMissile* missile in enemyMissileArray){
                 [missile onPause_To_Resume:true];
             }
+            //ADG-SSPバナー
+            adgSSP=[[AdGenerLayer alloc]init];
+            [self addChild:adgSSP];
+            
         }else{
             
             [self schedule:@selector(t_createEnemy_Schedule:)interval:10.0 repeat:CCTimerRepeatForever delay:5.0];
@@ -629,6 +636,8 @@ float velocity;
             for(EnemyMissile* missile in enemyMissileArray){
                 [missile onPause_To_Resume:false];
             }
+            //Ad削除
+            [adgSSP removeLayer];
         }
         [GameManager setPauseStateChange:false];
     }
@@ -680,6 +689,14 @@ float velocity;
         [self unscheduleAllSelectors];
         [bgSpLayer removeChild:playerFortress cleanup:YES];
         [NaviLayer setStageEndingScreen:false rate:0];
+        
+        //広告表示
+        //[[NADInterstitial sharedInstance] showAd];
+        [ImobileSdkAds showBySpotID:@"276556"];
+        
+        //ADG-SSPバナー
+        adgSSP=[[AdGenerLayer alloc]init];
+        [self addChild:adgSSP];
     }
 }
 
@@ -709,6 +726,14 @@ float velocity;
         }else{
             [NaviLayer setStageEndingScreen:true rate:1];
         }
+        
+        //広告表示
+        //[[NADInterstitial sharedInstance] showAd];
+        [ImobileSdkAds showBySpotID:@"276556"];
+        
+        //ADG-SSPバナー
+        adgSSP=[[AdGenerLayer alloc]init];
+        [self addChild:adgSSP];
     }
 }
 
