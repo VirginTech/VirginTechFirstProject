@@ -24,8 +24,9 @@
 @synthesize ability_Traveling;
 @synthesize ability_Build;
 
-@synthesize t;
-@synthesize inpolPosArray;
+@synthesize moveCnt;
+@synthesize dr;
+@synthesize posArray;
 @synthesize stopFlg;
 @synthesize state_PathMake_flg;
 @synthesize destCollectFlg;
@@ -40,18 +41,57 @@
 
 CGSize winSize;
 
--(void)moveTank:(NSMutableArray*)posArray{
-    
-    t=0;
-    stopFlg=false;
-    inpolPosArray=[[NSMutableArray alloc]init];
-    leaderFlg=true;
-    //効果音
-    [SoundManager playerSet:groupNum];
-    //補間座標を作成(取得)
-    inpolPosArray=[self lineInterpolation:posArray];
-    
-    [self schedule:@selector(moveVehicle_Schedule:) interval:0.01];
+- (void)moveVehicle_Schedule:(CCTime)dt{
+
+    if(!stopFlg){
+        if(posArray.count>0 && posArray.count > moveCnt+1){
+
+            leaderFlg=true;
+            
+            CGPoint pt1;
+            CGPoint pt2;
+            
+            if(moveCnt==0 && dr==0){
+                NSValue *value = [NSValue valueWithCGPoint:startPos];
+                [posArray insertObject:value atIndex:0];
+                //pt1 = startPos;
+                pt1 = [[posArray objectAtIndex:moveCnt] CGPointValue];
+                pt2 = [[posArray objectAtIndex:moveCnt+1] CGPointValue];
+            }else{
+                pt1 = [[posArray objectAtIndex:moveCnt] CGPointValue];
+                pt2 = [[posArray objectAtIndex:moveCnt+1] CGPointValue];
+            }
+
+            er=sqrtf(powf(pt2.x-pt1.x,2)+powf(pt2.y-pt1.y,2));
+            targetAngle=[BasicMath getAngle_To_Radian:pt1 ePos:pt2];
+            //targetAngle=[BasicMath getNormalize_Radian:targetAngle];
+            dr=dr+velocity;
+            CGPoint inpolPos = CGPointMake(dr*cosf(targetAngle),dr*sinf(targetAngle));
+            //pt1から補間分(inpolPos)を加える
+            inpolPos.x=pt1.x+inpolPos.x;
+            inpolPos.y=pt1.y+inpolPos.y;
+            self.position=CGPointMake(inpolPos.x, inpolPos.y);
+            
+            //方向設定(度)
+            //self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:pt];
+            self.rotation=[BasicMath getAngle_To_Degree:pt1 ePos:pt2];
+            //差替画像設定
+            if(self.rotationalSkewX==self.rotationalSkewY){
+                [self getVehicleFrame:self.rotation];
+            }
+            if(dr>=er){
+                moveCnt++;
+                dr=0;
+            }
+        }else{
+            //移動終了
+            leaderFlg=false;
+        }
+    }else{
+        //[self unschedule:@selector(moveVehicle_Schedule:)];
+        //leaderFlg=false;
+    }
+    startPos=self.position;
 }
 
 //========================
@@ -136,47 +176,9 @@ CGSize winSize;
         }
     }
 }
-
-- (void)moveVehicle_Schedule:(CCTime)dt{
-    
-    if(!stopFlg){
-        if(inpolPosArray.count>0){
-           if(inpolPosArray.count>t+velocityAdjustRate){
-            
-               NSValue *value=[inpolPosArray objectAtIndex:t];
-               CGPoint pt=[value CGPointValue];
-               //位置設定
-               self.position=CGPointMake(pt.x, pt.y);
-               //方向設定(度)
-               self.rotation=[BasicMath getAngle_To_Degree:oldPt ePos:pt];
-               //差替画像設定
-               if(self.rotationalSkewX==self.rotationalSkewY){
-                   [self getVehicleFrame:self.rotation];
-               }
-               t = t + velocityAdjustRate;
-               oldPt=pt;
-           }else{
-               //移動終了
-               [self unschedule:@selector(moveVehicle_Schedule:)];
-               leaderFlg=false;
-           }
-        }
-    }else{
-        [self unschedule:@selector(moveVehicle_Schedule:)];
-        //leaderFlg=false;
-        //位置を戻す
-        /*if(t>=10){
-            NSValue *value=[inpolPosArray objectAtIndex:t-10];
-            CGPoint pt=[value CGPointValue];
-            self.position=CGPointMake(pt.x, pt.y);
-        }*/
-        //stopFlg=false;
-    }
-}
-
 //========================
 //     直線補間
-//========================
+/*/========================
 -(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray{
     
     NSValue *value1;
@@ -220,20 +222,18 @@ CGSize winSize;
         }
     }
     return tmpArray;
-}
+}*/
 
 -(void)status_Schedule:(CCTime)dt
 {
     //経路作成マーク
     if(state_PathMake_flg){
-        if(!arrow.visible){
-            arrow.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2 - arrow.contentSize.height/2);
-            arrow.visible=true;
-        }else{
-            arrow.visible=false;
-        }
-        state_PathMake_flg=false;
+        arrow.position=CGPointMake(self.contentSize.width/2, self.contentSize.height/2 - arrow.contentSize.height/2);
+        arrow.visible=true;
+    }else{
+        arrow.visible=false;
     }
+    
     //水中
     if(waterFlg){
         waveSprite.visible=true;
@@ -243,17 +243,18 @@ CGSize winSize;
         splashDownFlg=false;
         
         if(groupNum==1){
-            velocityAdjustRate=1;//1
+            velocityAdjustRate=1.0;//1
         }else if(groupNum==2){
-            velocityAdjustRate=1;//1
+            velocityAdjustRate=0.2;//1
         }else if(groupNum==3){
-            velocityAdjustRate=2;//2
+            velocityAdjustRate=0.4;//2
             ability_Attack=[ObjectManager load_Object_Ability_Attack:objName]*0.5f;
         }else if(groupNum==4){
-            velocityAdjustRate=2;//2
+            velocityAdjustRate=2.0;//2
         }else if(groupNum==5){
-            velocityAdjustRate=5;//5
+            velocityAdjustRate=5.0;//5
         }
+        velocity = ability_Traveling * velocityAdjustRate;
 
     }else{//地上
         waveSprite.visible=false;
@@ -262,15 +263,16 @@ CGSize winSize;
         if(groupNum==1){
             velocityAdjustRate=1;
         }else if(groupNum==2){
-            velocityAdjustRate=5;
+            velocityAdjustRate=1;//5;
         }else if(groupNum==3){
-            velocityAdjustRate=5;
+            velocityAdjustRate=1;//5;
             ability_Attack=[ObjectManager load_Object_Ability_Attack:objName];
         }else if(groupNum==4){
             velocityAdjustRate=1;
         }else if(groupNum==5){
             velocityAdjustRate=1;
         }
+        velocity = ability_Traveling * velocityAdjustRate;
     }
     //ライフゲージ
     if(self.rotationalSkewX==self.rotationalSkewY){
@@ -290,8 +292,7 @@ CGSize winSize;
         if(leaderPlayer!=nil){
             if(leaderOldPos.x!=leaderPlayer.position.x || leaderOldPos.y!=leaderPlayer.position.y){
                 flockAngle=[BasicMath getAngle_To_Radian:leaderOldPos ePos:leaderPlayer.position];
-                flockNextPos=CGPointMake(velocity*velocityAdjustRate*cosf(flockAngle),
-                                                 velocity*velocityAdjustRate*sin(flockAngle));
+                flockNextPos=CGPointMake(velocity*cosf(flockAngle), velocity*sin(flockAngle));
                 self.position=CGPointMake(self.position.x+flockNextPos.x,self.position.y+flockNextPos.y);
                 //方向設定(度)・差替画像設定
                 if(leaderPlayer.rotationalSkewX==leaderPlayer.rotationalSkewY){
@@ -479,16 +480,17 @@ CGSize winSize;
         if(playerNum==1){
             velocityAdjustRate=1;
         }else if(playerNum==2){
-            velocityAdjustRate=5;
+            velocityAdjustRate=1;//5;
         }else if(playerNum==3){
-            velocityAdjustRate=5;
+            velocityAdjustRate=1;//5;
         }else if(playerNum==4){
             velocityAdjustRate=1;
         }else if(playerNum==5){
             velocityAdjustRate=1;
         }
-        velocity = ability_Traveling / velocityAdjustRate;
-
+        //velocity = ability_Traveling / velocityAdjustRate;
+        velocity = ability_Traveling * velocityAdjustRate;
+        
         //停止フラグ
         stopFlg=false;
         //敵捕捉フラグ
@@ -511,6 +513,8 @@ CGSize winSize;
         groupNum=playerNum;
         //水中フラグ
         waterFlg=false;
+        //移動スケジュール開始
+        [self schedule:@selector(moveVehicle_Schedule:) interval:0.01];
         //砲塔制御スケジュール開始
         [self schedule:@selector(moveGun_Schedule:)interval:0.1];
         //状態スケジュール

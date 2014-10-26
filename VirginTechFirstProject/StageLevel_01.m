@@ -324,6 +324,7 @@ NSMutableArray* swampArray;
     
     //プレイヤー水中判定
     for(AnimalPlayer* player in animalArray){
+        player.zOrder=3;//便宜上ここでzOrderを戻す
         for(CCSprite* _swamp in swampArray){
             if([BasicMath RadiusIntersectsRadius:player.position pointB:_swamp.position
                                          radius1:10 radius2:(_swamp.contentSize.width*_swamp.scale)/2-(100*_swamp.scale)]){
@@ -475,8 +476,8 @@ NSMutableArray* swampArray;
                                              radius1:80 radius2:20]){
                             player1.leaderPlayer=player2;
                             player1.leaderOldPos=player2.position;
-                            player1.inpolPosArray=[[NSMutableArray alloc]init];
-                            player1.t=0;
+                            player1.posArray=[[NSMutableArray alloc]init];
+                            player1.moveCnt=0;
                             break;
                         }
                     }
@@ -1148,6 +1149,7 @@ NSMutableArray* swampArray;
             routeGeneLyer.offsetY=offsetY;
             [self addChild:routeGeneLyer z:2];
             touchPlayer.state_PathMake_flg=true;
+            touchPlayer.zOrder=10;
         }
         
     //}else if(![StageLevel_01 isAnimal:worldLocation type:1]){//プレイヤー追加

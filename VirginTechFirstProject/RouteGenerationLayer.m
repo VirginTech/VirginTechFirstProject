@@ -10,6 +10,7 @@
 #import "CCDrawingPrimitives.h"
 #import "StageLevel_01.h"
 #import "BasicMath.h"
+#import "SoundManager.h"
 
 @implementation RouteGenerationLayer
 
@@ -17,7 +18,6 @@
 @synthesize offsetY;
 
 CGSize winSize;
-NSMutableArray* posArray;
 NSMutableArray* disPosArray;
 
 + (RouteGenerationLayer *)scene{
@@ -25,8 +25,8 @@ NSMutableArray* disPosArray;
     return [[self alloc] init];
 }
 
-- (id)init{
-    
+- (id)init
+{    
     self = [super init];
     if (!self) return(nil);
     
@@ -34,22 +34,25 @@ NSMutableArray* disPosArray;
     winSize=[[CCDirector sharedDirector]viewSize];
     //データ初期化
     offsetY=0.0f;
-    posArray=[[NSMutableArray alloc]init];
+    player.posArray=[[NSMutableArray alloc]init];
     
     return self;
 }
 
--(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    //効果音
+    [SoundManager playerSet:player.groupNum];
     
-    //CGPoint touchLocation = [touch locationInNode:self];
-    
-    posArray=[[NSMutableArray alloc]init];
-    NSValue *value = [NSValue valueWithCGPoint:player.position];//スタート位置
-    [posArray addObject:value];
+    player.dr=0;
+    player.moveCnt=0;
+    player.stopFlg=false;
+    player.posArray=[[NSMutableArray alloc]init];
+    player.state_PathMake_flg=false;
 }
 
--(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
-    
+-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+{
     CGPoint worldLocation;
     CGPoint touchLocation = [touch locationInNode:self];
     worldLocation.x = touchLocation.x;
@@ -57,18 +60,14 @@ NSMutableArray* disPosArray;
     
     if(![BasicMath RadiusContainsPoint:player.position pointB:worldLocation radius:30]){
         NSValue *value = [NSValue valueWithCGPoint:worldLocation];
-        [posArray addObject:value];
+        [player.posArray addObject:value];
     }
 }
 
--(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
-    
-    if(posArray.count>1){
-        [player moveTank:posArray];
-    }
-    player.state_PathMake_flg=true;
+-(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    //player.state_PathMake_flg=true;
     [self removeFromParentAndCleanup:YES];
-    posArray=[[NSMutableArray alloc]init];
 }
 
 -(void)draw{
@@ -79,33 +78,34 @@ NSMutableArray* disPosArray;
     NSValue* value2;
     disPosArray=[[NSMutableArray alloc]init];
     
-    if(posArray.count>1){
-        for(int i=0;i<posArray.count;i++){
-            value1 = [posArray objectAtIndex:i];
-            if(i==0){
-                value2 = [posArray objectAtIndex:i+1];
-                pt1 = [value1 CGPointValue];
-                pt2 = [value2 CGPointValue];
-                float angle = [BasicMath getAngle_To_Radian:pt1 ePos:pt2];
-                value1=[NSValue valueWithCGPoint:CGPointMake(30*cosf(angle) + pt1.x,30*sinf(angle) + pt1.y)];
+    if(!player.state_PathMake_flg){
+        if(player.posArray.count>1){
+            for(int i=0;i<player.posArray.count;i++){
+                value1 = [player.posArray objectAtIndex:i];
+                if(i==0){
+                    value2 = [player.posArray objectAtIndex:i+1];
+                    pt1 = [value1 CGPointValue];
+                    pt2 = [value2 CGPointValue];
+                    float angle = [BasicMath getAngle_To_Radian:pt1 ePos:pt2];
+                    value1=[NSValue valueWithCGPoint:CGPointMake(30*cosf(angle) + pt1.x,30*sinf(angle) + pt1.y)];
+                }
+                [disPosArray addObject:value1];
             }
-            [disPosArray addObject:value1];
         }
-    }
-    
-    for(int i=1;i<disPosArray.count;i++){
         
-        value1= [disPosArray objectAtIndex:i-1];
-        value2= [disPosArray objectAtIndex:i];
-        pt1=[value1 CGPointValue];
-        pt2=[value2 CGPointValue];
-        pt1.y -= offsetY;
-        pt2.y -= offsetY;
-        
-        glLineWidth(10.0f);
-        ccDrawColor4F(0.71f, 0.80f, 0.80f, 0.05f);
-        ccDrawLine(pt1,pt2);
-        
+        for(int i=1;i<disPosArray.count;i++){
+            
+            value1= [disPosArray objectAtIndex:i-1];
+            value2= [disPosArray objectAtIndex:i];
+            pt1=[value1 CGPointValue];
+            pt2=[value2 CGPointValue];
+            pt1.y -= offsetY;
+            pt2.y -= offsetY;
+            
+            glLineWidth(10.0f);
+            ccDrawColor4F(0.71f, 0.80f, 0.80f, 0.05f);
+            ccDrawLine(pt1,pt2);
+        }
     }
 }
 

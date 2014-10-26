@@ -224,7 +224,7 @@ CCSprite* arrow;
         //[self removeChild:routeDisp];//経路を非表示
         routeDisp.visible=false;
         if(posArray.count>1){//座標が2点以上なら
-            [hitPlayer moveTank:posArray];
+            //[hitPlayer moveTank:posArray];
         }
         routeDispFlg=false;
     }

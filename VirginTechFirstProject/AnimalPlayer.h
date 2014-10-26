@@ -39,10 +39,14 @@
     float maxLife;
     float nowRatio;
     
-    int t;
+    CGPoint startPos;
+    int moveCnt;//移動カウント
     float velocity;
-    int velocityAdjustRate;
-    NSMutableArray* inpolPosArray;
+    float velocityAdjustRate;
+    //NSMutableArray* inpolPosArray;
+    NSMutableArray* posArray;
+    float er,dr;//最終距離、補間距離(途中経過の)
+    float targetAngle;
     CGPoint oldPt;
     
     bool stopFlg;
@@ -76,14 +80,15 @@
 @property float ability_Traveling;
 @property int ability_Build;
 
-@property int t;
-@property NSMutableArray* inpolPosArray;
+@property int moveCnt;
+@property float dr;
+@property NSMutableArray* posArray;
 @property bool stopFlg;
 @property bool state_PathMake_flg;
 @property bool destCollectFlg;
 @property bool fortressFlg;
 @property bool waterFlg;
-@property int velocityAdjustRate;;
+@property float velocityAdjustRate;;
 
 @property AnimalPlayer* leaderPlayer;
 @property bool leaderFlg;
@@ -93,8 +98,8 @@
 +(id)createPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 -(id)initWithPlayer:(CGPoint)playerPos playerNum:(int)playerNum;
 
--(void)moveTank:(NSMutableArray*)posArray;
--(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;
+//-(void)moveTank:(NSMutableArray*)posArray;
+//-(NSMutableArray*)lineInterpolation:(NSMutableArray*)posArray;
 -(void)getVehicleFrame:(float)angle;
 -(void)setTarget:(NSMutableArray*)targetArray;
 

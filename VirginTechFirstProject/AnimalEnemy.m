@@ -399,8 +399,8 @@ CGSize winSize;
     if(oldRange > newRange){
         flg=true;//接近中
     }
-    if(player.t > 0){
-        NSValue* value=[player.inpolPosArray objectAtIndex:player.t-1];
+    if(player.moveCnt > 0){
+        NSValue* value=[player.posArray objectAtIndex:player.moveCnt-1];
         oldRange=[BasicMath getPosDistance:self.position pos2:[value CGPointValue]];
     }
     return flg;
