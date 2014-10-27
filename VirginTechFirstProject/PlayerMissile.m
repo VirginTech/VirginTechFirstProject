@@ -17,7 +17,7 @@
 -(void)missile_Move:(CCTime)dt {
     
     t += interval;//経過時間
-    
+    /*
     if(dirFlg){//右だったら
         vfx -= vix;//左へ等速度運動
     }else{//左だったら
@@ -26,13 +26,16 @@
     
     vfy += -g * t + viy;//平行時におけるY変化量
     vfy += velocity * sinf(targetAngle);//Yに角度分を足す
-    
+    */
     //回転運動
     self.rotation += 5.0;
     
-    self.position = ccp(self.position.x + vfx * interval, self.position.y + vfy * interval);
+    //self.position = ccp(self.position.x + vfx * interval, self.position.y + vfy * interval);
     
-    if(t > 1.5){
+    CGPoint nextPos=CGPointMake(velocity*cosf(targetAngle),velocity*sinf(targetAngle));
+    self.position = ccp(self.position.x + nextPos.x, self.position.y + nextPos.y);
+    
+    if(t > 1.0){
         timeFlg=true;
         [self unschedule:@selector(missile_Move:)];
     }
@@ -57,7 +60,7 @@
     if(self=[super initWithSpriteFrame:
                         [[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"missile.png" ]])
     {
-        //初期化
+        /*/初期化
         t = 0;
         vfx = 0;
         vfy = 0;
@@ -83,6 +86,13 @@
         vi = velocity * interval;//初速度変換
         vix = vi * CC_RADIANS_TO_DEGREES(cosf(CC_DEGREES_TO_RADIANS(angle)));//X軸初速度
         viy = vi * CC_RADIANS_TO_DEGREES(sinf(CC_DEGREES_TO_RADIANS(angle)));//Y軸初速度
+        */
+        
+        t = 0;
+        timeFlg=false;
+        interval = 0.01;//0.01秒間隔
+        velocity = 2.5;//初速度(m/s)
+        targetAngle = [BasicMath getAngle_To_Radian:playerPos ePos:enemyPos];//敵との相対角度
         
         self.position=playerPos;
         
